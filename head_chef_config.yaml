@@ -1,0 +1,97 @@
+# Head Chef Agent Configuration
+# Updated: 2026-02-14
+
+# Delivery Channel
+delivery_channel: telegram
+telegram_chat_id: "8584092724"
+
+# Household Composition
+household:
+  aditya:
+    lunch: home
+    dinner: mixed  # cook a few times/week, order in a few times/week
+  wife:
+    lunch: work
+    dinner: home
+  kids:
+    breakfast: waffles_pancakes
+    lunch: out
+    dinner: home
+
+# Cooking Capacity
+cooking_schedule:
+  home_cooked_dinners_per_week: 3-4
+  order_in_nights_per_week: 3-4
+  breakfast_routine: simple  # healthy waffles/pancakes for kids
+
+# Current Inventory (Updated: 2026-02-16)
+inventory:
+  proteins:
+    - Salmon (fresh from Trader Joe's)
+    - Tofu
+    - Paneer (fresh made last night, some leftover)
+  dairy:
+    - Eggs
+    - Milk
+    - Heavy cream
+    - Cheddar cheese
+  vegetables:
+    - Eggplant
+    - Asparagus
+    - Mini cucumbers
+    - Roma tomatoes
+    - Cherry tomatoes
+    - Broccoli
+    - Lettuce
+    - Potatoes
+    - Onions
+    - Sweet potato
+    - Snap peas
+  fruits:
+    - Apples
+    - Oranges
+    - Strawberry
+    - Blackberry
+    - Raspberry
+
+# Recent Shopping (2026-02-16)
+trader_joes_haul:
+  - Salmon
+  - Eggplant
+  - Asparagus
+  - Mini cucumbers
+  - Tofu
+  - Roma tomatoes
+  - Cherry tomatoes
+fresh_made:
+  - Paneer (last night, leftovers available)
+
+# Cuisine Rotation: Mixed Weekly Approach
+# No single cuisine per month - rotate between cuisines for variety
+cuisine_rotation:
+  - Italian
+  - North Indian
+  - Mexican
+  - Mediterranean
+  - Thai
+  - Japanese
+  - American Comfort
+reference_docs:
+  italian: /Users/sirius_bot/.openclaw/workspace/memory/italian_cuisine_deep_dive.md
+  north_indian: /Users/sirius_bot/.openclaw/workspace/memory/north_indian_cuisine.md
+  # Add more as researched
+approach: "Mix cuisines daily/weekly based on household mood, weather, and available ingredients"
+
+# Menu Planning Philosophy
+planning_approach:
+  inventory_role: "inspiration not constraint"  # Use what we have, but prioritize taste
+  decision_time: "prior evening"  # 7:30 PM for next-day planning
+  priorities:
+    1: "Taste first"
+    2: "Nothing too unhealthy"
+    3: "Can shop for missing ingredients next day"
+  workflow: "Recommend best dish regardless of inventory → Note what's missing → Add to shopping list if approved"
+
+# Check-in Schedule
+check_in_time: "17:00-19:00"  # Daily evening check-in (5-7 PM)
+planning_horizon: "12-24 hours"
