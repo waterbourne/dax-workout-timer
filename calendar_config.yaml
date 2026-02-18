@@ -1,0 +1,17 @@
+# Calendar iCal Feed Configuration
+# Updated: 2026-02-18
+# Source: Bhavnani fam cal (Google Calendar)
+
+# Primary Google Calendar iCal feed (Bhavnani fam cal)
+# This bypasses Apple Calendar sync issues
+primary_ical_url: https://calendar.google.com/calendar/ical/on9f1k6ou2052pvqhlahg0ogus%40group.calendar.google.com/private-07bf7877165feaafb70535ddc92886c6/basic.ics
+
+# Default departure location
+departure_location: San Francisco, CA
+
+# Departure buffer (minutes before event to arrive)
+arrival_buffer: 15
+
+# Note: Recurring events are parsed from the iCal feed using RRULE
+# - Imara Art Class: Weekly Wednesdays 10:30 AM
+# - Evaan Fencing: Weekly Wednesdays 4:00 PM

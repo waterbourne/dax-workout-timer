@@ -38,3 +38,27 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
+
+### Email (Apple Mail)
+
+**Method:** Use AppleScript + Mail app via `osascript`
+- This sends from your default Mail account (iCloud/Gmail as configured)
+- Uses whatever account is active in Apple Mail
+
+**Command pattern:**
+```bash
+osascript -e 'tell application "Mail"
+    set theMessage to make new outgoing message with properties {subject:"SUBJECT", content:"BODY", visible:false}
+    tell theMessage
+        make new to recipient at end of to recipients with properties {address:"TO_EMAIL"}
+        make new cc recipient at end of cc recipients with properties {address:"adityabhavnani@gmail.com"}
+        send
+    end tell
+end tell'
+```
+
+**Recipients:**
+- **Aditya:** adityabhavnani@gmail.com (ALWAYS CC on every email)
+- **Natasha:** Natasha.sant@gmail.com
+
+**Rule:** ALWAYS CC adityabhavnani@gmail.com on every email sent. No exceptions.

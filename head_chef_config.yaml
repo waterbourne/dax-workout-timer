@@ -1,6 +1,9 @@
 # Head Chef Agent Configuration
 # Updated: 2026-02-14
 
+# Location
+location: "San Francisco, CA"
+
 # Delivery Channel
 delivery_channel: telegram
 telegram_chat_id: "8584092724"

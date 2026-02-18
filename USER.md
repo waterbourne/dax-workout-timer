@@ -2,11 +2,21 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
+- **Name:** Aditya
+- **What to call them:** Aditya
+- **Pronouns:** He/Him
+- **Timezone:** America/Los_Angeles (San Francisco, CA)
+- **Location:** San Francisco Bay Area
 - **Notes:**
+
+## Email Preferences (Non-Negotiable)
+
+1. **Send via Apple Mail** using `osascript` (uses his default Mail account)
+2. **ALWAYS CC adityabhavnani@gmail.com** on every email — no exceptions
+3. **Recipient emails:**
+   - Natasha: Natasha.sant@gmail.com
+4. **Main agent only:** Only I (the main agent) can send emails
+5. **Sub-agents cannot email:** Cron jobs (Personal Trainer, Spirituality Guide, Tutor, Head Chef) are Telegram-only
 
 ## Context
 
