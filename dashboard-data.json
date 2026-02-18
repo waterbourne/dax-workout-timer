@@ -1,0 +1,143 @@
+{
+  "lastUpdate": "2026-02-18T13:24:00-08:00",
+  "summary": {
+    "totalAgents": 8,
+    "tasksToday": 7,
+    "errorsToday": 2,
+    "tokensToday": 214.7
+  },
+  "agents": [
+    {
+      "id": "dax",
+      "name": "Dax",
+      "role": "Personal Trainer",
+      "emoji": "💪",
+      "schedule": "4:30 AM Daily",
+      "nextRun": "Tomorrow 4:30 AM",
+      "status": "idle",
+      "tasks": 1,
+      "errors": 0,
+      "tokens": 28.6,
+      "workload": 15,
+      "lastActivity": "2026-02-18T04:30:00-08:00"
+    },
+    {
+      "id": "guru",
+      "name": "Guru",
+      "role": "Spirituality Guide",
+      "emoji": "🧘",
+      "schedule": "6:00 AM Daily",
+      "nextRun": "Tomorrow 6:00 AM",
+      "status": "idle",
+      "tasks": 1,
+      "errors": 0,
+      "tokens": 32.4,
+      "workload": 20,
+      "lastActivity": "2026-02-18T06:00:00-08:00"
+    },
+    {
+      "id": "sol",
+      "name": "Sol",
+      "role": "Tutor (Academic)",
+      "emoji": "📚",
+      "schedule": "7:00 AM Daily",
+      "nextRun": "Tomorrow 7:00 AM",
+      "status": "idle",
+      "tasks": 1,
+      "errors": 2,
+      "tokens": 37.4,
+      "workload": 45,
+      "lastActivity": "2026-02-18T07:00:00-08:00"
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Tutor (Philosophy)",
+      "emoji": "🏛️",
+      "schedule": "5:15 PM Daily",
+      "nextRun": "Today 5:15 PM",
+      "status": "idle",
+      "tasks": 0,
+      "errors": 0,
+      "tokens": 0,
+      "workload": 0,
+      "lastActivity": null
+    },
+    {
+      "id": "raju",
+      "name": "Raju",
+      "role": "Head Chef",
+      "emoji": "👨‍🍳",
+      "schedule": "7:30 PM Daily",
+      "nextRun": "Today 7:30 PM",
+      "status": "idle",
+      "tasks": 0,
+      "errors": 0,
+      "tokens": 0,
+      "workload": 0,
+      "lastActivity": null
+    },
+    {
+      "id": "calendar",
+      "name": "Calendar Monitor",
+      "role": "Departure Alerts",
+      "emoji": "📅",
+      "schedule": "Every 15 min",
+      "nextRun": "Next check in ~5 min",
+      "status": "active",
+      "tasks": 3,
+      "errors": 0,
+      "tokens": 89.2,
+      "workload": 35,
+      "lastActivity": "2026-02-18T13:15:00-08:00"
+    },
+    {
+      "id": "error-review",
+      "name": "Error Review",
+      "role": "EOD Improvement",
+      "emoji": "🔍",
+      "schedule": "10:30 PM Daily",
+      "nextRun": "Today 10:30 PM",
+      "status": "idle",
+      "tasks": 0,
+      "errors": 0,
+      "tokens": 0,
+      "workload": 0,
+      "lastActivity": null
+    },
+    {
+      "id": "bob",
+      "name": "Bob",
+      "role": "The Auditor",
+      "emoji": "👁️",
+      "schedule": "Every hour",
+      "nextRun": "Next audit in ~30 min",
+      "status": "active",
+      "tasks": 1,
+      "errors": 0,
+      "tokens": 27.1,
+      "workload": 10,
+      "lastActivity": "2026-02-18T13:00:00-08:00"
+    }
+  ],
+  "actionItems": [
+    {
+      "id": 1,
+      "agent": "Bob",
+      "text": "Calendar parsing errors detected. Review AGENTS.md updates.",
+      "action": "Review",
+      "resolved": false,
+      "priority": "medium",
+      "created": "2026-02-18T10:30:00-08:00"
+    },
+    {
+      "id": 2,
+      "agent": "Calendar Monitor",
+      "text": "Carmel Valley Ranch trip tomorrow (Feb 19-22). Need travel prep confirmation.",
+      "action": "Confirm",
+      "resolved": false,
+      "priority": "high",
+      "created": "2026-02-18T12:59:00-08:00"
+    }
+  ]
+}

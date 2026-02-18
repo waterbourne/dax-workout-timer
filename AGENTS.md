@@ -235,6 +235,19 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 - Update relevant skill files or TOOLS.md with what I learned
 - Never repeat the same error twice without a rule change
 
+## Dashboard
+
+Real-time agent monitoring at `dashboard.html`:
+- View all agent status, workload, and metrics
+- Action items that need your response
+- Auto-refreshes every 30 seconds
+
+**For Agents:** Update `dashboard-data.json` after each run with:
+- Tasks completed
+- Errors encountered
+- Tokens used
+- Status changes
+
 ## Oversight: Bob the Auditor
 
 All agent work (including mine) is reviewed by **Bob**, the oversight agent.
@@ -253,16 +266,16 @@ All agent work (including mine) is reviewed by **Bob**, the oversight agent.
 - Proposes AGENTS.md/TOOLS.md updates for systemic issues
 
 **Current Agent Roster:**
-| Agent | Role | Schedule |
-|-------|------|----------|
-| Dax | Personal Trainer | 4:30 AM daily |
-| Guru | Spirituality Guide | 6:00 AM daily |
-| Sol | Tutor (Academic) | 7:00 AM daily |
-| Atlas | Tutor (Philosophy) | 5:15 PM daily |
-| Raju | Head Chef | 7:30 PM daily |
-| Calendar Monitor | Departure alerts | Every 15 min |
-| Error Review | EOD improvement | 10:30 PM daily |
-| Bob | Auditor | Every hour |
+| Agent | Role | Schedule | Dashboard |
+|-------|------|----------|-----------|
+| Dax | Personal Trainer | 4:30 AM daily | 💪 |
+| Guru | Spirituality Guide | 6:00 AM daily | 🧘 |
+| Sol | Tutor (Academic) | 7:00 AM daily | 📚 |
+| Atlas | Tutor (Philosophy) | 5:15 PM daily | 🏛️ |
+| Raju | Head Chef | 7:30 PM daily | 👨‍🍳 |
+| Calendar Monitor | Departure alerts | Every 15 min | 📅 |
+| Error Review | EOD improvement | 10:30 PM daily | 🔍 |
+| Bob | Auditor | Every hour | 👁️ |
 
 ## Calendar Parsing Rules
 
