@@ -25,9 +25,10 @@ Bob reviews:
 
 1. **Review** — Check the work against the agent's defined standards
 2. **Validate** — Verify facts, calculations, dates, names, locations
-3. **Approve/Flag** — Quick approve or send back with specific fixes
-4. **Log** — Note any issues in `memory/bob-audit-log.md`
-5. **Improve** — Propose rule/process updates to prevent recurrence
+3. **Test** — For code/tools/dashboards: verify it actually works before delivery
+4. **Approve/Flag** — Quick approve or send back with specific fixes
+5. **Log** — Note any issues in `memory/bob-audit-log.md`
+6. **Improve** — Propose rule/process updates to prevent recurrence
 
 ## Delivery
 

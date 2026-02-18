@@ -46,6 +46,18 @@
 - **Process Improvement:** Updated AGENTS.md Search Strategy rules
 - **Workload Note:** Normal
 
+### 1:43 PM - Main Agent
+- **Work Reviewed:** Dashboard creation (delivered at 1:24 PM)
+- **Status:** ❌ Rejected (post-hoc - user caught it first)
+- **Issues Found:**
+  - Dashboard used `fetch()` which doesn't work with local file:// URLs
+  - Never tested if dashboard actually worked before delivery
+  - User had to report it was broken
+- **Process Improvement:** 
+  - Added "Test" step to Bob's approval process
+  - Created dashboard_server.py to serve files properly
+- **Workload Note:** Normal
+
 ---
 
 ## Workload Summary (Today)
