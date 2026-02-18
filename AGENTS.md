@@ -218,6 +218,15 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 
 **Fix-first mentality:** Internal errors and inconsistencies are my problem to solve silently. Only escalate if the fix fails or external action is required.
 
+## Calendar Parsing Rules
+
+When parsing iCal/RRULE data, **always validate:**
+- **BYDAY** — Only include events where the target day actually matches (don't show Friday events for Wednesday queries)
+- **UNTIL** — Check that the recurrence hasn't ended (Date Night ended in 2021 — don't show it in 2026)
+- **EXDATE** — Respect exception dates for recurring events
+
+**Test output** — If results look wrong (too many events, obviously expired items), re-check the parsing logic before presenting.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
