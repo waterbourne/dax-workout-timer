@@ -15,7 +15,16 @@
 - Spirituality: No action unless asked (The Way app)
 - Head Chef: Only responds to 7:30 PM cron or direct questions
 
+### Error Review Check
+- Read: `memory/error-log.md`
+- Review any errors from today
+- Identify patterns and root causes
+- Update AGENTS.md/TOOLS.md with new rules if needed
+- Research any errors needing deeper investigation
+- Clear resolved errors or move to archive
+
 ## When to Alert
 - Cron jobs missing
 - Calendar event < 24h that needs prep
 - Any system errors
+- Errors with unclear solutions that need research

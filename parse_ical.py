@@ -1,225 +1,148 @@
 #!/usr/bin/env python3
-"""
-iCal Parser for Calendar Events
-Properly handles RRULE with BYDAY validation and UNTIL dates
-"""
 import urllib.request
 import re
 from datetime import datetime, timedelta, timezone
-from typing import List, Dict, Optional, Tuple
 
-# Day name to iCal BYDAY code mapping
-DAY_MAP = {
-    'MO': 0, 'TU': 1, 'WE': 2, 'TH': 3, 'FR': 4, 'SA': 5, 'SU': 6
-}
-REVERSE_DAY_MAP = {v: k for k, v in DAY_MAP.items()}
+# Fetch the iCal feed
+url = "https://calendar.google.com/calendar/ical/on9f1k6ou2052pvqhlahg0ogus%40group.calendar.google.com/private-07bf7877165feaafb70535ddc92886c6/basic.ics"
 
+with urllib.request.urlopen(url) as response:
+    ical_data = response.read().decode('utf-8')
 
-def parse_rrule(rrule: str) -> Dict:
-    """Parse RRULE string into components"""
-    parts = {}
-    for component in rrule.split(';'):
-        if '=' in component:
-            key, value = component.split('=', 1)
-            parts[key] = value
-    return parts
+# Current time: Wednesday, February 18th, 2026 — 10:34 AM (America/Los_Angeles)
+# Pacific timezone is UTC-8 in February (PST)
+PST_OFFSET = timedelta(hours=-8)
+pacific = timezone(PST_OFFSET)
+now = datetime(2026, 2, 18, 10, 34, tzinfo=pacific)
+window_end = now + timedelta(hours=4)
 
+print(f"Current time: {now}")
+print(f"Window end: {window_end}")
+print(f"Today is: {now.strftime('%A, %B %d, %Y')}")
+print("="*60)
 
-def get_day_of_week(date: datetime) -> str:
-    """Get iCal BYDAY code for a date (MO, TU, WE, etc.)"""
-    return REVERSE_DAY_MAP[date.weekday()]
+# Parse VEVENT blocks
+events = []
+vevent_pattern = r'BEGIN:VEVENT\s*(.*?)\s*END:VEVENT'
+vevents = re.findall(vevent_pattern, ical_data, re.DOTALL)
 
-
-def parse_until_date(until_str: str) -> Optional[datetime]:
-    """Parse UNTIL date from RRULE"""
-    try:
-        if until_str.endswith('Z'):
-            dt = datetime.strptime(until_str, '%Y%m%dT%H%M%SZ')
-            return dt.replace(tzinfo=timezone.utc)
-        elif 'T' in until_str:
-            dt = datetime.strptime(until_str[:15], '%Y%m%dT%H%M%S')
-            return dt.replace(tzinfo=timezone.utc)
-        else:
-            dt = datetime.strptime(until_str, '%Y%m%d')
-            return dt.replace(tzinfo=timezone.utc)
-    except:
-        return None
-
-
-def check_rrule_valid_for_date(rrule: str, target_date: datetime) -> bool:
-    """
-    Check if a recurring event's RRULE produces an instance on target_date
-    Returns True if there's a valid instance on that date
-    """
-    rrule_parts = parse_rrule(rrule)
+for vevent in vevents:
+    event = {}
     
-    # Check UNTIL - has the series ended?
-    if 'UNTIL' in rrule_parts:
-        until_date = parse_until_date(rrule_parts['UNTIL'])
-        if until_date and target_date > until_date:
-            return False
+    # Get summary
+    summary_match = re.search(r'SUMMARY:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
+    if summary_match:
+        event['summary'] = summary_match.group(1).replace('\\n', '\n').strip()
     
-    # Check BYDAY - does this event occur on target day?
-    target_day_code = get_day_of_week(target_date)
+    # Get location
+    location_match = re.search(r'LOCATION:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
+    if location_match:
+        event['location'] = location_match.group(1).replace('\\n', '\n').replace('\\,', ',').strip()
     
-    if 'BYDAY' in rrule_parts:
-        byday = rrule_parts['BYDAY']
-        # Handle compound days like "MO,WE,FR"
-        allowed_days = byday.split(',')
-        # Strip any position prefixes (e.g., "-1FR" for last Friday)
-        allowed_days = [d.lstrip('-0123456789') for d in allowed_days]
-        if target_day_code not in allowed_days:
-            return False
+    # Check for RRULE (recurring)
+    rrule_match = re.search(r'RRULE:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
+    if rrule_match:
+        event['rrule'] = rrule_match.group(1).strip()
     
-    # Check FREQ
-    freq = rrule_parts.get('FREQ', 'DAILY')
-    
-    # For simplicity, we assume WEEKLY and DAILY are valid
-    # More complex rules (MONTHLY with BYMONTHDAY, etc.) would need more logic
-    if freq == 'WEEKLY':
-        # Already checked BYDAY above
-        return True
-    elif freq == 'DAILY':
-        return True
-    elif freq == 'MONTHLY':
-        # Would need more complex logic for monthly recurrence
-        return True
-    
-    return True
-
-
-def parse_ical(url: str, target_date: datetime, tz: timezone) -> List[Dict]:
-    """
-    Parse iCal feed and return events for target_date
-    """
-    with urllib.request.urlopen(url) as response:
-        ical_data = response.read().decode('utf-8')
-    
-    events = []
-    vevent_pattern = r'BEGIN:VEVENT\s*(.*?)\s*END:VEVENT'
-    vevents = re.findall(vevent_pattern, ical_data, re.DOTALL)
-    
-    for vevent in vevents:
-        event = {}
+    # Get DTSTART
+    dtstart_match = re.search(r'DTSTART(?:;[^:]*)?:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
+    if dtstart_match:
+        dtstart_str = dtstart_match.group(1).strip()
+        event['dtstart'] = dtstart_str
         
-        # Get summary
-        summary_match = re.search(r'SUMMARY:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
-        if summary_match:
-            event['summary'] = summary_match.group(1).replace('\\n', '\n').strip()
-        
-        # Get location
-        location_match = re.search(r'LOCATION:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
-        if location_match:
-            loc = location_match.group(1).replace('\\n', '\n').replace('\\,', ',').strip()
-            event['location'] = loc
-        
-        # Get RRULE
-        rrule_match = re.search(r'RRULE:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
-        if rrule_match:
-            event['rrule'] = rrule_match.group(1).strip()
-        
-        # Get DTSTART
-        dtstart_match = re.search(r'DTSTART(?:;[^:]*)?:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
-        if dtstart_match:
-            dtstart_str = dtstart_match.group(1).strip()
-            event['dtstart'] = dtstart_str
-            
-            try:
-                if 'T' in dtstart_str and len(dtstart_str) >= 15:
-                    if dtstart_str.endswith('Z'):
-                        dt = datetime.strptime(dtstart_str, '%Y%m%dT%H%M%SZ')
-                        dt = dt.replace(tzinfo=timezone.utc).astimezone(tz)
-                    else:
-                        dt = datetime.strptime(dtstart_str[:15], '%Y%m%dT%H%M%S')
-                        dt = dt.replace(tzinfo=tz)
-                    event['start_datetime'] = dt
+        # Parse the start time
+        try:
+            if 'T' in dtstart_str and len(dtstart_str) >= 15:
+                # Has time component
+                if dtstart_str.endswith('Z'):
+                    # UTC time - convert to Pacific
+                    dt = datetime.strptime(dtstart_str, '%Y%m%dT%H%M%SZ')
+                    dt = dt.replace(tzinfo=timezone.utc).astimezone(pacific)
                 else:
-                    dt = datetime.strptime(dtstart_str, '%Y%m%d')
-                    event['start_datetime'] = dt.replace(tzinfo=tz)
-            except Exception as e:
-                event['parse_error'] = str(e)
-        
-        # Check for RECURRENCE-ID (modified instance - skip these as they're exceptions)
-        rec_id_match = re.search(r'RECURRENCE-ID(?:;[^:]*)?:(.*?)(?:\r?\n[\w-]+:|\r?\nEND:)', vevent, re.DOTALL)
-        if rec_id_match:
-            event['recurrence_id'] = rec_id_match.group(1).strip()
-        
-        events.append(event)
+                    # Local time (assume Pacific)
+                    dt = datetime.strptime(dtstart_str[:15], '%Y%m%dT%H%M%S')
+                    dt = dt.replace(tzinfo=pacific)
+                event['start_datetime'] = dt
+            else:
+                # All-day event (date only)
+                dt = datetime.strptime(dtstart_str, '%Y%m%d')
+                event['start_datetime'] = dt.replace(tzinfo=pacific)
+        except Exception as e:
+            event['parse_error'] = str(e)
     
-    return events
+    events.append(event)
 
+# Find events in the window
+print("\nLooking for events between now and window end...")
+print()
 
-def get_events_for_date(events: List[Dict], target_date: datetime, tz: timezone) -> List[Dict]:
-    """
-    Filter events to find those occurring on target_date
-    Properly handles recurring events with RRULE validation
-    """
-    day_events = []
-    
-    for e in events:
-        event_date = None
-        is_valid = False
+# Track events to alert on
+alerts_needed = []
+
+# Look for Wednesday recurring events (today is Wednesday)
+for e in events:
+    if not e.get('rrule'):
+        continue
         
-        # Check if it's a recurring event
-        if e.get('rrule'):
-            # Validate RRULE for target date
-            if check_rrule_valid_for_date(e['rrule'], target_date):
-                if e.get('start_datetime'):
-                    event_time = e['start_datetime'].time()
-                    event_date = datetime.combine(target_date.date(), event_time).replace(tzinfo=tz)
-                    is_valid = True
+    rrule = e['rrule']
+    
+    # Check if it's a Wednesday event
+    if 'BYDAY=WE' in rrule or 'BYDAY=1WE' in rrule or 'BYDAY=2WE' in rrule or 'BYDAY=3WE' in rrule:
+        if e.get('start_datetime'):
+            start_dt = e['start_datetime']
+            
+            # Get the time of day from the original event
+            event_time = start_dt.time()
+            
+            # Create datetime for TODAY (Feb 18, 2026) with that time
+            today_event = datetime.combine(now.date(), event_time).replace(tzinfo=pacific)
+            
+            # Check if it's within our window (next 4 hours)
+            if now <= today_event <= window_end:
+                # Check if there's a location
+                if e.get('location') and e['location'].strip():
+                    # Check for NO CLASS markers
+                    summary = e.get('summary', '').upper()
+                    if 'NO CLASS' not in summary and 'CANCELLED' not in summary and 'CANCELED' not in summary:
+                        alerts_needed.append({
+                            'summary': e.get('summary', 'Unknown'),
+                            'location': e.get('location', ''),
+                            'start': today_event
+                        })
+
+# Print results
+if alerts_needed:
+    print(f"Found {len(alerts_needed)} events with locations in the 4-hour window:")
+    for evt in alerts_needed:
+        print(f"\n• {evt['summary']}")
+        print(f"  Start: {evt['start'].strftime('%I:%M %p')}")
+        print(f"  Location: {evt['location'][:60]}...")
         
-        # Check non-recurring events
-        elif e.get('start_datetime'):
-            start = e['start_datetime']
-            if start.date() == target_date.date():
-                event_date = start
-                is_valid = True
+        # Calculate if alert should be sent
+        # For local SF events, assume 15 min drive + 15 min buffer = need to leave 30 min before
+        drive_time_minutes = 15  # Estimate for local SF
+        leave_by = evt['start'] - timedelta(minutes=drive_time_minutes + 15)
+        minutes_until_leave = (leave_by - now).total_seconds() / 60
         
-        if is_valid and event_date:
-            day_events.append({
-                'summary': e.get('summary', 'Unknown'),
-                'location': e.get('location', ''),
-                'start': event_date,
-                'is_recurring': bool(e.get('rrule')),
-                'rrule': e.get('rrule', '')
-            })
-    
-    # Sort by time
-    day_events.sort(key=lambda x: x['start'])
-    return day_events
-
-
-def main():
-    # Configuration
-    url = "https://calendar.google.com/calendar/ical/on9f1k6ou2052pvqhlahg0ogus%40group.calendar.google.com/private-07bf7877165feaafb70535ddc92886c6/basic.ics"
-    
-    # Target: Next Wednesday, February 25, 2026
-    PST_OFFSET = timedelta(hours=-8)
-    pacific = timezone(PST_OFFSET)
-    target_date = datetime(2026, 2, 25, tzinfo=pacific)
-    
-    print(f"Calendar: {target_date.strftime('%A, %B %d, %Y')}")
-    print("="*60)
-    
-    # Parse and filter
-    all_events = parse_ical(url, target_date, pacific)
-    day_events = get_events_for_date(all_events, target_date, pacific)
-    
-    print(f"\nFound {len(day_events)} events:\n")
-    
-    for e in day_events:
-        recurring_tag = " (↻)" if e['is_recurring'] else ""
-        time_str = e['start'].strftime('%I:%M %p').lstrip('0')
+        print(f"  Leave by: {leave_by.strftime('%I:%M %p')} ({minutes_until_leave:.0f} min from now)")
         
-        print(f"• {time_str} — {e['summary']}{recurring_tag}")
-        if e['location']:
-            # Clean up location display
-            loc = e['location'].replace('\r\n', ' ').replace('\n', ' ')
-            if len(loc) > 60:
-                loc = loc[:57] + "..."
-            print(f"  📍 {loc}")
+        if 0 <= minutes_until_leave <= 60:
+            print(f"  ⚠️  ALERT NEEDED: Leave within {minutes_until_leave:.0f} minutes!")
+        elif minutes_until_leave < 0:
+            print(f"  🚨 OVERDUE: Should have left {abs(minutes_until_leave):.0f} minutes ago!")
+else:
+    print("No events with locations found in the 4-hour window.")
 
-
-if __name__ == '__main__':
-    main()
+print("\n" + "="*60)
+print("ALERT SUMMARY:")
+for evt in alerts_needed:
+    drive_time_minutes = 15
+    leave_by = evt['start'] - timedelta(minutes=drive_time_minutes + 15)
+    minutes_until_leave = (leave_by - now).total_seconds() / 60
+    
+    if minutes_until_leave <= 60:
+        print(f"\n{evt['summary']}")
+        print(f"  Start: {evt['start'].strftime('%I:%M %p')}")
+        print(f"  Location: {evt['location']}")
+        print(f"  Drive: ~{drive_time_minutes} min")
+        print(f"  LEAVE BY: {leave_by.strftime('%I:%M %p')}")
