@@ -235,6 +235,35 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 - Update relevant skill files or TOOLS.md with what I learned
 - Never repeat the same error twice without a rule change
 
+## Oversight: Bob the Auditor
+
+All agent work (including mine) is reviewed by **Bob**, the oversight agent.
+
+**Bob's Rules:**
+1. Prioritize outcomes AND accuracy
+2. Don't be a roadblock — approve quickly if good enough
+3. Propose process improvements when he sees patterns
+4. Monitor workload stress across all agents
+
+**Process:**
+- Bob reviews work hourly
+- Silent approval (NO_REPLY) if everything looks good
+- Flags issues via Telegram if he finds problems
+- Logs all reviews in `memory/bob-audit-log.md`
+- Proposes AGENTS.md/TOOLS.md updates for systemic issues
+
+**Current Agent Roster:**
+| Agent | Role | Schedule |
+|-------|------|----------|
+| Dax | Personal Trainer | 4:30 AM daily |
+| Guru | Spirituality Guide | 6:00 AM daily |
+| Sol | Tutor (Academic) | 7:00 AM daily |
+| Atlas | Tutor (Philosophy) | 5:15 PM daily |
+| Raju | Head Chef | 7:30 PM daily |
+| Calendar Monitor | Departure alerts | Every 15 min |
+| Error Review | EOD improvement | 10:30 PM daily |
+| Bob | Auditor | Every hour |
+
 ## Calendar Parsing Rules
 
 When parsing iCal/RRULE data, **always validate:**
