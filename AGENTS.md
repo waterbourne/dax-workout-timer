@@ -227,6 +227,11 @@ When parsing iCal/RRULE data, **always validate:**
 
 **Test output** — If results look wrong (too many events, obviously expired items), re-check the parsing logic before presenting.
 
+**Search Strategy for Sports/Events:**
+- Search by **team/organization names** (Knicks, Giants, Phillies, SHB) rather than generic sport terms
+- Check longer windows (30 days) for sports schedules
+- Don't filter by generic terms like "basketball" — calendar events use team names
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
