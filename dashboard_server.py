@@ -9,7 +9,7 @@ import os
 import json
 from datetime import datetime, timezone
 
-PORT = 8765
+PORT = 8080
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 class DashboardHandler(http.server.SimpleHTTPRequestHandler):

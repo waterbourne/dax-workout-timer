@@ -23,7 +23,7 @@ cd ~/.openclaw/workspace
 python3 dashboard_server.py
 ```
 
-Then open: **http://localhost:8765/dashboard.html**
+Then open: **http://localhost:8080/dashboard.html**
 
 **Option 2: Direct file (static view only)**
 
