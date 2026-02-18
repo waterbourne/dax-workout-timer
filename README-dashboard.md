@@ -14,13 +14,26 @@ A real-time, interactive dashboard for monitoring all your OpenClaw agents.
 
 ### Opening the Dashboard
 
-Simply open `dashboard.html` in any modern web browser:
+**Option 1: Quick Start (with live updates)**
+
+Run the simple HTTP server:
+
+```bash
+cd ~/.openclaw/workspace
+python3 dashboard_server.py
+```
+
+Then open: **http://localhost:8765/dashboard.html**
+
+**Option 2: Direct file (static view only)**
+
+If you just want to view without live updates:
 
 ```bash
 open dashboard.html
 ```
 
-Or double-click the file.
+*Note: Live data refresh won't work when opening directly due to browser security. Use Option 1 for full functionality.*
 
 ### Action Items
 
