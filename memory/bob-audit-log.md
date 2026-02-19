@@ -46,6 +46,23 @@
 - **Process Improvement:** Updated AGENTS.md Search Strategy rules
 - **Workload Note:** Normal
 
+### 4:50 PM - Calendar Departure Monitor
+- **Work Reviewed:** Phillies Little League Practice departure alerts (3 alerts sent at 4:04 PM, 4:34 PM, 4:49 PM)
+- **Status:** ❌ REJECTED - CRITICAL ERROR
+- **Issues Found:**
+  - Phillies Practice event is on **March 5, 2026** (15 days away), NOT today (Feb 18)
+  - DTSTART: 20260305T173000 clearly shows March 5
+  - Calendar Monitor sent 3 urgent alerts for an event that isn't happening today
+  - User was falsely told to "LEAVE NOW" for an event 2 weeks away
+  - This is the SECOND calendar date error today (earlier: Date Night on wrong day)
+- **Root Cause:** Calendar Monitor not validating that event date matches current date before alerting
+- **Process Improvement:** 
+  - Add strict date validation to Calendar Monitor
+  - Must verify DTSTART date == today before ANY alert
+  - For recurring events, calculate actual instance date and verify
+  - Add failsafe: "If event date != today, DO NOT ALERT"
+- **Workload Note:** Normal
+
 ### 1:43 PM - Main Agent
 - **Work Reviewed:** Dashboard creation (delivered at 1:24 PM)
 - **Status:** ❌ Rejected (post-hoc - user caught it first)

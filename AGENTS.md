@@ -280,18 +280,24 @@ All agent work (including mine) is reviewed by **Bob**, the oversight agent.
 ## Calendar Parsing Rules
 
 When parsing iCal/RRULE data, **always validate:**
-- **BYDAY** — Only include events where the target day actually matches (don't show Friday events for Wednesday queries)
-- **UNTIL** — Check that the recurrence hasn't ended (Date Night ended in 2021 — don't show it in 2026)
+- **DTSTART DATE** — ONLY alert/show events happening TODAY (most critical)
+- **BYDAY** — Only include events where the target day actually matches
+- **UNTIL** — Check that the recurrence hasn't ended
 - **EXDATE** — Respect exception dates for recurring events
 
-**Test output** — If results look wrong (too many events, obviously expired items), re-check the parsing logic before presenting.
+**CRITICAL FOR DEPARTURE ALERTS:**
+- Before sending ANY alert: Verify DTSTART date == TODAY
+- For recurring events: Calculate actual instance date and confirm it's today
+- NEVER send alerts for future dates (e.g., March 5 event on Feb 18)
+- If date validation fails: Reply NO_REPLY, do not alert
+
+**Test output** — If results look wrong (too many events, wrong dates, expired items), re-check parsing before presenting.
 
 **Search Strategy:**
-- **Search what the user asks for** — use their exact terms, don't assume predetermined categories
-- Use **30+ day windows** for schedules, broad scopes for research
-- Cast a wide net first — show raw results, then refine together
-- If results seem incomplete or zero, expand and retry before reporting
-- Multiple parallel queries beat one "perfect" query
+- **Search what the user asks for** — use their exact terms
+- Use **30+ day windows** for schedules
+- Cast wide net first — show raw results, then refine
+- If results seem wrong, expand and retry before reporting
 
 ## Make It Yours
 
