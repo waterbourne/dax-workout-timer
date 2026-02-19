@@ -1,22 +1,27 @@
 {
-  "lastAudit": "2026-02-19T09:01:00-08:00",
-  "status": "degraded",
-  "alertsSent": false,
+  "lastAudit": "2026-02-19T12:01:00-08:00",
+  "status": "critical",
+  "alertsSent": true,
   "issuesTracked": [
-    "sol-timeout-pending-fix",
-    "evaan-missed-2-sessions",
-    "telegram-delivery-recovered"
+    "telegram-delivery-system-failure",
+    "bob-4-consecutive-errors",
+    "calendar-monitor-5-errors",
+    "infra-architect-2-errors",
+    "sol-fix-pending-verification"
   ],
   "consecutiveOkHours": 0,
-  "criticalIssues": 1,
+  "criticalIssues": 2,
   "recommendations": [
-    "Increase Sol timeout to 120s before tomorrow 7AM",
-    "Manual re-run Sol for Evaan's missed content",
-    "Monitor Calendar Monitor for sustained recovery"
+    "URGENT: Investigate Telegram relay/connection",
+    "URGENT: Implement iMessage fallback",
+    "Check Telegram bot token/API status",
+    "Review gateway logs for delivery errors"
   ],
   "recoveryStatus": {
-    "calendarMonitor": "RECOVERED",
-    "telegramDelivery": "STABILIZED",
-    "solTimeout": "PENDING_FIX"
+    "telegramDelivery": "SYSTEMATIC_FAILURE",
+    "calendarMonitor": "CRITICAL",
+    "bobDelivery": "CRITICAL",
+    "infraArchitect": "DEGRADED",
+    "solTimeout": "FIXED_PENDING_VERIFICATION"
   }
 }
