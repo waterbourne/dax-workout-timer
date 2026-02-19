@@ -1,11 +1,12 @@
 {
-  "lastAudit": "2026-02-18T19:01:00-08:00",
+  "lastAudit": "2026-02-18T21:01:00-08:00",
   "status": "normal",
-  "issue": "None",
+  "issue": "None — Raju recovered successfully",
   "severity": "none",
   "patternDetected": false,
   "pattern": "N/A",
-  "agentsReviewed": ["Calendar Monitor", "Bob"],
+  "agentsReviewed": ["Raju", "Calendar Monitor", "Bob"],
   "alertsSent": 0,
-  "nextAudit": "2026-02-18T20:00:00-08:00"
+  "fixStatus": "Resolved — Raju delivered dinner plans at 8:21 PM",
+  "nextAudit": "2026-02-18T22:00:00-08:00"
 }
