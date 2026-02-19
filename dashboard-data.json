@@ -1,10 +1,10 @@
 {
-  "lastUpdate": "2026-02-18T13:24:00-08:00",
+  "lastUpdate": "2026-02-18T16:05:00-08:00",
   "summary": {
     "totalAgents": 8,
-    "tasksToday": 7,
+    "tasksToday": 8,
     "errorsToday": 2,
-    "tokensToday": 214.7
+    "tokensToday": 235.6
   },
   "agents": [
     {
@@ -85,11 +85,11 @@
       "schedule": "Every 15 min",
       "nextRun": "Next check in ~5 min",
       "status": "active",
-      "tasks": 3,
+      "tasks": 4,
       "errors": 0,
-      "tokens": 89.2,
-      "workload": 35,
-      "lastActivity": "2026-02-18T13:15:00-08:00"
+      "tokens": 110.5,
+      "workload": 40,
+      "lastActivity": "2026-02-18T16:00:00-08:00"
     },
     {
       "id": "error-review",
@@ -111,13 +111,14 @@
       "role": "The Auditor",
       "emoji": "👁️",
       "schedule": "Every hour",
-      "nextRun": "Next audit in ~30 min",
+      "nextRun": "Today 5:00 PM",
       "status": "active",
       "tasks": 1,
-      "errors": 0,
+      "errors": 2,
       "tokens": 27.1,
-      "workload": 10,
-      "lastActivity": "2026-02-18T13:00:00-08:00"
+      "workload": 30,
+      "lastActivity": "2026-02-18T16:05:00-08:00",
+      "notes": "Delivery failures - under review"
     }
   ],
   "actionItems": [
@@ -139,5 +140,15 @@
       "priority": "high",
       "created": "2026-02-18T12:59:00-08:00"
     }
-  ]
+  ],
+  "bobStatus": {
+    "lastRun": "2026-02-18T16:05:00-08:00",
+    "nextRun": "2026-02-18T17:05:00-08:00",
+    "totalReviewsToday": 5,
+    "issuesFoundToday": 2,
+    "alertsSentToday": 0,
+    "status": "under_review",
+    "consecutiveErrors": 2,
+    "notes": "Delivery failures - recreated with improved prompt"
+  }
 }

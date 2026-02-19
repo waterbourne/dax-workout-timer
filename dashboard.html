@@ -1,10 +1,421 @@
-                        <div class="workload-bar">
-                            <div class="workload-fill ${workloadClass}" style="width: ${agent.workload}%"></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Agent Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e94560;
+        }
+        
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .last-update { color: #8892b0; font-size: 0.9rem; margin-top: 10px; }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+            padding-bottom: 10px;
+        }
+        
+        .tab-btn {
+            background: rgba(233, 69, 96, 0.1);
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            color: #e94560;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover { background: rgba(233, 69, 96, 0.2); }
+        .tab-btn.active { 
+            background: #e94560; 
+            color: white; 
+            border-color: #e94560;
+        }
+        
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Action Items */
+        .action-section {
+            background: rgba(233, 69, 96, 0.1);
+            border: 2px solid #e94560;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .action-section h2 {
+            color: #e94560;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .action-badge {
+            background: #e94560;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .action-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #e94560;
+            padding: 15px 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .action-item:hover { background: rgba(233, 69, 96, 0.2); transform: translateX(5px); }
+        
+        .priority-indicator {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .priority-high { background: #ef4444; color: white; }
+        .priority-medium { background: #f59e0b; color: white; }
+        
+        .action-text { flex: 1; }
+        .action-agent { font-size: 0.75rem; color: #8892b0; text-transform: uppercase; }
+        
+        .action-btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .action-btn:hover { background: #ff6b6b; }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-value { font-size: 2.5rem; font-weight: bold; color: #e94560; }
+        .stat-label { color: #8892b0; font-size: 0.9rem; margin-top: 8px; }
+        
+        /* Agent Cards */
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        
+        .agent-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .agent-name { font-size: 1.3rem; font-weight: 600; color: #fff; }
+        .agent-role { font-size: 0.8rem; color: #8892b0; }
+        
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+        .status-error { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .status-idle { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        
+        .agent-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .metric { text-align: center; }
+        .metric-value { font-size: 1.5rem; font-weight: bold; color: #fff; }
+        .metric-label { font-size: 0.75rem; color: #8892b0; text-transform: uppercase; }
+        
+        .workload-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .workload-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+        
+        .workload-low { background: linear-gradient(90deg, #4ade80, #22c55e); }
+        .workload-medium { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+        .workload-high { background: linear-gradient(90deg, #ef4444, #dc2626); }
+        
+        /* Core Docs Tab */
+        .docs-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+            height: calc(100vh - 250px);
+        }
+        
+        .docs-sidebar {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .docs-sidebar h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .docs-list {
+            list-style: none;
+        }
+        
+        .docs-list li {
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #8892b0;
+            font-size: 0.9rem;
+        }
+        
+        .docs-list li:hover {
+            background: rgba(233, 69, 96, 0.1);
+            color: #fff;
+        }
+        
+        .docs-list li.active {
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+            border-left: 3px solid #e94560;
+        }
+        
+        .docs-content {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            overflow-y: auto;
+        }
+        
+        .docs-content h2 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .docs-content pre {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            color: #e94560;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .empty-state { text-align: center; padding: 40px; color: #8892b0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 OpenClaw Agent Dashboard</h1>
+            <p class="last-update">Last updated: <span id="last-update">Loading...</span></p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('dashboard')">📊 Dashboard</button>
+            <button class="tab-btn" onclick="switchTab('docs')">📚 Core Docs</button>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content active">
+            <section class="action-section">
+                <h2>🚨 Needs Your Attention <span class="action-badge" id="action-count">0</span></h2>
+                <div id="action-items">
+                    <div class="empty-state"><div class="empty-state-icon">⏳</div><p>Loading...</p></div>
+                </div>
+            </section>
+
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-value" id="total-agents">-</div><div class="stat-label">Active Agents</div></div>
+                <div class="stat-card"><div class="stat-value" id="tasks-today">-</div><div class="stat-label">Tasks Today</div></div>
+                <div class="stat-card"><div class="stat-value" id="errors-today">-</div><div class="stat-label">Errors Today</div></div>
+                <div class="stat-card"><div class="stat-value" id="tokens-today">-</div><div class="stat-label">Tokens Used (K)</div></div>
+            </div>
+
+            <div class="agents-grid" id="agents-grid">
+                <div class="empty-state"><div class="empty-state-icon">⏳</div><p>Loading agents...</p></div>
+            </div>
+        </div>
+
+        <!-- Core Docs Tab -->
+        <div id="docs-tab" class="tab-content">
+            <div class="docs-container">
+                <div class="docs-sidebar">
+                    <h3>📚 Memory & Directives</h3>
+                    <input type="text" class="search-box" id="docs-search" placeholder="Search memories..." onkeyup="searchDocs()">
+                    <ul class="docs-list" id="docs-list">
+                        <li onclick="loadDoc('AGENTS.md')" class="active">AGENTS.md</li>
+                        <li onclick="loadDoc('MEMORY.md')">MEMORY.md</li>
+                        <li onclick="loadDoc('SOUL.md')">SOUL.md</li>
+                        <li onclick="loadDoc('USER.md')">USER.md</li>
+                        <li onclick="loadDoc('HEARTBEAT.md')">HEARTBEAT.md</li>
+                        <li onclick="loadDoc('TOOLS.md')">TOOLS.md</li>
+                        <li onclick="loadDoc('IDENTITY.md')">IDENTITY.md</li>
+                        <li onclick="loadDoc('memory/error-log.md')">error-log.md</li>
+                        <li onclick="loadDoc('memory/bob-audit-log.md')">bob-audit-log.md</li>
+                    </ul>
+                </div>
+                <div class="docs-content" id="docs-content">
+                    <h2>Select a document</h2>
+                    <p style="color: #8892b0;">Click a document from the sidebar to view.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tab === 'dashboard') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('dashboard-tab').classList.add('active');
+            } else {
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('docs-tab').classList.add('active');
+            }
+        }
+
+        async function loadData() {
+            try {
+                const response = await fetch('dashboard-data.json?t=' + Date.now());
+                if (!response.ok) throw new Error('Failed to load');
+                return await response.json();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                return null;
+            }
+        }
+
+        function getWorkloadClass(pct) {
+            if (pct < 30) return 'workload-low';
+            if (pct < 70) return 'workload-medium';
+            return 'workload-high';
+        }
+
+        function renderAgents(data) {
+            const grid = document.getElementById('agents-grid');
+            if (!data || !data.agents) {
+                grid.innerHTML = '<div class="empty-state"><p>Could not load agent data.</p></div>';
+                return;
+            }
+            
+            grid.innerHTML = data.agents.map(agent => {
+                const cardClass = agent.errors > 0 ? 'error' : agent.status === 'active' ? 'active' : 'idle';
+                const statusClass = agent.status === 'active' ? 'status-active' : agent.errors > 0 ? 'status-error' : 'status-idle';
+                const workloadClass = getWorkloadClass(agent.workload);
+                
+                return `
+                    <div class="agent-card ${cardClass}">
+                        <div class="agent-header">
+                            <div>
+                                <div class="agent-name">${agent.emoji} ${agent.name}</div>
+                                <div class="agent-role">${agent.role}</div>
+                            </div>
+                            <span class="status-badge ${statusClass}">${agent.status}</span>
                         </div>
-                        <div class="agent-schedule">
-                            <div>${agent.schedule}</div>
-                            <div class="next-run">⏰ Next: ${agent.nextRun}</div>
+                        <div class="agent-metrics">
+                            <div class="metric"><div class="metric-value">${agent.tasks}</div><div class="metric-label">Tasks</div></div>
+                            <div class="metric"><div class="metric-value" style="color: ${agent.errors > 0 ? '#ef4444' : '#4ade80'}">${agent.errors}</div><div class="metric-label">Errors</div></div>
+                            <div class="metric"><div class="metric-value">${agent.tokens.toFixed(1)}k</div><div class="metric-label">Tokens</div></div>
                         </div>
+                        <div class="workload-bar"><div class="workload-fill ${workloadClass}" style="width: ${agent.workload}%"></div></div>
+                        <div class="agent-schedule"><div>${agent.schedule}</div><div style="color: #e94560; font-weight: 600;">⏰ Next: ${agent.nextRun}</div></div>
                     </div>
                 `;
             }).join('');
@@ -13,7 +424,7 @@
         function renderActionItems(data) {
             const container = document.getElementById('action-items');
             if (!data || !data.actionItems) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><p>Could not load action items.</p></div>';
+                container.innerHTML = '<div class="empty-state"><p>Could not load action items.</p></div>';
                 return;
             }
             
@@ -21,7 +432,7 @@
             document.getElementById('action-count').textContent = pendingItems.length;
             
             if (pendingItems.length === 0) {
-                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✅</div><p>No pending actions. All agents running smoothly.</p></div>';
+                container.innerHTML = '<div class="empty-state"><div class="empty-state-icon">✅</div><p>No pending actions.</p></div>';
                 return;
             }
             
@@ -29,15 +440,12 @@
             pendingItems.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
             
             container.innerHTML = pendingItems.map(item => `
-                <div class="action-item ${item.priority === 'high' ? 'high-priority' : ''}" onclick="handleAction(${item.id})">
+                <div class="action-item" onclick="alert('Action ${item.id} marked for follow-up')">
                     <div class="action-text">
-                        <div>
-                            <span class="priority-indicator priority-${item.priority}">${item.priority}</span>
-                            ${item.text}
-                        </div>
-                        <div class="action-agent">From: ${item.agent} • ${new Date(item.created).toLocaleTimeString()}</div>
+                        <div><span class="priority-indicator priority-${item.priority}">${item.priority}</span>${item.text}</div>
+                        <div class="action-agent">From: ${item.agent}</div>
                     </div>
-                    <button class="action-btn" onclick="event.stopPropagation(); handleAction(${item.id})">${item.action}</button>
+                    <button class="action-btn">${item.action}</button>
                 </div>
             `).join('');
         }
@@ -50,44 +458,51 @@
             document.getElementById('tokens-today').textContent = data.summary.tokensToday.toFixed(1);
         }
 
-        function updateTimestamp(data) {
-            const lastUpdate = data && data.lastUpdate ? new Date(data.lastUpdate) : new Date();
-            document.getElementById('last-update').textContent = lastUpdate.toLocaleString('en-US', {
-                weekday: 'short', month: 'short', day: 'numeric',
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
-            });
-        }
-
         async function refreshDashboard() {
             const data = await loadData();
             if (data) {
                 renderAgents(data);
                 renderActionItems(data);
                 updateStats(data);
-                updateTimestamp(data);
+                document.getElementById('last-update').textContent = new Date().toLocaleString();
             }
         }
 
-        function handleAction(id) {
-            console.log(`Action ${id} clicked`);
-            alert(`Action ${id} marked for follow-up.\n\nThe main agent will see this response on next interaction.`);
-        }
-
-        function quickMessage(text) {
-            document.getElementById('user-message').value = text;
-            document.getElementById('user-message').focus();
-        }
-
-        // Event listeners
-        document.getElementById('user-message').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && this.value.trim()) {
-                alert(`Message sent to agents:\n\n"${this.value.trim()}"\n\nThe main agent will receive this on next interaction.`);
-                this.value = '';
+        // Core Docs functions
+        async function loadDoc(filename) {
+            document.querySelectorAll('.docs-list li').forEach(li => li.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            try {
+                const response = await fetch(filename);
+                if (!response.ok) throw new Error('Failed to load');
+                const content = await response.text();
+                document.getElementById('docs-content').innerHTML = `
+                    <h2>${filename}</h2>
+                    <pre>${escapeHtml(content)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('docs-content').innerHTML = `
+                    <h2>${filename}</h2>
+                    <p style="color: #8892b0;">Unable to load document. File may not exist yet.</p>
+                `;
             }
-        });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function searchDocs() {
+            const query = document.getElementById('docs-search').value.toLowerCase();
+            document.querySelectorAll('.docs-list li').forEach(li => {
+                li.style.display = li.textContent.toLowerCase().includes(query) ? 'block' : 'none';
+            });
+        }
 
         // Initialize
-        initDocsList();
         refreshDashboard();
         setInterval(refreshDashboard, 30000);
     </script>

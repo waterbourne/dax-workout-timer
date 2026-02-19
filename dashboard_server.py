@@ -9,7 +9,7 @@ import os
 import json
 from datetime import datetime, timezone
 
-PORT = 8080
+PORT = 8888
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
 class DashboardHandler(http.server.SimpleHTTPRequestHandler):
@@ -35,6 +35,32 @@ class DashboardHandler(http.server.SimpleHTTPRequestHandler):
                     self.wfile.write(f.read())
             else:
                 self.wfile.write(b'{}')
+            return
+        
+        # Serve HTML files with proper content type
+        if self.path.endswith('.html') or self.path == '/':
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+            
+            html_file = os.path.join(DIRECTORY, 'dashboard.html')
+            if os.path.exists(html_file):
+                with open(html_file, 'rb') as f:
+                    self.wfile.write(f.read())
+            return
+        
+        # Serve Markdown files
+        if self.path.endswith('.md'):
+            self.send_response(200)
+            self.send_header('Content-type', 'text/plain; charset=utf-8')
+            self.end_headers()
+            
+            md_file = os.path.join(DIRECTORY, self.path.lstrip('/'))
+            if os.path.exists(md_file):
+                with open(md_file, 'rb') as f:
+                    self.wfile.write(f.read())
+            else:
+                self.wfile.write(b'File not found')
             return
         
         super().do_GET()
