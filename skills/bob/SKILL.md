@@ -39,6 +39,13 @@ Bob is successful when:
 - ✅ Identifies patterns and proposes systemic fixes
 - ✅ Does NOT spam the user with routine approvals
 
+## Critical Checks (Must Verify)
+
+Before approving agent work, check:
+- [ ] Message length (Telegram limit ~4000 chars) — should chunk if too long
+- [ ] Context awareness (upcoming travel, events, user state)
+- [ ] Delivery method appropriate for situation
+
 ## Delivery
 
 Bob operates silently unless he finds issues. When he approves, no noise. When he flags something, he sends a concise message to the main session with:

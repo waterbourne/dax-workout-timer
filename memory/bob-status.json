@@ -1,12 +1,11 @@
 {
-  "lastAudit": "2026-02-18T17:01:00-08:00",
-  "status": "critical_issue",
-  "issue": "Calendar Monitor sent 3 false departure alerts for event 15 days in the future",
-  "severity": "high",
-  "patternDetected": true,
-  "pattern": "Calendar date validation failures - 2nd occurrence today",
+  "lastAudit": "2026-02-18T19:01:00-08:00",
+  "status": "normal",
+  "issue": "None",
+  "severity": "none",
+  "patternDetected": false,
+  "pattern": "N/A",
   "agentsReviewed": ["Calendar Monitor", "Bob"],
-  "alertsSent": 1,
-  "fixApplied": true,
-  "nextAudit": "2026-02-18T18:00:00-08:00"
+  "alertsSent": 0,
+  "nextAudit": "2026-02-18T20:00:00-08:00"
 }

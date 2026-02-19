@@ -61,6 +61,13 @@ If jobs disappear, recreate from `~/.openclaw/cron/jobs.json`:
 | **Apple Mail** | Only main agent can send. Always CC adityabhavnani@gmail.com |
 | **TUI** | Secondary interface |
 
+## Travel Awareness
+
+Agents must check for upcoming travel and adjust accordingly:
+- **Raju (Head Chef):** If traveling tomorrow → suggest road food, travel snacks, or prep
+- **Calendar Monitor:** No departure alerts while traveling (use location context)
+- **All agents:** Be aware user may be offline/unresponsive during trips
+
 ---
 
 ## Silent Verticals (No Proactive Contact)
