@@ -50,17 +50,21 @@
 - **Work Reviewed:** Phillies Little League Practice departure alerts (3 alerts sent at 4:04 PM, 4:34 PM, 4:49 PM)
 - **Status:** ❌ REJECTED - CRITICAL ERROR
 - **Issues Found:**
-  - Phillies Practice event is on **March 5, 2026** (15 days away), NOT today (Feb 18)
-  - DTSTART: 20260305T173000 clearly shows March 5
-  - Calendar Monitor sent 3 urgent alerts for an event that isn't happening today
-  - User was falsely told to "LEAVE NOW" for an event 2 weeks away
-  - This is the SECOND calendar date error today (earlier: Date Night on wrong day)
-- **Root Cause:** Calendar Monitor not validating that event date matches current date before alerting
+  - **CONFLATED EVENTS:** Alert was for "Phillies at SF Fencers Club" — this event DOESN'T EXIST
+  - Real Evaan Fencing: Today 4:00 PM at SF Fencers Club ✅
+  - Real Phillies Practice: March 5 at Gratton Park (future)
+  - Calendar Monitor MIXED UP: Phillies name + Fencing location = FALSE EVENT
+  - User got 3 urgent alerts for a NON-EXISTENT event
+  - This is data corruption — matched wrong event details together
+- **Root Cause:** 
+  - Calendar Monitor parsing logic conflating event attributes
+  - Not validating that event name matches event location/datetime
+  - No cross-check: "Does this event name actually exist at this location on this date?"
 - **Process Improvement:** 
-  - Add strict date validation to Calendar Monitor
-  - Must verify DTSTART date == today before ANY alert
-  - For recurring events, calculate actual instance date and verify
-  - Add failsafe: "If event date != today, DO NOT ALERT"
+  - Add strict date validation (DTSTART == today)
+  - Verify event name matches location before alerting
+  - Alert only on EXPLICIT events for today (skip complex recurring calculations)
+  - Add failsafe: "If event details don't match exactly, DO NOT ALERT"
 - **Workload Note:** Normal
 
 ### 1:43 PM - Main Agent
@@ -83,6 +87,23 @@
 - **Workload Note:** Normal
 
 **Note:** Cron shows `lastStatus: "error"` for this run, but audit was completed and logged successfully. Likely a delivery/timeout artifact — work was correct.
+
+### 5:01 PM - Bob (Self-Audit)
+- **Work Reviewed:** Audit of 4:00-5:00 PM window
+- **Status:** 🚨 CRITICAL ISSUE DETECTED
+- **Issues Found:**
+  - **Calendar Monitor:** Sent 3 FALSE ALERTS (4:04 PM, 4:34 PM, 4:49 PM) for "Phillies Little League Practice"
+  - **Event date is March 5, 2026** — 15 days in the future, NOT today (Feb 18)
+  - User acknowledged with 👍 thinking it was a real event today
+  - This is the SECOND calendar date error today (first: Date Night on wrong day)
+  - Pattern confirmed: Calendar Monitor failing to validate DTSTART date
+- **Root Cause:** Calendar Monitor not checking if event date == current date
+- **Fix Status:** Cron job updated at ~4:16 PM with strict validation rules, but damage already done
+- **Process Improvement:** 
+  - Fix is in place - now requires explicit date validation
+  - Need to clear false alerts from departure-alerts.json
+  - Consider adding "test mode" for Calendar Monitor before production
+- **Workload Note:** Normal
 
 ### 3:01 PM - Bob (Self-Audit)
 - **Work Reviewed:** Audit of 2:00-3:00 PM window
