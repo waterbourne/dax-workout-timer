@@ -62,3 +62,25 @@ end tell'
 - **Natasha:** Natasha.sant@gmail.com
 
 **Rule:** ALWAYS CC adityabhavnani@gmail.com on every email sent. No exceptions.
+
+### Departure Alerts (Calendar Monitor)
+
+**Tracking:** memory/departure-alerts.json
+
+**How it works:**
+- Calendar Monitor checks for events within 4 hours
+- Sends Telegram alert when "leave by" time approaches
+- If user reacts with 👍 ✅ 👀 etc., alert is marked acknowledged
+- NO follow-up alerts sent for acknowledged events
+
+**Alert Format:**
+```
+🚗 Leave soon: [Event] at [Location]
+Start: 3:00 PM | Drive: 45 min
+⏰ LEAVE BY: 2:00 PM
+
+React with 👍 if you got this — no more alerts for this event.
+```
+
+**Files:**
+- `memory/departure-alerts.json` — tracks sent & acknowledged alerts
