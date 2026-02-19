@@ -1,5 +1,34 @@
 {
-  "acknowledgedAlerts": [],
-  "sentAlerts": [],
-  "lastUpdated": "2026-02-18T16:15:00-08:00"
+  "acknowledgedAlerts": [
+    {
+      "event": "Phillies Little League Practice",
+      "date": "2026-02-18",
+      "acknowledgedAt": "2026-02-18T16:34:00-08:00",
+      "reaction": "👍",
+      "noMoreAlerts": true
+    }
+  ],
+  "sentAlerts": [
+    {
+      "event": "Phillies Little League Practice",
+      "location": "Grattan Park",
+      "sentAt": "2026-02-18T16:04:00-08:00",
+      "leaveBy": "2026-02-18T17:00:00-08:00"
+    },
+    {
+      "event": "Phillies Little League Practice",
+      "location": "Grattan Park", 
+      "sentAt": "2026-02-18T16:34:00-08:00",
+      "leaveBy": "2026-02-18T17:00:00-08:00",
+      "type": "urgent_followup"
+    },
+    {
+      "event": "Phillies Little League Practice",
+      "location": "Grattan Park",
+      "sentAt": "2026-02-18T16:49:00-08:00",
+      "leaveBy": "2026-02-18T17:00:00-08:00",
+      "type": "final_reminder"
+    }
+  ],
+  "lastUpdated": "2026-02-18T16:50:00-08:00"
 }
