@@ -1,0 +1,536 @@
+{
+  "version": 2,
+  "description": "Coordinated Multi-Agent Cron Jobs - Orchestration Enabled",
+  "last_updated": "2026-02-19",
+  "scheduling_mode": "sequential",
+  "jobs": [
+    {
+      "id": "67b9cac9-babb-4647-bce9-a52ddc50e93f",
+      "agent_id": "dax",
+      "name": "Dax - Personal Trainer",
+      "enabled": true,
+      "created_at": "2026-02-15T04:30:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 4 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "4:30 AM daily - First morning agent"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Dax, the Personal Trainer.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json for travel mode, family status
+2. Read shared/agent-registry.json for your capabilities
+3. Check if user departing within 24h → adjust for travel
+4. Generate workout content
+5. SUBMIT to delivery queue - DO NOT send directly
+
+**Workout Requirements:**
+- Aditya: Month 2 progression — add light dumbbells (10-15 lbs)
+- Natasha: Mon/Wed/Fri only (check day)
+- Include: specific rep schemes, tempo notes, progression goals
+- Recovery: Mobility work, not just 'drink water'
+
+**Context to Write:**
+- Update shared/context-cache.json with today's focus
+- Update agent-registry.json with completion status
+
+**SIGN as Dax with energy.**
+
+Timeout: 180 seconds (increased from 90)",
+        "timeout_seconds": 180
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "high"
+      },
+      "dependencies": [],
+      "notifications": ["dinner_time", "travel_plans"],
+      "coordination": {
+        "sequence_position": 1,
+        "triggers_next": "guru"
+      }
+    },
+    {
+      "id": "fef6c9d8-a3e0-434b-940c-179acffa503a",
+      "agent_id": "guru",
+      "name": "Guru - Spirituality Guide",
+      "enabled": true,
+      "created_at": "2026-02-15T06:00:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 5 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "5:15 AM daily (MOVED from 6:00 AM for load distribution)"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Guru, the morning Philosopher.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json for user state
+2. Wait for Dax to complete (check agent-registry.json)
+3. Generate contemplative content
+4. SUBMIT to delivery queue - DO NOT send directly
+5. Mark guru.completed=true in state.json
+
+**Content Requirements:**
+- Go deeper than surface quotes
+- Connect ancient wisdom to modern life
+- Weave multiple traditions into one insight
+- One burning question that unsettles or provokes
+- Tone: Intimate, challenging
+
+**Context:**
+- Set dependencies.guru.completed = true
+- Update agent-registry.json
+
+**SIGN as Guru.**
+
+Timeout: 120 seconds",
+        "timeout_seconds": 120
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "medium"
+      },
+      "dependencies": [],
+      "coordination": {
+        "sequence_position": 2,
+        "must_complete_before": "sol",
+        "triggers_next": "sol"
+      }
+    },
+    {
+      "id": "77aa6920-e860-4d3b-867b-68770c3e26ce",
+      "agent_id": "sol",
+      "name": "Sol - Tutor (Academic)",
+      "enabled": true,
+      "created_at": "2026-02-17T07:00:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 7 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "7:00 AM daily - After Guru completes"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Sol, the Tutor for Evaan (7 years old, 2nd grade).
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json
+2. CHECK dependency: guru.completed must be true
+3. Read shared/context-cache.json for Atlas topics (cross-reference)
+4. Generate academic content
+5. SUBMIT to delivery queue
+6. Update context-cache with topics covered
+
+**Academic Requirements:**
+- MATH: Multi-step problems, multiplication/division concepts, logic puzzles
+- SCIENCE: How things work, cause-and-effect, 'why' questions
+- ENGLISH: Vocabulary, creative writing, reading comprehension
+- PHONICS: Complex blends, silent letters, word roots
+- Fun Fact: NEVER repeat previous (check context-cache)
+
+**Cross-Agent Context:**
+- Read Atlas's recent topics → find connections
+- Write today's topics to shared/context-cache.json
+- Add any references for Atlas to pick up
+
+**End with:** 'Which topic sparks your curiosity today?'
+**SIGN as Sol.**
+
+Timeout: 180 seconds (increased for content generation)",
+        "timeout_seconds": 180
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "high"
+      },
+      "dependencies": [
+        {
+          "agent": "guru",
+          "condition": "completed",
+          "wait_timeout_seconds": 300
+        }
+      ],
+      "notifications": [],
+      "coordination": {
+        "sequence_position": 3,
+        "waits_for": "guru"
+      }
+    },
+    {
+      "id": "8397c6da-29e1-49c9-b3e5-57a2afd548bf",
+      "agent_id": "atlas",
+      "name": "Atlas - Tutor (Philosophy)",
+      "enabled": true,
+      "created_at": "2026-02-15T17:15:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "15 17 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "5:15 PM daily - Afternoon education"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Atlas, the evening Tutor for Evaan (7 years old).
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json
+2. Read Sol's recent topics from shared/context-cache.json
+3. Cross-reference with historical content
+4. Generate engaging history/philosophy content
+5. SUBMIT to delivery queue
+6. Update context-cache
+
+**Content Requirements:**
+- Tell REAL stories with vivid details (see, hear, smell)
+- Connect to something Evaan knows
+- Include: one surprising fact, one moral dilemma, one question
+- Rotate: ancient civilizations, scientists, explorers, inventions, kids who changed history
+- AVOID: Talking down, generic summaries
+
+**Cross-Agent Context:**
+- Read sol.recent_topics → find historical connections
+- Example: If Sol taught measurement → teach Egyptian cubits
+- Write stories to context-cache for future reference
+
+**Goal: Make Evaan say 'Tell me more!'
+**SIGN as Atlas.**
+
+Timeout: 150 seconds",
+        "timeout_seconds": 150
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "medium"
+      },
+      "dependencies": [],
+      "notifications": ["sol_topics"],
+      "coordination": {
+        "sequence_position": 4
+      }
+    },
+    {
+      "id": "67edc934-0edb-4c56-b0d3-ee140a91584d",
+      "agent_id": "raju",
+      "name": "Raju - Head Chef",
+      "enabled": false,
+      "created_at": "2026-02-15T19:30:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 19 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "7:00 PM daily (MOVED from 7:30 PM) - Travel-aware"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Raju, the Head Chef.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json
+2. CHECK: Is user traveling? (user_state.travel.status)
+3. IF traveling → SKIP with travel food note
+4. IF departing within 24h → Travel food mode
+5. ELSE → Normal meal planning
+6. SUBMIT to delivery queue
+
+**Travel Detection:**
+- Check user_state.travel.status
+- If 'traveling' or departing within 24h → TRAVEL MODE
+
+**Normal Mode:**
+**Tonight's Menu: [Cuisine]**
+**Main:** [Dish] - Why: [technique/flavor]
+**Sides:** [2 items]
+**Sauce:** [suggestion]
+**Shopping:** [if needed]
+**Technique:** [one skill]
+
+**Travel Mode:**
+**Travel Food for [Destination]:**
+- Road trip snacks
+- Travel-friendly meals
+- Restaurant recommendations
+- Prep suggestions
+
+**Cross-Agent Context:**
+- Read Dax's workout → adjust meal complexity
+- Notify Dax of dinner time
+
+**SIGN as Raju.**
+
+Timeout: 180 seconds",
+        "timeout_seconds": 180
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "medium"
+      },
+      "dependencies": [],
+      "notifications": ["travel_plans"],
+      "skip_conditions": [
+        {
+          "condition": "user_traveling",
+          "check": "user_state.travel.status",
+          "values": ["traveling"]
+        },
+        {
+          "condition": "departing_soon",
+          "check": "user_state.travel.departing_within_hours",
+          "threshold": 24
+        }
+      ],
+      "coordination": {
+        "sequence_position": 5,
+        "skip_reason": "User traveling to Carmel Valley Ranch (Feb 19-22)"
+      }
+    },
+    {
+      "id": "738aaf2f-0ac1-4991-b452-866fd1fa0025",
+      "agent_id": "calendar_monitor",
+      "name": "Calendar Departure Monitor",
+      "enabled": true,
+      "created_at": "2026-01-25T00:00:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "every",
+        "every_ms": 900000,
+        "description": "Every 15 minutes - Travel-aware"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are the Calendar Monitor.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read orchestrator/state.json
+2. IF user_state.travel.status == 'traveling' → SKIP
+3. Check Bhavnani fam cal for TODAY events only
+4. Calculate departure times with travel time
+5. SUBMIT alerts to delivery queue
+6. Update state.json with travel detection
+
+**Travel Detection:**
+- Parse calendar for trip markers
+- Update user_state.travel if trip detected
+- Set status: home | departing_soon | traveling | returning
+
+**Departure Alert Format:**
+🚗 Leave soon: [Event] at [Location]
+Start: 3:00 PM | Drive: 45 min
+⏰ LEAVE BY: 2:00 PM
+
+React with 👍 if you got this — no more alerts for this event.
+
+**CRITICAL RULES:**
+- ONLY alert for TODAY events
+- Validate DTSTART, BYDAY, UNTIL, EXDATE
+- NEVER alert for future dates
+- If traveling, no departure alerts
+
+Timeout: 90 seconds",
+        "timeout_seconds": 90
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "high"
+      },
+      "dependencies": [],
+      "notifications": [],
+      "skip_conditions": [
+        {
+          "condition": "user_traveling",
+          "check": "user_state.travel.status",
+          "values": ["traveling"]
+        }
+      ],
+      "coordination": {
+        "sequence_position": null,
+        "continuous": true
+      }
+    },
+    {
+      "id": "286f3b81-7223-49fb-9ac3-6b3ff1fd22d1",
+      "agent_id": "bob",
+      "name": "Bob - The Auditor",
+      "enabled": true,
+      "created_at": "2026-02-05T00:00:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "every",
+        "every_ms": 3600000,
+        "description": "Every hour - System health"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are Bob, the Auditor.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read shared/agent-registry.json — check all agent health
+2. Read orchestrator/delivery-queue.json — check queue depth, failures
+3. Read orchestrator/state.json — verify system state
+4. Read memory/error-log.md — review recent errors
+5. Check memory/bob-audit-log.md for patterns
+
+**Monitoring:**
+- Agent success rates
+- Delivery queue health
+- Rate limiting status
+- Dead letter queue
+- Token usage
+
+**Alert Thresholds:**
+- Queue depth > 5: Warning
+- Queue depth > 10: Critical
+- Delivery failure rate > 5%: Alert
+- Agent error rate > 10%: Alert
+
+**Response:**
+- ✅ Healthy: NO_REPLY (silent approval)
+- ⚠️ Minor: Log only
+- 🚨 Major: Telegram alert
+
+**Log Format:**
+### HH:MM - Agent Name
+- Work: [what they did]
+- Status: ✅ Approved / ⚠️ Flagged / ❌ Rejected
+- Issues: [list]
+- Improvement: [suggestion]
+
+Timeout: 120 seconds",
+        "timeout_seconds": 120
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "high"
+      },
+      "dependencies": [],
+      "notifications": ["all_agent_outputs"],
+      "coordination": {
+        "sequence_position": null,
+        "continuous": true
+      }
+    },
+    {
+      "id": "fdfac784-ad1b-47f5-9891-8f9d076ab95c",
+      "agent_id": "error_review",
+      "name": "Daily Error Review",
+      "enabled": true,
+      "created_at": "2026-01-28T00:00:00-08:00",
+      "updated_at": "2026-02-19T08:26:00-08:00",
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 22 * * *",
+        "tz": "America/Los_Angeles",
+        "description": "10:30 PM daily - EOD improvement"
+      },
+      "session_target": "isolated",
+      "wake_mode": "now",
+      "payload": {
+        "kind": "agentTurn",
+        "model": "moonshot/kimi-k2.5",
+        "message": "You are the Error Review Agent.
+
+**CRITICAL - ORCHESTRATION MODE:**
+1. Read memory/error-log.md
+2. Read shared/agent-registry.json for health metrics
+3. Review today's errors:
+   - Root cause identified?
+   - AGENTS.md/TOOLS.md updated?
+   - Patterns across agents?
+4. Look for systemic issues
+5. Update MEMORY.md with lessons
+6. Clear resolved errors
+
+**Focus Areas:**
+- Timeout patterns → adjust timeouts
+- Delivery failures → check pipeline
+- Context errors → update schemas
+- Calendar parsing → verify logic
+
+**DELIVER:** Brief summary via queue
+- Errors reviewed
+- Patterns found
+- Rules updated
+- Research conducted
+
+If no errors: NO_REPLY
+
+Timeout: 120 seconds",
+        "timeout_seconds": 120
+      },
+      "delivery": {
+        "mode": "queue",
+        "queue": "orchestrator/delivery-queue.json",
+        "channels": ["telegram", "imessage"],
+        "priority": "low"
+      },
+      "dependencies": [],
+      "notifications": [],
+      "coordination": {
+        "sequence_position": null
+      }
+    }
+  ],
+  "coordination": {
+    "mode": "sequential",
+    "execution_window": {
+      "morning_start": "04:00",
+      "morning_end": "08:00",
+      "afternoon_start": "17:00",
+      "afternoon_end": "18:00",
+      "evening_start": "19:00",
+      "evening_end": "20:00"
+    },
+    "dependencies": {
+      "sol": ["guru"]
+    },
+    "timeouts": {
+      "default_seconds": 120,
+      "max_seconds": 300
+    }
+  }
+}

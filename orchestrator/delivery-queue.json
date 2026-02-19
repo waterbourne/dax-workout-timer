@@ -1,0 +1,149 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-02-19T08:26:00-08:00",
+  "queue": [],
+  "processing": {
+    "batch_size": 3,
+    "interval_seconds": 30,
+    "current_batch": [],
+    "last_processed": "2026-02-19T04:30:30-08:00"
+  },
+  "rate_limiting": {
+    "telegram": {
+      "enabled": true,
+      "messages_per_minute": 10,
+      "messages_per_hour": 50,
+      "burst_limit": 5,
+      "current_minute_count": 0,
+      "current_hour_count": 2,
+      "last_reset_minute": "2026-02-19T08:00:00-08:00",
+      "last_reset_hour": "2026-02-19T08:00:00-08:00"
+    },
+    "imessage": {
+      "enabled": true,
+      "messages_per_minute": 20,
+      "messages_per_hour": 100,
+      "current_minute_count": 0,
+      "current_hour_count": 0,
+      "last_reset_minute": "2026-02-19T08:00:00-08:00",
+      "last_reset_hour": "2026-02-19T08:00:00-08:00"
+    }
+  },
+  "channels": {
+    "telegram": {
+      "priority": 1,
+      "enabled": true,
+      "status": "healthy",
+      "config": {
+        "target": "8584092724",
+        "timeout_seconds": 30,
+        "max_message_length": 4000,
+        "chunk_large_messages": false
+      },
+      "retry_policy": {
+        "max_retries": 3,
+        "backoff_type": "exponential",
+        "backoff_delays": [1, 2, 4],
+        "timeout_errors": {
+          "retry": true,
+          "max_retries": 3
+        },
+        "rate_limit_errors": {
+          "retry": true,
+          "max_retries": 5,
+          "backoff_multiplier": 2
+        },
+        "permanent_errors": {
+          "retry": false,
+          "fallback_immediately": true
+        }
+      }
+    },
+    "imessage": {
+      "priority": 2,
+      "enabled": true,
+      "status": "healthy",
+      "config": {
+        "target": "+1415XXXXXXX",
+        "timeout_seconds": 30,
+        "max_message_length": 10000,
+        "chunk_large_messages": false
+      },
+      "retry_policy": {
+        "max_retries": 2,
+        "backoff_type": "linear",
+        "backoff_delays": [2, 4],
+        "timeout_errors": {
+          "retry": true,
+          "max_retries": 2
+        },
+        "permanent_errors": {
+          "retry": false,
+          "fallback_immediately": true
+        }
+      }
+    },
+    "whatsapp": {
+      "priority": 3,
+      "enabled": false,
+      "status": "not_configured",
+      "config": {
+        "target": null,
+        "timeout_seconds": 30,
+        "max_message_length": 4096
+      },
+      "note": "Configure gateway channels.whatsapp to enable"
+    }
+  },
+  "routing_rules": {
+    "default_channel": "telegram",
+    "fallback_sequence": ["telegram", "imessage"],
+    "oversized_messages": {
+      "threshold": 4000,
+      "strategy": "fallback_to_imessage",
+      "chunk_if_no_fallback": true,
+      "chunk_size": 3800
+    },
+    "user_preference_override": true,
+    "quiet_hours": {
+      "enabled": true,
+      "start": "22:00",
+      "end": "06:00",
+      "action": "queue_until_end",
+      "exceptions": ["critical_alerts", "departure_alerts"]
+    },
+    "travel_mode": {
+      "enabled": true,
+      "prefer_imessage_when_traveling": false,
+      "reduce_frequency": true
+    }
+  },
+  "dead_letter_queue": {
+    "enabled": true,
+    "max_size": 100,
+    "retention_hours": 168,
+    "entries": [],
+    "alert_threshold": 1,
+    "alert_channels": ["telegram", "imessage"]
+  },
+  "statistics": {
+    "today": {
+      "total_submitted": 2,
+      "total_delivered": 2,
+      "failed_deliveries": 0,
+      "fallback_usage": 0,
+      "average_delivery_time_seconds": 3.5,
+      "by_channel": {
+        "telegram": 2,
+        "imessage": 0
+      }
+    },
+    "last_7_days": {
+      "total_submitted": 28,
+      "total_delivered": 26,
+      "failed_deliveries": 2,
+      "fallback_usage": 2,
+      "success_rate": 0.93
+    }
+  }
+}

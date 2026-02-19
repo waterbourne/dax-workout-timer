@@ -1,0 +1,172 @@
+scheduling:
+  # Global scheduling configuration
+  version: "2.0"
+  mode: sequential
+  
+  # Time windows for agent execution
+  time_windows:
+    morning:
+      start: "04:00"
+      end: "08:00"
+      description: "Early morning agents (fitness, spirituality, academics)"
+      slot_duration_minutes: 45
+      
+    afternoon:
+      start: "17:00"
+      end: "18:00"
+      description: "Afternoon education"
+      slot_duration_minutes: 30
+      
+    evening:
+      start: "19:00"
+      end: "20:00"
+      description: "Evening planning"
+      slot_duration_minutes: 30
+  
+  # Agent schedules
+  agents:
+    dax:
+      name: "Dax"
+      role: "Personal Trainer"
+      schedule: "30 4 * * *"  # 4:30 AM daily
+      timezone: "America/Los_Angeles"
+      priority: high
+      enabled: true
+      max_runtime_seconds: 180
+      dependencies: []
+      notifications: ["dinner_time", "travel_plans"]
+      skip_conditions: []
+      
+    guru:
+      name: "Guru"
+      role: "Spirituality Guide"
+      schedule: "15 5 * * *"  # 5:15 AM daily (moved from 6:00 AM)
+      timezone: "America/Los_Angeles"
+      priority: medium
+      enabled: true
+      max_runtime_seconds: 120
+      dependencies: []
+      notifications: []
+      skip_conditions: []
+      
+    sol:
+      name: "Sol"
+      role: "Academic Tutor"
+      schedule: "0 7 * * *"  # 7:00 AM daily
+      timezone: "America/Los_Angeles"
+      priority: high
+      enabled: true
+      max_runtime_seconds: 180
+      dependencies:
+        - agent: guru
+          condition: completed
+          timeout_seconds: 300
+      notifications: []
+      skip_conditions: []
+      
+    atlas:
+      name: "Atlas"
+      role: "Philosophy Tutor"
+      schedule: "15 17 * * *"  # 5:15 PM daily
+      timezone: "America/Los_Angeles"
+      priority: medium
+      enabled: true
+      max_runtime_seconds: 150
+      dependencies: []
+      notifications: ["sol_topics"]
+      skip_conditions: []
+      
+    raju:
+      name: "Raju"
+      role: "Head Chef"
+      schedule: "0 19 * * *"  # 7:00 PM daily (moved from 7:30 PM)
+      timezone: "America/Los_Angeles"
+      priority: medium
+      enabled: false  # Currently disabled due to travel
+      max_runtime_seconds: 180
+      dependencies: []
+      notifications: ["travel_plans"]
+      skip_conditions:
+        - condition: user_traveling
+          check: "orchestrator/state.json:user_state.travel.status"
+          values: ["traveling"]
+        - condition: departing_soon
+          check: "orchestrator/state.json:user_state.travel.departing_within_hours"
+          threshold: 24
+          action: travel_mode
+          
+    calendar_monitor:
+      name: "Calendar Monitor"
+      role: "Departure Alerts"
+      schedule: "every:15min"
+      timezone: "America/Los_Angeles"
+      priority: high
+      enabled: true
+      max_runtime_seconds: 90
+      dependencies: []
+      notifications: []
+      skip_conditions:
+        - condition: user_traveling
+          check: "orchestrator/state.json:user_state.travel.status"
+          values: ["traveling"]
+          
+    error_review:
+      name: "Error Review"
+      role: "EOD Improvement"
+      schedule: "30 22 * * *"  # 10:30 PM daily
+      timezone: "America/Los_Angeles"
+      priority: low
+      enabled: true
+      max_runtime_seconds: 120
+      dependencies: []
+      notifications: []
+      skip_conditions: []
+      
+    bob:
+      name: "Bob"
+      role: "The Auditor"
+      schedule: "every:60min"
+      timezone: "America/Los_Angeles"
+      priority: high
+      enabled: true
+      max_runtime_seconds: 120
+      dependencies: []
+      notifications: ["all_agent_outputs"]
+      skip_conditions: []
+
+  # Rate limiting
+  rate_limits:
+    global:
+      max_tokens_per_hour: 500000
+      max_concurrent_agents: 1
+      
+    channels:
+      telegram:
+        messages_per_minute: 10
+        messages_per_hour: 50
+        burst_limit: 5
+        
+      imessage:
+        messages_per_minute: 20
+        messages_per_hour: 100
+        
+  # Execution rules
+  execution:
+    mode: sequential
+    wait_for_dependencies: true
+    dependency_timeout_seconds: 300
+    max_retry_attempts: 3
+    retry_backoff: exponential
+
+  # Travel mode overrides
+  travel_mode:
+    auto_detect: true
+    disable_agents:
+      - raju
+    modify_agents:
+      dax:
+        action: adjust_intensity
+        parameter: travel_friendly
+      calendar_monitor:
+        action: change_mode
+        parameter: location_aware

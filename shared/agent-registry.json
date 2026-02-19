@@ -1,0 +1,388 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-02-19T08:26:00-08:00",
+  "agents": {
+    "dax": {
+      "id": "dax",
+      "name": "Dax",
+      "role": "Personal Trainer",
+      "emoji": "💪",
+      "capabilities": [
+        "workout_creation",
+        "fitness_tracking",
+        "progression_planning",
+        "travel_workouts",
+        "family_fitness"
+      ],
+      "schedule": {
+        "cron": "30 4 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-02-20T04:30:00-08:00"
+      },
+      "priority": "high",
+      "timeouts": {
+        "generation": 120,
+        "delivery": 30,
+        "total": 180
+      },
+      "dependencies": [],
+      "notifications": ["dinner_time", "travel_plans"],
+      "context_reads": ["user_state.travel", "user_state.family.members"],
+      "context_writes": ["shared.context-cache.dax"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-19T04:30:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 42,
+        "success_rate_7d": 0.98,
+        "success_rate_30d": 0.97,
+        "avg_runtime_seconds": 45,
+        "total_runs": 28,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-15",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "guru": {
+      "id": "guru",
+      "name": "Guru",
+      "role": "Spirituality Guide",
+      "emoji": "🧘",
+      "capabilities": [
+        "meditation_guidance",
+        "stoic_reflection",
+        "wisdom_teaching",
+        "daily_contemplation",
+        "philosophy_integration"
+      ],
+      "schedule": {
+        "cron": "15 5 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-02-20T05:15:00-08:00"
+      },
+      "priority": "medium",
+      "timeouts": {
+        "generation": 90,
+        "delivery": 30,
+        "total": 120
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": ["user_state.work_hours"],
+      "context_writes": ["shared.context-cache.guru"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-19T05:15:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 38,
+        "success_rate_7d": 0.95,
+        "success_rate_30d": 0.94,
+        "avg_runtime_seconds": 38,
+        "total_runs": 28,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-15",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "sol": {
+      "id": "sol",
+      "name": "Sol",
+      "role": "Academic Tutor",
+      "emoji": "📚",
+      "capabilities": [
+        "math_tutoring",
+        "science_tutoring",
+        "phonics",
+        "english_tutoring",
+        "creative_writing",
+        "age_appropriate_content"
+      ],
+      "schedule": {
+        "cron": "0 7 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-02-20T07:00:00-08:00"
+      },
+      "priority": "high",
+      "timeouts": {
+        "generation": 150,
+        "delivery": 30,
+        "total": 180
+      },
+      "dependencies": [
+        {
+          "agent": "guru",
+          "condition": "completed",
+          "wait_time_max_seconds": 300
+        }
+      ],
+      "notifications": [],
+      "context_reads": ["shared.context-cache.sol", "user_state.family.members.Evaan"],
+      "context_writes": ["shared.context-cache.sol"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-19T07:00:00-08:00",
+        "last_status": "timeout",
+        "last_duration_seconds": 90,
+        "success_rate_7d": 0.88,
+        "success_rate_30d": 0.91,
+        "avg_runtime_seconds": 95,
+        "total_runs": 28,
+        "consecutive_errors": 1,
+        "issues": ["timeout_errors"]
+      },
+      "metadata": {
+        "created": "2026-01-20",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "atlas": {
+      "id": "atlas",
+      "name": "Atlas",
+      "role": "Philosophy Tutor",
+      "emoji": "🏛️",
+      "capabilities": [
+        "history_teaching",
+        "storytelling",
+        "big_questions",
+        "ancient_civilizations",
+        "cultural_stories",
+        "age_appropriate_philosophy"
+      ],
+      "schedule": {
+        "cron": "15 17 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-02-19T17:15:00-08:00"
+      },
+      "priority": "medium",
+      "timeouts": {
+        "generation": 120,
+        "delivery": 30,
+        "total": 150
+      },
+      "dependencies": [],
+      "notifications": ["sol_topics"],
+      "context_reads": ["shared.context-cache.sol", "shared.context-cache.atlas", "user_state.family.members.Evaan"],
+      "context_writes": ["shared.context-cache.atlas"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-18T17:15:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 62,
+        "success_rate_7d": 0.91,
+        "success_rate_30d": 0.93,
+        "avg_runtime_seconds": 62,
+        "total_runs": 27,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-15",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "raju": {
+      "id": "raju",
+      "name": "Raju",
+      "role": "Head Chef",
+      "emoji": "👨‍🍳",
+      "capabilities": [
+        "meal_planning",
+        "recipe_creation",
+        "shopping_lists",
+        "travel_food",
+        "dietary_planning",
+        "cuisine_expertise"
+      ],
+      "schedule": {
+        "cron": "0 19 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": null
+      },
+      "priority": "medium",
+      "timeouts": {
+        "generation": 150,
+        "delivery": 30,
+        "total": 180
+      },
+      "dependencies": [],
+      "notifications": ["travel_plans"],
+      "context_reads": ["user_state.travel", "user_state.family.household"],
+      "context_writes": [],
+      "status": "disabled",
+      "enabled": false,
+      "disabled_reason": "User traveling to Carmel Valley Ranch (Feb 19-22)",
+      "health": {
+        "last_run": "2026-02-18T19:00:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 87,
+        "success_rate_7d": 0.96,
+        "success_rate_30d": 0.95,
+        "avg_runtime_seconds": 87,
+        "total_runs": 27,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-15",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "calendar_monitor": {
+      "id": "calendar_monitor",
+      "name": "Calendar Monitor",
+      "role": "Departure Alerts",
+      "emoji": "📅",
+      "capabilities": [
+        "calendar_parsing",
+        "departure_alerts",
+        "travel_detection",
+        "event_monitoring"
+      ],
+      "schedule": {
+        "interval": "15min",
+        "next_run": "2026-02-19T08:30:00-08:00"
+      },
+      "priority": "high",
+      "timeouts": {
+        "generation": 60,
+        "delivery": 30,
+        "total": 90
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": ["user_state.travel", "user_state.location"],
+      "context_writes": ["user_state.travel"],
+      "status": "active",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-19T08:15:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 22,
+        "success_rate_7d": 0.99,
+        "success_rate_30d": 0.98,
+        "avg_runtime_seconds": 25,
+        "total_runs": 672,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-25",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "error_review": {
+      "id": "error_review",
+      "name": "Error Review",
+      "role": "EOD Improvement",
+      "emoji": "🔍",
+      "capabilities": [
+        "error_analysis",
+        "pattern_detection",
+        "process_improvement",
+        "documentation_updates"
+      ],
+      "schedule": {
+        "cron": "30 22 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-02-19T22:30:00-08:00"
+      },
+      "priority": "low",
+      "timeouts": {
+        "generation": 90,
+        "delivery": 30,
+        "total": 120
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": ["memory/error-log.md"],
+      "context_writes": ["MEMORY.md"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-18T22:30:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 35,
+        "success_rate_7d": 1.0,
+        "success_rate_30d": 1.0,
+        "avg_runtime_seconds": 38,
+        "total_runs": 28,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-01-28",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    },
+    "bob": {
+      "id": "bob",
+      "name": "Bob",
+      "role": "The Auditor",
+      "emoji": "👁️",
+      "capabilities": [
+        "quality_assurance",
+        "pattern_detection",
+        "process_improvement",
+        "workload_monitoring",
+        "delivery_monitoring"
+      ],
+      "schedule": {
+        "interval": "60min",
+        "next_run": "2026-02-19T09:00:00-08:00"
+      },
+      "priority": "high",
+      "timeouts": {
+        "generation": 90,
+        "delivery": 30,
+        "total": 120
+      },
+      "dependencies": [],
+      "notifications": ["all_agent_outputs"],
+      "context_reads": ["shared.agent-registry", "orchestrator/delivery-queue", "memory/error-log.md"],
+      "context_writes": ["memory/bob-audit-log.md", "bob-status.json"],
+      "status": "active",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-02-19T08:00:00-08:00",
+        "last_status": "success",
+        "last_duration_seconds": 45,
+        "success_rate_7d": 0.94,
+        "success_rate_30d": 0.95,
+        "avg_runtime_seconds": 48,
+        "total_runs": 168,
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-05",
+        "version": "2.0",
+        "model": "moonshot/kimi-k2.5"
+      }
+    }
+  },
+  "system": {
+    "total_agents": 8,
+    "active_agents": 7,
+    "disabled_agents": ["raju"],
+    "healthy_agents": 7,
+    "agents_with_issues": ["sol"],
+    "last_updated": "2026-02-19T08:26:00-08:00"
+  }
+}

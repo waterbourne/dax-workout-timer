@@ -1,0 +1,144 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-02-19T08:26:00-08:00",
+  "cross_agent_context": {
+    "recent_topics": {
+      "sol": {
+        "agent": "Sol",
+        "role": "Academic Tutor",
+        "last_7_days": [
+          {
+            "date": "2026-02-19",
+            "topic": "multiplication_patterns",
+            "key_concepts": ["arrays", "skip_counting", "repeated_addition"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high"
+          },
+          {
+            "date": "2026-02-18",
+            "topic": "weather_systems",
+            "key_concepts": ["precipitation", "cloud_formation", "water_cycle"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high"
+          },
+          {
+            "date": "2026-02-17",
+            "topic": "phonics_complex_blends",
+            "key_concepts": ["str", "spl", "thr", "silent_letters"],
+            "difficulty": "challenging",
+            "engagement": "medium"
+          }
+        ],
+        "topics_covered_this_month": [
+          "multiplication_introduction",
+          "weather_systems",
+          "complex_phonics",
+          "creative_writing_prompts",
+          "animal_adaptations",
+          "measurement_units"
+        ],
+        "fun_facts_used": [
+          "Octopuses have three hearts",
+          "Honey never spoils",
+          "Bananas are berries but strawberries aren't",
+          "A day on Venus is longer than its year"
+        ]
+      },
+      "atlas": {
+        "agent": "Atlas",
+        "role": "Philosophy Tutor",
+        "last_7_days": [
+          {
+            "date": "2026-02-18",
+            "topic": "ancient_egypt",
+            "key_concepts": ["pharaohs", "pyramids", "hieroglyphics", "mummification"],
+            "story_elements": ["King Tut's discovery", "Howard Carter"],
+            "engagement": "high"
+          },
+          {
+            "date": "2026-02-17",
+            "topic": "great_wall_of_china",
+            "key_concepts": ["Qin Shi Huang", "dynasties", "engineering"],
+            "story_elements": ["Myth vs reality", "Visibility from space"],
+            "engagement": "high"
+          }
+        ],
+        "topics_covered_this_month": [
+          "ancient_egypt",
+          "great_wall_of_china",
+          "roman_empire",
+          "indigenous_cultures",
+          "inventors_and_failures"
+        ]
+      },
+      "guru": {
+        "agent": "Guru",
+        "role": "Spirituality Guide",
+        "last_7_days": [
+          {
+            "date": "2026-02-19",
+            "theme": "impermanence",
+            "traditions": ["Buddhism", "Stoicism"],
+            "key_insight": "The only constant is change",
+            "contemplation_question": "What would you do if you knew this moment was fleeting?"
+          }
+        ],
+        "themes_this_month": [
+          "impermanence",
+          "equanimity",
+          "non_attachment",
+          "present_moment"
+        ]
+      }
+    },
+    "pending_references": [
+      {
+        "from": "sol",
+        "to": "atlas",
+        "reference": "Evaan learned about measurement in math - could connect to ancient Egyptian measurement systems (cubits, etc.)",
+        "suggested_integration": "How did ancient Egyptians measure things without rulers?",
+        "expires": "2026-02-26",
+        "priority": "medium"
+      },
+      {
+        "from": "sol",
+        "to": "dax",
+        "reference": "Evaan has been sitting for academic work - could use movement break suggestions",
+        "suggested_integration": "Kid-friendly stretches or movement games",
+        "expires": "2026-02-22",
+        "priority": "low"
+      }
+    ],
+    "user_context": {
+      "current_focus": "preparing_for_trip",
+      "energy_level": "high",
+      "family_dynamics": "normal",
+      "recent_events": [
+        {
+          "date": "2026-02-19",
+          "event": "trip_to_carmel_valley",
+          "status": "departing_today"
+        }
+      ],
+      "conversation_threads": []
+    },
+    "agent_coordination": {
+      "dax": {
+        "last_workout_focus": "full_body_moderate",
+        "next_progression": "add_light_weights",
+        "aditya_status": "on_track",
+        "natasha_status": "on_track"
+      },
+      "raju": {
+        "last_meal_type": "indian_cuisine",
+        "upcoming_dietary_considerations": "travel_food_prep"
+      }
+    }
+  },
+  "metadata": {
+    "ttl_days": 30,
+    "auto_archive": true,
+    "last_archived": "2026-02-15",
+    "total_entries": 47
+  }
+}
