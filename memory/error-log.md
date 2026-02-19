@@ -33,6 +33,20 @@
 - **Fix Applied:** Removed over-engineering, focused on user's exact terms
 - **Rule Updated:** AGENTS.md - Search Strategy (search what user asks for)
 
+### 7:01 AM - Sol Timeout Error
+- **Context:** Sol (Academic Tutor) scheduled run at 7:00 AM for Evaan's daily lesson
+- **Error:** Job execution timed out after 90 seconds
+- **Root Cause:** Timeout insufficient for content generation + delivery
+- **Fix Applied:** Recommend increasing timeout to 120s (matching Raju config)
+- **Rule Updated:** Cron job config (pending update)
+
+### 7:01 AM - Telegram Delivery Pattern
+- **Context:** Multiple agents failing Telegram delivery in 6:00-7:00 AM window
+- **Error:** Guru, Calendar Monitor, Sol all failed delivery (different error types)
+- **Root Cause:** Possible Telegram API rate limiting or connectivity issues
+- **Fix Applied:** None yet — monitoring for pattern
+- **Rule Updated:** None yet
+
 ---
 
 ## Review Template (End of Day)
