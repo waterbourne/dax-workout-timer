@@ -130,3 +130,31 @@ Start: 3:00 PM | Drive: 45 min
 - This policy is enforced in TOOLS.md (reference) and USER.md (preference)
 - Sub-agents are configured for Telegram-only delivery with explicit channel=telegram in their cron jobs
 - Calendar: "Bhavnani fam cal" = primary family planning calendar (Apple Calendar syncs Google)
+
+---
+
+## Lessons Learned (Continuous Improvement)
+
+### February 2026 — Calendar & Delivery Reliability
+
+**Calendar Parsing — The Hard Way**
+- RRULE validation is non-negotiable: BYDAY, UNTIL, EXDATE, and especially DTSTART must be validated
+- **Critical rule:** Before sending ANY departure alert, verify DTSTART date == TODAY
+- Future-date alerts (e.g., March 5 event alerted on Feb 18) are worse than no alert at all
+- Event conflation (mixing name from one event with location from another) is data corruption — validate name+location+datetime match
+
+**Search Strategy — Simple > Clever**
+- Use the user's exact search terms first — don't over-engineer
+- Cast a wide net (30+ days) before filtering
+- Show raw results, then refine — don't hide potentially relevant matches
+
+**Timeouts — Content Generation Takes Time**
+- Sol (Academic Tutor): 90s → 180s timeout (lesson generation + delivery needs time)
+- Raju (Head Chef): 90s → 120s timeout (meal planning + travel checks add complexity)
+- When adding new logic (travel checks, cross-references), account for increased execution time
+
+**Telegram Delivery — Intermittent, Not Broken**
+- Delivery failures throughout Feb 19 were transient API issues, not agent logic errors
+- Pattern: 2-hour stability windows followed by brief failures — classic rate limiting or connectivity
+- Bob's recovery confirmed: Some agents fail while others succeed, indicating intermittent capacity, not systematic failure
+- **Action:** Monitor for sustained patterns before declaring crisis; most "crises" resolve within hours

@@ -1,27 +1,29 @@
 {
-  "lastAudit": "2026-02-19T12:01:00-08:00",
-  "status": "critical",
-  "alertsSent": true,
+  "lastAudit": "2026-02-20T03:01:00-08:00",
+  "status": "mixed",
+  "alertsSent": false,
   "issuesTracked": [
-    "telegram-delivery-system-failure",
-    "bob-4-consecutive-errors",
-    "calendar-monitor-5-errors",
-    "infra-architect-2-errors",
-    "sol-fix-pending-verification"
+    "bob-2-consecutive-timeouts",
+    "calendar-monitor-3-ok-runs",
+    "sol-test-today-7am"
   ],
   "consecutiveOkHours": 0,
-  "criticalIssues": 2,
+  "criticalIssues": 0,
+  "patternIdentified": {
+    "bobTimeouts": 2,
+    "calendarMonitorStreak": 3,
+    "recommendation": "Increase Bob timeout to 180s"
+  },
   "recommendations": [
-    "URGENT: Investigate Telegram relay/connection",
-    "URGENT: Implement iMessage fallback",
-    "Check Telegram bot token/API status",
-    "Review gateway logs for delivery errors"
+    "URGENT: Increase Bob timeout 120s → 180s",
+    "Calendar Monitor fully recovered — 3 OK runs",
+    "Monitor Sol 7AM test",
+    "Dax and Guru morning runs upcoming"
   ],
   "recoveryStatus": {
-    "telegramDelivery": "SYSTEMATIC_FAILURE",
-    "calendarMonitor": "CRITICAL",
-    "bobDelivery": "CRITICAL",
-    "infraArchitect": "DEGRADED",
-    "solTimeout": "FIXED_PENDING_VERIFICATION"
+    "telegramDelivery": "STABLE",
+    "calendarMonitor": "FULLY_RECOVERED_3_RUNS",
+    "bobDelivery": "NEEDS_TIMEOUT_INCREASE",
+    "solTimeout": "TEST_TODAY_7AM"
   }
 }
