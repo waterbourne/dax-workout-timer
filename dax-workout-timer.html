@@ -108,6 +108,12 @@
         
         <!-- Camera Mode (Full only) -->
         <div class="camera-section" id="cameraSection">
+            <!-- Workout Info Header -->
+            <div id="cameraWorkoutInfo" style="margin-bottom:15px;padding:12px;background:rgba(255,107,53,0.1);border-radius:10px;border-left:4px solid var(--primary);">
+                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">CURRENT WORKOUT</div>
+                <div style="font-weight:600;font-size:1.1rem;margin:4px 0;" id="camWorkoutTitle">No workout selected</div>
+                <div style="font-size:0.85rem;color:var(--text-muted);" id="camWorkoutMeta">--</div>
+            </div>
             <div class="camera-container">
                 <video id="cameraVideo" autoplay playsinline></video>
                 <canvas id="cameraCanvas"></canvas>
@@ -302,6 +308,11 @@ function renderWorkouts() {
 function selectWorkout(id) {
     selected = id; renderWorkouts();
     const w = workouts.find(x=>x.id===id); if (!w) return;
+    
+    // Update camera workout info
+    document.getElementById('camWorkoutTitle').textContent = w.title + ' — ' + w.focus;
+    document.getElementById('camWorkoutMeta').textContent = w.exercises.length + ' exercises • ' + w.date;
+    
     resetTimer(); exercises = []; let n = 0;
     w.exercises.forEach(e => { n++; exercises.push({...e,num:n}); if (e.type==='main') exercises.push({name:'Rest',duration:15,type:'rest',num:null}); });
     renderExercises(); updateDisplay();

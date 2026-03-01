@@ -1,7 +1,26 @@
 {
   "version": "1.0",
-  "lastUpdated": "2026-03-01T11:04:00-08:00",
+  "lastUpdated": "2026-03-01T12:30:00-08:00",
   "workouts": [
+    {
+      "id": "dax_1740868200000",
+      "date": "Sun, Mar 1, 12:30 PM",
+      "title": "MICRO-WORKOUT #3",
+      "focus": "Full Body Cardio",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Jumping Jacks", "duration": 30, "detail": "Easy pace", "type": "warmup", "phase": "WARMUP"},
+        {"name": "High Knees March", "duration": 30, "detail": "March it out", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Arm Swings", "duration": 30, "detail": "Leg swings too", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Torso Twists", "duration": 30, "detail": "Warm the core", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Burpees", "duration": 20, "detail": "20 sec all-out", "type": "main", "phase": "WORK"},
+        {"name": "Mountain Climbers", "duration": 20, "detail": "20 sec all-out", "type": "main", "phase": "WORK"},
+        {"name": "Jump Squats", "duration": 20, "detail": "20 sec all-out", "type": "main", "phase": "WORK"},
+        {"name": "High Knees Sprint", "duration": 20, "detail": "20 sec all-out", "type": "main", "phase": "WORK"},
+        {"name": "Standing Forward Fold", "duration": 30, "detail": "Stretch it out", "type": "finisher", "phase": "FINISHER"},
+        {"name": "Deep Breathing", "duration": 30, "detail": "Shoulder rolls", "type": "finisher", "phase": "FINISHER"}
+      ]
+    },
     {
       "id": "dax_1740852600000",
       "date": "Sun, Mar 1, 9:30 AM",
