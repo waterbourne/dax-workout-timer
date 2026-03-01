@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DAX — Workout Timer</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary: #ff6b35; --secondary: #1a1a2e; --accent: #16213e; --text: #e8e8e8; --text-muted: #888; --success: #4ecdc4; --warning: #ffe66d; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--secondary); color: var(--text); min-height: 100vh; }
+        .container { max-width: 700px; margin: 0 auto; padding: 15px; }
+        header { text-align: center; padding: 15px 0; border-bottom: 2px solid var(--accent); margin-bottom: 15px; }
+        .logo { font-size: 2rem; }
+        h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+        .subtitle { color: var(--text-muted); font-size: 0.85rem; }
+        
+        /* App Mode Toggle */
+        .app-mode-bar { display: flex; justify-content: center; margin-bottom: 20px; }
+        .app-mode-toggle { background: var(--accent); border-radius: 25px; padding: 4px; display: flex; }
+        .app-mode-btn { padding: 10px 24px; border: none; background: transparent; color: var(--text-muted); font-weight: 600; cursor: pointer; border-radius: 20px; transition: all 0.3s; }
+        .app-mode-btn.active { background: var(--primary); color: white; }
+        
+        /* Full Mode Tabs */
+        .full-tabs { margin-bottom: 15px; }
+        .tab-bar { display: flex; background: var(--accent); border-radius: 12px; padding: 4px; }
+        .tab-btn { flex: 1; padding: 12px; border: none; background: transparent; color: var(--text-muted); font-weight: 600; cursor: pointer; border-radius: 8px; }
+        .tab-btn.active { background: rgba(255,255,255,0.1); color: white; }
+        
+        /* Camera Section */
+        .camera-section { display: none; background: var(--accent); border-radius: 16px; padding: 15px; margin-bottom: 15px; }
+        .camera-section.active { display: block; }
+        .camera-container { position: relative; width: 100%; max-width: 400px; margin: 0 auto; background: #000; border-radius: 12px; overflow: hidden; }
+        #cameraVideo, #cameraCanvas { width: 100%; height: auto; display: block; transform: scaleX(-1); }
+        #cameraCanvas { position: absolute; top: 0; left: 0; }
+        .ai-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .stat-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; text-align: center; }
+        .stat-box .value { font-size: 2rem; font-weight: 700; color: var(--success); }
+        .stat-box .label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
+        .feedback { margin-top: 15px; padding: 12px; background: rgba(78, 205, 196, 0.1); border-left: 4px solid var(--success); border-radius: 0 10px 10px 0; font-size: 0.9rem; }
+        .camera-controls { display: flex; gap: 10px; margin-top: 15px; justify-content: center; }
+        
+        /* Timer Section */
+        .timer-display { font-size: 4rem; font-weight: 200; text-align: center; margin: 15px 0; }
+        .timer-display.running { color: var(--success); }
+        .timer-display.rest { color: var(--warning); }
+        .btn { padding: 12px 28px; border: none; border-radius: 50px; font-size: 0.95rem; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin: 0 5px; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-secondary { background: transparent; color: var(--text); border: 2px solid var(--text-muted); }
+        .workout-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .workout-card { background: var(--accent); border: 2px solid transparent; border-radius: 12px; padding: 14px; cursor: pointer; }
+        .workout-card:hover { border-color: var(--primary); }
+        .workout-card.active { border-color: var(--success); background: rgba(78, 205, 196, 0.1); }
+        .workout-card .badge { float: right; background: var(--success); color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 8px; }
+        .workout-card .date { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+        .workout-card .title { font-weight: 600; font-size: 0.9rem; margin-bottom: 4px; }
+        .workout-card .meta { font-size: 0.75rem; color: var(--text-muted); }
+        .timer-box { background: var(--accent); border-radius: 20px; padding: 25px; margin-bottom: 15px; text-align: center; }
+        .phase-label { text-transform: uppercase; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 5px; }
+        .current-exercise { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+        .progress-bar { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 20px; }
+        .progress-fill { height: 100%; background: var(--success); border-radius: 3px; transition: width 0.3s; }
+        .exercise-list { background: var(--accent); border-radius: 16px; padding: 15px; }
+        .exercise-list h3 { margin-bottom: 12px; font-size: 0.95rem; }
+        .exercise-item { display: flex; align-items: center; padding: 10px; margin-bottom: 6px; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 3px solid transparent; }
+        .exercise-item.active { border-left-color: var(--success); background: rgba(78, 205, 196, 0.1); }
+        .exercise-item.completed { opacity: 0.4; }
+        .exercise-item.rest .num { background: var(--warning); color: var(--secondary); }
+        .num { width: 24px; height: 24px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.7rem; margin-right: 10px; }
+        .empty { text-align: center; padding: 30px; color: var(--text-muted); }
+        
+        /* Loading */
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; }
+        .loading-overlay.show { display: flex; }
+        .spinner { width: 50px; height: 50px; border: 4px solid var(--text-muted); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        @media (max-width: 600px) { .timer-display { font-size: 3rem; } .app-mode-btn { padding: 10px 16px; font-size: 0.85rem; } }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p style="margin-top: 20px; color: var(--text-muted);">Loading AI...</p>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">💪</div>
+            <h1>DAX</h1>
+            <div class="subtitle" id="appSubtitle">Workout Timer</div>
+        </header>
+        
+        <!-- Simple / Full Toggle -->
+        <div class="app-mode-bar">
+            <div class="app-mode-toggle">
+                <button class="app-mode-btn active" onclick="setAppMode('simple')" id="simpleBtn">⚡ Simple</button>
+                <button class="app-mode-btn" onclick="setAppMode('full')" id="fullBtn">🤖 AI + Camera</button>
+            </div>
+        </div>
+        
+        <!-- Full Mode: Timer/Camera Tabs -->
+        <div id="fullTabs" class="full-tabs" style="display:none;">
+            <div class="tab-bar">
+                <button class="tab-btn active" onclick="setTab('timer')" id="timerTab">⏱️ Timer</button>
+                <button class="tab-btn" onclick="setTab('camera')" id="cameraTab">📷 AI Form</button>
+            </div>
+        </div>
+        
+        <!-- Camera Mode (Full only) -->
+        <div class="camera-section" id="cameraSection">
+            <div class="camera-container">
+                <video id="cameraVideo" autoplay playsinline></video>
+                <canvas id="cameraCanvas"></canvas>
+            </div>
+            <div class="ai-stats">
+                <div class="stat-box"><div class="value" id="repCount">0</div><div class="label">Reps</div></div>
+                <div class="stat-box"><div class="value" id="confScore">--</div><div class="label">Confidence</div></div>
+                <div class="stat-box"><div class="value" id="formScore">--</div><div class="label">Form</div></div>
+            </div>
+            <div class="feedback" id="feedback">Start camera to begin tracking</div>
+            <div class="camera-controls">
+                <button class="btn btn-primary" id="camBtn" onclick="toggleCamera()">Start Camera</button>
+                <button class="btn btn-secondary" onclick="resetReps()">Reset</button>
+            </div>
+        </div>
+        
+        <!-- Timer Mode (Both) -->
+        <div id="timerContent">
+            <div class="workout-grid" id="workoutGrid"><div class="empty" style="grid-column:1/-1">Loading...</div></div>
+            
+            <div class="timer-box">
+                <div class="phase-label" id="phase">SELECT A WORKOUT</div>
+                <div class="current-exercise" id="currentEx">Choose a workout below</div>
+                <div class="timer-display" id="timerDisplay">00:00</div>
+                <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+                <div style="margin-top:20px">
+                    <button class="btn btn-primary" id="timerBtn" onclick="toggleTimer()">START</button>
+                    <button class="btn btn-secondary" onclick="resetTimer()">RESET</button>
+                </div>
+            </div>
+            
+            <div class="exercise-list">
+                <h3>📋 Exercises</h3>
+                <div id="exList"><div class="empty">Select a workout</div></div>
+            </div>
+        </div>
+    </div>
+
+<!-- TensorFlow for Full Mode -->
+<script id="tfScript">
+const isFullMode = () => document.getElementById('fullBtn').classList.contains('active');
+let detector = null, cameraActive = false, video, canvas, ctx;
+let repCount = 0, repState = 'up', animationId = null;
+
+async function initAI() {
+    if (detector) return;
+    document.getElementById('loadingOverlay').classList.add('show');
+    try {
+        const tfScript = document.createElement('script');
+        tfScript.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.10.0/dist/tf.min.js';
+        document.head.appendChild(tfScript);
+        await new Promise(r => tfScript.onload = r);
+        
+        const poseScript = document.createElement('script');
+        poseScript.src = 'https://cdn.jsdelivr.net/npm/@tensorflow-models/pose-detection@2.1.0/dist/pose-detection.min.js';
+        document.head.appendChild(poseScript);
+        await new Promise(r => poseScript.onload = r);
+        
+        await tf.setBackend('webgl');
+        detector = await poseDetection.createDetector(poseDetection.SupportedModels.MoveNet, {
+            modelType: poseDetection.movenet.modelType.SINGLEPOSE_LIGHTNING
+        });
+    } catch(e) { console.error('AI load failed:', e); }
+    document.getElementById('loadingOverlay').classList.remove('show');
+}
+
+async function toggleCamera() {
+    if (!detector) await initAI();
+    if (cameraActive) { stopCamera(); return; }
+    
+    video = document.getElementById('cameraVideo');
+    canvas = document.getElementById('cameraCanvas');
+    ctx = canvas.getContext('2d');
+    
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        video.srcObject = stream;
+        await new Promise(r => video.onloadedmetadata = r);
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        cameraActive = true;
+        document.getElementById('camBtn').textContent = 'Stop Camera';
+        detectPose();
+    } catch(e) { alert('Camera error: ' + e.message); }
+}
+
+function stopCamera() {
+    cameraActive = false;
+    if (animationId) cancelAnimationFrame(animationId);
+    if (video?.srcObject) video.srcObject.getTracks().forEach(t => t.stop());
+    document.getElementById('camBtn').textContent = 'Start Camera';
+    ctx?.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+async function detectPose() {
+    if (!cameraActive) return;
+    try {
+        const poses = await detector.estimatePoses(video);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (poses.length) { drawPose(poses[0]); analyzePose(poses[0]); }
+        else document.getElementById('confScore').textContent = '--';
+    } catch(e) {}
+    animationId = requestAnimationFrame(detectPose);
+}
+
+function drawPose(pose) {
+    const kp = pose.keypoints;
+    const connections = [['left_shoulder','right_shoulder'],['left_shoulder','left_elbow'],['left_elbow','left_wrist'],['right_shoulder','right_elbow'],['right_elbow','right_wrist'],['left_shoulder','left_hip'],['right_shoulder','right_hip'],['left_hip','right_hip'],['left_hip','left_knee'],['left_knee','left_ankle'],['right_hip','right_knee'],['right_knee','right_ankle']];
+    ctx.strokeStyle = '#4ecdc4'; ctx.lineWidth = 3;
+    connections.forEach(([a,b]) => {
+        const p1 = kp.find(k=>k.name===a), p2 = kp.find(k=>k.name===b);
+        if (p1?.score>0.3 && p2?.score>0.3) { ctx.beginPath(); ctx.moveTo(p1.x,p1.y); ctx.lineTo(p2.x,p2.y); ctx.stroke(); }
+    });
+    kp.forEach(p => { if (p.score>0.3) { ctx.fillStyle = '#ff6b35'; ctx.beginPath(); ctx.arc(p.x,p.y,5,0,Math.PI*2); ctx.fill(); } });
+}
+
+function analyzePose(pose) {
+    const kp = n => pose.keypoints.find(k=>k.name===n);
+    const score = pose.keypoints.reduce((s,k)=>s+k.score,0)/pose.keypoints.length;
+    document.getElementById('confScore').textContent = Math.round(score*100)+'%';
+    
+    const hip = kp('left_hip') || kp('right_hip');
+    const knee = kp('left_knee') || kp('right_knee');
+    const ankle = kp('left_ankle') || kp('right_ankle');
+    
+    if (hip && knee && ankle) {
+        const depth = (ankle.y - hip.y) / (ankle.y - knee.y);
+        if (depth < 0.8 && repState==='up') { repState='down'; document.getElementById('feedback').textContent='🔻 Good depth!'; }
+        else if (depth > 1.1 && repState==='down') { repCount++; repState='up'; document.getElementById('repCount').textContent=repCount; document.getElementById('feedback').textContent='✅ Rep counted!'; navigator.vibrate?.(100); }
+        let fs = 100; if (depth>0.9) fs-=20; if (score<0.5) fs-=30;
+        document.getElementById('formScore').textContent = Math.max(0,fs)+'%';
+    }
+    if (repState==='up') document.getElementById('feedback').textContent='Lower to begin';
+}
+
+function resetReps() { repCount=0; repState='up'; document.getElementById('repCount').textContent='0'; }
+</script>
+
+<!-- Core App Logic -->
+<script>
+let appMode = 'simple';
+let workouts = [], selected = null, exercises = [];
+let timerRunning = false, timerInterval = null, exIdx = 0, timeRem = 0;
+
+function setAppMode(mode) {
+    appMode = mode;
+    document.getElementById('simpleBtn').classList.toggle('active', mode==='simple');
+    document.getElementById('fullBtn').classList.toggle('active', mode==='full');
+    document.getElementById('appSubtitle').textContent = mode==='simple'?'Workout Timer':'Workout Timer + AI Form';
+    document.getElementById('fullTabs').style.display = mode==='full'?'block':'none';
+    
+    if (mode==='simple') {
+        stopCamera();
+        document.getElementById('cameraSection').classList.remove('active');
+        document.getElementById('timerContent').style.display = 'block';
+    } else {
+        setTab('timer');
+    }
+}
+
+function setTab(tab) {
+    document.getElementById('timerTab').classList.toggle('active', tab==='timer');
+    document.getElementById('cameraTab').classList.toggle('active', tab==='camera');
+    document.getElementById('cameraSection').classList.toggle('active', tab==='camera');
+    document.getElementById('timerContent').style.display = tab==='timer'?'block':'none';
+    if (tab==='camera' && !detector) initAI();
+}
+
+async function loadWorkouts() {
+    try {
+        const r = await fetch('dax-workouts.json?t='+Date.now());
+        const d = await r.json();
+        workouts = d.workouts || [];
+        renderWorkouts();
+        if (workouts.length) selectWorkout(workouts[0].id);
+    } catch(e) { document.getElementById('workoutGrid').innerHTML = '<div class="empty" style="grid-column:1/-1">Error loading workouts</div>'; }
+}
+
+function renderWorkouts() {
+    const g = document.getElementById('workoutGrid');
+    if (!workouts.length) { g.innerHTML = '<div class="empty" style="grid-column:1/-1">No workouts</div>'; return; }
+    g.innerHTML = workouts.map((w,i) => `
+        <div class="workout-card ${w.id===selected?'active':''}" onclick="selectWorkout('${w.id}')">
+            ${i===0?'<span class="badge">NEW</span>':''}
+            <div class="date">${w.date}</div>
+            <div class="title">${w.title}</div>
+            <div class="meta">${w.focus} • ${w.exercises.length} exercises</div>
+        </div>
+    `).join('');
+}
+
+function selectWorkout(id) {
+    selected = id; renderWorkouts();
+    const w = workouts.find(x=>x.id===id); if (!w) return;
+    resetTimer(); exercises = []; let n = 0;
+    w.exercises.forEach(e => { n++; exercises.push({...e,num:n}); if (e.type==='main') exercises.push({name:'Rest',duration:15,type:'rest',num:null}); });
+    renderExercises(); updateDisplay();
+}
+
+function renderExercises() {
+    const el = document.getElementById('exList');
+    el.innerHTML = exercises.map((e,i) => `
+        <div class="exercise-item ${e.type==='rest'?'rest':''}" id="ex-${i}">
+            <div class="num">${e.num||'⏸️'}</div>
+            <div style="flex:1"><div style="font-weight:600;font-size:0.9rem">${e.name}</div><div style="font-size:0.75rem;color:var(--text-muted)">${e.detail||e.phase}</div></div>
+            <div style="color:var(--success);font-weight:600">${e.duration}s</div>
+        </div>
+    `).join('');
+}
+
+function format(s) { const m=Math.floor(s/60),sec=s%60; return `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
+
+function updateDisplay() {
+    document.getElementById('timerDisplay').textContent = format(timeRem);
+    const cur = exercises[exIdx];
+    if (cur) {
+        document.getElementById('currentEx').textContent = cur.name;
+        document.getElementById('phase').textContent = cur.phase;
+        document.getElementById('timerDisplay').className = 'timer-display ' + (cur.type==='main'?'running':cur.type==='rest'?'rest':'');
+        exercises.forEach((_,i) => {
+            const el = document.getElementById(`ex-${i}`); if (!el) return;
+            el.classList.remove('active','completed');
+            if (i===exIdx) el.classList.add('active');
+            else if (i<exIdx) el.classList.add('completed');
+        });
+        document.getElementById('progress').style.width = (exIdx/exercises.length*100)+'%';
+    } else { document.getElementById('currentEx').textContent='Done!'; document.getElementById('phase').textContent='GREAT JOB'; document.getElementById('progress').style.width='100%'; }
+}
+
+function tick() {
+    timeRem--;
+    if (timeRem<=0) {
+        exIdx++;
+        if (exIdx>=exercises.length) { stopTimer(); document.getElementById('timerDisplay').textContent='DONE!'; navigator.vibrate?.([200,100,200,100,400]); return; }
+        timeRem = exercises[exIdx].duration;
+        navigator.vibrate?.(exercises[exIdx].type==='rest'?[100,50,100]:200);
+    }
+    updateDisplay();
+}
+
+function toggleTimer() {
+    if (timerRunning) { clearInterval(timerInterval); timerRunning=false; document.getElementById('timerBtn').textContent='RESUME'; }
+    else { if (exIdx>=exercises.length) { exIdx=0; timeRem=0; } if (!exercises.length) return; if (timeRem===0) timeRem=exercises[exIdx].duration; timerRunning=true; timerInterval=setInterval(tick,1000); document.getElementById('timerBtn').textContent='PAUSE'; navigator.vibrate?.(100); }
+}
+
+function stopTimer() { clearInterval(timerInterval); timerRunning=false; document.getElementById('timerBtn').textContent='START'; }
+function resetTimer() { stopTimer(); exIdx=0; timeRem=0; document.getElementById('timerBtn').textContent='START'; updateDisplay(); }
+
+loadWorkouts();
+document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();toggleTimer()}else if(e.code==='Escape')resetTimer()});
+</script>
+</body>
+</html>

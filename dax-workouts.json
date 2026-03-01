@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-01T11:04:00-08:00",
+  "workouts": [
+    {
+      "id": "dax_1740852600000",
+      "date": "Sun, Mar 1, 9:30 AM",
+      "title": "MICRO-WORKOUT #2",
+      "focus": "Upper Body + Core",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Arm Circles", "duration": 30, "detail": "Forward & back", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Shoulder Shrugs", "duration": 30, "detail": "Release tension", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Cat-Cow Stretch", "duration": 30, "detail": "Spine mobility", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Inchworms", "duration": 30, "detail": "Slow walkout", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Push-Ups", "duration": 40, "detail": "Max reps, knees OK", "type": "main", "phase": "WORK"},
+        {"name": "Plank Hold", "duration": 45, "detail": "Solid core engagement", "type": "main", "phase": "WORK"},
+        {"name": "Mountain Climbers", "duration": 40, "detail": "Fast & controlled", "type": "main", "phase": "WORK"},
+        {"name": "Child's Pose", "duration": 30, "detail": "Deep breath", "type": "finisher", "phase": "FINISHER"},
+        {"name": "Doorway Chest Stretch", "duration": 30, "detail": "Open chest", "type": "finisher", "phase": "FINISHER"}
+      ]
+    },
+    {
+      "id": "dax_1740849000000",
+      "date": "Sun, Mar 1, 5:30 AM",
+      "title": "MICRO-WORKOUT #1",
+      "focus": "Lower Body",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Bodyweight Squats", "duration": 30, "detail": "Slow & controlled", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Alternating Lunges", "duration": 30, "detail": "In place", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Calf Raises", "duration": 30, "detail": "Full range", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Deep Squat Hold", "duration": 30, "detail": "Gentle sway", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Air Squats", "duration": 30, "detail": "Chest up, hips back", "type": "main", "phase": "WORK"},
+        {"name": "Reverse Lunges", "duration": 30, "detail": "Alt legs, knee hovers", "type": "main", "phase": "WORK"},
+        {"name": "Glute Bridges", "duration": 30, "detail": "Squeeze at top", "type": "main", "phase": "WORK"},
+        {"name": "Wall Sit Hold", "duration": 30, "detail": "Thighs parallel", "type": "finisher", "phase": "FINISHER"},
+        {"name": "Quad Stretch", "duration": 30, "detail": "Each leg", "type": "finisher", "phase": "FINISHER"}
+      ]
+    }
+  ]
+}
