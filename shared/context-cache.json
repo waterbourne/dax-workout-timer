@@ -1,12 +1,64 @@
 {
   "version": "2.0",
-  "last_updated": "2026-02-19T08:26:00-08:00",
+  "last_updated": "2026-02-28T07:00:00-08:00",
   "cross_agent_context": {
     "recent_topics": {
       "sol": {
         "agent": "Sol",
         "role": "Academic Tutor",
         "last_7_days": [
+          {
+            "date": "2026-02-28",
+            "topic": "geometry_nature_phonics_cultures_critical_thinking",
+            "key_concepts": ["triangle_strength", "golden_spiral", "fibonacci_numbers", "gh_phonics_pattern", "architectural_shapes", "missing_square_riddle"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high",
+            "subjects_covered": ["math", "nature", "phonics", "world_cultures", "critical_thinking"],
+            "hook": "secret_shapes_hiding_everywhere",
+            "cross_reference": {
+              "to_atlas": "Triangle strength connects to Egyptian pyramids (Atlas covered Feb 24/26); architectural shapes across cultures parallels how different civilizations solved similar problems; golden spiral appears in ancient art and architecture",
+              "potential_connection": "Japanese pagoda earthquake resistance connects to 'wrong but useful' theme from Tycho Brahe; shape-based problem solving mirrors how ancient cultures developed measurement systems"
+            }
+          },
+          {
+            "date": "2026-02-27",
+            "topic": "math_history_geography_art_social_studies_moon_rockets",
+            "key_concepts": ["katherine_johnson", "large_number_sense", "failure_as_learning", "rocket_launch_geography", "elegant_design", "teamwork_scale"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high",
+            "subjects_covered": ["math", "history", "geography", "art_creativity", "social_studies"],
+            "hook": "build_a_lego_tower_to_the_moon",
+            "cross_reference": {
+              "to_atlas": "Katherine Johnson story connects to Tycho Brahe - both meticulous observers who advanced astronomy; NASA failures connect to 'inventors who failed before succeeding' theme; 400,000 people working together connects to 'how civilizations achieve great things'",
+              "potential_connection": "Moon landing required 400,000 people - compare to pyramid construction (Egypt) or Great Wall (China) as massive human collaborative efforts"
+            }
+          },
+          {
+            "date": "2026-02-26",
+            "topic": "space_language_emotional_intelligence",
+            "key_concepts": ["silent_letters", "birthday_paradox", "emotional_iceberg", "zero_gravity_biology", "riddle_logic"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high",
+            "subjects_covered": ["language_arts", "math", "emotional_intelligence", "science", "critical_thinking"],
+            "hook": "astronauts_cant_burp_in_space",
+            "cross_reference": {
+              "to_atlas": "Space exploration connects to human curiosity and discovery themes; zero-g lettuce growing parallels ancient agricultural innovations",
+              "potential_connection": "Astronauts facing isolation/emotional challenges in space could connect to historical explorers leaving home"
+            }
+          },
+          {
+            "date": "2026-02-25",
+            "topic": "dinosaurs_cross_curriculum",
+            "key_concepts": ["fossil_geography", "critical_thinking", "cultural_stories", "paleoart", "adaptation"],
+            "difficulty": "grade_appropriate",
+            "engagement": "high",
+            "subjects_covered": ["geography", "critical_thinking", "world_cultures", "art_creativity", "nature"],
+            "hook": "dinosaurs weren't actually lizards",
+            "cross_reference": {
+              "to_atlas": "Different cultures interpreted fossils as dragons/giants - connects to how Egyptians created measurement systems from their context",
+              "potential_connection": "Dinosaurs ruled for 165 million years vs human civilization ~10,000 years - timeline perspective for Atlas"
+            }
+          },
           {
             "date": "2026-02-19",
             "topic": "multiplication_patterns",
@@ -38,16 +90,132 @@
           "measurement_units"
         ],
         "fun_facts_used": [
+          "Triangles are the strongest shape - you can't squish them, which is why bridges and bike frames use them",
+          "Sunflower seeds grow in a Golden Spiral pattern - 34 spirals one way, 55 the other way - both Fibonacci numbers",
+          "The 'GH' letter combination is silent at the end of words (though, through) but sounds like F in the middle (enough, cough)",
+          "Mongolian yurts are circular so wind slides around them; Japanese pagodas have curved corners to resist earthquakes",
+          "The Missing Square Riddle tricks your eyes - the shapes aren't actually straight, they just look like it",
+          "It would take 38 BILLION LEGO bricks and 730 years to stack to the Moon",
+          "NASA's first rocket rose 4 feet and fell over - the press called it 'Flopnik'",
+          "Thomas Edison tried 6,000 materials before finding the right lightbulb filament",
+          "French Guiana is in South America but part of the European Union",
+          "India sent a mission to Mars for less than the movie 'Gravity' cost to make",
+          "The Saturn V rocket was 363 feet tall - like a 36-story building",
+          "400,000 people worked together to achieve the Moon landing",
+          "Leonardo da Vinci drew flying machines 400 years before airplanes existed",
+          "Astronauts can't burp in space because gas bubbles don't rise without gravity",
+          "Astronauts grow up to 2 inches taller in space because their spines stretch out",
+          "In a room of 23 people, there's a 50% chance two share a birthday",
+          "Plants in space grow roots in all directions because they can't tell which way is down",
+          "Dinosaurs weren't actually lizards - scientists got the name wrong in 1842",
+          "Birds ARE dinosaurs (avian dinosaurs)",
+          "Crocodiles lived with dinosaurs and survived the extinction",
+          "We don't know what color most dinosaurs were - artists made it up",
+          "Ancient Chinese people thought dinosaur fossils were dragon bones",
+          "An asteroid might have killed the dinosaurs but allowed humans to exist",
           "Octopuses have three hearts",
           "Honey never spoils",
           "Bananas are berries but strawberries aren't",
           "A day on Venus is longer than its year"
-        ]
+        ],
+        "learning_progression": {
+          "current_age_level": 7,
+          "target_age_level": 9,
+          "progression_timeline": "12_months",
+          "start_date": "2026-02-22",
+          "milestones": [
+            {"age_level": 7, "period": "Now - Jun 2026", "focus": "Solidify grade 2 concepts, introduce grade 3 preview"},
+            {"age_level": 8, "period": "Jul 2026 - Jan 2027", "focus": "Grade 3 level content, deeper critical thinking"},
+            {"age_level": 9, "period": "Feb 2027 onwards", "focus": "Grade 4 readiness, complex problem solving"}
+          ],
+          "complexity_indicators": {
+            "math": "Multi-step problems → Abstract concepts → Algebraic thinking",
+            "science": "Observations → Hypotheses → Experimental design",
+            "language": "Simple sentences → Complex grammar → Creative writing",
+            "critical_thinking": "Simple logic → Pattern recognition → Strategic reasoning"
+          },
+          "notes": "Mix up topics daily. Gradually increase challenge. Maintain high engagement through variety."
+        }
       },
       "atlas": {
         "agent": "Atlas",
         "role": "Philosophy Tutor",
         "last_7_days": [
+          {
+            "date": "2026-03-01",
+            "topic": "great_pyramid_nakht_water_level",
+            "key_concepts": ["ancient_engineering", "child_problem_solver", "collaboration_scale", "credit_and_fairness", "pyramid_alignment"],
+            "story_elements": ["Nakht_age_12", "water_boy", "water_level_invention", "great_pyramid", "400000_workers"],
+            "engagement": "high",
+            "cross_reference": {
+              "from_sol_topic": "katherine_johnson_400000_people_moon_landing",
+              "connection": "Both stories feature overlooked individuals (Nakht/Katherine) whose insights enabled massive collaborative achievements; 400,000 pyramid workers parallels 400,000 moon landing workers; triangle strength connects to pyramid geometry",
+              "topics_linked": ["katherine_johnson", "400000_collaborators", "triangle_strength", "ancient_egypt", "measurement"]
+            },
+            "surprising_fact": "400,000 people built the Great Pyramid over 20 years — that's MORE people than worked on the Apollo moon landing",
+            "moral_dilemma": "The architect took credit for Nakht's invention. Is that fair when the architect was the one who actually built the pyramid?",
+            "dinner_question": "Have you ever had a good idea that someone else took credit for?"
+          },
+          {
+            "date": "2026-02-28",
+            "topic": "fibonacci_golden_spiral_cultural_exchange",
+            "key_concepts": ["cultural_exchange", "arabic_numerals", "fibonacci_sequence", "golden_spiral", "collaborative_discovery"],
+            "story_elements": ["Leonardo_of_Pisa", "traveling_youth", "arab_merchants", "rabbit_population_puzzle", "sunflower_connection"],
+            "engagement": "high",
+            "cross_reference": {
+              "from_sol_topic": "geometry_nature_phonics_cultures_critical_thinking",
+              "connection": "Fibonacci sequence directly connects to Sol's golden spiral and Fibonacci numbers lesson; sunflower example (34/55 spirals) reinforces both agents' content",
+              "topics_linked": ["fibonacci_numbers", "golden_spiral", "sunflower_seeds", "architectural_shapes"]
+            },
+            "surprising_fact": "We might still use Roman numerals today if one curious 12-year-old hadn't gone on a 10-year business trip with his dad",
+            "moral_dilemma": "Is it okay to become famous for 'discovering' something you actually learned from other cultures? Credit vs. communication",
+            "dinner_question": "Should Fibonacci have given all credit to Arab/Indian mathematicians, or was he right to be famous for spreading their ideas?"
+          },
+          {
+            "date": "2026-02-26",
+            "topic": "tycho_brahe_metal_nose_astronomer",
+            "key_concepts": ["heliocentrism_vs_geocentrism", "scientific_progress", "wrong_but_useful", "legacy_over_correctness"],
+            "story_elements": ["Tycho_Brahe", "metal_nose", "duel_over_math", "Kepler", "20_years_of_observations"],
+            "engagement": "high",
+            "cross_reference": {
+              "from_sol_topic": "space_language_emotional_intelligence",
+              "connection": "Tycho studied stars without telescopes just as astronauts experience space without gravity—both expanded human understanding through careful observation",
+              "topics_linked": ["zero_gravity_biology", "astronauts_cant_burp", "space_exploration"]
+            },
+            "surprising_fact": "Tycho had a fake metal nose from a sword duel over math AND a pet elk that drank beer",
+            "moral_dilemma": "Is it okay to be stubborn about wrong beliefs if your work still helps others find truth?",
+            "dinner_question": "Would you rather be Tycho (famous, rich, wrong) or Kepler (unknown, poor, right)?"
+          },
+          {
+            "date": "2026-02-25",
+            "topic": "li_shih_chen_dragon_bones",
+            "key_concepts": ["cultural_perspective", "fossil_interpretation", "scientific_method", "traditional_medicine"],
+            "story_elements": ["Li Shih-Chen", "16th_century_China", "dragon_bone_mystery", "cross-cultural_comparison"],
+            "engagement": "high",
+            "cross_reference": {
+              "from_sol_topic": "dinosaurs_cross_curriculum",
+              "connection": "Different cultures (China vs Europe) interpreted same fossils as dragons vs giants vs monsters",
+              "pending_reference_used": "Cultural context shapes understanding - like Egyptians creating measurement systems"
+            },
+            "surprising_fact": "Chinese people ground up dinosaur fossils for medicine for thousands of years before scientists could study them",
+            "moral_dilemma": "Is it okay to destroy fossils if you believe they have healing magic? Truth vs tradition vs medicine",
+            "dinner_question": "Would you rather believe a giant bone is from a dragon (magical) or a real ancient animal (scientific)? Which story do you WANT to be true?"
+          },
+          {
+            "date": "2026-02-24",
+            "topic": "ancient_egyptian_measurement",
+            "key_concepts": ["royal_cubit", "standardization", "body_part_measurements"],
+            "story_elements": ["Khaemwaset", "the_invention_of_the_cubit", "measurement_problems"],
+            "engagement": "high",
+            "cross_reference": {
+              "from_sol_topic": "measurement_units",
+              "from_atlas_topic": "ancient_egypt",
+              "connection": "How Egyptians standardized measurement using the cubit"
+            },
+            "surprising_fact": "Different Pharaohs had slightly different-sized cubits as their 'signature'",
+            "moral_dilemma": "Should everyone use the same measurement or is it okay to be different?",
+            "dinner_question": "What body part would you use to create your own measurement?"
+          },
           {
             "date": "2026-02-18",
             "topic": "ancient_egypt",
@@ -76,6 +244,63 @@
         "role": "Spirituality Guide",
         "last_7_days": [
           {
+            "date": "2026-03-01",
+            "theme": "fortress_of_structure_as_prison",
+            "traditions": ["Zen Buddhism", "Stoicism", "Sufism", "Taoism"],
+            "key_insight": "The fortress has become the thing you live inside, rather than the thing that protects your living",
+            "contemplation_question": "What would happen if tomorrow, you released the entire architecture? Would you trust that the wisdom you've gathered has actually become part of you?",
+            "contradiction_highlighted": "Meditation practice has become another form of optimization/checkbox; claims family as non-negotiable threshold yet constructed life so densely scheduled that genuine spontaneity would require system failure; quality>quantity stated value but days measured in hours of input",
+            "metaphor_used": "Zen master's sitting as pure achievement; fortress architecture as prison; water in sieve without structure to hold it; beginner's mind as not-knowing being enough",
+            "personal_context": "Eight days post-Carmel Valley return (Feb 19-22), 6-10 AM deep work schedule, 4-8 hours daily audio, daily meditation practice with The Way app, family as claimed threshold"
+          },
+          {
+            "date": "2026-02-28",
+            "theme": "presence_vs_bad_faith",
+            "traditions": ["Sufism", "Existentialism", "Zen Buddhism"],
+            "key_insight": "Attention is not something you have. Attention is something you spend.",
+            "contemplation_question": "If you stopped trying to become the person your family needs, and simply became present to the family you have — what's the difference?",
+            "contradiction_highlighted": "Running from responsibility of freedom through perpetual preparation; treating fatherhood/marriage as logistics to manage rather than presence to inhabit; 4-8 hours audio as escape from terror of actually living",
+            "metaphor_used": "Rumi's beloved in ordinary moments; Sartre's bad faith; Zen master's broom; attention as currency",
+            "personal_context": "Six days post-Carmel Valley trip (Feb 19-22), 6-10 AM deep work schedule, quality of life > quantity claimed value"
+          },
+          {
+            "date": "2026-02-27",
+            "theme": "memento_mori_action_vs_preparation",
+            "traditions": ["Stoicism", "Zen Buddhism", "Taoism", "Bhagavad Gita"],
+            "key_insight": "The river doesn't become more river by flowing harder",
+            "contemplation_question": "If you died tonight, would you be satisfied with how much of your one life you spent preparing to live it?",
+            "contradiction_highlighted": "8000+ hours of audio (equivalent to multiple degrees) while claiming family as non-negotiable threshold; perpetual student mind vs beginner's mind; consuming wisdom about living instead of actually living",
+            "metaphor_used": "River flowing harder, Taoist fisherman casting vs studying currents, classroom safety vs life outside",
+            "personal_context": "4-8 hours daily audio consumption, deep work 6-10 AM schedule, Carmel Valley return 5 days ago (Feb 19-22), family as claimed threshold"
+          },
+          {
+            "date": "2026-02-26",
+            "theme": "preparation_vs_becoming",
+            "traditions": ["Bhagavad Gita", "Zen Buddhism", "Existentialism"],
+            "key_insight": "The archer does not need to understand every wind pattern before releasing the arrow. He needs to release the arrow.",
+            "contemplation_question": "What if you already know enough to be the person you want to be, and every hour you spend preparing is actually an hour you spend refusing to become him?",
+            "contradiction_highlighted": "Treats wisdom as accumulation before living, yet claims quality > quantity; seeks readiness through consumption instead of meeting life with beginner's mind",
+            "metaphor_used": "The fortress of knowledge that must be completed before stepping outside; the expert's heavy satchel vs the beginner's empty hands",
+            "personal_context": "Four days post-Carmel Valley return (Feb 19-22), deep work 6-10 AM schedule, family as claimed threshold"
+          },
+          {
+            "date": "2026-02-25",
+            "theme": "consumption_vs_presence",
+            "traditions": ["Taoism", "Sufism", "Bhagavad Gita"],
+            "key_insight": "You are not what you have heard. You are what you have let change your behavior when the audio stops.",
+            "contemplation_question": "If you couldn't listen to anything for the next seven days, what would you be forced to hear in the silence between your own thoughts?",
+            "contradiction_highlighted": "Claims family is non-negotiable threshold but spends 4-8 hours daily in audio consumption",
+            "metaphor_used": "The Taoist farmer watching water wear through stone; Rumi meeting his beloved in the unremarkable folding of laundry",
+            "personal_context": "Carmel Valley return (Feb 19-22), deep work 6-10 AM schedule, Evaan and Natasha presence"
+          },
+          {
+            "date": "2026-02-24",
+            "theme": "consumption_vs_embodiment",
+            "traditions": ["Stoicism", "Zen Buddhism"],
+            "key_insight": "Knowledge is cumulative; wisdom is subtractive",
+            "contemplation_question": "If you turned off the audio for one full day, what uncomfortable truth about yourself are you most afraid would rise into that silence?"
+          },
+          {
             "date": "2026-02-19",
             "theme": "impermanence",
             "traditions": ["Buddhism", "Stoicism"],
@@ -84,6 +309,12 @@
           }
         ],
         "themes_this_month": [
+          "fortress_of_structure_as_prison",
+          "presence_vs_bad_faith",
+          "memento_mori_action_vs_preparation",
+          "preparation_vs_becoming",
+          "consumption_vs_presence",
+          "consumption_vs_embodiment",
           "impermanence",
           "equanimity",
           "non_attachment",
@@ -95,9 +326,17 @@
       {
         "from": "sol",
         "to": "atlas",
-        "reference": "Evaan learned about measurement in math - could connect to ancient Egyptian measurement systems (cubits, etc.)",
-        "suggested_integration": "How did ancient Egyptians measure things without rulers?",
-        "expires": "2026-02-26",
+        "reference": "Dinosaurs ruled Earth for 165 million years; human civilization is only ~10,000 years. Massive timeline perspective opportunity.",
+        "suggested_integration": "Compare dinosaur era longevity to human history; discuss what 'deep time' means; connect to ancient civilizations (Egypt/China) as a tiny blip",
+        "expires": "2026-03-04",
+        "priority": "medium"
+      },
+      {
+        "from": "sol",
+        "to": "atlas",
+        "reference": "Different cultures interpreted same fossils as dragons (China), giants (Europe), or monsters - perfect for 'how stories shape understanding'",
+        "suggested_integration": "Discuss how cultural context shapes what we believe; compare to Egyptian measurement invention - both are humans making sense of mysteries",
+        "expires": "2026-03-04",
         "priority": "medium"
       },
       {
@@ -124,14 +363,134 @@
     },
     "agent_coordination": {
       "dax": {
-        "last_workout_focus": "full_body_moderate",
-        "next_progression": "add_light_weights",
-        "aditya_status": "on_track",
-        "natasha_status": "on_track"
+        "last_workout_date": "2026-02-26",
+        "last_workout_focus": "pull_day_aditya_rest_day_natasha",
+        "workouts_delivered": {
+          "aditya": {
+            "type": "pull_day",
+            "focus": ["back", "biceps", "posterior_chain"],
+            "equipment": "10-15_lb_dumbbells",
+            "key_exercises": ["bent_over_rows", "single_arm_rows", "renegade_rows", "bicep_curls", "hammer_curls", "superman_holds", "shrugs"],
+            "tempo_notes": "2-1-2 rows, 3-1-2 curls, slow negatives",
+            "progression_goal": "15lbs_standard_by_week_end",
+            "rounds_completed": "3_main_2_finisher"
+          },
+          "natasha": {
+            "type": "rest_day_active_recovery",
+            "focus": ["recovery", "mobility"],
+            "equipment": "none",
+            "key_exercises": ["optional_stretching", "walking", "hip_flexor_stretches"],
+            "tempo_notes": "relaxed_and_easy",
+            "progression_goal": "ready_for_friday_full_body",
+            "next_workout": "2026-02-27_friday_full_body"
+          }
+        },
+        "next_progression": "leg_day_friday_aditya_full_body_friday_natasha",
+        "aditya_status": "on_track_month_2_pull_complete",
+        "natasha_status": "rest_day_thursday_ready_for_friday",
+        "natasha_preferences": {
+          "equipment": "bodyweight_only",
+          "updated": "2026-02-23",
+          "notes": "No dumbbells or equipment - bodyweight exercises only"
+        },
+        "recovery_reminders": ["protein_within_30min", "foam_roll_tonight", "hydration_16oz_before", "aditya_leg_day_tomorrow_prepare"]
+      },
+      "balthazar": {
+        "agent": "Balthazar",
+        "role": "Atelier Master",
+        "quarter": "Q1_Foundation_Trials",
+        "today_mission": {
+          "date": "2026-03-01",
+          "day": "Sunday",
+          "mission_type": "review_and_critique",
+          "duration_minutes": 30,
+          "focus": "week_retrospective_self_critique",
+          "master_inspiration": "Pablo_Picasso_Raja_Ravi_Varma_Gustav_Klimt_Albrecht_Durer",
+          "technique_tip": "look_for_progression_not_perfection_each_canvas_is_a_stepping_stone",
+          "challenge": "honest_assessment_of_six_days_work_identify_weakest_and_strongest",
+          "work_pattern": "lay_out_chronologically_write_one_sentence_per_piece",
+          "emphasis": "reflection_growth_awareness",
+          "delivered_at": "2026-03-01T13:00:00-08:00"
+        },
+        "q1_progress": {
+          "week": 8,
+          "missions_completed": ["Monday_gesture", "Tuesday_value_study_BW", "Wednesday_still_life", "Thursday_master_copy", "Friday_color_mixing", "Saturday_plein_air", "Sunday_review"],
+          "current_streak": 7,
+          "perfect_week": true,
+          "notes": "WEEK 8 COMPLETE! SEVEN DAYS. A PERFECT WEEK. The student has conquered the Foundation Trial with discipline worthy of the masters. From gesture to plein air to honest self-critique — this is how painters are forged. Week 9 awaits. The atelier trembles with anticipation."
+        }
       },
       "raju": {
-        "last_meal_type": "indian_cuisine",
-        "upcoming_dietary_considerations": "travel_food_prep"
+        "last_meal_type": "chicken_tikka_masala",
+        "last_plan_date": "2026-02-26",
+        "upcoming_dietary_considerations": "normal_rotation",
+        "travel_status_applied": "home",
+        "meals_suggested": [
+          {
+            "date": "2026-02-26",
+            "meal": "Chicken Tikka Masala + Rice + Naan",
+            "uses": ["chicken_thighs", "tikka_masala_sauce", "basmati_rice", "naan", "greek_yogurt", "heavy_cream", "cilantro"],
+            "natasha_lunch": true,
+            "notes": "Leftovers perfect for Friday work lunch"
+          }
+        ],
+        "ingredients_needed": [
+          "chicken_thighs_2lb", "greek_yogurt_1cup", "tikka_masala_sauce_jar",
+          "heavy_cream_half_pint", "basmati_rice", "garlic_naan_pack",
+          "cilantro_bunch", "garlic_head", "lemon"
+        ],
+        "meals_suggested": [
+          {
+            "date": "2026-02-25",
+            "meal": "Sheet Pan Salmon with Roasted Vegetables",
+            "uses": ["salmon", "broccoli", "cherry_tomatoes", "bell_peppers"],
+            "kid_friendly": true,
+            "notes": "One-pan, quick cleanup"
+          },
+          {
+            "date": "2026-02-26",
+            "meal": "Chicken Tikka Masala + Rice + Naan",
+            "uses": ["chicken_thighs", "tikka_masala_sauce", "basmati_rice", "naan"],
+            "natasha_lunch": true,
+            "notes": "Leftovers perfect for Friday work lunch"
+          },
+          {
+            "date": "2026-02-27",
+            "meal": "Order-In Night",
+            "uses": [],
+            "notes": "Pizza or Thai - Friday break"
+          },
+          {
+            "date": "2026-02-28",
+            "meal": "Beef Tacos with All the Fixings",
+            "uses": ["ground_beef", "taco_shells", "avocado", "salsa", "sour_cream"],
+            "kid_friendly": true,
+            "notes": "Weekend assembly fun"
+          },
+          {
+            "date": "2026-03-01",
+            "meal": "Pasta Aglio e Olio with Garlic Bread + Salad",
+            "uses": ["pasta", "garlic", "olive_oil", "parmesan", "mixed_greens"],
+            "notes": "Light Sunday meal"
+          }
+        ],
+        "ingredients_used": [],
+        "ingredients_remaining": [],
+        "shopping_list_summary": [
+          "salmon_fillets_1.5lb", "chicken_thighs_2lb", "ground_beef_1lb",
+          "broccoli_2_heads", "cherry_tomatoes_1pint", "bell_peppers_3_mixed",
+          "red_onion_2", "garlic_2_heads", "lemons_3", "cilantro_1bunch",
+          "mixed_greens_1bag", "avocados_3", "basmati_rice", "pasta_linguine",
+          "tikka_masala_sauce", "naan_bread", "taco_shells", "tortilla_chips",
+          "salsa", "sour_cream", "greek_yogurt", "heavy_cream", "shredded_mexican_cheese",
+          "butter", "parmesan_cheese"
+        ],
+        "available_ingredients": {
+          "date_added": "2026-02-25",
+          "items": [],
+          "use_by_priority": "none",
+          "notes": "Fresh shop completed Feb 25. All ingredients allocated to Wed-Sun meal plan."
+        }
       }
     }
   },

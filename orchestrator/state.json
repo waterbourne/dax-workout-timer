@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-02-19T08:26:00-08:00",
+  "last_updated": "2026-02-22T00:45:00-08:00",
   "user_state": {
     "location": {
       "current": "San Francisco, CA",
@@ -15,23 +15,15 @@
       }
     },
     "travel": {
-      "status": "departing_soon",
-      "next_trip": {
-        "destination": "Carmel Valley Ranch",
-        "destination_location": "Carmel Valley, CA",
-        "departure": "2026-02-19T10:00:00-08:00",
-        "return": "2026-02-22T18:00:00-08:00",
-        "departing_within_hours": 2,
-        "trip_type": "leisure",
-        "travelers": ["Aditya", "Natasha", "Evaan"]
-      },
+      "status": "home",
+      "current_trip": null,
       "upcoming_trips": [],
       "travel_history": [
         {
           "destination": "Carmel Valley Ranch",
           "departure": "2026-02-19T10:00:00-08:00",
           "return": "2026-02-22T18:00:00-08:00",
-          "status": "planned"
+          "status": "completed"
         }
       ]
     },
@@ -63,7 +55,8 @@
           "preferences": {
             "workout_days": ["Monday", "Wednesday", "Friday"],
             "dietary_restrictions": [],
-            "work_lunches": true
+            "work_lunches": true,
+            "workout_equipment": "bodyweight_only"
           }
         },
         {
@@ -105,14 +98,14 @@
     "execution": {
       "current_agent": null,
       "last_agent_run": {
-        "agent": "dax",
-        "timestamp": "2026-02-19T04:30:00-08:00",
+        "agent": "guru",
+        "timestamp": "2026-02-21T06:00:00-08:00",
         "status": "success",
-        "duration_seconds": 42
+        "duration_seconds": 47
       },
       "next_scheduled_run": {
-        "agent": "guru",
-        "timestamp": "2026-02-19T05:15:00-08:00"
+        "agent": "sol",
+        "timestamp": "2026-02-21T07:00:00-08:00"
       },
       "execution_lock": {
         "locked": false,
@@ -122,14 +115,14 @@
     },
     "delivery": {
       "queue_depth": 0,
-      "last_delivery": "2026-02-19T04:30:30-08:00",
+      "last_delivery": "2026-02-21T06:00:00-08:00",
       "channels_available": ["telegram", "imessage"],
       "primary_channel_status": "healthy",
       "fallback_channel_status": "healthy"
     },
     "health": {
       "overall": "healthy",
-      "last_check": "2026-02-19T08:26:00-08:00",
+      "last_check": "2026-02-21T06:31:00-08:00",
       "checks": {
         "agents": "healthy",
         "delivery": "healthy",
@@ -143,11 +136,11 @@
   "dependencies": {
     "guru": {
       "completed": true,
-      "completed_at": "2026-02-19T05:15:30-08:00"
+      "completed_at": "2026-02-21T06:00:00-08:00"
     },
     "dax": {
       "completed": true,
-      "completed_at": "2026-02-19T04:30:30-08:00"
+      "completed_at": "2026-02-21T04:30:00-08:00"
     }
   }
 }

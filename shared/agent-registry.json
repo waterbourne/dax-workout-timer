@@ -210,7 +210,7 @@
       "schedule": {
         "cron": "0 19 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": null
+        "next_run": "2026-02-23T19:00:00-08:00"
       },
       "priority": "medium",
       "timeouts": {
@@ -222,9 +222,8 @@
       "notifications": ["travel_plans"],
       "context_reads": ["user_state.travel", "user_state.family.household"],
       "context_writes": [],
-      "status": "disabled",
-      "enabled": false,
-      "disabled_reason": "User traveling to Carmel Valley Ranch (Feb 19-22)",
+      "status": "idle",
+      "enabled": true,
       "health": {
         "last_run": "2026-02-18T19:00:00-08:00",
         "last_status": "success",

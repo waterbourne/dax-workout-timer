@@ -1,0 +1,26 @@
+{
+  "lastChecks": {
+    "orchestrator": 1740244740,
+    "agent_health": 1740244740,
+    "delivery_queue": 1740244740,
+    "context_cache": 1740244740,
+    "travel_mode": 1740244740,
+    "email": null,
+    "calendar": null,
+    "weather": null
+  },
+  "orchestratorStatus": {
+    "systemHealthy": true,
+    "queueDepth": 0,
+    "agentsWithIssues": ["sol"],
+    "lastAlert": null
+  },
+  "notes": {
+    "sol": "1 consecutive timeout error (below threshold)",
+    "raju": "Disabled - user traveling, returning today ~6PM",
+    "travel": "Status: returning_soon, ~12 hours until return",
+    "dax": "Completed 4:30 AM successfully",
+    "guru": "Completed 6:00 AM successfully",
+    "next": "Sol at 7:00 AM"
+  }
+}

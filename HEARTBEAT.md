@@ -68,6 +68,44 @@
 - Identify patterns and root causes
 - Update AGENTS.md/TOOLS.md with new rules if needed
 
+### 10. Daily Memory Log (NEW - High Priority)
+**Frequency:** Every heartbeat after 8:00 PM
+- [ ] Check if `memory/YYYY-MM-DD.md` exists for today's date
+- [ ] If missing AND time is after 8:00 PM → CREATE IT
+- [ ] If missing AND time is after 11:00 PM → CREATE IT + note the delay
+
+**What to log:**
+- Agent deliveries (Dax, Guru, Sol, Atlas, Raju, etc.)
+- User requests and decisions made
+- Errors encountered and fixes applied
+- System changes (cron updates, config changes)
+- Significant conversations or insights
+- Travel mode changes, calendar events
+
+**Format:**
+```markdown
+## YYYY-MM-DD - Day Name
+
+### Morning Agents
+- Dax: [workout focus]
+- Guru: [theme/question]
+- Sol: [topics covered]
+
+### User Interactions
+- [Time]: [What was requested] → [What was done]
+
+### System Changes
+- [What changed and why]
+
+### Errors/Lessons
+- [What went wrong] → [How fixed]
+
+### Notes
+- [Anything else worth remembering]
+```
+
+**Rule:** If the file doesn't exist by 8 PM, I MUST create it before ending the session. No exceptions.
+
 ---
 
 ## When to Alert

@@ -84,3 +84,10 @@ React with 👍 if you got this — no more alerts for this event.
 
 **Files:**
 - `memory/departure-alerts.json` — tracks sent & acknowledged alerts
+
+**CRITICAL: Acknowledgment Persistence (Fixed Feb 25, 2026)**
+- Calendar Monitor MUST read `departure-alerts.json` at START of each run
+- Acknowledged alerts (`noMoreAlerts: true`) MUST be respected for 24 hours
+- File writes MUST be atomic (write temp → rename) to prevent corruption
+- Each alert entry needs unique ID combining event name + date (not just event name)
+- If acknowledgment check fails: Log error, skip alert (fail-safe: don't spam user)

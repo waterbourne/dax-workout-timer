@@ -49,6 +49,60 @@
 
 ---
 
+## 2026-02-26
+
+### 3:02 PM - Calendar Monitor Anthropic Model Error
+- **Context:** Calendar Monitor cron job running every 15 minutes
+- **Error:** HTTP 404 not_found_error for model `claude-3-opus-20240229`
+- **Root Cause:** Anthropic model ID invalid or account lacks Opus access; job configured with non-existent model
+- **Fix Applied:** All 9 cron jobs switched to `moonshot/kimi-k2.5` via batch update
+- **Rule Updated:** AGENTS.md - Model configuration validation required before cron deployment
+- **Impact:** ~800k tokens wasted across 6+ failed runs before fix
+
+### 7:00 PM - Raju Delivery Failure
+- **Context:** Raju (Head Chef) scheduled dinner planning
+- **Error:** "cron announce delivery failed" - 3rd consecutive error
+- **Root Cause:** Telegram delivery channel intermittent failure post-model switch
+- **Fix Applied:** None yet - monitoring if Kimi model resolves underlying issue
+- **Rule Updated:** None yet
+
+## 2026-02-27
+
+### 10:30 PM - Daily Error Review Timeout
+- **Context:** Error Review Agent (this job) attempting end-of-day review
+- **Error:** Job execution timed out after 120 seconds
+- **Root Cause:** Timeout insufficient for comprehensive error log analysis + file updates
+- **Fix Applied:** Recommend increasing timeout to 180s (matching Sol/Bob config)
+- **Rule Updated:** Cron config pending update
+
+### Morning Agents - Multiple Delivery Failures
+- **Context:** Dax, Sol, Balthazar, Atlas, Raju all failing delivery
+- **Errors:** 
+  - "Unsupported channel: telegram" (Dax, Raju)
+  - "cron announce delivery failed" (Sol)
+  - "cron: job execution timed out" (Balthazar, Atlas)
+- **Root Cause:** Mixed - delivery channel issues + timeout insufficient for deep reasoning agents
+- **Fix Applied:** None yet - needs investigation
+- **Rule Updated:** None yet
+
+## 2026-02-25
+
+### 2:36 PM - Calendar Acknowledgment Persistence Bug
+- **Context:** User acknowledged Evaan Fencing departure alert with 👍 reaction
+- **Error:** Alert acknowledged at 2:36 PM, but additional alerts sent at 2:49 PM, 3:04 PM, 3:19 PM, 3:34 PM (5 extra alerts)
+- **Root Cause:** `memory/departure-alerts.json` not being properly read/written between cron runs; file shows lastUpdated of 2026-02-18 (stale data)
+- **Fix Applied:** Updated Calendar Monitor to ensure atomic read/write of acknowledgment state with file locking
+- **Rule Updated:** TOOLS.md - Departure Alerts section (acknowledgment persistence requirement)
+- **Review Status:** ✅ Reviewed Feb 27, 2026 - Rule properly documented, fix validated
+
+### RRULE Fix Validation
+- **Status:** ✅ SUCCESS
+- **Context:** Weekly recurring event detection (Evaan Fencing)
+- **Result:** Properly calculated using `(Today - DTSTART) % 7 == 0` logic
+- **Validation:** Event correctly identified for Wednesday Feb 25 from weekly recurring series
+
+---
+
 ## Review Template (End of Day)
 
 At end of each day, review this log and:
@@ -58,6 +112,42 @@ At end of each day, review this log and:
 4. **Research needed** — Any errors needing deeper investigation?
 
 Update MEMORY.md with distilled lessons.
+
+---
+
+## 2026-02-27 - Error Review Summary
+**Reviewed by:** Error Review Agent  
+**Status:** ⚠️ Partial - Ongoing Issues Identified
+
+### Errors Reviewed: 7
+1. ✅ **Calendar Acknowledgment Persistence Bug (Feb 25)** — Fix validated, TOOLS.md updated
+2. ✅ **Calendar Monitor Anthropic Model Error (Feb 26)** — Root cause identified, all jobs migrated to Kimi
+3. ⚠️ **Raju Delivery Failure (Feb 26)** — Part of pattern, needs monitoring
+4. ⚠️ **Daily Error Review Timeout (Feb 27)** — Timeout 120s→180s recommended
+5. 🚨 **Dax "Unsupported channel" (Feb 27)** — Active issue, 4 consecutive errors
+6. 🚨 **Sol Delivery Failure (Feb 27)** — Active issue, 3 consecutive errors  
+7. 🚨 **Balthazar/Atlas Timeout (Feb 27)** — Active issue, deep reasoning exceeds timeout
+
+### Patterns Identified:
+- **Model Configuration:** Invalid Anthropic model IDs caused cascading failures (fixed)
+- **Timeout Insufficiency:** Deep-reasoning agents (Balthazar 150s, Atlas 180s) hitting limits
+- **Delivery Channel:** "Unsupported channel: telegram" and "delivery failed" errors suggest Telegram relay issues
+- **Mixed Failure Modes:** Different agents failing with different errors indicates systemic delivery layer instability
+
+### Rules Added/Updated:
+- **MEMORY.md:** Added "Anthropic Model Validation" section with pre-flight check requirement
+- **MEMORY.md:** Added "Multi-Agent Delivery Failures" section with timeout buffer rule
+- **Recommended:** AGENTS.md update for model validation checklist
+
+### Research Conducted:
+- No web research required — root causes clear from error patterns
+- Cron state analysis revealed mixed failure modes across 5 agents
+- Identified need for timeout increases: Error Review 120s→180s, Balthazar 150s→200s
+
+### Outstanding Issues:
+- Dax, Sol, Balthazar, Atlas, Raju all showing delivery failures as of Feb 27
+- Telegram delivery channel reliability needs investigation
+- Consider adding retry logic or fallback delivery mechanism
 
 ---
 
