@@ -1,10 +1,54 @@
 {
   "agent": "sol",
   "experiment": "baseline-vs-improved-hook",
-  "baseline_aps": 110,
-  "improved_aps": 100,
-  "improved": true,
-  "baseline_output": "📚 Did you know the T-Rex had teeth as long as your whole hand?\n\nThe T-Rex had 50-60 banana-sized teeth that could crush bone! But here's the cool part: scientists think T-Rexes might have hunted in packs, like wolves. That means they worked together—just like when you and your friends build a big LEGO set together.\n\nDid you know? The word \"dinosaur\" means \"terrible lizard,\" but they weren't actually lizards at all! They were more closely related to birds.\n\nAsk your parents: What would be harder to build—one giant LEGO T-Rex alone, or a whole pack of smaller dinos with your friends?",
-  "improved_output": "📚 T-Rex teeth were as long as your whole hand!\n\nImagine holding a banana in your mouth—that's how big T-Rex teeth were! These massive teeth were serrated like a steak knife, perfect for chomping through meat. A T-Rex had about 50-60 of these giant teeth at once.\n\nDid you know? When a T-Rex tooth fell out, a new one grew in its place—just like your baby teeth, but way scarier!\n\nAsk your parents: How many of your hands would fit inside a T-Rex mouth?",
-  "change_made": "Started with punchy kid-friendly hook 'T-Rex teeth were as long as your whole hand!' (following prompt examples) instead of weak 'Did you know' opening. Also focused on ONE concept (T-Rex teeth only) instead of mixing teeth + pack hunting."
+  "hypothesis": "Kid-friendly hook, one concept max, always end with question",
+  "date": "2026-03-09",
+  "baseline": {
+    "output": "📚 Good morning Evaan! Today we're going to learn about the amazing world of engineering and how things are built. Did you know that engineers use math and science to create incredible structures like bridges and buildings? One important concept is that triangles are the strongest shape. When builders make bridges, they use lots of triangles because triangles don't bend or squash easily like squares do. If you press on a square, it turns into a diamond shape, but a triangle stays strong! This is why you see triangle shapes in bridges, towers, and even your bicycle frame. Engineers have known this for thousands of years. The ancient Egyptians used triangles when they built the pyramids. Did you know that the Great Pyramid was the tallest building in the world for over 3,800 years? That's a long time! Triangles are everywhere once you start looking for them. Ask your parents to point out triangles in your house or neighborhood!",
+    "word_count": 154,
+    "has_hook_in_10_words": false,
+    "hook_text": "Good morning Evaan! Today we're going to learn about...",
+    "single_concept": false,
+    "concepts": ["triangles strongest shape", "ancient Egyptian pyramids", "engineering principles"],
+    "ends_with_question": true,
+    "age_appropriate": true,
+    "aps_score": 80
+  },
+  "improved": {
+    "output": "📚 LEGO uses triangles to keep your towers from falling over!
+
+Triangles are the strongest shape — they don't bend when you push them. Squares turn into diamonds, but triangles stay strong!
+
+Did you know? The Eiffel Tower has 1,665 triangles in it!
+
+Ask your parents: What triangles can you find in your house?",
+    "word_count": 52,
+    "has_hook_in_10_words": true,
+    "hook_text": "LEGO uses triangles to keep your towers from falling over!",
+    "single_concept": true,
+    "concepts": ["triangles are strongest shape"],
+    "ends_with_question": true,
+    "age_appropriate": true,
+    "aps_score": 45
+  },
+  "comparison": {
+    "baseline_aps": 80,
+    "improved_aps": 45,
+    "improvement": 35,
+    "improved": true
+  },
+  "change_made": "Started with LEGO hook (kid interest), reduced to ONE concept (triangles only), cut from 154 words to 52, removed preamble and historical tangent",
+  "analysis": {
+    "what_worked": [
+      "LEGO hook grabs attention immediately",
+      "52 words vs 154 = much more readable for 7-year-old",
+      "One concept = clear takeaway",
+      "Specific number (1,665 triangles) more concrete than abstract facts"
+    ],
+    "next_experiments": [
+      "Test dinosaur hooks vs space hooks vs LEGO hooks",
+      "Test question format: direct vs open-ended",
+      "Test length: 30 words vs 50 vs 80"
+    ]
+  }
 }

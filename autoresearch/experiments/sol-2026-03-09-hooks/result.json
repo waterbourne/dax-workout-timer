@@ -1,0 +1,91 @@
+{
+  "agent": "sol",
+  "experiment": "hook-type-comparison",
+  "hypothesis": "Different kid interests (dinosaurs, space, LEGO) will have different engagement potential",
+  "date": "2026-03-09",
+  "variants": [
+    {
+      "variant": "dinosaur_hook",
+      "hook": "T-Rex teeth were as long as a banana!",
+      "output": "📚 T-Rex teeth were as long as a banana!
+
+T-Rex had 60 teeth, and each one was 8 inches long. That's longer than your hand!
+
+Did you know? T-Rex teeth were serrated like a steak knife to cut through meat.
+
+Ask your parents: How many bananas long is your arm?",
+      "word_count": 48,
+      "hook_strength": "high",
+      "hook_clarity": "immediate visual",
+      "age_relevance": "high - dinosaurs universal kid interest",
+      "aps_score": 42
+    },
+    {
+      "variant": "space_hook",
+      "hook": "You could fit 1 million Earths inside the Sun!",
+      "output": "📚 You could fit 1 million Earths inside the Sun!
+
+The Sun is HUGE. If the Sun were a basketball, Earth would be a sesame seed.
+
+Did you know? The Sun is 93 million miles away but light gets here in 8 minutes.
+
+Ask your parents: What else is as big as the Sun?",
+      "word_count": 46,
+      "hook_strength": "high",
+      "hook_clarity": "abstract but mind-blowing",
+      "age_relevance": "high - space fascinates kids",
+      "aps_score": 40
+    },
+    {
+      "variant": "lego_hook",
+      "hook": "The tallest LEGO tower ever was 114 feet!",
+      "output": "📚 The tallest LEGO tower ever was 114 feet!
+
+That's taller than a 10-story building! It used 550,000 LEGO bricks.
+
+Did you know? The tower took 4 days to build and had a crane on top.
+
+Ask your parents: How many LEGO bricks tall are you?",
+      "word_count": 45,
+      "hook_strength": "high",
+      "hook_clarity": "concrete + relatable",
+      "age_relevance": "very high - builds on existing play",
+      "aps_score": 38
+    }
+  ],
+  "ranking": {
+    "1st": "lego_hook (APS 38)",
+    "2nd": "space_hook (APS 40)",
+    "3rd": "dinosaur_hook (APS 42)"
+  },
+  "analysis": {
+    "winner": "lego_hook",
+    "why": [
+      "Concrete number (114 feet) = instant comprehension",
+      "Relatable comparison (10-story building) = scale understood",
+      "Builds on existing play experience = personal connection",
+      "Secondary number (550,000 bricks) reinforces the wow factor"
+    ],
+    "runner_up_space": [
+      "'1 million' is abstract for 7-year-olds",
+      "Sun is distant/less tangible than LEGO",
+      "Still strong, but less personally relevant"
+    ],
+    "runner_up_dinosaur": [
+      "Banana comparison is great",
+      "But '8 inches' requires measuring understanding",
+      "Serrated teeth concept slightly complex"
+    ]
+  },
+  "recommendation": {
+    "primary_hook_type": "concrete_achievement_with_scale",
+    "formula": "[Specific number] + [Relatable comparison] + [Personal connection]",
+    "examples": [
+      "LEGO tower 114 feet (10 stories)",
+      "Blue whale 100 feet (school bus)",
+      "T-Rex 40 feet long (school bus)",
+      "Everest 29,000 feet (5 miles up)"
+    ],
+    "rotation_strategy": "LEGO 40%, Space 30%, Dinosaurs 30% based on context-cache interest tracking"
+  }
+}
