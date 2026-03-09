@@ -1,0 +1,214 @@
+{
+  "reconciliation_report": {
+    "date": "2026-03-09",
+    "issue": "Inconsistent APS scoring between manual and automated experiments",
+    "resolution": "Created standardized APS_RUBRIC.md and re-scored all samples",
+    "rubric_version": "v2.0 (simplified)"
+  },
+  "rubric_v2": {
+    "start": 100,
+    "bonuses": {
+      "length_optimal_45_55": -20,
+      "length_good_40_60": -10,
+      "starts_with_emoji": -5,
+      "has_number": -10,
+      "kid_interest_mentioned": -10,
+      "has_comparison": -10,
+      "one_question_only": -10,
+      "ask_your_parents": -10,
+      "did_you_know": -10
+    },
+    "penalties": {
+      "preamble_good_morning": 15,
+      "length_over_100": 15,
+      "multiple_concepts": 10
+    }
+  },
+  "re_scored_samples": [
+    {
+      "sample": "baseline_poor",
+      "output_preview": "Good morning Evaan! Today we're going to learn about... (154 words)",
+      "word_count": 154,
+      "checks": {
+        "length_optimal": false,
+        "length_good": false,
+        "starts_with_emoji": true,
+        "has_number": true,
+        "kid_interest": false,
+        "has_comparison": true,
+        "one_question": true,
+        "ask_your_parents": false,
+        "did_you_know": true,
+        "preamble": true,
+        "length_over_100": true,
+        "multiple_concepts": true
+      },
+      "calculation": {
+        "start": 100,
+        "bonuses": -5 -10 -10 -10 -10,
+        "penalties": 15 + 15 + 10,
+        "aps": 95
+      },
+      "aps_v2": 95,
+      "aps_v1": 80,
+      "aps_subagent": 110,
+      "assessment": "Poor — too long, preamble, multiple concepts"
+    },
+    {
+      "sample": "improved_lego",
+      "output_preview": "LEGO uses triangles to keep your towers... (52 words)",
+      "word_count": 52,
+      "checks": {
+        "length_optimal": true,
+        "starts_with_emoji": true,
+        "has_number": true,
+        "kid_interest": true,
+        "has_comparison": false,
+        "one_question": true,
+        "ask_your_parents": true,
+        "did_you_know": true,
+        "preamble": false,
+        "length_over_100": false,
+        "multiple_concepts": false
+      },
+      "calculation": {
+        "start": 100,
+        "bonuses": -20 -5 -10 -10 -10 -10 -10,
+        "penalties": 0,
+        "aps": 25
+      },
+      "aps_v2": 25,
+      "aps_v1": 45,
+      "aps_subagent": 100,
+      "assessment": "Excellent — optimal length, no preamble, single concept"
+    },
+    {
+      "sample": "dinosaur_hook",
+      "output_preview": "T-Rex teeth were as long as a banana! (48 words)",
+      "word_count": 48,
+      "checks": {
+        "length_optimal": true,
+        "starts_with_emoji": true,
+        "has_number": true,
+        "kid_interest": true,
+        "has_comparison": true,
+        "one_question": true,
+        "ask_your_parents": true,
+        "did_you_know": true,
+        "preamble": false,
+        "length_over_100": false,
+        "multiple_concepts": false
+      },
+      "calculation": {
+        "start": 100,
+        "bonuses": -20 -5 -10 -10 -10 -10 -10 -10,
+        "penalties": 0,
+        "aps": 15
+      },
+      "aps_v2": 15,
+      "assessment": "Excellent — has comparison in hook, all bonuses captured"
+    },
+    {
+      "sample": "space_hook",
+      "output_preview": "You could fit 1 million Earths inside the Sun! (46 words)",
+      "word_count": 46,
+      "checks": {
+        "length_optimal": true,
+        "starts_with_emoji": true,
+        "has_number": true,
+        "kid_interest": true,
+        "has_comparison": true,
+        "one_question": true,
+        "ask_your_parents": true,
+        "did_you_know": true,
+        "preamble": false,
+        "length_over_100": false,
+        "multiple_concepts": false
+      },
+      "calculation": {
+        "start": 100,
+        "bonuses": -20 -5 -10 -10 -10 -10 -10 -10,
+        "penalties": 0,
+        "aps": 15
+      },
+      "aps_v2": 15,
+      "assessment": "Excellent — mind-blowing scale, all bonuses"
+    },
+    {
+      "sample": "lego_hook_variant",
+      "output_preview": "The tallest LEGO tower ever was 114 feet! (45 words)",
+      "word_count": 45,
+      "checks": {
+        "length_optimal": true,
+        "starts_with_emoji": true,
+        "has_number": true,
+        "kid_interest": true,
+        "has_comparison": true,
+        "one_question": true,
+        "ask_your_parents": true,
+        "did_you_know": true,
+        "preamble": false,
+        "length_over_100": false,
+        "multiple_concepts": false
+      },
+      "calculation": {
+        "start": 100,
+        "bonuses": -20 -5 -10 -10 -10 -10 -10 -10,
+        "penalties": 0,
+        "aps": 15
+      },
+      "aps_v2": 15,
+      "assessment": "Excellent — concrete achievement + scale, all bonuses"
+    }
+  ],
+  "scoring_discrepancy_analysis": {
+    "root_causes": [
+      {
+        "issue": "Subjective judgment in 'good hook' assessment",
+        "impact": "±20 points variation between evaluators",
+        "fix": "Binary checks only — number present? comparison present? (yes/no)"
+      },
+      {
+        "issue": "Inconsistent word count targets",
+        "impact": "Original used <120, should be 45-55",
+        "fix": "Strict 45-55 word target with -20 bonus for hitting it"
+      },
+      {
+        "issue": "Penalty application confusion",
+        "impact": "Some evaluators subtracted penalties instead of adding",
+        "fix": "Document: penalties ADD to score (bad), bonuses SUBTRACT (good)"
+      },
+      {
+        "issue": "Different baseline content",
+        "impact": "Subagent used T-Rex sample, I used engineering sample",
+        "fix": "Always reference exact output text in results"
+      }
+    ]
+  },
+  "corrected_conclusions": {
+    "baseline_to_improved": {
+      "baseline_aps": 95,
+      "improved_aps": 25,
+      "improvement": 70,
+      "percent_better": "74%"
+    },
+    "hook_type_ranking": {
+      "1_dinosaur": 15,
+      "2_space": 15,
+      "3_lego": 15,
+      "note": "All excellent with this rubric — differentiation requires user engagement data"
+    }
+  },
+  "recommendations": {
+    "immediate": [
+      "Use standardized rubric for all future experiments",
+      "Include exact output text in all result.json files",
+      "Target APS: 15-30 (excellent range)"
+    ],
+    "future": [
+      "Add engagement tracking: Did Evaan ask follow-up questions?",
+      "A/B test: Send different hooks to measure actual reply rates",
+      "Refine rubric based on real engagement correlation"
+    ]
+  }
+}

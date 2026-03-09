@@ -61,25 +61,39 @@ Ask your parents: [Specific question they can answer]
 
 ## APS Scoring (Self-Check Before Delivery)
 
+**Target: 15-30 (excellent range)** — Lower is better.
+
+See `/autoresearch/APS_RUBRIC.md` for full specification.
+
 ```
-Start: 100 points
+Start: 100
 
-Length:
-- 45-55 words: -0
-- 40-44 or 56-60: -10
-- <40 or >60: -20
+BONUSES (subtract from score):
+✓ Length 45-55 words:                -20
+✓ Starts with 📚 emoji:              -5
+✓ Contains number:                   -10
+✓ Mentions LEGO/dino/space:          -10
+✓ Has comparison (as/taller/than):   -10
+✓ Exactly one question:              -10
+✓ Ends with "Ask your parents":      -10
+✓ Has "Did you know?":               -10
 
-Hook quality:
-- Number in first 10 words: -15
-- Relatable comparison present: -10
-- Personal connection (LEGO/dino/space): -10
-
-Structure:
-- Exactly ONE concept: -15
-- Ends with "Ask your parents": -10
-
-Target APS: < 45 (lower is better)
+PENALTIES (add to score):
+✗ Starts with "Good morning":        +15
+✗ Length over 100 words:             +15
+✗ Multiple concepts:                 +10
 ```
+
+### Quick Check
+Before sending, verify:
+1. [ ] 45-55 words (count them)
+2. [ ] Starts with 📚 + number/hook
+3. [ ] Mentions LEGO or dino or space
+4. [ ] Exactly ONE concept taught
+5. [ ] Ends with: "Ask your parents: [question]"
+6. [ ] Has: "Did you know?" fact
+
+Expected APS: 15-30 (all bonuses, no penalties)
 
 ## Subjects (Rotate Weekly)
 - Math (tricks, patterns, measurement)
