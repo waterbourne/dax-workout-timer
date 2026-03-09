@@ -290,4 +290,28 @@ Start: 3:00 PM | Drive: 45 min
 - Cannot modify: schedules, credentials, system configs
 - Human maintains `program.md`
 
-**Status:** Sol prompt v2.0 deployed. Ready for Dax experiments.
+**Status:** Sol and Dax prompts v2.0 deployed. Ready for Guru experiments.
+
+---
+
+### Dax Experiments Completed (March 9, 2026)
+
+| Experiment | Baseline | Improved | Result |
+|------------|----------|----------|--------|
+| Hook optimization | APS 110 (122 words) | APS 25 (28 words) | ✅ 77% better |
+| Hook type comparison | — | APS 18-25 | All excellent |
+
+**Key Learnings (Proven):**
+- **Length:** 22-28 words optimal (was 120+)
+- **Hook styles:** Exercise-first 60%, Time-first 25%, Goal-first 15%
+- **Format:** 💪 [2-6 words] → Exercise: 3×12 → Time → One-sentence why
+- **Natasha variant:** Add "Bodyweight only" or "No equipment"
+
+**Hook Examples:**
+- Default: "Push, squat, hold." (APS 20)
+- Busy: "12 minutes. Three moves." (APS 25)
+- Natasha: "Full body. No equipment." (APS 22)
+
+**Dax-specific APS Rubric:**
+- Bonuses: Length 22-35 (-20), Hook ≤6 words (-15), No greeting (-10), Abbreviated format (-10)
+- Penalties: "Good morning" (+15), Length >80 (+15), Fluff quotes (+10)
