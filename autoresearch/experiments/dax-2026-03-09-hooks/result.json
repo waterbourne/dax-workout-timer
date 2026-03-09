@@ -1,0 +1,103 @@
+{
+  "agent": "dax",
+  "experiment": "hook-type-comparison",
+  "hypothesis": "Different hook styles (time-first, exercise-first, goal-first) will have different engagement",
+  "date": "2026-03-09",
+  "rubric": {
+    "reference": "Same as baseline experiment: length, hook quality, no greeting, clarity",
+    "target_aps": "15-30 (excellent)"
+  },
+  "variants": [
+    {
+      "variant": "time_first",
+      "hook": "12 minutes. Three moves.",
+      "output": "💪 12 minutes. Three moves.\n\nPush-ups: 3×12\nSquats: 3×15\nPlank: 3×45s\n\nRest 60s.\n\nMaximum burn, minimum time.",
+      "word_count": 26,
+      "style": "Time commitment upfront — good for busy mornings",
+      "strengths": [
+        "Sets clear expectation immediately",
+        "Low barrier to entry (just 12 min)",
+        "Works well for 4:30 AM delivery"
+      ],
+      "weaknesses": [
+        "Doesn't specify intensity level",
+        "May feel generic"
+      ],
+      "aps_score": 25
+    },
+    {
+      "variant": "exercise_first",
+      "hook": "Push, squat, hold.",
+      "output": "💪 Push, squat, hold.\n\nPush-ups: 3×12\nSquats: 3×15\nPlank: 3×45s\n\n12 minutes total.\n\nFull body in three moves.",
+      "word_count": 25,
+      "style": "Movement verbs — action-oriented",
+      "strengths": [
+        "Immediately clear what you're doing",
+        "Active verbs create momentum",
+        "Memorable pattern (3 verbs)"
+      ],
+      "weaknesses": [
+        "No time commitment until later",
+        "May feel vague without context"
+      ],
+      "aps_score": 20
+    },
+    {
+      "variant": "goal_first",
+      "hook": "Full body. No equipment.",
+      "output": "💪 Full body. No equipment.\n\nPush-ups: 3×12\nSquats: 3×15\nPlank: 3×45s\n\n12 minutes.\n\nThree moves, maximum coverage.",
+      "word_count": 26,
+      "style": "Outcome-focused — good for Natasha (bodyweight emphasis)",
+      "strengths": [
+        "Clarifies scope (full body)",
+        "Removes barrier (no equipment)",
+        "Works for both Aditya and Natasha"
+      ],
+      "weaknesses": [
+        "No time in hook",
+        "Slightly less urgent"
+      ],
+      "aps_score": 22
+    },
+    {
+      "variant": "imperative_action",
+      "hook": "Move. Now.",
+      "output": "💪 Move. Now.\n\nPush-ups: 3×12\nSquats: 3×15\nPlank: 3×45s\n\n12 minutes.\n\nNo excuses.",
+      "word_count": 22,
+      "style": "Aggressive/direct — high intensity vibe",
+      "strengths": [
+        "Shortest hook (2 words)",
+        "Highest urgency",
+        "Memorable and punchy"
+      ],
+      "weaknesses": [
+        "May feel too aggressive for 4:30 AM",
+        "No time or exercise info in hook",
+        "Polarizing — some may dislike tone"
+      ],
+      "aps_score": 18
+    }
+  ],
+  "ranking": {
+    "1st": "imperative_action (APS 18)",
+    "2nd": "exercise_first (APS 20)",
+    "3rd": "goal_first (APS 22)",
+    "4th": "time_first (APS 25)"
+  },
+  "analysis": {
+    "winner": "imperative_action",
+    "caveat": "Shortest APS but may be too aggressive for daily use",
+    "recommendation": {
+      "primary": "exercise_first",
+      "reason": "Best balance of clarity, action, and tone for 4:30 AM",
+      "rotation": "Mix in time_first for busy days, goal_first for Natasha"
+    },
+    "key_insight": "All variants scored 18-25 (excellent range). The key is consistency: short hook (<10 words), no greeting, clear format."
+  },
+  "dax_specific_learnings": {
+    "optimal_length": "22-28 words (vs 122 in baseline)",
+    "hook_sweet_spot": "2-6 words, imperative or time-based",
+    "format": "Hook → Exercises (abbreviated) → Time → Why",
+    "natasha_differentiator": "Add 'Bodyweight only' or 'No equipment' in hook"
+  }
+}

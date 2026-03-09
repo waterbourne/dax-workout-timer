@@ -1,11 +1,12 @@
 {
   "agent": "dax",
-  "aps_score": 75,
+  "aps_score": 110,
   "metrics": {
-    "avg_response_time_hours": 2.5,
-    "user_engagement_rate": 0.3,
-    "error_rate": 0.02
+    "avg_word_count": 122,
+    "has_greeting": true,
+    "has_fluff": true,
+    "format_predictable": true
   },
-  "created": "2026-03-09T08:15:00-08:00",
-  "notes": "Baseline before autoresearch experiments. Issues: Predictable format, declining engagement."
+  "created": "2026-03-09T11:45:00-08:00",
+  "notes": "Baseline before autoresearch. Issues: 122 words, greetings, fluff, predictable format."
 }
