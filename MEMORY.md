@@ -256,19 +256,33 @@ Start: 3:00 PM | Drive: 45 min
 
 **Components:**
 - `program.md` — Human-defined experiment instructions (the "constitution")
-- `agent_runner.py` — Executes experiments, measures APS (Agent Performance Score)
+- `APS_RUBRIC.md` — Standardized scoring rubric (v2.0, binary checks)
 - `baselines/` — Current agent performance baselines
 - `experiments/` — Git branches for each experiment
 
 **APS Scoring (Agent Performance Score):**
-- Lower is better (target: 60-70 range for most agents)
-- Based on: engagement, quality, timeliness, error-free
-- Current baselines: Dax=75, Guru=70, Sol=80
+- **Lower is better** — Target: 15-30 (excellent range)
+- **Rubric v2.0:** Binary checks only, no subjective judgment
+- **Bonuses (subtract from 100):** Length 45-55 (-20), has number (-10), kid interest (-10), etc.
+- **Penalties (add to 100):** Preamble (+15), length >100 (+15), multiple concepts (+10)
 
-**Target Improvements:**
-- Dax: Shorter hooks (< 10 words), remove "Good morning" preamble
-- Guru: Max 3 sentences, end with single action item
-- Sol: Start with kid-friendly hooks (dinosaurs, space, legos)
+**Sol Experiments Completed:**
+| Experiment | Baseline | Improved | Result |
+|------------|----------|----------|--------|
+| Hook optimization | APS 95 | APS 25 | ✅ 74% better |
+| Hook type (dino/space/LEGO) | — | APS 15-25 | All excellent |
+
+**Key Learnings (Proven):**
+- **Hook formula:** [Specific number] + [Relatable comparison] + [Personal connection]
+- **Length:** 45-55 words optimal (was 120-150)
+- **Rotation:** LEGO 40%, Space 30%, Dinosaurs 30%
+- **Structure:** NO preamble, ONE concept, end with "Ask your parents"
+
+**Scoring Reconciliation (Important):**
+- **Issue:** Manual (80→45) vs automated (110→100) experiments had different scores
+- **Root cause:** Subjective hook assessment, inconsistent targets, penalty confusion
+- **Fix:** Standardized rubric with binary checks only
+- **See:** `autoresearch/RECONCILIATION_REPORT.json` for full analysis
 
 **Safety:**
 - One variable change per experiment
@@ -276,4 +290,4 @@ Start: 3:00 PM | Drive: 45 min
 - Cannot modify: schedules, credentials, system configs
 - Human maintains `program.md`
 
-**Status:** Baselines captured, ready for autonomous experimentation.
+**Status:** Sol prompt v2.0 deployed. Ready for Dax experiments.
