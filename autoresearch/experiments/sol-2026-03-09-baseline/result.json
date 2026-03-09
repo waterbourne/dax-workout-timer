@@ -1,0 +1,10 @@
+{
+  "agent": "sol",
+  "experiment": "baseline-vs-improved-hook",
+  "baseline_aps": 110,
+  "improved_aps": 100,
+  "improved": true,
+  "baseline_output": "📚 Did you know the T-Rex had teeth as long as your whole hand?\n\nThe T-Rex had 50-60 banana-sized teeth that could crush bone! But here's the cool part: scientists think T-Rexes might have hunted in packs, like wolves. That means they worked together—just like when you and your friends build a big LEGO set together.\n\nDid you know? The word \"dinosaur\" means \"terrible lizard,\" but they weren't actually lizards at all! They were more closely related to birds.\n\nAsk your parents: What would be harder to build—one giant LEGO T-Rex alone, or a whole pack of smaller dinos with your friends?",
+  "improved_output": "📚 T-Rex teeth were as long as your whole hand!\n\nImagine holding a banana in your mouth—that's how big T-Rex teeth were! These massive teeth were serrated like a steak knife, perfect for chomping through meat. A T-Rex had about 50-60 of these giant teeth at once.\n\nDid you know? When a T-Rex tooth fell out, a new one grew in its place—just like your baby teeth, but way scarier!\n\nAsk your parents: How many of your hands would fit inside a T-Rex mouth?",
+  "change_made": "Started with punchy kid-friendly hook 'T-Rex teeth were as long as your whole hand!' (following prompt examples) instead of weak 'Did you know' opening. Also focused on ONE concept (T-Rex teeth only) instead of mixing teeth + pack hunting."
+}
