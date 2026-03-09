@@ -23,8 +23,8 @@ if (!fs.existsSync(PODCAST_DIR)) {
 function generateAudio(text, outputFile) {
     try {
         // macOS built-in TTS (fallback)
-        // Using 'Samantha' voice - warm, natural sounding
-        const cmd = `say -v Samantha -o "${outputFile}.aiff" "${text.replace(/"/g, '\\"')}"`;
+        // Using 'Ava' voice - premium, natural sounding
+        const cmd = `say -v Ava -o "${outputFile}.aiff" "${text.replace(/"/g, '\\"')}"`;
         execSync(cmd, { timeout: 60000 });
         
         // Convert to MP3 using ffmpeg (if available) or keep as aiff

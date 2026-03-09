@@ -75,7 +75,6 @@ The dashboard reads from `dashboard-data.json`. To update with real data:
 | 👨‍🍳 Raju | Head Chef | 7:30 PM | Dinner planning, shopping lists |
 | 📅 Calendar Monitor | Departure Alerts | Every 15 min | Travel time calculations |
 | 🔍 Error Review | EOD Improvement | 10:30 PM | Daily error analysis |
-| 👁️ Bob | The Auditor | Every hour | Quality assurance |
 
 ## Communicating with Agents
 

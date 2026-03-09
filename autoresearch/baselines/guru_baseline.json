@@ -1,0 +1,11 @@
+{
+  "agent": "guru",
+  "aps_score": 70,
+  "metrics": {
+    "avg_response_time_hours": 4.0,
+    "user_engagement_rate": 0.25,
+    "error_rate": 0.01
+  },
+  "created": "2026-03-09T08:15:00-08:00",
+  "notes": "Baseline before autoresearch experiments. Issues: Too verbose for morning delivery."
+}

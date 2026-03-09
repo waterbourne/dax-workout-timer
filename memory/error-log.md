@@ -10,6 +10,18 @@
 - **Rule Updated:** AGENTS.md section/file updated
 ```
 
+## 2026-03-04
+
+### 2:41 PM - DST Timezone Error
+- **Context:** User reported departure alerts showing "leave by" times 1 hour early
+- **Error:** "Leave by 3:30 PM" shown when actual leave time should be 4:30 PM for 5:00 PM event
+- **Root Cause:** System using PST (UTC-8) offset instead of PDT (UTC-7) during DST
+- **Fix Applied:** 
+  - Updated calendar_config.yaml with explicit timezone and DST handling
+  - Updated orchestrator/state.json with dst_active flag and current_utc_offset
+  - Added DST transition dates to config
+- **Rule Updated:** TOOLS.md - Calendar Monitor timezone handling
+
 ## 2026-02-18
 
 ### 10:11 AM - Calendar Date Night Error

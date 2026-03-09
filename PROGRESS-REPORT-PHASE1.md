@@ -94,7 +94,7 @@ Detailed implementation plan:
 | **4. Workload Balancing** | ✅ Scheduled | Guru moved to 5:15 AM, Raju to 7:00 PM |
 | **5. Fallback Channels** | ✅ Configured | Telegram → iMessage → Dead Letter |
 | **6. User State Awareness** | ✅ Schema Ready | Travel mode, work hours, family time in state.json |
-| **7. Health Monitoring** | ✅ Spec Complete | Bob audit rules, health checks defined |
+| **7. Health Monitoring** | ✅ Spec Complete | Health checks defined in agent-registry.json |
 
 ---
 
@@ -108,7 +108,6 @@ Detailed implementation plan:
 | Sol | ✅ Active | 88% success | Timeout errors |
 | Atlas | ✅ Active | 91% success | None |
 | Raju | ⏸️ Disabled | 96% success | **Travel mode** (Carmel Valley Feb 19-22) |
-| Bob | ✅ Active | 94% success | None |
 
 ### User State (from state.json)
 ```yaml
@@ -133,9 +132,8 @@ family:
 ## Immediate Actions Required
 
 ### Before Next Report (3 hours):
-1. **Review** - Bob should review ARCHITECTURE.md and AGENTS.md v2.0
-2. **Validate** - Check if cron-jobs-v2.json can be loaded by OpenClaw
-3. **Test** - Verify state.json and agent-registry.json are valid JSON
+1. **Validate** - Check if cron-jobs-v2.json can be loaded by OpenClaw
+2. **Test** - Verify state.json and agent-registry.json are valid JSON
 
 ### Phase 2 (Next 7 days):
 1. Implement Schedule Manager (sequential execution)

@@ -1,0 +1,10 @@
+{
+  "name": "autoresearch",
+  "version": "1.0.0",
+  "description": "Self-improving agent system for OpenClaw",
+  "dependencies": {},
+  "scripts": {
+    "baseline": "python agent_runner.py --agent dax --dry-run",
+    "experiment": "python agent_runner.py"
+  }
+}

@@ -34,11 +34,11 @@ The OpenClaw system is evolving from 5 independent vertical agents (Dax, Guru, S
           ▼                ▼                ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                         AGENT POOL (Verticals)                          │
-│  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────────┐ │
-│  │  Dax   │ │  Guru  │ │  Sol   │ │  Atlas │ │  Raju  │ │   Bob      │ │
-│  │ 💪     │ │ 🧘     │ │ 📚     │ │ 🏛️    │ │ 👨‍🍳    │ │ 👁️       │ │
-│  │Fitness │ │Spirit  │ │Academic│ │Philosophy│ │ Chef  │ │ Auditor   │ │
-│  └────────┘ └────────┘ └────────┘ └────────┘ └────────┘ └────────────┘ │
+│  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐                │
+│  │  Dax   │ │  Guru  │ │  Sol   │ │  Atlas │ │  Raju  │                │
+│  │ 💪     │ │ 🧘     │ │ 📚     │ │ 🏛️    │ │ 👨‍🍳    │                │
+│  │Fitness │ │Spirit  │ │Academic│ │Philosophy│ │ Chef  │                │
+│  └────────┘ └────────┘ └────────┘ └────────┘ └────────┘                │
 └─────────────────────────────────────────────────────────────────────────┘
           │                │                │
           ▼                ▼                ▼
@@ -354,23 +354,6 @@ memory/
         "avg_runtime_seconds": 87
       },
       "skip_reason": "User traveling to Carmel Valley Ranch"
-    },
-    "bob": {
-      "name": "Bob",
-      "role": "The Auditor",
-      "emoji": "👁️",
-      "capabilities": ["quality_assurance", "pattern_detection", "process_improvement"],
-      "schedule": "Every hour",
-      "priority": "high",
-      "timeouts": {"generation": 120, "delivery": 30},
-      "dependencies": [],
-      "notifications": ["all.agent_outputs"],
-      "status": "active",
-      "health": {
-        "last_run": "2026-02-19T08:00:00-08:00",
-        "success_rate_7d": 0.94,
-        "avg_runtime_seconds": 45
-      }
     }
   }
 }

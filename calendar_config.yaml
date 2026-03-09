@@ -5,6 +5,17 @@ primary_ical_url: https://calendar.google.com/calendar/ical/on9f1k6ou2052pvqhlah
 # Default departure location
 default_location: San Francisco, CA
 
+# Timezone configuration (critical for DST handling)
+timezone: America/Los_Angeles
+# DST Note: Second Sunday in March - First Sunday in November
+# Current offset: PDT (UTC-7) during DST, PST (UTC-8) during standard time
+
 # Alert settings
 alert_buffer_minutes: 15
 check_interval_minutes: 15
+
+# User preferences
+# Note: Departure alerts disabled per user request (Mar 4, 2026)
+# Previous behavior: Sent "leave by" reminders 15-60 min before events
+# Reason: Timing issues, too noisy
+departure_alerts_enabled: false

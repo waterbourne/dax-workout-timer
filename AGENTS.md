@@ -17,7 +17,6 @@ This folder is home. Treat it that way.
 | **Sol** | Academic Tutor | 7:00 AM daily | ⚠️ Timeout Issues | Tomorrow 7:00 AM |
 | **Atlas** | Philosophy Tutor | 5:15 PM daily | ✅ Active | Today 5:15 PM |
 | **Raju** | Head Chef | 7:00 PM daily | ⏸️ Travel Mode | Disabled until 2/22 |
-| **Bob** | The Auditor | Every hour | ✅ Active | Next hour |
 | **Orchestrator** | System Coordinator | Continuous | ✅ Active | - |
 
 ---
@@ -142,13 +141,6 @@ DONE
   - If `departing_within_hours <= 24` → Skip with travel food note
   - If `travel.status == "traveling"` → Skip entirely
   - Check Dax's workout intensity → adjust meal complexity
-
-#### Bob (The Auditor)
-- **Dependencies:** None (runs independently)
-- **Coordination:**
-  - Monitors all agent outputs via delivery queue
-  - Can read all shared memory
-  - Alerts on systemic issues only
 
 ---
 
@@ -497,41 +489,6 @@ Real-time agent monitoring at `dashboard.html`:
 - Tokens used
 - Status changes
 - **NEW:** Queue position (if applicable)
-
----
-
-## Oversight: Bob the Auditor
-
-All agent work (including mine) is reviewed by **Bob**, the oversight agent.
-
-**Bob's Rules:**
-1. Prioritize outcomes AND accuracy
-2. Don't be a roadblock — approve quickly if good enough
-3. Propose process improvements when he sees patterns
-4. Monitor workload stress across all agents
-5. **NEW:** Monitor orchestrator health
-
-**Process:**
-- Bob reviews work hourly
-- Silent approval (NO_REPLY) if everything looks good
-- Flags issues via Telegram if he finds problems
-- Logs all reviews in `memory/bob-audit-log.md`
-- Proposes AGENTS.md/TOOLS.md updates for systemic issues
-- **NEW:** Reviews delivery queue health
-
-**Current Agent Roster:**
-| Agent | Role | Schedule | Dashboard | Dependencies |
-|-------|------|----------|-----------|--------------|
-| Dax | Personal Trainer | 4:30 AM daily | 💪 | None |
-| Guru | Spirituality Guide | 5:15 AM daily | 🧘 | None |
-| Sol | Tutor (Academic) | 7:00 AM daily | 📚 | Guru |
-| Atlas | Tutor (Philosophy) | 5:15 PM daily | 🏛️ | None |
-| Raju | Head Chef | 7:00 PM daily | 👨‍🍳 | None* |
-| Calendar Monitor | Departure alerts | Every 15 min | 📅 | None |
-| Error Review | EOD improvement | 10:30 PM daily | 🔍 | None |
-| Bob | Auditor | Every hour | 👁️ | None |
-
-*Raju skips if traveling
 
 ---
 

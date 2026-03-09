@@ -213,7 +213,7 @@ Start: 3:00 PM | Drive: 45 min
 - **Root Cause:** Mixed issues - delivery layer instability + insufficient timeouts for deep-reasoning agents
 - **Pattern:** Balthazar (150s) and Atlas (180s) hitting timeout despite 180s limit - deep reasoning + delivery exceeds timeout
 - **Fix Needed:** 
-  1. Increase timeouts: Balthazar 150s→200s, Error Review 120s→180s
+  1. Increase timeouts: Balthazar 150s→200s
   2. Investigate Telegram delivery channel reliability
 - **Rule:** Content generation + delivery must fit within timeout; add 30s buffer for delivery layer
 
@@ -244,5 +244,36 @@ Start: 3:00 PM | Drive: 45 min
 **Telegram Delivery — Intermittent, Not Broken**
 - Delivery failures throughout Feb 19 were transient API issues, not agent logic errors
 - Pattern: 2-hour stability windows followed by brief failures — classic rate limiting or connectivity
-- Bob's recovery confirmed: Some agents fail while others succeed, indicating intermittent capacity, not systematic failure
+- Recovery pattern: Some agents fail while others succeed, indicating intermittent capacity, not systematic failure
 - **Action:** Monitor for sustained patterns before declaring crisis; most "crises" resolve within hours
+
+### March 2026 — AutoResearch Integration (March 9, 2026)
+
+**Karpathy autoresearch incorporated into OpenClaw**
+- **Idea:** AI agent autonomously iterates on agent prompts, commits improvements
+- **Source:** github.com/karpathy/autoresearch (nanochat training → OpenClaw agents)
+- **Location:** `autoresearch/` directory in workspace
+
+**Components:**
+- `program.md` — Human-defined experiment instructions (the "constitution")
+- `agent_runner.py` — Executes experiments, measures APS (Agent Performance Score)
+- `baselines/` — Current agent performance baselines
+- `experiments/` — Git branches for each experiment
+
+**APS Scoring (Agent Performance Score):**
+- Lower is better (target: 60-70 range for most agents)
+- Based on: engagement, quality, timeliness, error-free
+- Current baselines: Dax=75, Guru=70, Sol=80
+
+**Target Improvements:**
+- Dax: Shorter hooks (< 10 words), remove "Good morning" preamble
+- Guru: Max 3 sentences, end with single action item
+- Sol: Start with kid-friendly hooks (dinosaurs, space, legos)
+
+**Safety:**
+- One variable change per experiment
+- Git-based (all changes revertible)
+- Cannot modify: schedules, credentials, system configs
+- Human maintains `program.md`
+
+**Status:** Baselines captured, ready for autonomous experimentation.

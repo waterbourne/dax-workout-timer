@@ -60,15 +60,7 @@
 - Spirituality: No action unless asked (The Way app)
 - Head Chef: Only responds to 7:00 PM cron or direct questions (or travel mode)
 
-### 9. Error Review Check
-**Frequency:** Daily
-- Read: `memory/error-log.md`
-- Read: `memory/bob-audit-log.md`
-- Review any errors from today
-- Identify patterns and root causes
-- Update AGENTS.md/TOOLS.md with new rules if needed
-
-### 10. Daily Memory Log (NEW - High Priority)
+### 9. Daily Memory Log (NEW - High Priority)
 **Frequency:** Every heartbeat after 8:00 PM
 - [ ] Check if `memory/YYYY-MM-DD.md` exists for today's date
 - [ ] If missing AND time is after 8:00 PM → CREATE IT

@@ -110,30 +110,6 @@ scheduling:
           check: "orchestrator/state.json:user_state.travel.status"
           values: ["traveling"]
           
-    error_review:
-      name: "Error Review"
-      role: "EOD Improvement"
-      schedule: "30 22 * * *"  # 10:30 PM daily
-      timezone: "America/Los_Angeles"
-      priority: low
-      enabled: true
-      max_runtime_seconds: 120
-      dependencies: []
-      notifications: []
-      skip_conditions: []
-      
-    bob:
-      name: "Bob"
-      role: "The Auditor"
-      schedule: "every:60min"
-      timezone: "America/Los_Angeles"
-      priority: high
-      enabled: true
-      max_runtime_seconds: 120
-      dependencies: []
-      notifications: ["all_agent_outputs"]
-      skip_conditions: []
-
   # Rate limiting
   rate_limits:
     global:
