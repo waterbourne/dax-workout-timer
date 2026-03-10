@@ -1,0 +1,49 @@
+{
+  "test_run": {
+    "agent": "sol",
+    "version": "v2.0",
+    "date": "2026-03-09",
+    "subject": "Science (dinosaurs)",
+    "rotation": "Dinosaurs (30% slot)"
+  },
+  "output": {
+    "lesson": "📚 T-Rex was 40 feet long — that's a school bus!\n\nT-Rex was one of the biggest meat-eating dinosaurs ever. It weighed 9 tons!\n\nDid you know? T-Rex had teeth the size of bananas!\n\nAsk your parents: How many of you would fit in a T-Rex?",
+    "word_count": 48,
+    "format_check": {
+      "starts_with_emoji": true,
+      "number_in_first_10_words": true,
+      "kid_interest_mentioned": true,
+      "one_concept_only": true,
+      "ends_with_ask_parents": true,
+      "has_did_you_know": true
+    }
+  },
+  "aps_calculation": {
+    "start": 100,
+    "bonuses": {
+      "length_45_55": -20,
+      "emoji": -5,
+      "has_number": -10,
+      "kid_interest": -10,
+      "comparison": -10,
+      "one_question": -10,
+      "ask_parents": -10,
+      "did_you_know": -10
+    },
+    "penalties": {},
+    "final_aps": 15
+  },
+  "assessment": {
+    "aps_score": 15,
+    "rating": "EXCELLENT",
+    "target_range": "15-30",
+    "meets_all_criteria": true
+  },
+  "notes": [
+    "Hook: Number (40 feet) + comparison (school bus) in first 10 words",
+    "T-Rex interest connects to Evaan's known likes",
+    "ONE concept: T-Rex size/scale only",
+    "Question is findable/measurable at home",
+    "48 words = optimal length"
+  ]
+}

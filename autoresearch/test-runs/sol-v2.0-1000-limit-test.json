@@ -1,0 +1,65 @@
+{
+  "test_run": {
+    "agent": "sol",
+    "version": "v2.0-1000-word-limit",
+    "date": "2026-03-09",
+    "subject": "Science (dinosaurs)",
+    "constraint": "Word limit: 1000 (generous upper bound)",
+    "note": "Can include story, multiple facts, depth while staying under 1000"
+  },
+  "output": {
+    "lesson": "📚 The T-Rex had teeth as long as your entire hand!
+
+Imagine holding a banana in your hand. Now imagine a tooth that size — sharp, serrated like a steak knife, and ready to crunch through bone. That's what T-Rex had in its mouth — sixty of them!
+
+T-Rex lived about 66 million years ago, during a time called the Cretaceous period. It was one of the last dinosaurs to exist before a giant asteroid struck Earth and changed everything. The asteroid was so big that it created a crater 93 miles wide — that's like driving from San Francisco to San Jose and back!
+
+But let's get back to T-Rex. It stood about 12 feet tall at the hips — that's taller than most grown-ups! And from its nose to the tip of its tail, it stretched 40 feet long. That's the length of a school bus. Imagine a school bus with teeth, running around at 12 miles per hour. That's faster than you can ride your bike!
+
+T-Rex had tiny arms — only about three feet long. Scientists used to think these arms were useless, but now they believe T-Rex might have used them to hold onto prey while biting down. Even small arms can be strong when they belong to a 9-ton predator!
+
+The name Tyrannosaurus Rex means Tyrant Lizard King in Greek. Tyranno means tyrant, saurus means lizard, and rex means king. So T-Rex was literally the king of the tyrant lizards!
+
+Here's something amazing: T-Rex had the strongest bite of any land animal that ever lived. Its bite force was about 12,800 pounds — that's like having three small cars sitting on whatever it was biting down on. Crunch!
+
+Scientists know all this because they study fossils. Fossils are the preserved remains of ancient animals. When T-Rex died, sometimes its bones got buried in mud and sand. Over millions of years, minerals seeped into the bones and turned them to stone. Paleontologists — scientists who study dinosaurs — dig up these fossils and put them together like giant puzzles.
+
+The most complete T-Rex skeleton ever found is named Sue. Sue is 90% complete, which is incredibly rare. Most dinosaur skeletons are only 50-60% complete. Sue lives at the Field Museum in Chicago, and over 10 million people have visited to see her!
+
+Did you know? T-Rex might have had feathers when it was young! Scientists have found fossils of other T-Rex relatives with feathery impressions around their bodies. Imagine a fuzzy baby T-Rex — cute but still deadly!
+
+Ask your parents: If you could have any dinosaur as a pet (and it would be friendly), which one would you choose and why?",
+    "word_count": 412,
+    "sections": {
+      "hook": "T-Rex teeth as long as your hand",
+      "explanation": "Tooth size, count, comparison to banana",
+      "context": "When T-Rex lived (66M years ago), asteroid extinction",
+      "size_details": "12ft tall, 40ft long, school bus comparison",
+      "fun_facts": "Tiny arms, name meaning, bite force",
+      "science_connection": "Fossils, paleontologists, Sue the T-Rex",
+      "surprise_fact": "Baby T-Rex might have had feathers",
+      "engagement_question": "Dinosaur pet choice"
+    }
+  },
+  "assessment": {
+    "word_count": 412,
+    "under_limit": true,
+    "engagement_factors": [
+      "Immediate visual hook (hand-sized teeth)",
+      "Relatable comparisons (banana, school bus, San Francisco to San Jose)",
+      "Story arc: teeth → size → arms → name → bite → fossils → Sue → feathers",
+      "Scientific process explained (fossils, paleontologists)",
+      "Real-world connection (Field Museum, 10M visitors)",
+      "Surprise ending (feathered baby T-Rex)",
+      "Imagination question (pet dinosaur)"
+    ],
+    "single_concept_maintained": "T-Rex throughout — no wandering to other dinosaurs",
+    "age_appropriateness": "Complex concepts explained simply, lots of comparisons"
+  },
+  "comparison": {
+    "45_55_words": "Single fact, quick hit",
+    "118_words": "Layered explanation, 2-3 facts",
+    "412_words": "Story format, depth, multiple engagement points, builds understanding"
+  },
+  "use_case": "Weekend deep-dive or when Evaan shows extra interest in a topic"
+}

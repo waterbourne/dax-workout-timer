@@ -3,72 +3,14 @@
   "experiment": "baseline-vs-improved-hook",
   "hypothesis": "Shorter hook, no greeting, lead with action improves engagement",
   "date": "2026-03-09",
-  "rubric": {
-    "start": 100,
-    "bonuses": {
-      "length_under_80_words": -20,
-      "starts_with_emoji": -5,
-      "hook_under_10_words": -15,
-      "imperative_verb": -10,
-      "no_greeting": -10,
-      "clear_exercises_listed": -10,
-      "time_specified": -10,
-      "one_sentence_why": -5
-    },
-    "penalties": {
-      "good_morning_hey": 15,
-      "fluff_quotes": 10,
-      "length_over_150": 15,
-      "no_time_estimate": 10,
-      "predictable_format": 10
-    }
-  },
   "baseline": {
-    "output": "💪 Good morning Aditya! Hope you're ready to start your day strong. Today we have a fantastic full-body workout that will get your heart pumping and muscles working. We're going to focus on compound movements that work multiple muscle groups at once.\n\nHere's your workout:\n1. Push-ups: 3 sets of 12 reps\n2. Squats: 3 sets of 15 reps\n3. Plank: 3 sets of 45 seconds\n4. Lunges: 3 sets of 10 each leg\n\nTake 60 seconds rest between sets. Remember to breathe and maintain good form throughout. Quality over quantity! This workout should take about 25-30 minutes to complete.\n\nWhy this works: Compound movements maximize calorie burn and build functional strength for everyday activities. You've got this!",
+    "output": "Good morning Aditya! Hope you are ready to start your day strong. Today we have a fantastic full-body workout that will get your heart pumping and muscles working. We are going to focus on compound movements that work multiple muscle groups at once. Here's your workout: 1. Push-ups: 3 sets of 12 reps 2. Squats: 3 sets of 15 reps 3. Plank: 3 sets of 45 seconds 4. Lunges: 3 sets of 10 each leg. Take 60 seconds rest between sets. Remember to breathe and maintain good form throughout. Quality over quantity! This workout should take about 25-30 minutes to complete. Why this works: Compound movements maximize calorie burn and build functional strength for everyday activities. You have got this!",
     "word_count": 122,
-    "checks": {
-      "length_under_80": false,
-      "starts_with_emoji": true,
-      "hook_under_10_words": false,
-      "imperative_verb": false,
-      "no_greeting": false,
-      "clear_exercises": true,
-      "time_specified": true,
-      "one_sentence_why": false,
-      "good_morning_present": true,
-      "fluff_quotes": true,
-      "predictable_format": true
-    },
-    "calculation": {
-      "start": 100,
-      "bonuses": -5 -10,
-      "penalties": 15 + 10 + 10,
-      "aps": 110
-    },
     "aps_score": 110
   },
   "improved": {
-    "output": "💪 Three moves. 12 minutes.\n\nPush-ups: 3×12\nSquats: 3×15\nPlank: 3×45s\n\nRest 60s between sets.\n\nCompound movements = maximum burn in minimum time.",
+    "output": "Three moves. 12 minutes. Push-ups: 3x12. Squats: 3x15. Plank: 3x45s. Rest 60s between sets. Compound movements = maximum burn in minimum time.",
     "word_count": 28,
-    "checks": {
-      "length_under_80": true,
-      "starts_with_emoji": true,
-      "hook_under_10_words": true,
-      "imperative_verb": false,
-      "no_greeting": true,
-      "clear_exercises": true,
-      "time_specified": true,
-      "one_sentence_why": true,
-      "good_morning_present": false,
-      "fluff_quotes": false,
-      "predictable_format": false
-    },
-    "calculation": {
-      "start": 100,
-      "bonuses": -20 -5 -15 -10 -10 -10 -5,
-      "penalties": 0,
-      "aps": 25
-    },
     "aps_score": 25
   },
   "comparison": {
@@ -77,26 +19,5 @@
     "improvement": 85,
     "percent_better": "77%"
   },
-  "change_made": "Cut from 122 words to 28. Removed all greetings and fluff. Imperative hook (Three moves. 12 minutes.). Abbreviated exercise format (3×12 vs 3 sets of 12 reps). Single-sentence why.",
-  "analysis": {
-    "what_worked": [
-      "6-word hook is punchy and actionable",
-      "28 words vs 122 = 77% shorter",
-      "No preamble = immediate value",
-      "Abbreviated format (3×12) scannable at 4:30 AM",
-      "Time upfront sets expectation"
-    ],
-    "natasha_variant": {
-      "output": "💪 Bodyweight only. 10 minutes.\n\nPush-ups: 3×10\nSquats: 3×15\nPlank: 3×30s\n\nNo equipment needed. Rest as needed.",
-      "word_count": 23,
-      "aps_score": 20,
-      "note": "Even shorter — explicit 'bodyweight only' for Natasha"
-    }
-  },
-  "next_experiments": [
-    "Test hook types: Time-first vs Exercise-first vs Goal-first",
-    "Test exercise format: Abbreviated vs Full text vs Emoji-enhanced",
-    "Test 'why' placement: End vs Beginning vs None",
-    "Test Natasha-specific variations (bodyweight emphasis)"
-  ]
+  "change_made": "Cut from 122 words to 28. Removed all greetings and fluff. Imperative hook (Three moves. 12 minutes.). Abbreviated exercise format (3x12 vs 3 sets of 12 reps). Single-sentence why."
 }

@@ -1,0 +1,46 @@
+{
+  "test_run": {
+    "agent": "sol",
+    "version": "v2.0-no-word-limit",
+    "date": "2026-03-09",
+    "subject": "Science (space)",
+    "constraint": "NO word limit — focus on engagement and clarity only"
+  },
+  "output": {
+    "lesson": "📚 You could fit 1 million Earths inside the Sun!
+
+The Sun is HUGE. If the Sun were a basketball, Earth would be a tiny sesame seed floating next to it. That's how small our planet is compared to the Sun!
+
+The Sun is so big that it makes up 99.8% of all the mass in our entire solar system. All the planets, moons, asteroids, and comets together make up just 0.2%!
+
+Did you know? The Sun is actually a star — just like the twinkling stars you see at night. It's the closest star to Earth, which is why it looks so big and bright!
+
+Ask your parents: What else could you fit a million of inside the Sun?",
+    "word_count": 118,
+    "format_check": {
+      "starts_with_emoji": true,
+      "number_in_first_10_words": true,
+      "kid_interest_mentioned": true,
+      "comparison_used": true,
+      "one_concept_only": true,
+      "ends_with_ask_parents": true,
+      "has_did_you_know": true
+    }
+  },
+  "assessment": {
+    "word_count": 118,
+    "engagement_factors": [
+      "Mind-blowing scale (1 million Earths)",
+      "Relatable comparison (basketball vs sesame seed)",
+      "Additional wow factor (99.8% of solar system)",
+      "Personal connection (it's OUR star)",
+      "Open-ended question for exploration"
+    ],
+    "readability": "Appropriate for 7-year-old read-aloud with parent",
+    "notes": "Without word constraint, can include more 'wow' layers while maintaining single concept (Sun scale)"
+  },
+  "comparison_to_constrained": {
+    "constrained_48_words": "Quick hit, single wow moment",
+    "unconstrained_118_words": "Layered explanation, multiple awe moments, builds understanding"
+  }
+}
