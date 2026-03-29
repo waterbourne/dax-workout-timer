@@ -1,26 +1,30 @@
 {
   "lastChecks": {
-    "orchestrator": 1773123180,
-    "agent_health": 1773123180,
-    "delivery_queue": 1773123180,
-    "context_cache": 1773123180,
-    "travel_mode": 1773123180,
-    "email": null,
-    "calendar": 1773123180,
-    "weather": null,
-    "daily_memory": 1773100980
+    "orchestrator": 1773965640,
+    "agent_health": 1773965640,
+    "delivery_queue": 1773965640,
+    "context_cache": 1773965640,
+    "travel_mode": 1773965640,
+    "daily_memory": 1773877440,
+    "email": 1773965640,
+    "calendar": 1773965640,
+    "weather": null
   },
   "orchestratorStatus": {
     "systemHealthy": true,
     "queueDepth": 0,
     "agentsWithIssues": [],
-    "lastAlert": null
+    "lastAlert": null,
+    "userTravelStatus": "home",
+    "executionLock": "unlocked"
   },
   "notes": {
-    "status": "Heartbeat checks active",
-    "daily_memory_created": "2026-03-09T08:12:00-08:00",
-    "evening_status": "All systems healthy",
-    "current_focus": "family_time (17:00-21:00)",
-    "recent_work": "Sol and Dax autoresearch completed, prompts v2.0 deployed"
+    "status": "Heartbeat completed 07:34",
+    "daily_memory_created": "2026-03-25T01:04:00-07:00",
+    "system_health": "healthy",
+    "quiet_hours": "ended at 06:00",
+    "next_agent": "Balthazar at 13:00 (1:00 PM)",
+    "last_agent_run": "Sol at 07:00 AM - success",
+    "fix_applied": "Updated stale orchestrator/state.json timestamps (was showing March 21, corrected to March 25)"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "CALL": [
+    {
+      "entry_date": "2020-03-12",
+      "exit_date": "2020-03-26",
+      "direction": "CALL",
+      "score": 5,
+      "entry_price": 227.35891723632812,
+      "return": 0.02947475046298055,
+      "exit_reason": "MAX_HOLD",
+      "days_held": 10,
+      "sma200_slope": -0.023795321577950737,
+      "volume_spike": 

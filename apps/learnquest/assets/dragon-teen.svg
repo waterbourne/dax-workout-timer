@@ -1,0 +1,88 @@
+<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dragonBody2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5BC0A8"/>
+      <stop offset="100%" stop-color="#3AA688"/>
+    </linearGradient>
+    <linearGradient id="dragonBelly2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8F6F0"/>
+      <stop offset="100%" stop-color="#C8E8D8"/>
+    </linearGradient>
+    <linearGradient id="wingGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#44A08D"/>
+      <stop offset="100%" stop-color="#2D8B8B"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Back Wing (larger) -->
+  <path d="M105 55 Q140 30 145 65 Q130 78 105 65" fill="url(#wingGrad2)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M115 50 L120 70" stroke="#2D3561" stroke-width="1" opacity="0.5"/>
+  <path d="M125 48 L130 72" stroke="#2D3561" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Body -->
+  <ellipse cx="75" cy="90" rx="40" ry="45" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Belly Scales -->
+  <ellipse cx="75" cy="95" rx="25" ry="32" fill="url(#dragonBelly2)" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="75" cy="80" rx="8" ry="6" fill="#C8E8D8" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="65" cy="95" rx="6" ry="5" fill="#C8E8D8" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="85" cy="95" rx="6" ry="5" fill="#C8E8D8" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="75" cy="110" rx="6" ry="5" fill="#C8E8D8" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Tail -->
+  <path d="M35 115 Q10 130 10 100 Q15 85 30 95" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="10" cy="95" rx="8" ry="10" fill="#FF6B6B" stroke="#2D3561" stroke-width="2"/>
+  <path d="M5 90 L15 100 M15 90 L5 100" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Front Wing (larger) -->
+  <path d="M45 60 Q10 35 5 70 Q20 83 45 70" fill="url(#wingGrad2)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M35 55 L30 75" stroke="#2D3561" stroke-width="1" opacity="0.5"/>
+  <path d="M25 53 L20 77" stroke="#2D3561" stroke-width="1" opacity="0.5"/>
+  
+  <!-- Head -->
+  <circle cx="75" cy="50" r="35" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Snout -->
+  <ellipse cx="75" cy="65" rx="18" ry="12" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Nostrils (puffing smoke) -->
+  <circle cx="68" cy="62" r="3" fill="#2D3561"/>
+  <circle cx="82" cy="62" r="3" fill="#2D3561"/>
+  <circle cx="62" cy="60" r="5" fill="#888888" opacity="0.5"/>
+  <circle cx="88" cy="60" r="5" fill="#888888" opacity="0.5"/>
+  
+  <!-- Eyes (more confident) -->
+  <circle cx="58" cy="45" r="11" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="58" cy="45" r="7" fill="#4ECDC4"/>
+  <circle cx="60" cy="43" r="3" fill="#FFFFFF"/>
+  <path d="M48 38 Q58 35 68 38" fill="none" stroke="#2D3561" stroke-width="2"/>
+  
+  <circle cx="92" cy="45" r="11" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="92" cy="45" r="7" fill="#4ECDC4"/>
+  <circle cx="94" cy="43" r="3" fill="#FFFFFF"/>
+  <path d="M82 38 Q92 35 102 38" fill="none" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Horns (bigger) -->
+  <path d="M50 25 L42 8 L55 23" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+  <path d="M100 25 L108 8 L95 23" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Spikes on back -->
+  <path d="M35 75 L30 60 L40 72" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+  <path d="M35 95 L28 82 L38 92" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+  <path d="M115 75 L120 60 L110 72" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+  <path d="M115 95 L122 82 L112 92" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Teeth (more prominent) -->
+  <path d="M65 75 L67 80 L70 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <path d="M80 75 L83 80 L85 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Fire Breath -->
+  <ellipse cx="75" cy="82" rx="12" ry="8" fill="#FF6B6B" opacity="0.7"/>
+  <ellipse cx="75" cy="82" rx="8" ry="5" fill="#FFD93D"/>
+  
+  <!-- Paws (claws) -->
+  <ellipse cx="50" cy="125" rx="10" ry="7" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M45 125 L43 130 M50 125 L50 131 M55 125 L57 130" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="100" cy="125" rx="10" ry="7" fill="url(#dragonBody2)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M95 125 L93 130 M100 125 L100 131 M105 125 L107 130" stroke="#2D3561" stroke-width="2"/>
+</svg>

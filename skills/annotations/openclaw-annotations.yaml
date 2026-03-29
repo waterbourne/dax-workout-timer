@@ -1,0 +1,38 @@
+# Annotations for OpenClaw Skills
+# These are local notes attached to skills that persist across sessions
+# Format: skill_id: [list of annotations]
+
+openclaw/sol-academic-tutor:
+  - "Revision 3: 45-55 word length is sweet spot (proven through experiments)"
+  - "Hook rotation: LEGO 40%, Space 30%, Dinosaurs 30%"
+  - "Always end with 'Ask your parents' — drives engagement"
+  - "APS target: 15-30 (excellent range)"
+
+openclaw/dax-personal-trainer:
+  - "Revision 2: 22-28 word hooks optimal (was 120+)"
+  - "Natasha variant MUST include 'bodyweight only' or 'no equipment'"
+  - "Hook style split: Exercise-first 60%, Time-first 25%, Goal-first 15%"
+
+openclaw/guru-spirituality-guide:
+  - "Revision 2: Removed strict word limits — natural length works better"
+  - "Direct attribution ('Marcus Aurelius:') beats 'The Stoics believed'"
+  - "Concrete observation opening > Abstract questions"
+  - "7-day rotation prevents monotony: Stoic → Zen → Gita → Stoic → Zen → Gita → Integration"
+
+openclaw/atlas-philosophy-tutor:
+  - "Revision 1: Character must be 7-10 years old (relatable to Evaan)"
+  - "Stories integrate with Sol's morning lesson themes"
+  - "Clear morals for March, nuanced choices for April+"
+  - "Include dinner discussion question for family engagement"
+
+openclaw/raju-head-chef:
+  - "Revision 1: Always provide exactly 3 options"
+  - "15-35 minute meals for weeknights"
+  - "SF-local ingredients and Asian/Mexican influences"
+  - "Check for travel mode before suggesting meals"
+
+openclaw/balthazar-atelier-master:
+  - "Revision 1: Theatrical persona is critical — dry tone kills engagement"
+  - "Channel specific master artist each day"
+  - "Use exclamations and italics liberally"
+  - "Sign-off with multiple titles and humorous location"

@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-03-27T12:30:04.964344",
+  "market_data": {
+    "spy_close": 635.01,
+    "spy_change_pct": -1.56,
+    "vix_close": 31.18,
+    "vix_change_pct": 13.63
+  },
+  "indicators": {
+    "rsi5": 19.47,
+    "dist_ema20": -4.03,
+    "dist_sma50": -6.33,
+    "trend": "BEARISH",
+    "sma200_slope": NaN
+  },
+  "calls": {
+    "score": 3,
+    "strength": "\ud83d\udfe1 MODERATE",
+    "should_alert": false,
+    "factors": {
+      "rsi_oversold": {
+        "triggered": true,
+        "label": "RSI(5) = 19.5 \u2705"
+      },
+      "vix_fear": {
+        "triggered": true,
+        "label": "VIX fear spike \u2705 (31.2, +13.6%)"
+      },
+      "price_support": {
+        "triggered": false,
+        "label": "Near support EMA20/SMA50 "
+      },
+      "macd_bullish": {
+        "triggered": false,
+        "label": "MACD bullish cross "
+      },
+      "ibs_low": {
+        "triggered": true,
+        "label": "IBS capitulation \u2705 (0.060)"
+      },
+      "volume_spike": {
+        "triggered": "False",
+        "label": "Volume spike on down  (0.8x)"
+      }
+    }
+  },
+  "puts": {
+    "score": 0,
+    "strength": "\ud83d\udd34 NO SIGNAL",
+    "should_alert": false,
+    "factors": {
+      "rsi_overbought": {
+        "triggered": false,
+        "label": "RSI(5) = 19.5 "
+      },
+      "vix_crushed": {
+        "triggered": false,
+        "label": "VIX complacency  (31.2, +13.6%)"
+      },
+      "price_resistance": {
+        "triggered": false,
+        "label": "At/above resistance "
+      },
+      "macd_bearish": {
+        "triggered": false,
+        "label": "MACD bearish cross "
+      },
+      "ibs_high": {
+        "triggered": false,
+        "label": "IBS euphoria  (0.060)"
+      },
+      "volume_spike_up": {
+        "triggered": "False",
+        "label": "Volume spike on up  (0.8x)"
+      }
+    }
+  },
+  "alerted": false
+}

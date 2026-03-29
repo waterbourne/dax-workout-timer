@@ -31,7 +31,7 @@ end tell'
 
 | Person | Role | Notes |
 |--------|------|-------|
-| **Aditya** | Primary user | Daily workouts, meditation, deep work 6-10 AM |
+| **Aditya** | Primary user | Daily workouts, **advanced meditation practice** (mastered attention/presence, emotional awareness), deep work 6-10 AM |
 | **Natasha** | Wife | Workouts Mon/Wed/Fri only, **BODYWEIGHT ONLY** (no equipment), work lunches |
 | **Evaan** | Child, age 7 | Tutoring: Academic (7 AM), Philosophy/Arts (5:15 PM) |
 
@@ -45,12 +45,16 @@ If jobs disappear, recreate from `~/.openclaw/cron/jobs.json`:
 
 | Time | Job | Purpose | Delivery |
 |------|-----|---------|----------|
-| 4:30 AM | Personal Trainer | Workouts (Aditya daily + Natasha Mon/Wed/Fri) | Telegram |
-| 5:15 AM | Spirituality Guide | Meditation + Stoic reflection | Telegram |
-| 7:00 AM | Tutor - Academic | Math/Science/English/Phonics (Evaan, age 7) | Telegram |
-| 9:00 AM | Atelier Master | Daily painting missions, art instruction | Telegram |
-| 5:15 PM | Tutor - Philosophy | History, world religions, big questions (Evaan) | Telegram |
-| 7:00 PM | Head Chef | Dinner planning + shopping list | Telegram |
+| 4:30 AM | Personal Trainer (Dax) | Workouts (Aditya daily + Natasha Mon/Wed/Fri) | Telegram |
+| 5:00 AM | Morning Briefing | SF weather, markets, tech news, local events | Telegram |
+| 5:15 AM | Spirituality Guide (Guru) | Meditation + Stoic reflection | Telegram |
+| 7:00 AM | Tutor - Academic (Sol) | Math/Science/English/Phonics (Evaan, age 7) | Telegram |
+| 10:00 AM | System Debugger | Agent health check, error log analysis | Telegram |
+| ~~1:00 PM~~ | ~~Atelier Master (Balthazar)~~ | ~~Daily painting missions, art instruction~~ | ~~Removed Mar 25~~ |
+| 5:15 PM | Tutor - Philosophy (Atlas) | History, world religions, big questions (Evaan) | Telegram |
+| 7:00 PM | Head Chef (Raju) | Dinner planning + shopping list | Telegram |
+| 9:00 AM | Failure Monitor | Daily agent health summary | Telegram (if errors) |
+| Sun 3 AM | Context Compressor | Archives stale context-cache entries (30d+) | Silent |
 
 ---
 
@@ -76,7 +80,7 @@ Agents must check for upcoming travel and adjust accordingly:
 These agents ONLY respond to their cron schedule or direct questions:
 - **Spirituality Guide** — Uses The Way app (Henry Shukman), no action unless asked
 - **Head Chef** — Only 7:00 PM cron or direct questions
-- **Atelier Master** — Only 9:00 AM cron or direct questions
+- ~~Atelier Master~~ — Removed Mar 25 2026
 
 ---
 
@@ -95,11 +99,15 @@ These agents ONLY respond to their cron schedule or direct questions:
 | **Dax** | Personal Trainer | 4:30 AM | Workouts (Aditya daily, Natasha Mon/Wed/Fri) |
 | **Guru** | Spirituality Guide | 5:15 AM | Morning contemplation, wisdom traditions |
 | **Sol** | Tutor (Academic) | 7:00 AM | Evaan's math, science, English, phonics |
-| **Balthazar** | Atelier Master | 9:00 AM | Daily painting missions, art instruction |
+| ~~Balthazar~~ | ~~Atelier Master~~ | ~~1:00 PM~~ | ~~Removed Mar 25 2026~~ |
 | **Atlas** | Tutor (Philosophy) | 5:15 PM | Evaan's history, stories, big questions |
 | **Raju** | Head Chef | 7:00 PM | Dinner planning, shopping lists |
+| *(Morning Briefing)* | News/Weather/Markets | 5:00 AM | SF weather, tech headlines, local events |
+| *(System Debugger)* | Health Monitor | 10:00 AM | Agent error analysis, health reporting |
+| *(Failure Monitor)* | Watchdog | 9:00 AM | Daily health summary, silent if healthy |
+| *(Context Compressor)* | Cache Maintenance | Sun 3 AM | Archives stale context entries |
 
-**How to use:** Address them by name for direct requests. *"Dax, give me a core workout"* or *"Raju, something with salmon."* or *"Balthazar, what's today's painting mission?"*
+**How to use:** Address them by name for direct requests. *"Dax, give me a core workout"* or *"Raju, something with salmon."* or *"Atlas, tell me a story."*
 
 ---
 
@@ -129,10 +137,78 @@ Start: 3:00 PM | Drive: 45 min
 
 ---
 
+## Guru Configuration Update (Mar 20, 2026)
+
+Aditya clarified his practice level:
+- **Daily meditation** — established routine
+- **Attention/presence mastered** — no need for basic instruction
+- **Emotional awareness** — recognizes emotions as they arise, lets them flow through without reaction
+- **Guru focus now:** Koans, self-inquiry, emptiness, nonduality, consciousness exploration
+- **Guru avoids:** Basic meditation guidance, mindfulness 101, attention training
+
+Cron job updated with advanced practitioner prompt.
+
+---
+
 ## Notes
 - This policy is enforced in TOOLS.md (reference) and USER.md (preference)
 - Sub-agents are configured for Telegram-only delivery with explicit channel=telegram in their cron jobs
 - Calendar: "Bhavnani fam cal" = primary family planning calendar (Apple Calendar syncs Google)
+
+## Raju Prompt Update (March 24, 2026)
+
+**Issue:** Recipe repetition — chicken, fried rice, and similar cuisines appearing too frequently
+
+**Fix Applied:**
+- **SKILL.md v2.0** — Added explicit recipe diversity system
+- **Protein rotation rules** — Same protein max 2x/week, never back-to-back
+- **Cuisine rotation** — 8 cuisine categories, never repeat consecutive days
+- **Carb base variety** — Rice → Pasta → Bread → Potatoes → Noodles rotation
+- **Context tracking** — `shared/context-cache.raju.json` tracks recent meals
+
+**Next Delivery:** March 25 should show beef/pork/fish (no chicken), Mediterranean/Mexican/Indian (no Asian/Italian)
+
+---
+
+## Work Queue (Added March 24, 2026)
+
+**Location:** `QUEUE.md`  
+**Pattern:** Adopted from TARS Agent OS
+
+Single source of truth for all work:
+- **Blocked** — Active work stalled, waiting on user
+- **Active** — Currently being worked on
+- **Up Next** — Scoped, ready for autonomous pickup (Tier 1 or 2)
+- **Backlog** — Ideas exist but not scoped
+- **Done This Week** — Completed (auto-pruned after 7 days)
+
+**Up Next Criteria** (ALL must be true):
+1. Brief exists with scope defined
+2. Next action is concrete
+3. No blocking questions
+4. Autonomy Tier 1 or 2
+
+---
+
+## Knowledge Vault (Added March 24, 2026)
+
+**Location:** `vault/` directory  
+**Purpose:** Compounding knowledge base (from TARS architecture)
+
+**Structure:**
+- `vault/agents/` — Agent definitions, capabilities
+- `vault/concepts/` — Core frameworks, principles
+- `vault/lessons/` — Failure-tested rules
+- `vault/system/` — OS documentation
+
+**Key Documents:**
+- `vault/system/agent-os-architecture.md` — Complete TARS blueprint
+- `vault/agents/pixel-design-training.md` — Design agent skill modules
+- `vault/lessons/failure-tested-rules.md` — Production incidents → rules
+
+**Rule:** Promote to vault when knowledge has 6+ month relevance.
+
+---
 
 ## Daily Memory Logging Rule (Added Feb 24, 2026)
 **Enforcement:** HEARTBEAT.md Section 10
@@ -315,3 +391,75 @@ Start: 3:00 PM | Drive: 45 min
 **Dax-specific APS Rubric:**
 - Bonuses: Length 22-35 (-20), Hook ≤6 words (-15), No greeting (-10), Abbreviated format (-10)
 - Penalties: "Good morning" (+15), Length >80 (+15), Fluff quotes (+10)
+
+---
+
+## System Message Policy Change (March 23, 2026)
+
+**Problem:** User received 62 messages this morning with only 3 being actual cron job deliveries (Dax, Guru, Morning Briefing). The rest were diagnostic spam from Failure Monitor and System Debugger.
+
+**Solution:**
+
+| Component | Old Frequency | New Frequency | Behavior |
+|-----------|---------------|---------------|----------|
+| **Failure Monitor** | Every 30 minutes | **Daily @ 9:00 AM** | Silent if all healthy, ONE summary if errors |
+| **System Debugger** | Daily @ 10:00 AM | Unchanged | ONE summary message |
+| **Heartbeat** | Every 30 min checks | Every 30 min checks | Only alert on CRITICAL issues |
+
+**CRITICAL = Only these trigger immediate alerts:**
+- Delivery queue > 10 messages backing up
+- All delivery channels failing
+- Agent stuck > 30 minutes
+- Dead letter queue entries
+
+**Expected daily message volume:** ~5 messages (Dax, Guru, Morning Briefing, Failure Monitor summary if issues, System Debugger summary)
+
+**Files updated:**
+- `HEARTBEAT.md` — Revised alert policy
+- `MEMORY.md` — This section
+- Cron job: Deleted old every-30m Failure Monitor, created new daily @ 9 AM job
+
+---
+
+## iPad Optimization — Autoresearch Complete (March 23, 2026)
+
+**Problem:** Agent outputs were optimized for mobile (brief, ~20-50 words) but underutilized iPad screen real estate.
+
+**Solution:** Created iOD (iPad-Optimized Design) rubric and redesigned Dax, Sol, Guru prompts.
+
+### Results Summary
+
+| Agent | Mobile Words | iPad Words | Improvement | iOD Score |
+|-------|--------------|------------|-------------|-----------|
+| **Dax** | 24 | 94 | **4x depth** | 5/100 ✅ |
+| **Sol** | 47 | 132 | **2.8x depth** | 5/100 ✅ |
+| **Guru** | 23 | 118 | **5x depth** | 10/100 ✅ |
+
+### Key Changes
+- **Visual hierarchy:** 4-6 emoji-anchored sections
+- **Progress tracking:** Completion fields (Dax), experiments (Sol)
+- **Content depth:** 80-140 words vs 20-50
+- **Scanability:** 2-second comprehension with clear sections
+
+### New Prompts (Ready to Deploy)
+- `/autoresearch/agents/dax/prompt-v3.0-ipad.md`
+- `/autoresearch/agents/sol/prompt-v3.0-ipad.md`
+- `/autoresearch/agents/guru/prompt-v3.0-ipad.md`
+
+### Deployment Order
+1. **Dax** (lowest risk) — ✅ DEPLOYED March 23, 7:35 AM
+2. **Sol** (A/B test) — ✅ DEPLOYED March 23, 7:35 AM  
+3. **Guru** (last) — ✅ DEPLOYED March 23, 7:35 AM
+
+### Deployment Complete
+All three agents updated with iPad-optimized v3.0 prompts:
+- **Dax:** 6 sections, progress tracking, 80-120 words
+- **Sol:** 6 sections, interactive experiments, 100-140 words
+- **Guru:** 4 sections, technique guidance, 80-120 words
+
+**Cron Jobs Updated:**
+- `ec5763d1...` — Dax v3.0 (4:30 AM)
+- `83dfb3ed...` — Sol v3.0 (7:00 AM)
+- `69993156...` — Guru v3.0 (5:15 AM)
+
+**Full details:** `/autoresearch/iPad_OPTIMIZATION_SUMMARY.md`

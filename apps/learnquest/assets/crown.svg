@@ -1,0 +1,43 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="crownGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="50%" stop-color="#F9CA24"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+    <linearGradient id="jewelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#EE5A5A"/>
+    </linearGradient>
+    <radialGradient id="glowGrad" cx="50%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#FFD93D" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#FFD93D" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Glow Background -->
+  <ellipse cx="24" cy="20" rx="20" ry="12" fill="url(#glowGrad)"/>
+  
+  <!-- Crown Base -->
+  <path d="M8 32 L8 20 L16 26 L24 14 L32 26 L40 20 L40 32 Q24 38 8 32" fill="url(#crownGrad)" stroke="#B8860B" stroke-width="2"/>
+  
+  <!-- Crown Band -->
+  <rect x="8" y="28" width="32" height="8" rx="2" fill="#F9CA24" stroke="#B8860B" stroke-width="2"/>
+  
+  <!-- Jewels -->
+  <circle cx="24" cy="22" r="5" fill="url(#jewelGrad)" stroke="#2D3561" stroke-width="1.5"/>
+  <circle cx="24" cy="22" r="2" fill="#FF9999"/>
+  
+  <!-- Side Jewels -->
+  <circle cx="14" cy="30" r="3" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="34" cy="30" r="3" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Decorative Points -->
+  <circle cx="24" cy="14" r="3" fill="#FFD93D" stroke="#B8860B" stroke-width="1"/>
+  <circle cx="8" cy="20" r="3" fill="#FFD93D" stroke="#B8860B" stroke-width="1"/>
+  <circle cx="40" cy="20" r="3" fill="#FFD93D" stroke="#B8860B" stroke-width="1"/>
+  
+  <!-- Sparkles -->
+  <text x="8" y="12" font-family="serif" font-size="8" fill="#FFD93D">✦</text>
+  <text x="36" y="10" font-family="serif" font-size="8" fill="#FFD93D">✦</text>
+</svg>

@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "last_updated": "2026-03-02T16:01:00-08:00",
+  "last_updated": "2026-03-25T07:34:00-07:00",
   "user_state": {
     "location": {
       "current": "San Francisco, CA",
@@ -28,7 +28,7 @@
           "status": "completed"
         }
       ],
-      "last_updated": "2026-03-02T16:01:00-08:00"
+      "last_updated": "2026-03-10T18:19:00-07:00"
     },
     "work_hours": {
       "schedule": {
@@ -88,7 +88,8 @@
       "do_not_disturb": false,
       "travel_mode_auto_detect": true,
       "morning_digest": false,
-      "evening_summary": false
+      "evening_summary": false,
+      "departure_alerts": false
     }
   },
   "system_state": {
@@ -96,19 +97,19 @@
       "status": "active",
       "version": "2.0",
       "mode": "sequential",
-      "last_coordinator_run": "2026-02-19T04:30:00-08:00"
+      "last_coordinator_run": "2026-03-10T18:19:00-07:00"
     },
     "execution": {
       "current_agent": null,
       "last_agent_run": {
-        "agent": "guru",
-        "timestamp": "2026-02-21T06:00:00-08:00",
+        "agent": "sol",
+        "timestamp": "2026-03-25T07:00:00-07:00",
         "status": "success",
-        "duration_seconds": 47
+        "duration_seconds": 45
       },
       "next_scheduled_run": {
-        "agent": "sol",
-        "timestamp": "2026-02-21T07:00:00-08:00"
+        "agent": "balthazar",
+        "timestamp": "2026-03-25T13:00:00-07:00"
       },
       "execution_lock": {
         "locked": false,
@@ -118,14 +119,14 @@
     },
     "delivery": {
       "queue_depth": 0,
-      "last_delivery": "2026-02-21T06:00:00-08:00",
+      "last_delivery": "2026-03-10T17:15:00-07:00",
       "channels_available": ["telegram", "imessage"],
       "primary_channel_status": "healthy",
       "fallback_channel_status": "healthy"
     },
     "health": {
       "overall": "healthy",
-      "last_check": "2026-03-02T16:01:00-08:00",
+      "last_check": "2026-03-25T07:34:00-07:00",
       "checks": {
         "agents": "healthy",
         "delivery": "healthy",
@@ -139,11 +140,27 @@
   "dependencies": {
     "guru": {
       "completed": true,
-      "completed_at": "2026-02-21T06:00:00-08:00"
+      "completed_at": "2026-03-25T05:15:00-07:00"
     },
     "dax": {
       "completed": true,
-      "completed_at": "2026-02-21T04:30:00-08:00"
+      "completed_at": "2026-03-25T04:30:00-07:00"
+    },
+    "sol": {
+      "completed": true,
+      "completed_at": "2026-03-25T07:00:00-07:00"
+    },
+    "balthazar": {
+      "completed": true,
+      "completed_at": "2026-03-10T13:00:00-07:00"
+    },
+    "atlas": {
+      "completed": true,
+      "completed_at": "2026-03-10T17:15:00-07:00"
+    },
+    "raju": {
+      "completed": true,
+      "completed_at": "2026-03-10T19:00:00-07:00"
     }
   }
 }

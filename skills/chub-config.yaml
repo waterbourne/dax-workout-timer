@@ -1,0 +1,17 @@
+# OpenClaw Chub Configuration
+# Place at: ~/.chub/config.yaml
+
+sources:
+  - name: public
+    url: https://cdn.aichub.org/v1
+  - name: openclaw
+    path: /Users/sirius_bot/.openclaw/workspace/skills/registry/dist
+
+# Local annotations storage
+annotations:
+  path: /Users/sirius_bot/.openclaw/workspace/skills/annotations
+
+# Default settings
+defaults:
+  language: py  # or js, depending on agent
+  source: openclaw  # prefer our registry

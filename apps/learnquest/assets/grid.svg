@@ -1,0 +1,35 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="gridPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <!-- Background -->
+      <rect width="50" height="50" fill="#F8F9FA"/>
+      
+      <!-- Grid Lines -->
+      <line x1="0" y1="25" x2="50" y2="25" stroke="#E8E0E8" stroke-width="1"/>
+      <line x1="25" y1="0" x2="25" y2="50" stroke="#E8E0E8" stroke-width="1"/>
+      
+      <!-- Corner accent -->
+      <circle cx="0" cy="0" r="3" fill="none" stroke="#6B5B95" stroke-width="1" opacity="0.4"/>
+      <circle cx="50" cy="0" r="3" fill="none" stroke="#6B5B95" stroke-width="1" opacity="0.4"/>
+      <circle cx="0" cy="50" r="3" fill="none" stroke="#6B5B95" stroke-width="1" opacity="0.4"/>
+      <circle cx="50" cy="50" r="3" fill="none" stroke="#6B5B95" stroke-width="1" opacity="0.4"/>
+      
+      <!-- Center math symbol -->
+      <text x="25" y="28" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#6B5B95" opacity="0.2">+</text>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100" height="100" fill="#F8F9FA"/>
+  
+  <!-- Grid Pattern -->
+  <rect width="100" height="100" fill="url(#gridPattern)"/>
+  
+  <!-- Larger faint grid overlay -->
+  <line x1="0" y1="0" x2="100" y2="0" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="50" x2="100" y2="50" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="100" x2="100" y2="100" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+  <line x1="0" y1="0" x2="0" y2="100" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+  <line x1="50" y1="0" x2="50" y2="100" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+  <line x1="100" y1="0" x2="100" y2="100" stroke="#6B5B95" stroke-width="0.5" opacity="0.1"/>
+</svg>

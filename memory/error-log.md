@@ -1,5 +1,55 @@
 # Error Log - Daily Tracking
 
+## 2026-03-22
+
+### 8:43 AM - System Debugger Analysis
+- **Context:** Scheduled health check detected continued Guru failures
+- **Findings:**
+  - Guru cron job status: **error** (last run 3h ago)
+  - Sol cron job status: ok (but failed Mar 21 per prior log)
+  - 2 errors in last 7 days: 1 delivery, 2 model-related
+  - Disk: 34% used (64Gi/228Gi) — healthy
+  - All other agents: healthy, 0 consecutive errors
+- **Root Cause:** Guru failure pattern continues — possible model API intermittent issues or delivery layer instability
+- **Fix Applied:** None — monitoring continues
+- **Action:** Failure Monitor will trigger System Debugger if 3+ consecutive errors detected
+
+## 2026-03-21
+
+### 7:13 AM - SYSTEMIC FAILURE: Three Consecutive Morning Agents Failed
+- **Context:** Heartbeat check at 7:13 AM detected Sol failed at 7:00 AM
+- **Pattern:** 
+  - 5:00 AM: Morning Briefing — cron ran, delivery unconfirmed
+  - 5:15 AM: Guru — error status
+  - 7:00 AM: Sol — error status (14m ago)
+- **Error:** All three morning agents after Dax (4:30 AM) have failed
+- **Root Cause:** Unknown — likely systemic (gateway, model API, or delivery layer issue)
+- **Fix Applied:** None yet — requires immediate investigation
+- **Impact:** User receiving no morning content except Dax workout
+
+### 5:43 AM - Guru Cron Job Failure (Recurring)
+- **Context:** Heartbeat check at 5:43 AM detected Guru failed at 5:15 AM
+- **Error:** Guru cron job status shows "error" — ran 29 minutes ago but failed to deliver
+- **Root Cause:** Unknown — no detailed logs available; job uses moonshot/kimi-k2.5 (not Ollama)
+- **Fix Applied:** None yet — need to investigate further
+- **Impact:** Second consecutive day of Guru failures (yesterday: Ollama, today: unknown)
+
+---
+
+## 2026-03-20
+
+### 6:24 AM - Guru Cron Job Failure
+- **Context:** User asked to check Guru (Spirituality Guide) status
+- **Error:** Guru cron job failed at 5:15 AM with error status; last successful run was March 10 (10 days ago)
+- **Root Cause:** Guru configured to use `ollama/qwen3.5:9b` but Ollama service was not running
+- **Fix Applied:** 
+  - Removed old cron job (fd508029-62c1-4fab-9bea-241bbb6f9186)
+  - Created new cron job using `moonshot/kimi-k2.5` (matches other agents)
+  - Updated agent-registry.json with new cron_id and model
+- **Rule Updated:** AGENTS.md - Standardize all agents on moonshot/kimi-k2.5 (proven reliable) instead of local Ollama models
+
+---
+
 ## Format
 ```
 ## YYYY-MM-DD HH:MM

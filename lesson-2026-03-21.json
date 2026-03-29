@@ -1,0 +1,20 @@
+{
+  "id": "sol-2026-03-21",
+  "type": "lesson",
+  "subject": "science",
+  "title": "The Butterfly Transformation",
+  "grade": "2nd",
+  "level": "foundation",
+  "week": 3,
+  "duration": "15-20 min",
+  "content": {
+    "hook": "A caterpillar packs 2,000 times its own weight in food - that is like you eating 80,000 cheeseburgers before kindergarten!",
+    "concept": "Butterfly metamorphosis: egg to caterpillar to chrysalis to butterfly. The caterpillar eats 200x its body weight in milkweed, then its body melts into goo inside the chrysalis and rebuilds into a completely different creature in just 10 days.",
+    "activity": "Be an observer like Temple Grandin! If you find a caterpillar, watch it daily and draw what you see. Scientists still do not fully understand how the goo knows to become wings.",
+    "challenge": "Research: How many days total does a monarch butterfly live? (Hint: count the egg, caterpillar, chrysalis, and adult stages.)",
+    "parentNote": "Metamorphosis is a classic 2nd grade science topic. This lesson builds observation skills and connects to the Temple Grandin story about careful watching. Encourage drawing and writing observations."
+  },
+  "xp": 50,
+  "badges": ["observer", "metamorphosis-master"],
+  "date": "2026-03-21"
+}

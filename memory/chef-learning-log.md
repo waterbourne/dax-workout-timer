@@ -42,3 +42,36 @@
 - Preference notes go here
 - Dietary considerations
 - Favorite dishes discovered
+
+---
+
+## Recent Meal History (For Rotation Tracking)
+
+### March 2026
+
+| Date | Dish | Protein | Cuisine | Carb Base |
+|------|------|---------|---------|-----------|
+| Mar 20 | Chicken Tikka Bowls | Chicken | Indian | Rice |
+| Mar 20 | Lemon Garlic Salmon | Fish | Mediterranean | Pasta |
+| Mar 20 | Pasta Primavera | Vegetarian | Italian | Pasta |
+| Mar 21 | Crispy Chicken | Chicken | American | Potatoes |
+| Mar 21 | Shrimp Fried Rice | Shrimp | Asian | Rice |
+| Mar 21 | Margherita Pizza | Vegetarian | Italian | Bread |
+| Mar 22 | Sheet Pan Chicken | Chicken | American | Vegetables |
+| Mar 22 | Fried Rice | Pork | Asian | Rice |
+| Mar 22 | Tacos | Beef | Mexican | Tortillas |
+| Mar 24 | Honey Garlic Chicken | Chicken | Asian | Rice |
+| Mar 24 | Creamy Tomato Pasta | Vegetarian | Italian | Pasta |
+| Mar 24 | Simple Fried Rice | Shrimp | Asian | Rice |
+
+### Patterns Identified
+- **Issue:** Chicken appeared 5 times in 12 meals (42%)
+- **Issue:** Asian cuisine appeared 5 times, Italian 3 times
+- **Issue:** Rice base appeared 5 times, pasta 3 times
+- **Action:** Implement v2.0 rotation rules to enforce variety
+
+### Rotation Rules (v2.0)
+- Same protein: Max 2x per week, never consecutive days
+- Same cuisine: Never consecutive days
+- Same carb base: Alternate, max 2x per week
+- Weekly protein targets: Chicken 2x, Fish 2x, Beef/Pork 2x, Vegetarian 1x

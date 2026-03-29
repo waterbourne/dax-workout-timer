@@ -1,0 +1,93 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="lakeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="50%" stop-color="#44A08D"/>
+      <stop offset="100%" stop-color="#093637"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE5B4"/>
+      <stop offset="50%" stop-color="#FFECD2"/>
+      <stop offset="100%" stop-color="#FCB69F"/>
+    </linearGradient>
+    <linearGradient id="bookCover1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#EE5A5A"/>
+    </linearGradient>
+    <linearGradient id="bookCover2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#44A08D"/>
+    </linearGradient>
+    <linearGradient id="bookCover3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#F9CA24"/>
+    </linearGradient>
+    <linearGradient id="lilyPad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#88D8B0"/>
+      <stop offset="100%" stop-color="#5BC0A8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="400" height="400" fill="url(#skyGrad)"/>
+  
+  <!-- Mountains in Background -->
+  <path d="M0 180 L60 100 L120 160 L180 80 L250 140 L320 90 L400 160 L400 400 L0 400 Z" 
+        fill="#6B5B95" opacity="0.6" stroke="#4A4E8C" stroke-width="2"/>
+  
+  <!-- Lake -->
+  <ellipse cx="200" cy="320" rx="220" ry="120" fill="url(#lakeGrad)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Water Ripples -->
+  <ellipse cx="200" cy="320" rx="180" ry="80" fill="none" stroke="#5BC0A8" stroke-width="2" opacity="0.5"/>
+  <ellipse cx="200" cy="320" rx="140" ry="55" fill="none" stroke="#5BC0A8" stroke-width="2" opacity="0.4"/>
+  
+  <!-- Book 1 on Lily Pad -->
+  <g transform="translate(80, 280)">
+    <!-- Lily Pad -->
+    <ellipse cx="50" cy="25" rx="55" ry="30" fill="url(#lilyPad)" stroke="#2D3561" stroke-width="3"/>
+    <path d="M50 25 L95 25 A45 26 0 0 0 50 25" fill="#4ECDC4" opacity="0.3"/>
+    <!-- Book -->
+    <rect x="25" y="5" width="50" height="35" rx="3" fill="url(#bookCover1)" stroke="#2D3561" stroke-width="2"/>
+    <rect x="30" y="8" width="40" height="28" rx="2" fill="#FFF5E6" stroke="#2D3561" stroke-width="1"/>
+    <line x1="50" y1="8" x2="50" y2="36" stroke="#2D3561" stroke-width="2"/>
+  </g>
+  
+  <!-- Book 2 on Lily Pad -->
+  <g transform="translate(240, 260)">
+    <!-- Lily Pad -->
+    <ellipse cx="50" cy="25" rx="55" ry="30" fill="url(#lilyPad)" stroke="#2D3561" stroke-width="3"/>
+    <!-- Book -->
+    <rect x="25" y="5" width="50" height="35" rx="3" fill="url(#bookCover2)" stroke="#2D3561" stroke-width="2"/>
+    <rect x="30" y="8" width="40" height="28" rx="2" fill="#FFF5E6" stroke="#2D3561" stroke-width="1"/>
+    <line x1="50" y1="8" x2="50" y2="36" stroke="#2D3561" stroke-width="2"/>
+  </g>
+  
+  <!-- Book 3 on Lily Pad -->
+  <g transform="translate(160, 320)">
+    <!-- Lily Pad -->
+    <ellipse cx="50" cy="25" rx="55" ry="30" fill="url(#lilyPad)" stroke="#2D3561" stroke-width="3"/>
+    <!-- Book -->
+    <rect x="25" y="5" width="50" height="35" rx="3" fill="url(#bookCover3)" stroke="#2D3561" stroke-width="2"/>
+    <rect x="30" y="8" width="40" height="28" rx="2" fill="#FFF5E6" stroke="#2D3561" stroke-width="1"/>
+    <line x1="50" y1="8" x2="50" y2="36" stroke="#2D3561" stroke-width="2"/>
+  </g>
+  
+  <!-- Floating Pages -->
+  <g transform="translate(30, 200)" opacity="0.9">
+    <rect x="0" y="0" width="25" height="32" fill="#FFF5E6" stroke="#2D3561" stroke-width="2" transform="rotate(-15)"/>
+  </g>
+  <g transform="translate(340, 220)" opacity="0.85">
+    <rect x="0" y="0" width="25" height="32" fill="#FFF5E6" stroke="#2D3561" stroke-width="2" transform="rotate(20)"/>
+  </g>
+  <g transform="translate(120, 150)" opacity="0.8">
+    <rect x="0" y="0" width="25" height="32" fill="#FFF5E6" stroke="#2D3561" stroke-width="2" transform="rotate(-25)"/>
+  </g>
+  
+  <!-- Fireflies/Sparkles -->
+  <circle cx="60" cy="100" r="3" fill="#FFD93D" opacity="0.9"/>
+  <circle cx="340" cy="150" r="4" fill="#FFD93D" opacity="0.8"/>
+  <circle cx="200" cy="80" r="3" fill="#FFD93D" opacity="0.7"/>
+  <circle cx="100" cy="60" r="4" fill="#FFD93D" opacity="0.9"/>
+  <circle cx="300" cy="90" r="3" fill="#FFD93D" opacity="0.8"/>
+</svg>

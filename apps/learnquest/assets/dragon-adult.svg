@@ -1,0 +1,101 @@
+<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="dragonBody3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3AA688"/>
+      <stop offset="50%" stop-color="#2D8B8B"/>
+      <stop offset="100%" stop-color="#1E5F5F"/>
+    </linearGradient>
+    <linearGradient id="dragonBelly3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8F6F0"/>
+      <stop offset="100%" stop-color="#A8D8C8"/>
+    </linearGradient>
+    <linearGradient id="wingGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D8B8B"/>
+      <stop offset="100%" stop-color="#1E5F5F"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Large Back Wings -->
+  <path d="M110 50 Q155 20 155 65 Q135 82 110 68" fill="url(#wingGrad3)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M125 40 L130 72" stroke="#1E5F5F" stroke-width="2"/>
+  <path d="M138 38 L143 75" stroke="#1E5F5F" stroke-width="2"/>
+  <path d="M148 45 L148 78" stroke="#1E5F5F" stroke-width="2"/>
+  
+  <!-- Powerful Body -->
+  <ellipse cx="75" cy="85" rx="45" ry="50" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Chest Scales -->
+  <ellipse cx="75" cy="90" rx="28" ry="35" fill="url(#dragonBelly3)" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="75" cy="72" rx="10" ry="8" fill="#88D8B0" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="60" cy="90" rx="8" ry="7" fill="#88D8B0" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="90" cy="90" rx="8" ry="7" fill="#88D8B0" stroke="#2D3561" stroke-width="1"/>
+  <ellipse cx="75" cy="108" rx="8" ry="7" fill="#88D8B0" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Mighty Tail -->
+  <path d="M30 110 Q5 130 8 95 Q12 80 28 90" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="8" cy="92" rx="12" ry="15" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M0 85 L16 100 M16 85 L0 100" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Large Front Wings -->
+  <path d="M40 55 Q-5 25 -5 70 Q15 87 40 73" fill="url(#wingGrad3)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M25 45 L20 77" stroke="#1E5F5F" stroke-width="2"/>
+  <path d="M12 43 L7 80" stroke="#1E5F5F" stroke-width="2"/>
+  <path d="M2 50 L2 83" stroke="#1E5F5F" stroke-width="2"/>
+  
+  <!-- Regal Head -->
+  <circle cx="75" cy="45" r="40" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Strong Snout -->
+  <ellipse cx="75" cy="62" rx="22" ry="15" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Nostrils (flaring) -->
+  <ellipse cx="66" cy="58" rx="4" ry="3" fill="#2D3561"/>
+  <ellipse cx="84" cy="58" rx="4" ry="3" fill="#2D3561"/>
+  
+  <!-- Fierce Eyes -->
+  <path d="M52 38 L68 42 L52 46 Z" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="60" cy="42" r="5" fill="#FFD93D"/>
+  <circle cx="62" cy="40" r="2" fill="#FFFFFF"/>
+  <path d="M48 35 Q58 32 68 35" fill="none" stroke="#FFD93D" stroke-width="3"/>
+  
+  <path d="M82 42 L98 38 L98 46 Z" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="90" cy="42" r="5" fill="#FFD93D"/>
+  <circle cx="92" cy="40" r="2" fill="#FFFFFF"/>
+  <path d="M82 35 Q92 32 102 35" fill="none" stroke="#FFD93D" stroke-width="3"/>
+  
+  <!-- Crown-like Horns -->
+  <path d="M45 20 L35 0 L48 18" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M55 18 L50 5 L58 17" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M105 20 L115 0 L102 18" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M95 18 L100 5 L92 17" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Spiked Crown -->
+  <path d="M75 5 L70 20 L75 15 L80 20 Z" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Armored Spikes -->
+  <path d="M30 70 L22 52 L35 68" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M28 92 L18 78 L32 90" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M120 70 L128 52 L115 68" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M122 92 L132 78 L118 90" fill="url(#goldGrad)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Sharp Teeth -->
+  <path d="M62 75 L65 82 L68 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <path d="M70 75 L72 83 L75 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <path d="M78 75 L82 83 L85 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <path d="M88 75 L92 80 L95 75" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Powerful Fire Breath -->
+  <ellipse cx="75" cy="82" rx="18" ry="12" fill="#FF6B6B" opacity="0.8"/>
+  <ellipse cx="75" cy="82" rx="14" ry="8" fill="#FFD93D" opacity="0.9"/>
+  <ellipse cx="75" cy="82" rx="8" ry="4" fill="#FFFFFF" opacity="0.7"/>
+  
+  <!-- Powerful Claws -->
+  <ellipse cx="48" cy="125" rx="12" ry="8" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M40 123 L35 132 M48 123 L48 134 M56 123 L61 132" stroke="#2D3561" stroke-width="3"/>
+  <ellipse cx="102" cy="125" rx="12" ry="8" fill="url(#dragonBody3)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M94 123 L89 132 M102 123 L102 134 M110 123 L115 132" stroke="#2D3561" stroke-width="3"/>
+</svg>

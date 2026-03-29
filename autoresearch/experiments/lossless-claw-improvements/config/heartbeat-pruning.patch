@@ -1,0 +1,23 @@
+--- a/src/db/config.ts
++++ b/src/db/config.ts
+@@ -45,7 +45,7 @@ export function resolveConfig(): LcmConfig {
+     leafChunkTokens: int('LCM_LEAF_CHUNK_TOKENS', 20000),
+     leafTargetTokens: int('LCM_LEAF_TARGET_TOKENS', 1200),
+     condensedTargetTokens: int('LCM_CONDENSED_TARGET_TOKENS', 2000),
+-    pruneHeartbeatOk: bool('LCM_PRUNE_HEARTBEAT_OK', false),
++    pruneHeartbeatOk: bool('LCM_PRUNE_HEARTBEAT_OK', true),
+     largeFileTokenThreshold: int('LCM_LARGE_FILE_TOKEN_THRESHOLD', 25000),
+     largeFileSummaryModel: str('LCM_LARGE_FILE_SUMMARY_MODEL', ''),
+     largeFileSummaryProvider: str('LCM_LARGE_FILE_SUMMARY_PROVIDER', ''),
+
+--- a/README.md
++++ b/README.md
+@@ -234,7 +234,7 @@ Variable | Default | Description
+ `LCM_CONDENSED_TARGET_TOKENS` | 2000 | Target token count for condensed summaries
+ `LCM_MAX_EXPAND_TOKENS` | 4000 | Token cap for sub-agent expansion queries
+ `LCM_LARGE_FILE_TOKEN_THRESHOLD` | 25000 | File blocks above this size are intercepted and stored separately
+-`LCM_PRUNE_HEARTBEAT_OK` | false | Retroactively delete HEARTBEAT_OK turn cycles from LCM storage
++`LCM_PRUNE_HEARTBEAT_OK` | true | Retroactively delete HEARTBEAT_OK turn cycles from LCM storage
+ 
+ ### Recommended Defaults
+ 

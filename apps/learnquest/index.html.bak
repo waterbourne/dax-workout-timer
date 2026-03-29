@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnQuest RPG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --bg-dark: #0f0a1a;
+            --bg-card: #1a1230;
+            --bg-light: #251840;
+            --text-primary: #ffffff;
+            --text-secondary: #a78bfa;
+            --border: #3d2b5e;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(139, 92, 246, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+
+        .app-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border-radius: 20px;
+            border: 2px solid var(--border);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 40px;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .player-stats {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-icon {
+            font-size: 20px;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .level-badge {
+            background: linear-gradient(135deg, var(--accent), var(--warning));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: var(--bg-card);
+            padding: 10px;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--text-primary);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .kingdoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .kingdom-card {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kingdom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .kingdom-card:hover::before {
+            opacity: 1;
+        }
+
+        .kingdom-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .kingdom-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .kingdom-name {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .kingdom-desc {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .kingdom-progress {
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--bg-dark);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .kingdom-math .progress-fill { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .kingdom-ela .progress-fill { background: linear-gradient(90deg, #ec4899, #f472b6); }
+        .kingdom-science .progress-fill { background: linear-gradient(90deg, #10b981, #34d399); }
+        .kingdom-social .progress-fill { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .character-screen {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+
+        .character-avatar-section {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .avatar-display {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-light));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+
+        .character-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .character-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .xp-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: var(--bg-dark);
+            border-radius: 12px;
+        }
+
+        .xp-bar {
+            height: 15px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .xp-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #34d399);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .xp-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .character-stats {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .stats-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-row {
+            margin-bottom: 20px;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-bar {
+            height: 12px;
+            background: var(--bg-dark);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .stat-fill.math { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+        .stat-fill.ela { background: linear-gradient(90deg, #ec4899, #f472b6); }
+        .stat-fill.science { background: linear-gradient(90deg, #10b981, #34d399); }
+        .stat-fill.social { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+
+        .inventory-section {
+            margin-top: 30px;
+        }
+
+        .inventory-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+        }
+
+        .inventory-item {
+            aspect-ratio: 1;
+            background: var(--bg-dark);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .inventory-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .inventory-item.equipped {
+            border-color: var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .inventory-item.equipped::after {
+            content: '✓';
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: var(--success);
+            color: white;
+            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quests-container {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .quests-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quests-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .quest-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .quest-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: var(--bg-dark);
+            border-radius: 16px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .quest-item:hover {
+            border-color: var(--primary);
+        }
+
+        .quest-item.completed {
+            opacity: 0.7;
+        }
+
+        .quest-item.completed .quest-name {
+            text-decoration: line-through;
+        }
+
+        .quest-checkbox {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .quest-item.completed .quest-checkbox {
+            background: var(--success);
+            border-color: var(--success);
+        }
+
+        .quest-info {
+            flex: 1;
+        }
+
+        .quest-name {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .quest-reward {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .quest-icon {
+            font-size: 32px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-light));
+            border: 2px solid var(--border);
+            border-radius: 24px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-header {
+            padding: 25px 30px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-close {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .lesson-content {
+            margin-bottom: 30px;
+        }
+
+        .lesson-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--bg-dark);
+            border-radius: 16px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .lesson-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .lesson-section p {
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .lesson-section p + p {
+            margin-top: 10px;
+        }
+
+        .story-section {
+            margin-bottom: 25px;
+        }
+
+        .story-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .story-content {
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05));
+            border-radius: 16px;
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            line-height: 1.8;
+        }
+
+        .complete-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .complete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .complete-btn:disabled {
+            background: var(--bg-light);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .xp-popup {
+            position: fixed;
+            pointer-events: none;
+            z-index: 200;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--success);
+            text-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            animation: xpFloat 1.5s ease forwards;
+        }
+
+        @keyframes xpFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            20% { opacity: 1; transform: translateY(-20px) scale(1.2); }
+            100% { opacity: 0; transform: translateY(-100px) scale(1); }
+        }
+
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 150;
+        }
+
+        .levelup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 300;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            animation: levelUpIn 0.5s ease;
+        }
+
+        .levelup-modal.active {
+            display: flex;
+        }
+
+        @keyframes levelUpIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .levelup-content {
+            text-align: center;
+            animation: levelUpPulse 1s ease infinite;
+        }
+
+        @keyframes levelUpPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .levelup-title {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--warning));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .levelup-level {
+            font-size: 120px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 0 60px rgba(245, 158, 11, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .levelup-title-text {
+            font-size: 28px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .levelup-btn {
+            padding: 20px 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Nunito', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .levelup-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .player-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .character-screen {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-tab {
+                font-size: 14px;
+                padding: 12px 10px;
+            }
+
+            .kingdoms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <span class="logo-icon">⚔️</span>
+                <span class="logo-text">LearnQuest</span>
+            </div>
+            <div class="player-stats">
+                <div class="stat-badge">
+                    <span class="stat-icon">💎</span>
+                    <span class="stat-value" id="gemsDisplay">0</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-value" id="xpDisplay">0 XP</span>
+                </div>
+                <div class="level-badge" id="levelDisplay">Level 1</div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-screen="kingdoms">🏰 Kingdoms</button>
+            <button class="nav-tab" data-screen="quests">📜 Quests</button>
+            <button class="nav-tab" data-screen="character">🧙 Character</button>
+        </div>
+
+        <!-- Kingdoms Screen -->
+        <div class="screen active" id="kingdomsScreen">
+            <div class="kingdoms-grid">
+                <div class="kingdom-card kingdom-math" data-kingdom="math">
+                    <div class="kingdom-icon">🔢</div>
+                    <div class="kingdom-name">Math Realm</div>
+                    <div class="kingdom-desc">Master numbers, patterns, and problem-solving!</div>
+                    <div class="kingdom-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="mathProgress" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="mathProgressText">0% Complete</div>
+                    </div>
+                </div>
+
+                <div class="kingdom-card kingdom-ela" data-kingdom="ela">
+                    <div class="kingdom-icon">📚</div>
+                    <div class="kingdom-name">Literary Lands</div>
+                    <div class="kingdom-desc">Explore stories, grammar, and the magic of words!</div>
+                    <div class="kingdom-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="elaProgress" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="elaProgressText">0% Complete</div>
+                    </div>
+                </div>
+
+                <div class="kingdom-card kingdom-science" data-kingdom="science">
+                    <div class="kingdom-icon">🔬</div>
+                    <div class="kingdom-name">Science Sector</div>
+                    <div class="kingdom-desc">Discover the wonders of nature and experiments!</div>
+                    <div class="kingdom-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="scienceProgress" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="scienceProgressText">0% Complete</div>
+                    </div>
+                </div>
+
+                <div class="kingdom-card kingdom-social" data-kingdom="social">
+                    <div class="kingdom-icon">🌍</div>
+                    <div class="kingdom-name">History Kingdom</div>
+                    <div class="kingdom-desc">Travel through time and explore civilizations!</div>
+                    <div class="kingdom-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="socialProgress" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="socialProgressText">0% Complete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quests Screen -->
+        <div class="screen" id="questsScreen">
+            <div class="quests-container">
+                <h2 class="quests-title">📜 Daily Quests</h2>
+                <p class="quests-subtitle" id="questDate">Today's Missions</p>
+                <div class="quest-list" id="questList"></div>
+            </div>
+        </div>
+
+        <!-- Character Screen -->
+        <div class="screen" id="characterScreen">
+            <div class="character-screen">
+                <div class="character-avatar-section">
+                    <div class="avatar-display" id="avatarDisplay">🧙‍♂️</div>
+                    <div class="character-title" id="characterTitle">Apprentice</div>
+                    <div class="character-name">Adventurer</div>
+                    <div class="xp-section">
+                        <div class="xp-bar">
+                            <div class="xp-fill" id="xpBar" style="width: 0%"></div>
+                        </div>
+                        <div class="xp-text" id="xpText">0 / 500 XP</div>
+                    </div>
+                </div>
+
+                <div class="character-stats">
+                    <h3 class="stats-title">⚔️ Subject Powers</h3>
+                    
+                    <div class="stat-row">
+                        <div class="stat-label">
+                            <span>🔢 Math Power</span>
+                            <span id="mathStat">Level 1</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill math" id="mathStatBar" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">
+                            <span>📚 ELA Power</span>
+                            <span id="elaStat">Level 1</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill ela" id="elaStatBar" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">
+                            <span>🔬 Science Power</span>
+                            <span id="scienceStat">Level 1</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill science" id="scienceStatBar" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <div class="stat-row">
+                        <div class="stat-label">
+                            <span>🌍 Social Power</span>
+                            <span id="socialStat">Level 1</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill social" id="socialStatBar" style="width: 10%"></div>
+                        </div>
+                    </div>
+
+                    <div class="inventory-section">
+                        <h4 class="inventory-title">🎒 Inventory (Click to Equip)</h4>
+                        <div class="inventory-grid" id="inventoryGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lesson Modal -->
+    <div class="modal-overlay" id="lessonModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">📚 Lesson</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="lesson-content" id="lessonContent"></div>
+                <button class="complete-btn" id="completeBtn">✨ Complete Lesson</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Level Up Modal -->
+    <div class="levelup-modal" id="levelUpModal">
+        <div class="levelup-content">
+            <div class="levelup-title">LEVEL UP!</div>
+            <div class="levelup-level" id="levelUpNumber">2</div>
+            <div class="levelup-title-text" id="levelUpTitle">Apprentice</div>
+            <button class="levelup-btn" id="levelUpBtn">Continue Adventure!</button>
+        </div>
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+
+
+    <script>
+        // ============================================
+        // LEARNQUEST RPG - COMPLETE GAME ENGINE
+        // ============================================
+
+        // === XP & LEVELING CONSTANTS ===
+        const XP_BASE = 500;
+        const XP_EXPONENT = 1.5;
+        function xpForLevel(lvl) { return Math.floor(XP_BASE * Math.pow(lvl, XP_EXPONENT)); }
+
+        function getTitleForLevel(level) {
+            if (level >= 21) return "Legend";
+            if (level >= 16) return "Master";
+            if (level >= 11) return "Scholar";
+            if (level >= 6)  return "Explorer";
+            return "Apprentice";
+        }
+
+        // === INVENTORY ITEM CATALOG ===
+        const INVENTORY_ITEMS = [
+            { id:'wizard_hat', icon:'🧙', name:'Wizard Hat',   type:'hat' },
+            { id:'crown',      icon:'👑', name:'Royal Crown',  type:'hat' },
+            { id:'sword',      icon:'⚔️', name:'Hero Sword',   type:'weapon' },
+            { id:'wand',       icon:'🪄', name:'Magic Wand',   type:'weapon' },
+            { id:'shield',     icon:'🛡️', name:'Guard Shield', type:'shield' },
+            { id:'potion',     icon:'🧪', name:'Power Potion', type:'item' },
+            { id:'cape',       icon:'🦸', name:'Hero Cape',    type:'armor' },
+            { id:'robe',       icon:'👘', name:'Mage Robe',    type:'armor' },
+            { id:'crystal',    icon:'🔮', name:'Crystal Ball',  type:'item' },
+            { id:'book',       icon:'📖', name:'Spell Book',    type:'item' },
+            { id:'boots',      icon:'👢', name:'Swift Boots',   type:'armor' },
+            { id:'ring',       icon:'💍', name:'Power Ring',    type:'accessory' }
+        ];
+
+        // === DEFAULT GAME STATE ===
+        let gameState = {
+            player: {
+                level: 1,
+                xp: 0,
+                xpToNext: xpForLevel(2),
+                gems: 0,
+                avatar: '🧙‍♂️',
+                title: 'Apprentice'
+            },
+            stats:    { math:1, ela:1, science:1, social:1 },
+            kingdomProgress: { math:0, ela:0, science:0, social:0 },
+            completedLessons: [],
+            inventory: ['wizard_hat','sword','potion'],
+            equipped:  { hat:'wizard_hat', weapon:'sword' },
+            dailyQuests: {
+                date: new Date().toDateString(),
+                solCompleted: false,
+                atlasCompleted: false,
+                bonusClaimed: false
+            }
+        };
+
+        let currentLesson = null;
+        let currentKingdom = null;
+        let lessons = {}; // Will be populated from API
+        let todaysLessons = { sol: null, atlas: null }; // Store today's fetched lessons
+
+        // === FALLBACK LESSON CONTENT (if API unavailable) ===
+        const fallbackLessons = {
+            math: {
+                title: '🔢 The Mystery of Number Patterns',
+                sections: [
+                    { title:'🎣 The Hook',       content:'Have you ever noticed how numbers can create amazing patterns? Like how 2, 4, 6, 8… each number is 2 more than the last! Today you become a Pattern Detective!' },
+                    { title:'🔍 Discover',        content:'A pattern is something that repeats in a predictable way. Look at this: 3, 6, 9, 12… What comes next? If you said 15, you\'re right! Each number adds 3.' },
+                    { title:'🔗 Connect',         content:'Patterns are EVERYWHERE! The petals on a flower, the stripes on a zebra, the rhythm in music, even the days of the week — they all follow patterns!' },
+                    { title:'🌊 Go Deeper',       content:'Try this challenge: What\'s the rule for this pattern? 1, 1, 2, 3, 5, 8, 13… (This is the famous Fibonacci sequence — each number is the sum of the two before it!)' },
+                    { title:'💭 I Wonder…',       content:'What patterns can you find around your home? Can you create your own number pattern and challenge someone to figure out the rule?' }
+                ],
+                story: {
+                    title: '📖 Atlas Story: The Pattern Master',
+                    content: 'Long ago in ancient India, a mathematician named Hemachandra studied the rhythms of Sanskrit poetry. He discovered a special sequence of numbers that appeared in nature — spirals of pinecones, arrangement of leaves, and family trees of bees. This sequence, later known as the Fibonacci sequence, showed that mathematics and nature spoke the same language. Hemachandra realized that patterns are not just in numbers — they\'re the hidden architecture of the universe!'
+                },
+                xpReward: 100, gemReward: 5
+            },
+            ela: {
+                title: '📚 The Power of Descriptive Words',
+                sections: [
+                    { title:'🎣 The Hook',       content:'Close your eyes and imagine a "dog." Now imagine a "fluffy, golden retriever puppy with floppy ears and a wagging tail." Which picture is clearer? That\'s the magic of descriptive words!' },
+                    { title:'🔍 Discover',        content:'Adjectives are words that describe nouns. They tell us WHAT KIND, WHICH ONE, or HOW MANY. Instead of "tree," try "towering oak tree with gnarled branches."' },
+                    { title:'🔗 Connect',         content:'Great writers use descriptive words to paint pictures in our minds. When J.K. Rowling describes Hogwarts, you can almost see the moving portraits and taste the butterbeer!' },
+                    { title:'🌊 Go Deeper',       content:'Try using ALL your senses! How does it LOOK? SMELL? SOUND? FEEL? TASTE? "The crisp, autumn air smelled of cinnamon and burning leaves, while dry twigs crunched beneath my boots."' },
+                    { title:'💭 I Wonder…',       content:'Pick your favorite place in the world. Can you describe it so well that someone who\'s never been there can picture it perfectly?' }
+                ],
+                story: {
+                    title: '📖 Atlas Story: The Blind Poet',
+                    content: 'Homer, the legendary Greek poet, lived over 2,500 years ago. Some say he was blind, yet his words created the most vivid images. In the Odyssey, he described the "wine-dark sea" and "rosy-fingered dawn" — phrases so powerful they\'re still remembered today. Homer understood that words are like magic spells. When chosen carefully, they can transport people to distant lands, make them feel courage or fear, and create worlds that live forever in the imagination.'
+                },
+                xpReward: 100, gemReward: 5
+            },
+            science: {
+                title: '🔬 The Incredible Journey of Water',
+                sections: [
+                    { title:'🎣 The Hook',       content:'Did you know the water you drink today might have been drunk by a dinosaur millions of years ago? Water is ancient, and it\'s always on the move!' },
+                    { title:'🔍 Discover',        content:'The water cycle has three main stages: EVAPORATION (water turns to vapor and rises), CONDENSATION (vapor cools and forms clouds), and PRECIPITATION (water falls as rain, snow, sleet, or hail).' },
+                    { title:'🔗 Connect',         content:'Water is essential for ALL life! Your body is about 60% water. Plants need it to grow. Even the air you breathe contains water vapor. We truly live on the "Blue Planet!"' },
+                    { title:'🌊 Go Deeper',       content:'Water exists in three states: SOLID (ice), LIQUID (water), and GAS (water vapor). Heat energy changes water from one state to another. This is called a phase change!' },
+                    { title:'💭 I Wonder…',       content:'Where does the water go after it rains? Can you trace the journey of a single water drop from the ocean to the clouds to your faucet?' }
+                ],
+                story: {
+                    title: '📖 Atlas Story: The Cloud Collector',
+                    content: 'In 1802, Luke Howard, a British pharmacist with a passion for clouds, forever changed how we see the sky. While others simply called clouds "puffs of white," Howard carefully observed and classified them into types: Cumulus (heaped), Stratus (layered), and Cirrus (curly). His naming system is still used by scientists today! Howard showed that careful observation and classification help us understand the natural world.'
+                },
+                xpReward: 100, gemReward: 5
+            },
+            social: {
+                title: '🌍 The Great Wall of China',
+                sections: [
+                    { title:'🎣 The Hook',       content:'Imagine building a wall so long it could stretch around the Earth… twice! The Great Wall of China is so massive you can practically see it from space!' },
+                    { title:'🔍 Discover',        content:'The Great Wall stretches over 13,000 miles! It was built over 2,000 years by different dynasties. The most famous sections were built during the Ming Dynasty (1368-1644).' },
+                    { title:'🔗 Connect',         content:'Why build such a huge wall? To protect ancient China from invaders from the north! It also helped control trade along the Silk Road and collect taxes.' },
+                    { title:'🌊 Go Deeper',       content:'Building the wall was dangerous work. Thousands of workers died, and legend says some are buried within the wall itself. It\'s sometimes called "the longest cemetery on Earth."' },
+                    { title:'💭 I Wonder…',       content:'What would it feel like to be a soldier guarding the wall 500 years ago? What would you see? Hear? What challenges would you face?' }
+                ],
+                story: {
+                    title: '📖 Atlas Story: The Dragon\'s Spine',
+                    content: 'According to Chinese legend, the Great Wall was not built by humans alone but followed the path of a great dragon. The dragon guided the workers, showing them where to build across mountains and valleys. In ancient China, the emperor was called the "Son of Heaven," and the wall was seen as a sacred barrier protecting the Middle Kingdom from chaos. Today, the Great Wall stands as a testament to human determination — a dragon\'s spine of stone winding through the mountains.'
+                },
+                xpReward: 100, gemReward: 5
+            }
+        };
+
+        // === API FETCH: Get today's lessons from server ===
+        async function fetchDailyLessons() {
+            const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+            const lastFetch = localStorage.getItem('learnQuestLastFetch');
+            const cachedLessons = localStorage.getItem('learnQuestCachedLessons');
+            
+            // Use cache if we already fetched today
+            if (lastFetch === today && cachedLessons) {
+                const parsed = JSON.parse(cachedLessons);
+                lessons = parsed.lessons;
+                todaysLessons = parsed.todaysLessons;
+                console.log('📚 Using cached lessons for', today);
+                return;
+            }
+            
+            try {
+                console.log('🔄 Fetching fresh lessons from API...');
+                const response = await fetch('http://192.168.68.73:3001/api/lessons');
+                if (!response.ok) throw new Error('API failed');
+                
+                const data = await response.json();
+                
+                // Find today's lessons
+                const todaysSol = data.lessons.find(l => l.id === `sol-${today}`);
+                const todaysAtlas = data.lessons.find(l => l.id === `atlas-${today}`);
+                
+                todaysLessons = { sol: todaysSol, atlas: todaysAtlas };
+                
+                // Transform API lessons into app format
+                lessons = transformAPILessons(todaysSol, todaysAtlas);
+                
+                // Cache for today
+                localStorage.setItem('learnQuestLastFetch', today);
+                localStorage.setItem('learnQuestCachedLessons', JSON.stringify({
+                    lessons: lessons,
+                    todaysLessons: todaysLessons,
+                    fetchedAt: new Date().toISOString()
+                }));
+                
+                console.log('✅ Lessons loaded from API:', Object.keys(lessons));
+            } catch (error) {
+                console.warn('⚠️ API fetch failed, using fallback:', error);
+                lessons = fallbackLessons;
+                todaysLessons = { sol: null, atlas: null };
+            }
+        }
+        
+        // Transform API lesson format to app format
+        function transformAPILessons(solLesson, atlasLesson) {
+            const result = { ...fallbackLessons }; // Start with fallback
+            
+            // Map subject to kingdom
+            const subjectMap = {
+                'math': 'math',
+                'ela': 'ela', 
+                'science': 'science',
+                'social': 'social'
+            };
+            
+            // Transform Sol lesson if available
+            if (solLesson && solLesson.content) {
+                const kingdom = subjectMap[solLesson.subject] || 'math';
+                result[kingdom] = {
+                    title: solLesson.title || result[kingdom].title,
+                    sections: [
+                        { title: '🎣 The Hook', content: solLesson.content.hook || result[kingdom].sections[0].content },
+                        { title: '🔍 Discover', content: solLesson.content.concept || result[kingdom].sections[1].content },
+                        { title: '🔗 Connect', content: solLesson.content.activity || result[kingdom].sections[2].content },
+                        { title: '🌊 Challenge', content: solLesson.content.challenge || result[kingdom].sections[3].content },
+                        { title: '💭 Parent Note', content: solLesson.content.parentNote || result[kingdom].sections[4].content }
+                    ],
+                    story: atlasLesson ? {
+                        title: `📖 Atlas Story: ${atlasLesson.title || 'Today\'s Adventure'}`,
+                        content: atlasLesson.content ? (atlasLesson.content.story || atlasLesson.content.hook || result[kingdom].story.content) : result[kingdom].story.content
+                    } : result[kingdom].story,
+                    xpReward: solLesson.xp || 100,
+                    gemReward: 5
+                };
+            }
+            
+            // If only Atlas story is available (no Sol lesson)
+            if (atlasLesson && !solLesson) {
+                // Add story to all kingdoms as "Today's Story"
+                Object.keys(result).forEach(kingdom => {
+                    result[kingdom].story = {
+                        title: `📖 Atlas Story: ${atlasLesson.title || 'Today\'s Adventure'}`,
+                        content: atlasLesson.content ? (atlasLesson.content.story || atlasLesson.content.hook || result[kingdom].story.content) : result[kingdom].story.content
+                    };
+                });
+            }
+            
+            return result;
+        }
+
+        // === LOCAL STORAGE ===
+        function saveGame() {
+            localStorage.setItem('learnQuestState', JSON.stringify(gameState));
+        }
+        function loadGame() {
+            const saved = localStorage.getItem('learnQuestState');
+            if (!saved) return;
+            const parsed = JSON.parse(saved);
+            const today = new Date().toDateString();
+            if (parsed.dailyQuests && parsed.dailyQuests.date !== today) {
+                parsed.dailyQuests = { date:today, solCompleted:false, atlasCompleted:false, bonusClaimed:false };
+            }
+            gameState = { ...gameState, ...parsed };
+        }
+
+        // === HEADER UPDATE ===
+        function updateHeader() {
+            document.getElementById('gemsDisplay').textContent = gameState.player.gems;
+            document.getElementById('xpDisplay').textContent   = gameState.player.xp + ' XP';
+            document.getElementById('levelDisplay').textContent = 'Level ' + gameState.player.level;
+        }
+
+        // === KINGDOM PROGRESS UPDATE ===
+        function updateKingdoms() {
+            ['math','ela','science','social'].forEach(s => {
+                const p = gameState.kingdomProgress[s];
+                const bar  = document.getElementById(s + 'Progress');
+                const text = document.getElementById(s + 'ProgressText');
+                if (bar)  bar.style.width = p + '%';
+                if (text) text.textContent = p + '% Complete';
+            });
+        }
+
+        // === CHARACTER SCREEN UPDATE ===
+        function updateCharacter() {
+            document.getElementById('avatarDisplay').textContent   = gameState.player.avatar;
+            document.getElementById('characterTitle').textContent  = gameState.player.title;
+            const pct = (gameState.player.xp / gameState.player.xpToNext) * 100;
+            document.getElementById('xpBar').style.width = pct + '%';
+            document.getElementById('xpText').textContent = gameState.player.xp + ' / ' + gameState.player.xpToNext + ' XP';
+            ['math','ela','science','social'].forEach(s => {
+                const lvl = gameState.stats[s];
+                document.getElementById(s + 'Stat').textContent    = 'Level ' + lvl;
+                document.getElementById(s + 'StatBar').style.width = Math.min((lvl/20)*100, 100) + '%';
+            });
+            renderInventory();
+        }
+
+        // === INVENTORY ===
+        function renderInventory() {
+            const grid = document.getElementById('inventoryGrid');
+            grid.innerHTML = '';
+            gameState.inventory.forEach(itemId => {
+                const item = INVENTORY_ITEMS.find(i => i.id === itemId);
+                if (!item) return;
+                const div = document.createElement('div');
+                div.className = 'inventory-item';
+                div.textContent = item.icon;
+                div.title = item.name;
+                if (Object.values(gameState.equipped).includes(itemId)) div.classList.add('equipped');
+                div.addEventListener('click', () => toggleEquip(item));
+                grid.appendChild(div);
+            });
+        }
+        function toggleEquip(item) {
+            if (gameState.equipped[item.type] === item.id) {
+                delete gameState.equipped[item.type];
+            } else {
+                gameState.equipped[item.type] = item.id;
+            }
+            updateAvatarFromEquipment();
+            saveGame();
+            updateCharacter();
+        }
+        function updateAvatarFromEquipment() {
+            if (gameState.equipped.hat === 'crown')      { gameState.player.avatar = '👑'; return; }
+            if (gameState.equipped.hat === 'wizard_hat')  { gameState.player.avatar = '🧙‍♂️'; return; }
+            if (gameState.equipped.armor === 'cape')      { gameState.player.avatar = '🦸'; return; }
+            gameState.player.avatar = '🧙‍♂️';
+        }
+
+        // === DAILY QUESTS ===
+        function getTodaySubject() {
+            const day = new Date().toLocaleDateString('en-US',{weekday:'long'});
+            return {Monday:'math',Tuesday:'ela',Wednesday:'science',Thursday:'social',
+                    Friday:'math',Saturday:'ela',Sunday:'science'}[day];
+        }
+        const SUBJECT_NAMES = {math:'Math Realm',ela:'Literary Lands',science:'Science Sector',social:'History Kingdom'};
+        const SUBJECT_ICONS = {math:'🔢',ela:'📚',science:'🔬',social:'🌍'};
+
+        function updateQuests() {
+            const today = new Date();
+            const dayName = today.toLocaleDateString('en-US',{weekday:'long'});
+            const dateStr = today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+            document.getElementById('questDate').textContent = dayName + ', ' + dateStr;
+            const todaySubject = getTodaySubject();
+            const list = document.getElementById('questList');
+            list.innerHTML = '';
+
+            // Show "New Lesson Available" badge if we have fresh content
+            const hasNewLesson = todaysLessons.sol || todaysLessons.atlas;
+            
+            // Sol Quest
+            const sq = document.createElement('div');
+            sq.className = 'quest-item' + (gameState.dailyQuests.solCompleted ? ' completed' : '');
+            const solTitle = todaysLessons.sol ? todaysLessons.sol.title : SUBJECT_NAMES[todaySubject] + ' Lesson';
+            sq.innerHTML = '<div class="quest-checkbox">' + (gameState.dailyQuests.solCompleted ? '✓' : '') + '</div>'
+                + '<div class="quest-info"><div class="quest-name">Complete ' + solTitle + '</div>'
+                + '<div class="quest-reward">+100 XP, +5 💎' + (hasNewLesson && !gameState.dailyQuests.solCompleted ? ' <span style="color:var(--success)">• NEW!</span>' : '') + '</div></div>'
+                + '<div class="quest-icon">' + SUBJECT_ICONS[todaySubject] + '</div>';
+            list.appendChild(sq);
+
+            // Atlas Quest
+            const aq = document.createElement('div');
+            aq.className = 'quest-item' + (gameState.dailyQuests.atlasCompleted ? ' completed' : '');
+            const atlasTitle = todaysLessons.atlas ? todaysLessons.atlas.title : 'Today\'s Atlas Story';
+            aq.innerHTML = '<div class="quest-checkbox">' + (gameState.dailyQuests.atlasCompleted ? '✓' : '') + '</div>'
+                + '<div class="quest-info"><div class="quest-name">Read ' + atlasTitle + '</div>'
+                + '<div class="quest-reward">+50 XP, +2 💎' + (todaysLessons.atlas && !gameState.dailyQuests.atlasCompleted ? ' <span style="color:var(--success)">• NEW!</span>' : '') + '</div></div>'
+                + '<div class="quest-icon">📖</div>';
+            list.appendChild(aq);
+
+            // Bonus Quest
+            if (gameState.dailyQuests.solCompleted && gameState.dailyQuests.atlasCompleted && !gameState.dailyQuests.bonusClaimed) {
+                const bq = document.createElement('div');
+                bq.className = 'quest-item';
+                bq.style.border = '2px solid var(--accent)';
+                bq.innerHTML = '<div class="quest-checkbox" style="border-color:var(--accent);color:var(--accent)">!</div>'
+                    + '<div class="quest-info"><div class="quest-name" style="color:var(--accent)">🎉 BONUS: Daily Completion!</div>'
+                    + '<div class="quest-reward">+50 XP, +5 💎</div></div>'
+                    + '<div class="quest-icon">🎁</div>';
+                bq.style.cursor = 'pointer';
+                bq.addEventListener('click', claimBonus);
+                list.appendChild(bq);
+            } else if (gameState.dailyQuests.bonusClaimed) {
+                const bq = document.createElement('div');
+                bq.className = 'quest-item completed';
+                bq.innerHTML = '<div class="quest-checkbox">✓</div>'
+                    + '<div class="quest-info"><div class="quest-name">Bonus Reward Claimed</div>'
+                    + '<div class="quest-reward">Completed!</div></div>'
+                    + '<div class="quest-icon">✨</div>';
+                list.appendChild(bq);
+            }
+        }
+        function claimBonus() {
+            gameState.player.xp   += 50;
+            gameState.player.gems += 5;
+            gameState.dailyQuests.bonusClaimed = true;
+            checkLevelUp();
+            saveGame();
+            updateAllUI();
+            showXPPopup(50);
+            fireConfetti();
+        }
+
+        // === NAVIGATION ===
+        function setupNavigation() {
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                    document.getElementById(tab.dataset.screen + 'Screen').classList.add('active');
+                });
+            });
+        }
+
+        // === LESSON MODAL ===
+        function setupKingdomCards() {
+            document.querySelectorAll('.kingdom-card').forEach(card => {
+                card.addEventListener('click', () => openLesson(card.dataset.kingdom));
+            });
+        }
+        function openLesson(kingdom) {
+            // Check if lessons are loaded
+            if (!lessons || Object.keys(lessons).length === 0) {
+                alert('Loading lessons... Please try again in a moment!');
+                return;
+            }
+            
+            currentKingdom = kingdom;
+            currentLesson  = lessons[kingdom];
+            
+            // Check if today's lesson is available for this kingdom
+            const todaySubject = getTodaySubject();
+            const isTodaysLesson = (kingdom === todaySubject);
+            
+            document.getElementById('modalTitle').textContent = currentLesson.title;
+            const body = document.getElementById('lessonContent');
+            body.innerHTML = '';
+            
+            // Show "Today's Lesson" badge if applicable
+            if (isTodaysLesson && todaysLessons.sol) {
+                const badge = document.createElement('div');
+                badge.className = 'lesson-section';
+                badge.style.background = 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.1))';
+                badge.style.borderLeftColor = '#6366f1';
+                badge.innerHTML = '<h3>📅 Today\'s Lesson</h3><p>This is your lesson for today! Complete it to earn bonus XP.</p>';
+                body.appendChild(badge);
+            }
+            
+            currentLesson.sections.forEach(sec => {
+                const d = document.createElement('div');
+                d.className = 'lesson-section';
+                d.innerHTML = '<h3>' + sec.title + '</h3><p>' + sec.content + '</p>';
+                body.appendChild(d);
+            });
+            // Atlas story
+            const sd = document.createElement('div');
+            sd.className = 'story-section';
+            sd.innerHTML = '<h3 class="story-title">' + currentLesson.story.title + '</h3>'
+                + '<div class="story-content">' + currentLesson.story.content + '</div>';
+            body.appendChild(sd);
+            // Button state
+            const lid = kingdom + '_' + new Date().toDateString();
+            const done = gameState.completedLessons.includes(lid);
+            const btn = document.getElementById('completeBtn');
+            btn.textContent = done ? '✓ Already Completed' : '✨ Complete Lesson';
+            btn.disabled = done;
+            document.getElementById('lessonModal').classList.add('active');
+        }
+        function closeLesson() {
+            document.getElementById('lessonModal').classList.remove('active');
+            currentLesson = null;
+            currentKingdom = null;
+        }
+        function completeLesson() {
+            if (!currentLesson || !currentKingdom) return;
+            const lid = currentKingdom + '_' + new Date().toDateString();
+            if (gameState.completedLessons.includes(lid)) return;
+            gameState.completedLessons.push(lid);
+
+            const xpGained  = currentLesson.xpReward;
+            const gemGained = currentLesson.gemReward;
+            gameState.player.xp   += xpGained;
+            gameState.player.gems += gemGained;
+            gameState.stats[currentKingdom]++;
+            gameState.kingdomProgress[currentKingdom] = Math.min(gameState.kingdomProgress[currentKingdom] + 10, 100);
+
+            // Mark daily quests
+            if (getTodaySubject() === currentKingdom) gameState.dailyQuests.solCompleted = true;
+            gameState.dailyQuests.atlasCompleted = true;
+
+            // Award new inventory items at milestones
+            const totalCompleted = gameState.completedLessons.length;
+            const milestoneItems = {3:'shield',5:'cape',8:'wand',10:'crystal',12:'crown',15:'robe',18:'book',20:'boots',25:'ring'};
+            if (milestoneItems[totalCompleted] && !gameState.inventory.includes(milestoneItems[totalCompleted])) {
+                gameState.inventory.push(milestoneItems[totalCompleted]);
+            }
+
+            saveGame();
+            showXPPopup(xpGained);
+            fireConfetti();
+
+            const btn = document.getElementById('completeBtn');
+            btn.textContent = '✓ Completed!';
+            btn.disabled = true;
+
+            const didLevel = checkLevelUp();
+            setTimeout(() => { closeLesson(); updateAllUI(); }, didLevel ? 2500 : 1500);
+        }
+
+        // === LEVEL UP ===
+        function checkLevelUp() {
+            if (gameState.player.xp >= gameState.player.xpToNext) {
+                gameState.player.xp -= gameState.player.xpToNext;
+                gameState.player.level++;
+                gameState.player.xpToNext = xpForLevel(gameState.player.level + 1);
+                gameState.player.title    = getTitleForLevel(gameState.player.level);
+                saveGame();
+                showLevelUpModal();
+                return true;
+            }
+            return false;
+        }
+        function showLevelUpModal() {
+            document.getElementById('levelUpNumber').textContent = gameState.player.level;
+            document.getElementById('levelUpTitle').textContent  = gameState.player.title;
+            document.getElementById('levelUpModal').classList.add('active');
+            fireConfetti();
+        }
+        function hideLevelUpModal() {
+            document.getElementById('levelUpModal').classList.remove('active');
+            updateAllUI();
+        }
+
+        // === XP POPUP ANIMATION ===
+        function showXPPopup(amount) {
+            const el = document.createElement('div');
+            el.className = 'xp-popup';
+            el.textContent = '+' + amount + ' XP';
+            el.style.left = (50 + (Math.random()*20 - 10)) + '%';
+            el.style.top  = '50%';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1600);
+        }
+
+        // === BACKGROUND PARTICLES ===
+        function createParticles() {
+            const c = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = Math.random()*100 + '%';
+                p.style.animationDelay    = Math.random()*15 + 's';
+                p.style.animationDuration = (10 + Math.random()*10) + 's';
+                c.appendChild(p);
+            }
+        }
+
+        // === CONFETTI SYSTEM ===
+        const confettiCanvas = document.getElementById('confettiCanvas');
+        const confettiCtx    = confettiCanvas.getContext('2d');
+        let confettiParticles = [];
+        let confettiAnim      = null;
+
+        function resizeConfetti() {
+            confettiCanvas.width  = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        }
+        function fireConfetti() {
+            resizeConfetti();
+            const colors = ['#6366f1','#8b5cf6','#f59e0b','#10b981','#ec4899','#3b82f6','#ef4444'];
+            for (let i = 0; i < 120; i++) {
+                confettiParticles.push({
+                    x: confettiCanvas.width/2 + (Math.random()-0.5)*200,
+                    y: confettiCanvas.height/2,
+                    vx: (Math.random()-0.5)*20,
+                    vy: (Math.random()-1)*20 - 5,
+                    color: colors[Math.floor(Math.random()*colors.length)],
+                    size: Math.random()*8 + 4,
+                    rotation: Math.random()*360,
+                    rotSpeed: (Math.random()-0.5)*10,
+                    gravity: 0.4 + Math.random()*0.2,
+                    drag: 0.96
+                });
+            }
+            if (confettiAnim) cancelAnimationFrame(confettiAnim);
+            animateConfetti();
+        }
+        function animateConfetti() {
+            confettiCtx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            for (let i = confettiParticles.length - 1; i >= 0; i--) {
+                const p = confettiParticles[i];
+                p.x += p.vx;  p.y += p.vy;
+                p.vy += p.gravity;
+                p.vx *= p.drag; p.vy *= p.drag;
+                p.rotation += p.rotSpeed;
+                confettiCtx.save();
+                confettiCtx.translate(p.x, p.y);
+                confettiCtx.rotate(p.rotation * Math.PI / 180);
+                confettiCtx.fillStyle = p.color;
+                confettiCtx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                confettiCtx.restore();
+                if (p.y > confettiCanvas.height + 60) confettiParticles.splice(i, 1);
+            }
+            if (confettiParticles.length > 0) {
+                confettiAnim = requestAnimationFrame(animateConfetti);
+            }
+        }
+
+        // === MASTER UI UPDATE ===
+        function updateAllUI() {
+            updateHeader();
+            updateKingdoms();
+            updateCharacter();
+            updateQuests();
+        }
+
+        // === INIT ===
+        async function init() {
+            loadGame();
+            createParticles();
+            setupNavigation();
+            setupKingdomCards();
+            document.getElementById('modalClose').addEventListener('click', closeLesson);
+            document.getElementById('completeBtn').addEventListener('click', completeLesson);
+            document.getElementById('levelUpBtn').addEventListener('click', hideLevelUpModal);
+            // Close lesson modal on overlay click
+            document.getElementById('lessonModal').addEventListener('click', function(e) {
+                if (e.target === this) closeLesson();
+            });
+            window.addEventListener('resize', resizeConfetti);
+            resizeConfetti();
+            
+            // Fetch daily lessons from API
+            await fetchDailyLessons();
+            
+            updateAllUI();
+            console.log('🎮 LearnQuest RPG initialized! Level:', gameState.player.level, '| XP:', gameState.player.xp);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

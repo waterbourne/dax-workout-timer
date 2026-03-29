@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnQuest Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="login-logo">⚔️</div>
+            <div class="login-title">LearnQuest Admin</div>
+            <div class="login-subtitle">Enter PIN to continue</div>
+            
+            <div class="pin-display" id="pinDisplay">
+                <div class="pin-dot" data-index="0"></div>
+                <div class="pin-dot" data-index="1"></div>
+                <div class="pin-dot" data-index="2"></div>
+                <div class="pin-dot" data-index="3"></div>
+            </div>
+            
+            <div class="pin-pad">
+                <button class="pin-btn" data-num="1">1</button>
+                <button class="pin-btn" data-num="2">2</button>
+                <button class="pin-btn" data-num="3">3</button>
+                <button class="pin-btn" data-num="4">4</button>
+                <button class="pin-btn" data-num="5">5</button>
+                <button class="pin-btn" data-num="6">6</button>
+                <button class="pin-btn" data-num="7">7</button>
+                <button class="pin-btn" data-num="8">8</button>
+                <button class="pin-btn" data-num="9">9</button>
+                <button class="pin-btn" data-num="clear">⌫</button>
+                <button class="pin-btn" data-num="0">0</button>
+                <button class="pin-btn" data-num="enter">✓</button>
+            </div>
+            
+            <div class="pin-error" id="pinError">Incorrect PIN. Try again.</div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container" id="appContainer">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">⚔️</div>
+                <div class="sidebar-title">LearnQuest</div>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Dashboard</span>
+                </div>
+                <div class="nav-item" data-page="add-sol">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-label">Add Sol Lesson</span>
+                </div>
+                <div class="nav-item" data-page="add-atlas">
+                    <span class="nav-icon">📚</span>
+                    <span class="nav-label">Add Atlas Story</span>
+                </div>
+                <div class="nav-item" data-page="history">
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-label">Lesson History</span>
+                </div>
+            </nav>
+            
+            <button class="logout-btn" id="logoutBtn">🚪 Logout</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Toast Container -->
+            <div class="toast-container" id="toastContainer"></div>
+
+            <!-- Dashboard Page -->
+            <div class="page active" id="dashboardPage">
+                <div class="page-header">
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="page-subtitle">Overview of LearnQuest content and Evaan's progress</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-value" id="totalLessons">0</div>
+                        <div class="stat-label">Total Lessons</div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-value" id="todayLessons">0</div>
+                        <div class="stat-label">Today's Lessons</div>
+                    </div>
+                    <div class="stat-card gold">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-value" id="evaanLevel">1</div>
+                        <div class="stat-label">Evaan's Level</div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="evaanStreak">0</div>
+                        <div class="stat-label">Day Streak</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2 class="section-title">⚡ Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button class="action-btn sol" onclick="navigateTo('add-sol')">
+                            <span>🎯</span>
+                            <span>Add Sol Lesson</span>
+                        </button>
+                        <button class="action-btn atlas" onclick="navigateTo('add-atlas')">
+                            <span>📚</span>
+                            <span>Add Atlas Story</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Sol Lesson Page -->
+            <div class="page" id="add-sol-page">
+                <div class="page-header">
+                    <h1 class="page-title">Add Sol Lesson</h1>
+                    <p class="page-subtitle">Create a new daily lesson for Evaan</p>
+                </div>
+
+                <div class="form-container">
+                    <form id="solForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Date <span class="required">*</span></label>
+                                <input type="date" class="form-input" id="solDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Week Number <span class="required">*</span></label>
+                                <select class="form-select" id="solWeek" required>
+                                    <option value="1">Week 1</option>
+                                    <option value="2">Week 2</option>
+                                    <option value="3">Week 3</option>
+                                    <option value="4">Week 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Subject <span class="required">*</span></label>
+                            <select class="form-select" id="solSubject" required>
+                                <option value="">Select Subject</option>
+                                <option value="Math">Math</option>
+                                <option value="ELA">ELA</option>
+                                <option value="Science">Science</option>
+                                <option value="Social Studies">Social Studies</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Title <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="solTitle" placeholder="e.g., The Magic of Multiplication" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Hook <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="solHook" placeholder="An engaging opening to capture interest..." required></textarea>
+                            <div class="form-hint">Start with something exciting or mysterious!</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Discovery <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="solDiscovery" placeholder="The core learning content..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Connection <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="solConnection" placeholder="How this connects to real life or other concepts..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Deeper <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="solDeeper" placeholder="Dive deeper into the concept..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Wonder Question <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="solWonder" placeholder="e.g., What would happen if...?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Wonder Hint</label>
+                            <input type="text" class="form-input" id="solWonderHint" placeholder="A gentle hint to guide thinking...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Parent Prompt <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="solParentPrompt" placeholder="Discussion prompts for parents..." required></textarea>
+                        </div>
+
+                        <div class="rewards-row">
+                            <div class="reward-input">
+                                <span class="reward-icon">⭐</span>
+                                <div class="reward-field">
+                                    <label class="form-label">XP Reward</label>
+                                    <input type="number" id="solXP" value="50" min="0">
+                                </div>
+                            </div>
+                            <div class="reward-input">
+                                <span class="reward-icon">💎</span>
+                                <div class="reward-field">
+                                    <label class="form-label">Gem Reward</label>
+                                    <input type="number" id="solGems" value="5" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preview-section">
+                            <h3 class="preview-title">📱 Preview</h3>
+                            <div class="preview-frame">
+                                <div class="preview-screen">
+                                    <div class="preview-header" id="solPreviewHeader">
+                                        <div class="preview-type" id="solPreviewSubject">MATH</div>
+                                        <div class="preview-lesson-title" id="solPreviewTitle">Your Lesson Title</div>
+                                    </div>
+                                    <div class="preview-content">
+                                        <div class="preview-section-title">🎣 The Hook</div>
+                                        <div class="preview-text" id="solPreviewHook">Your hook will appear here...</div>
+                                        
+                                        <div class="preview-section-title">🔍 Discovery</div>
+                                        <div class="preview-text" id="solPreviewDiscovery">Discovery content...</div>
+                                        
+                                        <div class="preview-section-title">🌐 Connection</div>
+                                        <div class="preview-text" id="solPreviewConnection">Connection content...</div>
+
+                                        <div class="preview-rewards">
+                                            <div class="preview-reward">
+                                                <span>⭐</span>
+                                                <span id="solPreviewXP">50 XP</span>
+                                            </div>
+                                            <div class="preview-reward">
+                                                <span>💎</span>
+                                                <span id="solPreviewGems">5 Gems</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit-actions">
+                            <button type="submit" class="btn btn-primary" id="solSubmitBtn">
+                                💾 Save Lesson
+                            </button>
+                            <button type="button" class="btn btn-success" id="solPublishBtn" onclick="publishLesson('sol')">
+                                🚀 Publish to App
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetForm('sol')">
+                                🔄 Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Add Atlas Story Page -->
+            <div class="page" id="add-atlas-page">
+                <div class="page-header">
+                    <h1 class="page-title">Add Atlas Story</h1>
+                    <p class="page-subtitle">Create a new wisdom story for Evaan</p>
+                </div>
+
+                <div class="form-container">
+                    <form id="atlasForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Date <span class="required">*</span></label>
+                                <input type="date" class="form-input" id="atlasDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Week Number <span class="required">*</span></label>
+                                <select class="form-select" id="atlasWeek" required>
+                                    <option value="1">Week 1</option>
+                                    <option value="2">Week 2</option>
+                                    <option value="3">Week 3</option>
+                                    <option value="4">Week 4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Category <span class="required">*</span></label>
+                            <select class="form-select" id="atlasCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Ancient">Ancient Civilizations</option>
+                                <option value="Inventors">Inventors & Scientists</option>
+                                <option value="Courage">Acts of Courage</option>
+                                <option value="Fairness">Fairness & Justice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Title <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="atlasTitle" placeholder="e.g., The Boy Who Asked Why" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Character Name <span class="required">*</span></label>
+                                <input type="text" class="form-input" id="atlasCharName" placeholder="e.g., young boy" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Character Age</label>
+                                <input type="text" class="form-input" id="atlasCharAge" placeholder="e.g., 8 years old">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Character Detail</label>
+                            <input type="text" class="form-input" id="atlasCharDetail" placeholder="e.g., curious, loves to ask questions">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Setting <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="atlasSetting" placeholder="e.g., Ancient Greece, a small village" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Story <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="atlasStory" placeholder="Tell the story..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Wisdom/Lesson <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="atlasWisdom" placeholder="The moral or lesson of the story..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Your Turn Question <span class="required">*</span></label>
+                            <input type="text" class="form-input" id="atlasYourTurn" placeholder="e.g., When have you asked a question that changed something?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dinner Discussion <span class="required">*</span></label>
+                            <textarea class="form-textarea" id="atlasDinner" placeholder="Discussion prompts for family dinner..." required></textarea>
+                        </div>
+
+                        <div class="rewards-row">
+                            <div class="reward-input">
+                                <span class="reward-icon">⭐</span>
+                                <div class="reward-field">
+                                    <label class="form-label">XP Reward</label>
+                                    <input type="number" id="atlasXP" value="50" min="0">
+                                </div>
+                            </div>
+                            <div class="reward-input">
+                                <span class="reward-icon">💎</span>
+                                <div class="reward-field">
+                                    <label class="form-label">Gem Reward</label>
+                                    <input type="number" id="atlasGems" value="5" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="preview-section">
+                            <h3 class="preview-title">📱 Preview</h3>
+                            <div class="preview-frame">
+                                <div class="preview-screen">
+                                    <div class="preview-header atlas" id="atlasPreviewHeader">
+                                        <div class="preview-type" id="atlasPreviewCategory">ANCIENT</div>
+                                        <div class="preview-lesson-title" id="atlasPreviewTitle">Your Story Title</div>
+                                    </div>
+                                    <div class="preview-content">
+                                        <div class="preview-section-title alt">📖 The Story</div>
+                                        <div class="preview-text" id="atlasPreviewStory">Your story will appear here...</div>
+                                        
+                                        <div class="preview-section-title alt">💎 Wisdom</div>
+                                        <div class="preview-text" id="atlasPreviewWisdom">The lesson will appear here...</div>
+
+                                        <div class="preview-rewards">
+                                            <div class="preview-reward">
+                                                <span>⭐</span>
+                                                <span id="atlasPreviewXP">50 XP</span>
+                                            </div>
+                                            <div class="preview-reward">
+                                                <span>💎</span>
+                                                <span id="atlasPreviewGems">5 Gems</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="submit-actions">
+                            <button type="submit" class="btn btn-primary" id="atlasSubmitBtn">
+                                💾 Save Story
+                            </button>
+                            <button type="button" class="btn btn-success" id="atlasPublishBtn" onclick="publishLesson('atlas')">
+                                🚀 Publish to App
+                            </button>
+                            <button type="button" class="btn btn-secondary" onclick="resetForm('atlas')">
+                                🔄 Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Lesson History Page -->
+            <div class="page" id="history-page">
+                <div class="page-header">
+                    <h1 class="page-title">Lesson History</h1>
+                    <p class="page-subtitle">View and manage all lessons</p>
+                </div>
+
+                <div class="history-filters">
+                    <div class="filter-group">
+                        <span class="filter-label">Filter by:</span>
+                        <select class="form-select" id="historyTypeFilter" onchange="filterHistory()">
+                            <option value="">All Types</option>
+                            <option value="sol">Sol Lessons</option>
+                            <option value="atlas">Atlas Stories</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-select" id="historySubjectFilter" onchange="filterHistory()">
+                            <option value="">All Subjects</option>
+                            <option value="Math">Math</option>
+                            <option value="ELA">ELA</option>
+                            <option value="Science">Science</option>
+                            <option value="Social Studies">Social Studies</option>
+                            <option value="Ancient">Ancient</option>
+                            <option value="Inventors">Inventors</option>
+                            <option value="Courage">Courage</option>
+                            <option value="Fairness">Fairness</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <input type="date" class="form-input" id="historyDateFilter" onchange="filterHistory()">
+                    </div>
+                </div>
+
+                <div class="history-list" id="historyList">
+                    <!-- History items will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-icon" id="modalIcon">🎉</div>
+            <div class="modal-title" id="modalTitle">Success!</div>
+            <div class="modal-text" id="modalText">Lesson saved successfully.</div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="closeModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

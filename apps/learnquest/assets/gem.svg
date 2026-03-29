@@ -1,0 +1,35 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="50%" stop-color="#44A08D"/>
+      <stop offset="100%" stop-color="#2D8B8B"/>
+    </linearGradient>
+    <linearGradient id="gemHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Diamond Shape -->
+  <g transform="translate(24, 24)">
+    <!-- Top Triangle -->
+    <path d="M0,-18 L14,-6 L-14,-6 Z" fill="#5BC0A8" stroke="#2D3561" stroke-width="2"/>
+    <!-- Bottom Triangle -->
+    <path d="M-14,-6 L0,18 L14,-6 Z" fill="url(#gemGrad)" stroke="#2D3561" stroke-width="2"/>
+    
+    <!-- Facets -->
+    <line x1="0" y1="-18" x2="0" y2="18" stroke="#2D3561" stroke-width="1.5"/>
+    <line x1="-14" y1="-6" x2="14" y2="-6" stroke="#2D3561" stroke-width="1.5"/>
+    <line x1="-7" y1="-12" x2="0" y2="18" stroke="#2D3561" stroke-width="1"/>
+    <line x1="7" y1="-12" x2="0" y2="18" stroke="#2D3561" stroke-width="1"/>
+    
+    <!-- Highlight -->
+    <path d="M-8,-4 L-3,6 L-10,-4 Z" fill="url(#gemHighlight)"/>
+  </g>
+  
+  <!-- Sparkles -->
+  <circle cx="10" cy="8" r="2" fill="#4ECDC4"/>
+  <circle cx="38" cy="12" r="2" fill="#4ECDC4"/>
+  <circle cx="8" cy="35" r="2" fill="#4ECDC4"/>
+</svg>

@@ -25,6 +25,7 @@ _(What do they care about? What projects are they working on? What annoys them? 
 ## Preferences (Added Over Time)
 
 - **Departure Alerts:** Disabled (Mar 4, 2026) — Found them noisy and timing was off
+- **Spiritual Practice:** Advanced practitioner — meditates daily, has mastered attention/presence, recognizes emotions as they arise and releases without reaction. Guru should skip basic meditation instruction; focus on koans, self-inquiry, emptiness, nonduality.
 
 ---
 

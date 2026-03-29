@@ -1,0 +1,110 @@
+[
+  {
+    "timestamp": "2026-03-14T17:10:10.049680",
+    "spy_close": 662.29,
+    "vix_close": 27.19,
+    "rsi5": 18.98,
+    "score": 3,
+    "signal": "\ud83d\udfe1 MODERATE",
+    "alerted": true
+  },
+  {
+    "timestamp": "2026-03-14T17:13:43.420470",
+    "spy_close": 662.29,
+    "vix_close": 27.19,
+    "rsi5": 18.98,
+    "call_score": 3,
+    "call_signal": "\ud83d\udfe1 MODERATE",
+    "put_score": 0,
+    "put_signal": "\ud83d\udd34 NO SIGNAL",
+    "alerted": true
+  },
+  {
+    "timestamp": "2026-03-14T17:28:04.844538",
+    "spy_close": 662.29,
+    "vix_close": 27.19,
+    "call_score": 3,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-16T12:30:09.460045",
+    "spy_close": 669.17,
+    "vix_close": 23.7,
+    "call_score": 1,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-17T12:30:13.008432",
+    "spy_close": 671.06,
+    "vix_close": 22.33,
+    "call_score": 1,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-18T12:30:11.868941",
+    "spy_close": 662.98,
+    "vix_close": 23.84,
+    "call_score": 2,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-19T12:30:04.360924",
+    "spy_close": 660.16,
+    "vix_close": 23.98,
+    "call_score": 1,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-20T12:30:04.568748",
+    "spy_close": 647.15,
+    "vix_close": 28.2,
+    "call_score": 3,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-23T12:30:08.280656",
+    "spy_close": 657.38,
+    "vix_close": 25.55,
+    "call_score": 2,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-24T12:30:05.893647",
+    "spy_close": 654.44,
+    "vix_close": 26.31,
+    "call_score": 2,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-25T12:30:06.379379",
+    "spy_close": 656.57,
+    "vix_close": 25.63,
+    "call_score": 2,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-26T12:30:08.817644",
+    "spy_close": 646.23,
+    "vix_close": 28.03,
+    "call_score": 3,
+    "put_score": 0,
+    "alerted": false
+  },
+  {
+    "timestamp": "2026-03-27T12:30:04.964344",
+    "spy_close": 635.01,
+    "vix_close": 31.18,
+    "call_score": 3,
+    "put_score": 0,
+    "alerted": false
+  }
+]

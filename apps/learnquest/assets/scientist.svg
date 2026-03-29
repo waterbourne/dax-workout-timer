@@ -1,0 +1,88 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="coatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8E8E8"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D0C5"/>
+      <stop offset="100%" stop-color="#E8B5A8"/>
+    </linearGradient>
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#44A08D"/>
+    </linearGradient>
+    <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="50%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#4ECDC4"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="100%" stop-color="#654321"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Lab Coat -->
+  <path d="M55 100 L45 200 L155 200 L145 100 Q100 90 55 100" fill="url(#coatGrad)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Coat Buttons -->
+  <circle cx="100" cy="130" r="4" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="100" cy="150" r="4" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="100" cy="170" r="4" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Collar -->
+  <path d="M75 100 L75 115 L100 125 L125 115 L125 100" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="70" r="38" fill="url(#skinGrad)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Hair -->
+  <path d="M60 60 Q65 25 100 25 Q135 25 140 60" fill="url(#hairGrad)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M60 60 L60 80 L65 70 Z" fill="url(#hairGrad)" stroke="#2D3561" stroke-width="1"/>
+  <path d="M140 60 L140 80 L135 70 Z" fill="url(#hairGrad)" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Safety Goggles -->
+  <rect x="68" y="55" width="25" height="20" rx="5" fill="url(#glassGrad)" stroke="#2D3561" stroke-width="2"/>
+  <rect x="107" y="55" width="25" height="20" rx="5" fill="url(#glassGrad)" stroke="#2D3561" stroke-width="2"/>
+  <line x1="93" y1="65" x2="107" y2="65" stroke="#2D3561" stroke-width="2"/>
+  <line x1="68" y1="65" x2="60" y2="62" stroke="#2D3561" stroke-width="2"/>
+  <line x1="132" y1="65" x2="140" y2="62" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Eyes -->
+  <circle cx="80" cy="65" r="4" fill="#FFFFFF"/>
+  <circle cx="80" cy="65" r="2" fill="#2D3561"/>
+  <circle cx="120" cy="65" r="4" fill="#FFFFFF"/>
+  <circle cx="120" cy="65" r="2" fill="#2D3561"/>
+  
+  <!-- Smile -->
+  <path d="M90 88 Q100 93 110 88" fill="none" stroke="#2D3561" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Beaker in Hand -->
+  <g transform="translate(135, 130)">
+    <!-- Beaker Body -->
+    <path d="M0 0 L5 60 L45 60 L50 0" fill="rgba(200, 220, 255, 0.5)" stroke="#2D3561" stroke-width="2"/>
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#2D3561" stroke-width="3"/>
+    
+    <!-- Liquid -->
+    <path d="M7 35 L9 58 L41 58 L43 35 Q25 30 7 35" fill="url(#liquidGrad)" stroke="#2D3561" stroke-width="1"/>
+    
+    <!-- Bubbles -->
+    <circle cx="15" cy="25" r="4" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+    <circle cx="35" cy="20" r="5" fill="#FF6B6B" stroke="#2D3561" stroke-width="1"/>
+    <circle cx="25" cy="12" r="3" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+    
+    <!-- Measurement Lines -->
+    <line x1="15" y1="45" x2="25" y2="45" stroke="#2D3561" stroke-width="1"/>
+    <line x1="15" y1="50" x2="22" y2="50" stroke="#2D3561" stroke-width="1"/>
+  </g>
+  
+  <!-- Pocket with Pen -->
+  <rect x="115" y="125" width="20" height="25" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <rect x="120" y="110" width="4" height="20" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Floating Science Symbols -->
+  <text x="25" y="50" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#4ECDC4" stroke="#2D3561" stroke-width="1">⚛</text>
+  <text x="175" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#FF6B6B" stroke="#2D3561" stroke-width="1">H₂</text>
+  <text x="30" y="120" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#FFD93D" stroke="#2D3561" stroke-width="1">O</text>
+</svg>

@@ -1,0 +1,21 @@
+{
+  "lastSuggested": {
+    "date": "2026-03-24",
+    "proteins": ["chicken", "shrimp", "chicken"],
+    "cuisines": ["asian", "italian", "asian"],
+    "carbBases": ["rice", "pasta", "rice"],
+    "dishes": ["honey garlic chicken", "tomato pasta", "fried rice"]
+  },
+  "weeklyRotation": {
+    "proteinsUsed": ["chicken", "shrimp", "chicken", "beef", "chicken"],
+    "cuisinesUsed": ["asian", "italian", "mexican", "asian", "italian"]
+  },
+  "rotationRules": {
+    "avoidProteins": ["chicken"],
+    "avoidCuisines": ["asian", "italian"],
+    "avoidCarbBases": ["rice", "pasta"],
+    "recommendedProteins": ["beef", "pork", "fish", "tofu", "lamb"],
+    "recommendedCuisines": ["mediterranean", "mexican", "indian", "middle eastern", "french"],
+    "recommendedCarbBases": ["potatoes", "bread", "tortillas", "couscous"]
+  }
+}

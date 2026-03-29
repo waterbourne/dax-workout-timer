@@ -1,0 +1,72 @@
+<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="owlBody2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B5B95"/>
+      <stop offset="100%" stop-color="#4A4E8C"/>
+    </linearGradient>
+    <linearGradient id="owlBelly2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8E0F0"/>
+      <stop offset="100%" stop-color="#C8B8D8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Branch -->
+  <rect x="20" y="125" width="110" height="10" fill="#654321" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Feet -->
+  <ellipse cx="62" cy="118" rx="9" ry="12" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="88" cy="118" rx="9" ry="12" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Body -->
+  <ellipse cx="75" cy="88" rx="38" ry="42" fill="url(#owlBody2)" stroke="#2D3561" stroke-width="3"/>
+  <ellipse cx="75" cy="93" rx="25" ry="30" fill="url(#owlBelly2)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Wings -->
+  <ellipse cx="38" cy="85" rx="12" ry="28" fill="#4A4E8C" stroke="#2D3561" stroke-width="2"/>
+  <ellipse cx="112" cy="85" rx="12" ry="28" fill="#4A4E8C" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Head -->
+  <circle cx="75" cy="48" r="38" fill="url(#owlBody2)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Eye Discs (with glasses) -->
+  <circle cx="56" cy="48" r="20" fill="#E8E0F0" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="94" cy="48" r="20" fill="#E8E0F0" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Glasses -->
+  <circle cx="56" cy="48" r="20" fill="none" stroke="#2D3561" stroke-width="3"/>
+  <circle cx="94" cy="48" r="20" fill="none" stroke="#2D3561" stroke-width="3"/>
+  <line x1="76" y1="48" x2="74" y2="48" stroke="#2D3561" stroke-width="3"/>
+  <line x1="36" y1="45" x2="30" y2="42" stroke="#2D3561" stroke-width="2"/>
+  <line x1="114" y1="45" x2="120" y2="42" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Eyes (behind glasses) -->
+  <circle cx="56" cy="48" r="13" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="56" cy="48" r="9" fill="#4ECDC4"/>
+  <circle cx="56" cy="48" r="5" fill="#2D3561"/>
+  <circle cx="59" cy="45" r="3" fill="#FFFFFF"/>
+  
+  <circle cx="94" cy="48" r="13" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="94" cy="48" r="9" fill="#4ECDC4"/>
+  <circle cx="94" cy="48" r="5" fill="#2D3561"/>
+  <circle cx="97" cy="45" r="3" fill="#FFFFFF"/>
+  
+  <!-- Beak -->
+  <path d="M68 60 L75 75 L82 60 Q75 57 68 60" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Ear Tufts (bigger teen ones) -->
+  <path d="M45 15 L38 0 L48 12" fill="#6B5B95" stroke="#2D3561" stroke-width="2"/>
+  <path d="M105 15 L112 0 L102 12" fill="#6B5B95" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Book (studying) -->
+  <g transform="translate(110, 110) rotate(15)">
+    <rect x="0" y="0" width="30" height="40" fill="#FF6B6B" stroke="#2D3561" stroke-width="2"/>
+    <rect x="3" y="3" width="24" height="32" fill="#FFF5E6" stroke="#2D3561" stroke-width="1"/>
+    <line x1="15" y1="3" x2="15" y2="35" stroke="#2D3561" stroke-width="2"/>
+    <line x1="6" y1="10" x2="12" y2="10" stroke="#2D3561" stroke-width="1"/>
+    <line x1="6" y1="18" x2="12" y2="18" stroke="#2D3561" stroke-width="1"/>
+    <line x1="18" y1="14" x2="24" y2="14" stroke="#2D3561" stroke-width="1"/>
+  </g>
+  
+  <!-- Smart Expression -->
+  <path d="M70 82 Q75 85 80 82" fill="none" stroke="#2D3561" stroke-width="2" stroke-linecap="round"/>
+</svg>

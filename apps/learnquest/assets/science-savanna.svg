@@ -1,0 +1,138 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="savannaSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDC830"/>
+      <stop offset="50%" stop-color="#F37335"/>
+      <stop offset="100%" stop-color="#F09340"/>
+    </linearGradient>
+    <linearGradient id="groundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A574"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <radialGradient id="atom1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ECDC4"/>
+      <stop offset="100%" stop-color="#44A08D"/>
+    </radialGradient>
+    <radialGradient id="atom2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF6B6B"/>
+      <stop offset="100%" stop-color="#EE5A5A"/>
+    </radialGradient>
+    <radialGradient id="atom3" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#F9CA24"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="400" height="400" fill="url(#savannaSky)"/>
+  
+  <!-- Sun -->
+  <circle cx="320" cy="80" r="40" fill="#FFD93D" stroke="#F9CA24" stroke-width="3"/>
+  
+  <!-- Ground -->
+  <path d="M0 250 Q100 230 200 250 Q300 270 400 250 L400 400 L0 400 Z" 
+        fill="url(#groundGrad)" stroke="#6B4423" stroke-width="3"/>
+  
+  <!-- Acacia Tree -->
+  <g transform="translate(60, 180)">
+    <!-- Trunk -->
+    <path d="M40 170 Q45 120 40 80 Q30 50 10 40 L70 40 Q50 50 45 80 Q50 120 55 170 Z" 
+          fill="#6B4423" stroke="#4A3728" stroke-width="3"/>
+    <!-- Branches -->
+    <path d="M40 80 L20 60 L40 70 L55 50 L40 70" fill="none" stroke="#6B4423" stroke-width="3"/>
+    <!-- Canopy -->
+    <ellipse cx="40" cy="35" rx="60" ry="30" fill="#5BC0A8" stroke="#2D5A4A" stroke-width="3"/>
+    <ellipse cx="20" cy="45" rx="35" ry="20" fill="#88D8B0" stroke="#2D5A4A" stroke-width="2"/>
+    <ellipse cx="65" cy="40" rx="30" ry="18" fill="#88D8B0" stroke="#2D5A4A" stroke-width="2"/>
+  </g>
+  
+  <!-- Giraffe with Atom Spots -->
+  <g transform="translate(240, 140)">
+    <!-- Neck -->
+    <rect x="25" y="40" width="20" height="80" rx="8" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Head -->
+    <ellipse cx="35" cy="30" rx="18" ry="22" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Ears -->
+    <ellipse cx="20" cy="25" rx="6" ry="10" fill="#F4C430" stroke="#2D3561" stroke-width="2"/>
+    <ellipse cx="50" cy="25" rx="6" ry="10" fill="#F4C430" stroke="#2D3561" stroke-width="2"/>
+    <!-- Ossicones -->
+    <line x1="30" y1="10" x2="30" y2="0" stroke="#2D3561" stroke-width="3" stroke-linecap="round"/>
+    <line x1="40" y1="10" x2="40" y2="0" stroke="#2D3561" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="30" cy="-2" r="4" fill="#2D3561"/>
+    <circle cx="40" cy="-2" r="4" fill="#2D3561"/>
+    <!-- Body -->
+    <ellipse cx="35" cy="100" rx="35" ry="45" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Legs -->
+    <rect x="10" y="130" width="12" height="50" rx="4" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <rect x="48" y="130" width="12" height="50" rx="4" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Atom Spots -->
+    <circle cx="25" cy="80" r="8" fill="url(#atom1)" stroke="#2D3561" stroke-width="2"/>
+    <circle cx="45" cy="110" r="10" fill="url(#atom2)" stroke="#2D3561" stroke-width="2"/>
+    <circle cx="30" cy="120" r="7" fill="url(#atom3)" stroke="#2D3561" stroke-width="2"/>
+    <!-- Orbiting electrons -->
+    <ellipse cx="25" cy="80" rx="14" ry="8" fill="none" stroke="#4ECDC4" stroke-width="2" transform="rotate(45 25 80)"/>
+    <ellipse cx="45" cy="110" rx="18" ry="10" fill="none" stroke="#FF6B6B" stroke-width="2" transform="rotate(-30 45 110)"/>
+  </g>
+  
+  <!-- Elephant with DNA Trunk -->
+  <g transform="translate(50, 240)">
+    <!-- Body -->
+    <ellipse cx="50" cy="50" rx="45" ry="40" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <!-- Legs -->
+    <rect x="15" y="70" width="15" height="35" rx="4" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <rect x="70" y="70" width="15" height="35" rx="4" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <rect x="30" y="80" width="12" height="25" rx="4" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <rect x="58" y="80" width="12" height="25" rx="4" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <!-- Head -->
+    <ellipse cx="85" cy="35" rx="30" ry="28" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <!-- Ears -->
+    <ellipse cx="65" cy="25" rx="15" ry="20" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <ellipse cx="105" cy="25" rx="15" ry="20" fill="#9B9B9B" stroke="#4A4A4A" stroke-width="3"/>
+    <!-- Trunk as DNA -->
+    <path d="M100 50 Q110 70 105 90 Q100 110 110 130" fill="none" stroke="#4ECDC4" stroke-width="8" stroke-linecap="round"/>
+    <path d="M100 50 Q110 70 105 90 Q100 110 110 130" fill="none" stroke="#2D3561" stroke-width="3" stroke-linecap="round"/>
+    <!-- DNA Rungs -->
+    <line x1="103" y1="60" x2="112" y2="65" stroke="#FF6B6B" stroke-width="4"/>
+    <line x1="105" y1="75" x2="114" y2="80" stroke="#FF6B6B" stroke-width="4"/>
+    <line x1="104" y1="95" x2="108" y2="100" stroke="#FF6B6B" stroke-width="4"/>
+    <line x1="103" y1="110" x2="112" y2="115" stroke="#FF6B6B" stroke-width="4"/>
+    <!-- Eye -->
+    <circle cx="90" cy="30" r="5" fill="#2D3561"/>
+    <circle cx="92" cy="28" r="2" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Lion with Solar System Mane -->
+  <g transform="translate(280, 260)">
+    <!-- Body -->
+    <ellipse cx="40" cy="55" rx="35" ry="30" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Legs -->
+    <rect x="15" y="75" width="12" height="30" rx="4" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <rect x="53" y="75" width="12" height="30" rx="4" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Head -->
+    <circle cx="40" cy="30" r="22" fill="#F4C430" stroke="#2D3561" stroke-width="3"/>
+    <!-- Mane as Orbiting Planets -->
+    <circle cx="40" cy="30" r="35" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-dasharray="8 6"/>
+    <!-- Planets -->
+    <circle cx="75" cy="30" r="6" fill="#4ECDC4" stroke="#2D3561" stroke-width="2"/>
+    <circle cx="10" cy="45" r="5" fill="#FFD93D" stroke="#2D3561" stroke-width="2"/>
+    <circle cx="55" cy="65" r="4" fill="#FF6B6B" stroke="#2D3561" stroke-width="2"/>
+    <circle cx="25" cy="5" r="5" fill="#6B5B95" stroke="#2D3561" stroke-width="2"/>
+    <!-- Face -->
+    <circle cx="33" cy="28" r="4" fill="#2D3561"/>
+    <circle cx="47" cy="28" r="4" fill="#2D3561"/>
+    <ellipse cx="40" cy="38" rx="6" ry="4" fill="#FFFFFF" stroke="#2D3561" stroke-width="1"/>
+    <circle cx="40" cy="36" r="3" fill="#2D3561"/>
+    <!-- Nose -->
+    <ellipse cx="40" cy="42" rx="5" ry="3" fill="#FF6B6B" stroke="#2D3561" stroke-width="1"/>
+  </g>
+  
+  <!-- Floating Science Symbols -->
+  <g transform="translate(180, 100)" opacity="0.85">
+    <circle cx="0" cy="0" r="15" fill="none" stroke="#4ECDC4" stroke-width="3"/>
+    <line x1="-12" y1="0" x2="12" y2="0" stroke="#4ECDC4" stroke-width="3"/>
+    <circle cx="0" cy="0" r="6" fill="#4ECDC4"/>
+  </g>
+  <g transform="translate(120, 160)" opacity="0.8">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FFD93D" stroke="#2D3561" stroke-width="2">DNA</text>
+  </g>
+</svg>

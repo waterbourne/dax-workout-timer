@@ -1,0 +1,83 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#E0F6FF"/>
+    </linearGradient>
+    <linearGradient id="mountain1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6B5B95"/>
+      <stop offset="50%" stop-color="#4A4E8C"/>
+      <stop offset="100%" stop-color="#2D3561"/>
+    </linearGradient>
+    <linearGradient id="mountain2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#88D8B0"/>
+      <stop offset="50%" stop-color="#5BC0A8"/>
+      <stop offset="100%" stop-color="#3AA688"/>
+    </linearGradient>
+    <linearGradient id="snow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8F4F8"/>
+    </linearGradient>
+    <linearGradient id="numberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky Background -->
+  <rect width="400" height="400" fill="url(#skyGrad)"/>
+  
+  <!-- Floating Numbers -->
+  <g transform="translate(60, 80)" opacity="0.9">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="url(#numberGlow)" stroke="#2D3561" stroke-width="2">7</text>
+  </g>
+  <g transform="translate(320, 100)" opacity="0.85">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#FF6B6B" stroke="#2D3561" stroke-width="2">+</text>
+  </g>
+  <g transform="translate(100, 140)" opacity="0.8">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#4ECDC4" stroke="#2D3561" stroke-width="2">×</text>
+  </g>
+  <g transform="translate(350, 180)" opacity="0.9">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#FFD93D" stroke="#2D3561" stroke-width="2">12</text>
+  </g>
+  <g transform="translate(40, 200)" opacity="0.75">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#6B5B95" stroke="#2D3561" stroke-width="2">=</text>
+  </g>
+  <g transform="translate(280, 60)" opacity="0.85">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#FF6B6B" stroke="#2D3561" stroke-width="2">3</text>
+  </g>
+  
+  <!-- Back Mountain -->
+  <path d="M0 280 L80 120 L160 200 L240 100 L320 180 L400 140 L400 400 L0 400 Z" 
+        fill="url(#mountain1)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Back Mountain Snow -->
+  <path d="M80 120 L100 145 L80 165 L60 145 Z" fill="url(#snow)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M240 100 L260 125 L240 145 L220 125 Z" fill="url(#snow)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Front Mountain -->
+  <path d="M-20 400 L100 180 L200 280 L280 160 L420 400 Z" 
+        fill="url(#mountain2)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Front Mountain Snow Caps -->
+  <path d="M100 180 L130 210 L100 235 L70 210 Z" fill="url(#snow)" stroke="#2D3561" stroke-width="2"/>
+  <path d="M280 160 L310 190 L280 215 L250 190 Z" fill="url(#snow)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- More Floating Math Symbols -->
+  <g transform="translate(180, 50)" opacity="0.9">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#88D8B0" stroke="#2D3561" stroke-width="2">÷</text>
+  </g>
+  <g transform="translate(50, 120)" opacity="0.8">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#6B5B95" stroke="#2D3561" stroke-width="2">π</text>
+  </g>
+  <g transform="translate(330, 250)" opacity="0.85">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#FFD93D" stroke="#2D3561" stroke-width="2">∞</text>
+  </g>
+  
+  <!-- Snow Particles -->
+  <circle cx="50" cy="300" r="3" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="120" cy="250" r="4" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="200" cy="320" r="3" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="300" cy="280" r="4" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="380" cy="350" r="3" fill="#FFFFFF" opacity="0.7"/>
+</svg>

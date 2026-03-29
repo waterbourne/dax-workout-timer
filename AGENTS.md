@@ -1,7 +1,7 @@
 # AGENTS.md - Your Workspace
 
-**Version:** 2.0  
-**Last Updated:** 2026-02-19  
+**Version:** 2.1  
+**Last Updated:** 2026-03-25  
 **Status:** Multi-Agent Orchestration Enabled
 
 This folder is home. Treat it that way.
@@ -10,14 +10,19 @@ This folder is home. Treat it that way.
 
 ## Quick Reference
 
-| Agent | Role | Schedule | Status | Next Run |
-|-------|------|----------|--------|----------|
-| **Dax** | Personal Trainer | 4:30 AM daily | ✅ Active | Tomorrow 4:30 AM |
-| **Guru** | Spirituality Guide | 5:15 AM daily | ✅ Active | Tomorrow 5:15 AM |
-| **Sol** | Academic Tutor | 7:00 AM daily | ⚠️ Timeout Issues | Tomorrow 7:00 AM |
-| **Atlas** | Philosophy Tutor | 5:15 PM daily | ✅ Active | Today 5:15 PM |
-| **Raju** | Head Chef | 7:00 PM daily | ⏸️ Travel Mode | Disabled until 2/22 |
-| **Orchestrator** | System Coordinator | Continuous | ✅ Active | - |
+| Agent | Role | Schedule | Status |
+|-------|------|----------|--------|
+| **Dax** | Personal Trainer | 4:30 AM daily | ✅ Active |
+| **Morning Briefing** | News / Weather / Markets | 5:00 AM daily | ✅ Active |
+| **Guru** | Spirituality Guide | 5:15 AM daily | ✅ Active |
+| **Sol** | Academic Tutor | 7:00 AM daily | ✅ Active |
+| **System Debugger** | Health Monitor | 10:00 AM daily | ✅ Active |
+| ~~Balthazar~~ | ~~Atelier Master~~ | ~~1:00 PM daily~~ | 🚫 Removed (Mar 25) |
+| **Atlas** | Philosophy Tutor | 5:15 PM daily | ✅ Active |
+| **Raju** | Head Chef | 7:00 PM daily | ✅ Active |
+| **Failure Monitor** | Watchdog | Every 30 min | ✅ Active |
+| **Context Compressor** | Cache Maintenance | Sun 3:00 AM | ✅ Active |
+| **Calendar Monitor** | Departure Alerts | — | 🚫 Disabled (Mar 4) |
 
 ---
 

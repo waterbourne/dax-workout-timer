@@ -1,0 +1,44 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chestGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="50%" stop-color="#A0522D"/>
+      <stop offset="100%" stop-color="#654321"/>
+    </linearGradient>
+    <linearGradient id="goldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD93D"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+    <linearGradient id="lidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A0522D"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Chest Body -->
+  <rect x="8" y="20" width="32" height="24" rx="2" fill="url(#chestGrad)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Chest Lid (Open) -->
+  <path d="M8 20 Q8 8 24 8 Q40 8 40 20" fill="url(#lidGrad)" stroke="#2D3561" stroke-width="2"/>
+  <rect x="8" y="18" width="32" height="4" fill="#654321" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Gold Trim -->
+  <rect x="22" y="20" width="4" height="24" fill="url(#goldTrim)" stroke="#B8860B" stroke-width="1"/>
+  <rect x="8" y="24" width="32" height="4" fill="url(#goldTrim)" stroke="#B8860B" stroke-width="1"/>
+  
+  <!-- Lock -->
+  <rect x="20" y="26" width="8" height="10" rx="2" fill="url(#goldTrim)" stroke="#B8860B" stroke-width="2"/>
+  <circle cx="24" cy="30" r="2" fill="#2D3561"/>
+  
+  <!-- Hinges -->
+  <rect x="12" y="18" width="6" height="4" fill="#FFD93D" stroke="#B8860B" stroke-width="1"/>
+  <rect x="30" y="18" width="6" height="4" fill="#FFD93D" stroke="#B8860B" stroke-width="1"/>
+  
+  <!-- Treasure Glow Inside -->
+  <ellipse cx="24" cy="24" rx="12" ry="6" fill="#FFD93D" opacity="0.4"/>
+  
+  <!-- Gems Inside (visible) -->
+  <circle cx="16" cy="22" r="3" fill="#FF6B6B" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="32" cy="22" r="3" fill="#4ECDC4" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="24" cy="20" r="3" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+</svg>

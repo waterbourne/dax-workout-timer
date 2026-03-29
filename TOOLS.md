@@ -91,3 +91,11 @@ React with 👍 if you got this — no more alerts for this event.
 - File writes MUST be atomic (write temp → rename) to prevent corruption
 - Each alert entry needs unique ID combining event name + date (not just event name)
 - If acknowledgment check fails: Log error, skip alert (fail-safe: don't spam user)
+
+---
+
+### Cameras
+
+| Camera | Location | URL | Password | Notes |
+|--------|----------|-----|----------|-------|
+| front-door | Front entrance | https://video.nest.com/live/ODJRjDc6nG | archer@teddy1449 | Nest Cam, 24/7 live, motion alerts, two-way audio |

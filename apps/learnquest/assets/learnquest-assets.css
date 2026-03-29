@@ -1,0 +1,175 @@
+/* LearnQuest Asset Styles */
+/* ========================= */
+
+/* Kingdom Illustrations - Use as background or img */
+.kingdom-math {
+  background-image: url('./assets/math-mountains.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 400px;
+}
+
+.kingdom-literature {
+  background-image: url('./assets/literature-lake.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 400px;
+}
+
+.kingdom-science {
+  background-image: url('./assets/science-savanna.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 400px;
+}
+
+.kingdom-history {
+  background-image: url('./assets/history-highlands.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 400px;
+  height: 400px;
+}
+
+/* Character Avatars */
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: contain;
+  border: 3px solid #2D3561;
+  background-color: #F8F9FA;
+}
+
+.avatar-knight { content: url('./assets/knight.svg'); }
+.avatar-ninja { content: url('./assets/ninja.svg'); }
+.avatar-wizard { content: url('./assets/wizard.svg'); }
+.avatar-scientist { content: url('./assets/scientist.svg'); }
+.avatar-adventurer { content: url('./assets/adventurer.svg'); }
+
+/* UI Icons */
+.icon {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.icon:hover {
+  transform: scale(1.1);
+}
+
+.icon-xp { content: url('./assets/xp.svg'); }
+.icon-gem { content: url('./assets/gem.svg'); }
+.icon-chest { content: url('./assets/chest.svg'); }
+.icon-check { content: url('./assets/check.svg'); }
+.icon-lock { content: url('./assets/lock.svg'); }
+.icon-crown { content: url('./assets/crown.svg'); }
+
+/* Small icon variant */
+.icon-sm {
+  width: 24px;
+  height: 24px;
+}
+
+/* Large icon variant */
+.icon-lg {
+  width: 64px;
+  height: 64px;
+}
+
+/* Pet Illustrations */
+.pet {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.pet-dragon-baby { content: url('./assets/dragon-baby.svg'); }
+.pet-dragon-teen { content: url('./assets/dragon-teen.svg'); }
+.pet-dragon-adult { content: url('./assets/dragon-adult.svg'); }
+.pet-owl-baby { content: url('./assets/owl-baby.svg'); }
+.pet-owl-teen { content: url('./assets/owl-teen.svg'); }
+.pet-owl-sage { content: url('./assets/owl-sage.svg'); }
+
+/* Pet evolution animation */
+.pet-evolving {
+  animation: petGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes petGlow {
+  from { filter: drop-shadow(0 0 5px #FFD93D); }
+  to { filter: drop-shadow(0 0 20px #FFD93D); }
+}
+
+/* Background Patterns (Tileable) */
+.bg-stars {
+  background-image: url('./assets/stars.svg');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+.bg-grid {
+  background-image: url('./assets/grid.svg');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+.bg-scroll {
+  background-image: url('./assets/scroll.svg');
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+/* Kingdom Theme Classes */
+.theme-math {
+  --primary: #6B5B95;
+  --secondary: #88D8B0;
+  --accent: #FFD93D;
+}
+
+.theme-literature {
+  --primary: #4ECDC4;
+  --secondary: #FF6B6B;
+  --accent: #F5DEB3;
+}
+
+.theme-science {
+  --primary: #5BC0A8;
+  --secondary: #F4C430;
+  --accent: #FF6B6B;
+}
+
+.theme-history {
+  --primary: #667eea;
+  --secondary: #FFD93D;
+  --accent: #DAA520;
+}
+
+/* Utility Classes */
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

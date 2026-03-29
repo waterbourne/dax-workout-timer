@@ -1,0 +1,68 @@
+# Deal Hunter Watchlist
+# Add items you want to monitor for arbitrage opportunities
+
+watches:
+  - name: "iPhone 14 Pro"
+    search: "iPhone 14 Pro"
+    max_price: 500
+    min_margin: 35
+    platforms: [craigslist, ebay]
+    category: phones
+    notes: "Good liquid market, easy to ship"
+
+  - name: "iPhone 13 Pro"
+    search: "iPhone 13 Pro"
+    max_price: 380
+    min_margin: 35
+    platforms: [craigslist, ebay]
+    category: phones
+
+  - name: "MacBook Air M1"
+    search: "MacBook Air M1"
+    max_price: 600
+    min_margin: 30
+    platforms: [craigslist, ebay]
+    category: computers
+    notes: "High value, easy to sell"
+
+  - name: "MacBook Air M2"
+    search: "MacBook Air M2"
+    max_price: 750
+    min_margin: 30
+    platforms: [craigslist, ebay]
+    category: computers
+
+  - name: "Nintendo Switch OLED"
+    search: "Nintendo Switch OLED"
+    max_price: 200
+    min_margin: 30
+    platforms: [craigslist, ebay]
+    category: electronics
+
+  - name: "Sony WH-1000XM4"
+    search: "Sony WH-1000XM4"
+    max_price: 130
+    min_margin: 40
+    platforms: [craigslist, ebay]
+    category: electronics
+
+  - name: "DeWalt Power Tool"
+    search: "DeWalt drill set"
+    max_price: 150
+    min_margin: 50
+    platforms: [craigslist]
+    category: tools
+    notes: "Craigslist goldmine, motivated sellers"
+
+# Telegram delivery settings
+telegram:
+  target: "8584092724"
+  min_confidence: "medium"   # low / medium / high
+  only_buy: false             # true = only send BUY, false = send BUY + INVESTIGATE
+
+# Scan settings
+scan:
+  interval_minutes: 30
+  max_results_per_search: 25
+  fetch_full_descriptions: true   # Slower but more accurate AI analysis
+  dedup_window_hours: 24          # Don't re-alert same listing within 24h

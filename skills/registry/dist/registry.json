@@ -1,0 +1,43 @@
+{
+  "name": "openclaw",
+  "version": "1.0.0",
+  "updated": "2026-03-17T04:10:54Z",
+  "skills": [
+    {
+      "id": "openclaw/atlas-philosophy-tutor",
+      "name": "atlas-philosophy-tutor",
+      "description": "Philosophy and history tutor delivering daily stories with clear morals for ages 6-8",
+      "path": "openclaw/skills/atlas-philosophy-tutor/SKILL.md"
+    },
+    {
+      "id": "openclaw/balthazar-atelier-master",
+      "name": "balthazar-atelier-master",
+      "description": "Atelier Master delivering daily art missions and creative instruction",
+      "path": "openclaw/skills/balthazar-atelier-master/SKILL.md"
+    },
+    {
+      "id": "openclaw/dax-personal-trainer",
+      "name": "dax-personal-trainer",
+      "description": "Personal trainer delivering daily bodyweight workouts for adults and families",
+      "path": "openclaw/skills/dax-personal-trainer/SKILL.md"
+    },
+    {
+      "id": "openclaw/guru-spirituality-guide",
+      "name": "guru-spirituality-guide",
+      "description": "Morning spirituality guide delivering Stoic, Zen, and Bhagavad Gita contemplation",
+      "path": "openclaw/skills/guru-spirituality-guide/SKILL.md"
+    },
+    {
+      "id": "openclaw/raju-head-chef",
+      "name": "raju-head-chef",
+      "description": "Head chef delivering daily dinner suggestions and meal planning",
+      "path": "openclaw/skills/raju-head-chef/SKILL.md"
+    },
+    {
+      "id": "openclaw/sol-academic-tutor",
+      "name": "sol-academic-tutor",
+      "description": "Academic tutor for ages 6-8 delivering engaging daily lessons in Math, ELA, Science, and Social Studies",
+      "path": "openclaw/skills/sol-academic-tutor/SKILL.md"
+    }
+  ]
+}

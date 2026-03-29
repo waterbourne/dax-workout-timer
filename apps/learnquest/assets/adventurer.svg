@@ -1,0 +1,85 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shirtGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4C430"/>
+      <stop offset="100%" stop-color="#D4A020"/>
+    </linearGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5D0C5"/>
+      <stop offset="100%" stop-color="#E8B5A8"/>
+    </linearGradient>
+    <linearGradient id="hatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="100%" stop-color="#654321"/>
+    </linearGradient>
+    <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5DEB3"/>
+      <stop offset="100%" stop-color="#DEB887"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Shirt -->
+  <path d="M55 100 L45 200 L155 200 L145 100 Q100 90 55 100" fill="url(#shirtGrad)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Shirt Detail -->
+  <rect x="85" y="110" width="30" height="80" fill="#D4A020" opacity="0.3" stroke="#2D3561" stroke-width="1"/>
+  <circle cx="100" cy="125" r="4" fill="#2D3561"/>
+  <circle cx="100" cy="145" r="4" fill="#2D3561"/>
+  <circle cx="100" cy="165" r="4" fill="#2D3561"/>
+  
+  <!-- Collar -->
+  <path d="M70 100 L70 115 L100 125 L130 115 L130 100" fill="#D4A020" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Head -->
+  <circle cx="100" cy="70" r="38" fill="url(#skinGrad)" stroke="#2D3561" stroke-width="3"/>
+  
+  <!-- Hair -->
+  <path d="M62 60 Q65 30 100 30 Q135 30 138 60 Q140 75 135 70 L130 55 Q100 45 70 55 L65 70 Q60 75 62 60" fill="#2D3561" stroke="#1a1f3d" stroke-width="2"/>
+  
+  <!-- Eyes -->
+  <circle cx="85" cy="68" r="7" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="85" cy="68" r="4" fill="#6B5B95"/>
+  <circle cx="87" cy="66" r="2" fill="#FFFFFF"/>
+  <circle cx="115" cy="68" r="7" fill="#FFFFFF" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="115" cy="68" r="4" fill="#6B5B95"/>
+  <circle cx="117" cy="66" r="2" fill="#FFFFFF"/>
+  
+  <!-- Eyebrows -->
+  <path d="M78 58 Q85 55 92 58" fill="none" stroke="#2D3561" stroke-width="2" stroke-linecap="round"/>
+  <path d="M108 58 Q115 55 122 58" fill="none" stroke="#2D3561" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <path d="M100 70 L95 85 L105 85 Z" fill="#E8B5A8" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Smile -->
+  <path d="M90 92 Q100 98 110 92" fill="none" stroke="#2D3561" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Adventurer Hat -->
+  <ellipse cx="100" cy="35" rx="60" ry="15" fill="url(#hatGrad)" stroke="#2D3561" stroke-width="3"/>
+  <path d="M70 35 L75 10 Q100 0 125 10 L130 35" fill="url(#hatGrad)" stroke="#2D3561" stroke-width="3"/>
+  <rect x="70" y="30" width="60" height="8" fill="#654321" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Map -->
+  <g transform="translate(130, 130)">
+    <rect x="0" y="0" width="50" height="60" fill="url(#mapGrad)" stroke="#8B7355" stroke-width="2" transform="rotate(10)"/>
+    <rect x="5" y="5" width="40" height="48" fill="none" stroke="#8B7355" stroke-width="1" transform="rotate(10)"/>
+    <!-- Map Lines -->
+    <line x1="8" y1="15" x2="42" y2="15" stroke="#8B7355" stroke-width="1" transform="rotate(10)"/>
+    <line x1="8" y1="25" x2="35" y2="25" stroke="#8B7355" stroke-width="1" transform="rotate(10)"/>
+    <line x1="8" y1="35" x2="40" y2="35" stroke="#8B7355" stroke-width="1" transform="rotate(10)"/>
+    <!-- X Marks the Spot -->
+    <text x="35" y="45" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#FF6B6B" stroke="#2D3561" stroke-width="1" transform="rotate(10)">X</text>
+    <!-- Compass -->
+    <circle cx="15" cy="45" r="8" fill="#FFFFFF" stroke="#2D3561" stroke-width="1" transform="rotate(10)"/>
+    <text x="15" y="49" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#FF6B6B" transform="rotate(10)">N</text>
+  </g>
+  
+  <!-- Whip -->
+  <path d="M35 120 Q20 150 30 180 Q25 185 35 190" fill="none" stroke="#8B4513" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="35" cy="120" r="5" fill="#8B4513" stroke="#2D3561" stroke-width="1"/>
+  
+  <!-- Satchel/Bag -->
+  <rect x="40" y="130" width="30" height="25" fill="#8B4513" stroke="#2D3561" stroke-width="2"/>
+  <rect x="45" y="115" width="20" height="20" fill="#654321" stroke="#2D3561" stroke-width="2"/>
+  <circle cx="55" cy="125" r="3" fill="#FFD93D" stroke="#2D3561" stroke-width="1"/>
+</svg>

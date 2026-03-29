@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Apps</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#0f0a1a;
+            --card:#1a1230;
+            --text:#F9FAFB;
+            --muted:#8b7baa;
+            --primary:#6366f1;
+            --accent:#f59e0b;
+        }
+        body{
+            font-family:'Nunito',sans-serif;
+            background:var(--bg);
+            color:var(--text);
+            min-height:100vh;
+            padding:40px 20px;
+        }
+        .container{
+            max-width:800px;
+            margin:0 auto;
+        }
+        h1{
+            font-size:2.5rem;
+            font-weight:800;
+            text-align:center;
+            margin-bottom:10px;
+            background:linear-gradient(135deg,var(--primary),#8b5cf6);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+        .subtitle{
+            text-align:center;
+            color:var(--muted);
+            margin-bottom:40px;
+        }
+        .section{
+            margin-bottom:40px;
+        }
+        .section-title{
+            font-size:1.2rem;
+            font-weight:700;
+            color:var(--muted);
+            text-transform:uppercase;
+            letter-spacing:1px;
+            margin-bottom:20px;
+            padding-bottom:10px;
+            border-bottom:1px solid #3d2b5e;
+        }
+        .apps-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+            gap:20px;
+        }
+        .app-card{
+            background:var(--card);
+            border-radius:16px;
+            padding:24px;
+            border:1px solid #3d2b5e;
+            transition:transform 0.2s,border-color 0.2s;
+            text-decoration:none;
+            color:inherit;
+            display:block;
+        }
+        .app-card:hover{
+            transform:translateY(-4px);
+            border-color:var(--primary);
+        }
+        .app-icon{
+            font-size:2.5rem;
+            margin-bottom:12px;
+        }
+        .app-name{
+            font-size:1.3rem;
+            font-weight:700;
+            margin-bottom:8px;
+        }
+        .app-desc{
+            color:var(--muted);
+            font-size:0.95rem;
+            line-height:1.5;
+        }
+        .app-meta{
+            margin-top:16px;
+            font-size:0.85rem;
+            color:var(--accent);
+            font-weight:600;
+        }
+        .footer{
+            text-align:center;
+            color:var(--muted);
+            margin-top:60px;
+            font-size:0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 OpenClaw Apps</h1>
+        <p class="subtitle">Personal apps and dashboards</p>
+
+        <div class="section">
+            <div class="section-title">Apps</div>
+            <div class="apps-grid">
+                <a href="apps/learnquest/" class="app-card">
+                    <div class="app-icon">🎮</div>
+                    <div class="app-name">LearnQuest RPG</div>
+                    <div class="app-desc">Gamified learning adventure for Evaan. Math, science, ELA, and social studies through quests and rewards.</div>
+                    <div class="app-meta">For: Evaan • Grade 2</div>
+                </a>
+
+                <a href="apps/dax/dax-workout-timer.html" class="app-card">
+                    <div class="app-icon">💪</div>
+                    <div class="app-name">Dax Workout Timer</div>
+                    <div class="app-desc">Daily workout companion with AI form tracking, timer, and progress tracking.</div>
+                    <div class="app-meta">For: Aditya & Natasha</div>
+                </a>
+
+                <a href="apps/bingo/" class="app-card">
+                    <div class="app-icon">🎲</div>
+                    <div class="app-name">Learning Bingo</div>
+                    <div class="app-desc">Interactive bingo game for learning activities and achievements.</div>
+                    <div class="app-meta">For: Family</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Dashboards</div>
+            <div class="apps-grid">
+                <a href="dashboards/agent-health-dashboard.html" class="app-card">
+                    <div class="app-icon">🔧</div>
+                    <div class="app-name">Agent Health</div>
+                    <div class="app-desc">Monitor OpenClaw agent status, errors, and system health.</div>
+                </a>
+
+                <a href="dashboards/dashboard.html" class="app-card">
+                    <div class="app-icon">📊</div>
+                    <div class="app-name">System Dashboard</div>
+                    <div class="app-desc">Overview dashboard for orchestrator state and agent activity.</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            Built with OpenClaw • San Francisco
+        </div>
+    </div>
+</body>
+</html>

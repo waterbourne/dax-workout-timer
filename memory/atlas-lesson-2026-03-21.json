@@ -1,0 +1,22 @@
+{
+  "id": "atlas-2026-03-21",
+  "type": "story",
+  "category": "courage",
+  "title": "The Girl Who Walked Alone: Ruby's Big Day",
+  "character": "Ruby Bridges",
+  "setting": "New Orleans, November 14, 1960",
+  "grade": "2nd",
+  "level": "clear",
+  "week": 3,
+  "duration": "10-15 min",
+  "content": {
+    "hook": "Six-year-old Ruby tied her new shoes—today was her first day at a new school, but this wasn't just any first day",
+    "story": "Ruby Bridges was six years old when she became the first Black child to integrate an all-white elementary school in New Orleans. Federal marshals walked with her through angry crowds shouting and throwing things. All the white parents removed their children, leaving Ruby alone in her first grade class with her teacher Mrs. Henry. For weeks she was the only student. Despite the danger and fear, Ruby prayed for her tormentors each night. Slowly, change came—other children returned, and schools across America began to integrate.",
+    "moral": "Courage isn't about being the strongest or the loudest. It's about doing what's right, even when you're scared and even when you're alone.",
+    "discussion": "When is it worth being uncomfortable to make things fair for everyone?",
+    "parentNote": "Ruby Bridges was six years old (same age as Evaan) when she integrated William Frantz Elementary School on November 14, 1960. Her actions were part of the Civil Rights Movement following Brown v. Board of Education (1954). She was the only child in her class for months. Norman Rockwell painted her famous walk in 'The Problem We All Live With' (1964)."
+  },
+  "xp": 50,
+  "badges": ["courage", "justice", "history"],
+  "date": "2026-03-21"
+}

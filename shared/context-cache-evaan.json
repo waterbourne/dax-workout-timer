@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "student": "Evaan",
+  "age": 7,
+  "grade": 2,
+  "interests": {
+    "primary": ["dinosaurs", "space", "legos"],
+    "secondary": ["minecraft", "robots", "volcanoes"],
+    "emerging": []
+  },
+  "learning_preferences": {
+    "format": "concrete_examples",
+    "engagement": "stories_and_discoveries",
+    "complexity_current": "level_3",
+    "complexity_target": "level_4_by_month_4"
+  },
+  "recent_topics": {
+    "sol": ["space_scale", "planets"],
+    "atlas": ["ancient_egypt", "teamwork"]
+  },
+  "resonant_themes": {
+    "atlas": ["courage", "teamwork"],
+    "sol": ["measurement", "scale"]
+  },
+  "characters_introduced": [],
+  "last_updated": "2026-03-10T06:00:00-08:00"
+}

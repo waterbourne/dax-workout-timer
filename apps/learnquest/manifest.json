@@ -1,0 +1,17 @@
+{
+  "name": "LearnQuest: Adventure",
+  "short_name": "LearnQuest",
+  "description": "Become a Knowledge Knight! Daily learning adventures for Evaan.",
+  "start_url": "/evaan-app-v2/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1a1a2e",
+  "theme_color": "#FF6B35",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23FF6B35' rx='20' width='100' height='100'/><text x='50' y='68' text-anchor='middle' font-size='55'>⚔️</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

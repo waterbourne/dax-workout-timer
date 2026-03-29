@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnQuest Assets Showcase</title>
+  <link rel="stylesheet" href="learnquest-assets.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #F8F9FA;
+    }
+    h1 {
+      color: #2D3561;
+      text-align: center;
+    }
+    h2 {
+      color: #6B5B95;
+      border-bottom: 3px solid #FFD93D;
+      padding-bottom: 10px;
+      margin-top: 40px;
+    }
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .asset-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .asset-item {
+      text-align: center;
+    }
+    .asset-item p {
+      margin: 10px 0 0;
+      color: #666;
+      font-size: 14px;
+    }
+    .icon-demo {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .bg-demo {
+      height: 150px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .code-block {
+      background: #2D3561;
+      color: #88D8B0;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 LearnQuest RPG Asset Showcase</h1>
+
+  <!-- Kingdom Illustrations -->
+  <div class="section">
+    <h2>🏔️ Kingdom Illustrations (400x400px)</h2>
+    <div class="asset-grid">
+      <div class="asset-item">
+        <img src="math-mountains.svg" alt="Math Mountains" width="200">
+        <p>math-mountains.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="literature-lake.svg" alt="Literature Lake" width="200">
+        <p>literature-lake.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="science-savanna.svg" alt="Science Savanna" width="200">
+        <p>science-savanna.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="history-highlands.svg" alt="History Highlands" width="200">
+        <p>history-highlands.svg</p>
+      </div>
+    </div>
+    <div class="code-block">
+&lt;!-- CSS Background --&gt;
+&lt;div class="kingdom-math"&gt;&lt;/div&gt;
+
+&lt;!-- Or as img --&gt;
+&lt;img src="assets/math-mountains.svg" alt="Math Kingdom" width="400"&gt;
+    </div>
+  </div>
+
+  <!-- Character Avatars -->
+  <div class="section">
+    <h2>🦸 Character Avatars (200x200px)</h2>
+    <div class="asset-grid">
+      <div class="asset-item">
+        <img src="knight.svg" alt="Knight" width="150" class="avatar">
+        <p>knight.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="ninja.svg" alt="Ninja" width="150" class="avatar">
+        <p>ninja.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="wizard.svg" alt="Wizard" width="150" class="avatar">
+        <p>wizard.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="scientist.svg" alt="Scientist" width="150" class="avatar">
+        <p>scientist.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="adventurer.svg" alt="Adventurer" width="150" class="avatar">
+        <p>adventurer.svg</p>
+      </div>
+    </div>
+    <div class="code-block">
+&lt;!-- Using CSS class --&gt;
+&lt;img class="avatar avatar-knight" alt="Player Avatar"&gt;
+
+&lt;!-- Or direct img src --&gt;
+&lt;img src="assets/knight.svg" class="avatar" alt="Knight"&gt;
+    </div>
+  </div>
+
+  <!-- UI Icons -->
+  <div class="section">
+    <h2>🎯 UI Icons (48x48px)</h2>
+    <div class="icon-demo">
+      <div class="asset-item">
+        <img src="xp.svg" alt="XP" class="icon">
+        <p>xp.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="gem.svg" alt="Gem" class="icon">
+        <p>gem.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="chest.svg" alt="Chest" class="icon">
+        <p>chest.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="check.svg" alt="Check" class="icon">
+        <p>check.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="lock.svg" alt="Lock" class="icon">
+        <p>lock.svg</p>
+      </div>
+      <div class="asset-item">
+        <img src="crown.svg" alt="Crown" class="icon">
+        <p>crown.svg</p>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 20px;">
+      <strong>Size variants:</strong>
+      <img src="xp.svg" class="icon icon-sm" style="vertical-align: middle;"> Small (24px)
+      <img src="xp.svg" class="icon" style="vertical-align: middle;"> Default (48px)
+      <img src="xp.svg" class="icon icon-lg" style="vertical-align: middle;"> Large (64px)
+    </p>
+    <div class="code-block">
+&lt;!-- Using CSS classes --&gt;
+&lt;span class="icon icon-gem"&gt;&lt;/span&gt;
+&lt;span class="icon icon-xp icon-lg"&gt;&lt;/span&gt;
+
+&lt;!-- Button with icon --&gt;
+&lt;button&gt;
+  &lt;img src="assets/chest.svg" class="icon"&gt;
+  Open Reward
+&lt;/button&gt;
+    </div>
+  </div>
+
+  <!-- Pet Illustrations -->
+  <div class="section">
+    <h2>🐉 Pet Illustrations (150x150px)</h2>
+    <div style="margin-bottom: 20px;">
+      <h3>Dragon Evolution</h3>
+      <div class="asset-grid">
+        <div class="asset-item">
+          <img src="dragon-baby.svg" alt="Baby Dragon" width="120" class="pet float-animation">
+          <p>dragon-baby.svg</p>
+        </div>
+        <div class="asset-item">
+          <img src="dragon-teen.svg" alt="Teen Dragon" width="120" class="pet">
+          <p>dragon-teen.svg</p>
+        </div>
+        <div class="asset-item">
+          <img src="dragon-adult.svg" alt="Adult Dragon" width="120" class="pet pet-evolving">
+          <p>dragon-adult.svg (evolving)</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>Owl Evolution</h3>
+      <div class="asset-grid">
+        <div class="asset-item">
+          <img src="owl-baby.svg" alt="Baby Owl" width="120" class="pet">
+          <p>owl-baby.svg</p>
+        </div>
+        <div class="asset-item">
+          <img src="owl-teen.svg" alt="Teen Owl" width="120" class="pet">
+          <p>owl-teen.svg</p>
+        </div>
+        <div class="asset-item">
+          <img src="owl-sage.svg" alt="Sage Owl" width="120" class="pet">
+          <p>owl-sage.svg</p>
+        </div>
+      </div>
+    </div>
+    <div class="code-block">
+&lt;!-- Pet with evolution glow --&gt;
+&lt;img src="assets/dragon-baby.svg" class="pet pet-dragon-baby"&gt;
+&lt;img src="assets/dragon-adult.svg" class="pet pet-evolving"&gt;
+    </div>
+  </div>
+
+  <!-- Background Patterns -->
+  <div class="section">
+    <h2>🎨 Background Patterns (Tileable)</h2>
+    <div class="bg-demo bg-stars">
+      Star Pattern - Great for dark mode!
+    </div>
+    <div class="bg-demo bg-grid" style="color: #2D3561;">
+      Grid Pattern - Perfect for Math Kingdom
+    </div>
+    <div class="bg-demo bg-scroll" style="color: #654321;">
+      Scroll Pattern - Ideal for History
+    </div>
+    <div class="code-block">
+&lt;!-- Apply as background classes --&gt;
+&lt;div class="bg-stars"&gt;Dark mode content&lt;/div&gt;
+&lt;div class="bg-grid"&gt;Math kingdom level&lt;/div&gt;
+&lt;div class="bg-scroll"&gt;History quest&lt;/div&gt;
+    </div>
+  </div>
+
+  <!-- Usage Examples -->
+  <div class="section">
+    <h2>💡 Quick Start Examples</h2>
+    <div class="code-block">
+&lt;!-- Complete quest card example --&gt;
+&lt;div class="quest-card theme-math"&gt;
+  &lt;img src="assets/math-mountains.svg" class="kingdom-bg"&gt;
+  &lt;img src="assets/ninja.svg" class="avatar"&gt;
+  &lt;h3&gt;Math Challenge&lt;/h3&gt;
+  &lt;div class="rewards"&gt;
+    &lt;span class="icon icon-xp"&gt;&lt;/span&gt; +50 XP
+    &lt;span class="icon icon-gem"&gt;&lt;/span&gt; +5 Gems
+  &lt;/div&gt;
+  &lt;img src="assets/dragon-baby.svg" class="pet pet-evolving"&gt;
+&lt;/div&gt;
+
+&lt;!-- Kingdom selection --&gt;
+&lt;div class="kingdom-selector"&gt;
+  &lt;div class="kingdom-item" onclick="selectKingdom('math')"&gt;
+    &lt;div class="kingdom-math"&gt;&lt;/div&gt;
+    &lt;p&gt;Math Mountains&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 40px; color: #666;">
+    <p>🎮 LearnQuest RPG Assets</p>
+    <p>Style: Flat design with bold colors • 24 SVG files created</p>
+  </footer>
+</body>
+</html>

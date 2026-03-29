@@ -1,0 +1,22 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="checkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#88D8B0"/>
+      <stop offset="100%" stop-color="#5BC0A8"/>
+    </linearGradient>
+    <radialGradient id="circleGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#88D8B0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="24" cy="24" r="20" fill="url(#circleGrad)" stroke="#2D3561" stroke-width="2"/>
+  
+  <!-- Checkmark -->
+  <path d="M12 24 L20 34 L36 16" fill="none" stroke="#2D3561" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 24 L20 34 L36 16" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Shine Effect -->
+  <ellipse cx="18" cy="16" rx="8" ry="4" fill="#FFFFFF" opacity="0.4" transform="rotate(-45 18 16)"/>
+</svg>

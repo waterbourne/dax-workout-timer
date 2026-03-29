@@ -7,13 +7,22 @@
         "agent": "Guru",
         "role": "Spirituality Guide",
         "last_delivery": {
-          "date": "2026-03-09",
+          "date": "2026-03-14",
           "time": "5:15 AM",
-          "theme": "deep_work_vs_family_tension",
-          "traditions_woven": ["Stoicism", "Zen", "Taoism"],
-          "key_tension": "sacred deep work window vs non-negotiable family threshold",
-          "burning_question": "Can you hold deep work as sacred, yet loosely enough that family becomes the ground your practice stands on?",
-          "references": ["Marcus Aurelius - Meditations", "Zen - chop wood carry water", "Tao - sage does nothing"]
+          "theme": "action_vs_preparation",
+          "traditions_woven": [
+            "Stoicism",
+            "Zen",
+            "Bhagavad Gita"
+          ],
+          "key_tension": "system-building and optimization vs presence in the living",
+          "burning_question": "What would you build today if you knew you could never improve it tomorrow?",
+          "references": [
+            "Marcus Aurelius - discipline of action",
+            "Zen - mumu (infinite regress of self-watching)",
+            "Bhagavad Gita - karma yoga (action without attachment)"
+          ],
+          "delivery_method": "voice"
         }
       },
       "sol": {

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaan's Learning Bingo - 2026 Acceleration Plan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #e8e8e8;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 2.5rem; color: #ff6b35; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        .legend {
+            display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;
+        }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+        .legend-color { width: 20px; height: 20px; border-radius: 4px; border: 2px solid transparent; }
+        .legend-color.math { background: #4ecdc4; }
+        .legend-color.ela { background: #ffe66d; }
+        .legend-color.science { background: #95e1d3; }
+        .legend-color.social { background: #f38181; }
+        .legend-color.completed { background: #2ecc71; border-color: #27ae60; }
+        .heatmap {
+            display: grid;
+            grid-template-columns: 120px repeat(10, 1fr);
+            gap: 4px;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        .month-header {
+            background: rgba(255,255,255,0.1);
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 8px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+        .subject-label {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .cell {
+            padding: 12px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        .cell:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 10; }
+        .cell.math { background: rgba(78, 205, 196, 0.3); border-color: rgba(78, 205, 196, 0.5); }
+        .cell.ela { background: rgba(255, 230, 109, 0.3); border-color: rgba(255, 230, 109, 0.5); color: #333; }
+        .cell.science { background: rgba(149, 225, 211, 0.3); border-color: rgba(149, 225, 211, 0.5); color: #333; }
+        .cell.social { background: rgba(243, 129, 129, 0.3); border-color: rgba(243, 129, 129, 0.5); }
+        .cell.completed { background: #2ecc71 !important; color: white !important; border-color: #27ae60; }
+        .cell.completed::after {
+            content: "✓"; position: absolute; top: 4px; right: 4px;
+            font-size: 1rem; font-weight: bold;
+        }
+        .topic { font-weight: 600; margin-bottom: 4px; }
+        .skill { font-size: 0.7rem; opacity: 0.9; }
+        .bingo-card {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+        .bingo-title { text-align: center; font-size: 1.5rem; color: #ff6b35; margin-bottom: 20px; }
+        .bingo-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .bingo-cell {
+            aspect-ratio: 1;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        .bingo-cell:hover { border-color: #ff6b35; transform: translateY(-2px); }
+        .bingo-cell.completed { background: #2ecc71; border-color: #27ae60; color: white; }
+        .bingo-cell.free {
+            background: linear-gradient(135deg, #ff6b35 0%, #f38181 100%);
+            color: white; font-weight: bold;
+        }
+        .bingo-icon { font-size: 1.5rem; margin-bottom: 5px; }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px; margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-number { font-size: 2.5rem; font-weight: 700; color: #ff6b35; }
+        .stat-label { color: #888; font-size: 0.9rem; margin-top: 5px; }
+        .controls {
+            display: flex; justify-content: center; gap: 15px;
+            margin-bottom: 30px; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px; border: none; border-radius: 50px;
+            font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .btn-primary { background: #ff6b35; color: white; }
+        .btn-primary:hover { background: #e55a2b; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: #e8e8e8; border: 2px solid rgba(255,255,255,0.3); }
+        .btn-secondary:hover { border-color: #ff6b35; color: #ff6b35; }
+        .progress-section {
+            background: rgba(0,0,0,0.2);
+            padding: 20px; border-radius: 16px; margin-bottom: 30px;
+        }
+        .progress-title { font-size: 1.2rem; margin-bottom: 15px; color: #ff6b35; }
+        .progress-bar {
+            height: 30px; background: rgba(255,255,255,0.1);
+            border-radius: 15px; overflow: hidden; display: flex;
+        }
+        .progress-segment {
+            height: 100%; transition: all 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 600; color: #333;
+        }
+        .progress-segment.math { background: #4ecdc4; }
+        .progress-segment.ela { background: #ffe66d; }
+        .progress-segment.science { background: #95e1d3; }
+        .progress-segment.social { background: #f38181; }
+        @media print {
+            body { background: white; color: black; padding: 10px; }
+            .cell, .bingo-cell { border: 1px solid #ccc; background: white !important; color: black !important; }
+            .cell.completed, .bingo-cell.completed { background: #2ecc71 !important; color: white !important; }
+            .btn, .controls { display: none; }
+        }
+        @media (max-width: 768px) {
+            .heatmap { grid-template-columns: 80px repeat(10, minmax(100px, 1fr)); overflow-x: scroll; }
+            .bingo-grid { grid-template-columns: repeat(3, 1fr); }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Evaan's Learning Bingo 2026</h1>
+            <p class="subtitle">1st Grade → 3rd Grade Acceleration Plan | March - December 2026</p>
+        </header>
+
+        <div class="legend">
+            <div class="legend-item"><div class="legend-color math"></div><span>Math</span></div>
+            <div class="legend-item"><div class="legend-color ela"></div><span>ELA</span></div>
+            <div class="legend-item"><div class="legend-color science"></div><span>Science</span></div>
+            <div class="legend-item"><div class="legend-color social"></div><span>Social Studies</span></div>
+            <div class="legend-item"><div class="legend-color completed"></div><span>Completed ✓</span></div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalSkills">40</div>
+                <div class="stat-label">Total Skills</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedSkills">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="percentComplete">0%</div>
+                <div class="stat-label">Progress</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Months</div>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-title">Subject Distribution</div>
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-segment math" style="width: 35%">Math 35%</div>
+                <div class="progress-segment ela" style="width: 30%">ELA 30%</div>
+                <div class="progress-segment science" style="width: 20%">Science 20%</div>
+                <div class="progress-segment social" style="width: 15%">Social 15%</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="window.print()">🖨️ Print Bingo Card</button>
+            <button class="btn btn-secondary" onclick="resetProgress()">↺ Reset Progress</button>
+            <button class="btn btn-secondary" onclick="toggleView()">👁️ Toggle View</button>
+        </div>
+
+        <div id="heatmapView">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #ff6b35;">📅 Monthly Learning Heatmap</h2>
+            <div class="heatmap" id="heatmap">
+                <div class="subject-label">Subject</div>
+                <div class="month-header">Mar</div>
+                <div class="month-header">Apr</div>
+                <div class="month-header">May</div>
+                <div class="month-header">Jun</div>
+                <div class="month-header">Jul</div>
+                <div class="month-header">Aug</div>
+                <div class="month-header">Sep</div>
+                <div class="month-header">Oct</div>
+                <div class="month-header">Nov</div>
+                <div class="month-header">Dec</div>
+
+                <div class="subject-label">🔢 Math</div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">± Facts</div><div class="skill">To 20</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">2-Digit</div><div class="skill">Regrouping</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">3-Digit</div><div class="skill">Operations</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">× Facts</div><div class="skill">0-5 Tables</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">Division</div><div class="skill">Intro</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">Facts 0-10</div><div class="skill">Master</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">2-Digit ×</div><div class="skill">Multiply</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">Multi-Step</div><div class="skill">Word Problems</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">Fractions</div><div class="skill">Word Problems</div></div>
+                <div class="cell math" onclick="toggleCell(this)"><div class="topic">Mastery</div><div class="skill">Assessment</div></div>
+
+                <div class="subject-label">📖 ELA</div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Sight Words</div><div class="skill">100 Words</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Phonics</div><div class="skill">Multi-syllabic</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Reading</div><div class="skill">Level L</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Journal</div><div class="skill">Summer Writing</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Chapter Books</div><div class="skill">Reading</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Compare</div><div class="skill">Texts</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Informative</div><div class="skill">Writing</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Inference</div><div class="skill">Theme</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Research</div><div class="skill">Reports</div></div>
+                <div class="cell ela" onclick="toggleCell(this)"><div class="topic">Mastery</div><div class="skill">Level Q-R</div></div>
+
+                <div class="subject-label">🔬 Science</div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Life Cycles</div><div class="skill">Plants</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Plants Deep</div><div class="skill">Growth</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Animals</div><div class="skill">Habitats</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Weather</div><div class="skill">Tracking</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Matter</div><div class="skill">States</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Rocks</div><div class="skill">Minerals</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Energy</div><div class="skill">Heat</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Adaptations</div><div class="skill">Ecosystems</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Force</div><div class="skill">Motion</div></div>
+                <div class="cell science" onclick="toggleCell(this)"><div class="topic">Review</div><div class="skill">Assessment</div></div>
+
+                <div class="subject-label">🌍 Social Studies</div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Community</div><div class="skill">Maps</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Goods</div><div class="skill">Services</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">History</div><div class="skill">Figures</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Geography</div><div class="skill">Continents</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Government</div><div class="skill">Local</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Landforms</div><div class="skill">Regions</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Native</div><div class="skill">Cultures</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Government</div><div class="skill">Branches</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Biography</div><div class="skill">Research</div></div>
+                <div class="cell social" onclick="toggleCell(this)"><div class="topic">Civics</div><div class="skill">Review</div></div>
+            </div>
+        </div>
+
+        <div class="bingo-card" id="bingoView" style="display: none;">
+            <div class="bingo-title">🎯 Learning Bingo Card</div>
+            <p style="text-align: center; margin-bottom: 20px; color: #888;">Click cells to mark complete. Get 5 in a row to win!</p>
+            <div class="bingo-grid" id="bingoGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        const bingoSkills = [
+            { icon: "🔢", name: "Math Facts to 20" }, { icon: "➕", name: "2-Digit Addition" },
+            { icon: "📊", name: "Graphs & Data" }, { icon: "✖️", name: "Multiplication 0-5" },
+            { icon: "➗", name: "Division Intro" }, { icon: "🧮", name: "Facts 0-10" },
+            { icon: "📐", name: "Area & Perimeter" }, { icon: "📝", name: "Sight Words" },
+            { icon: "📚", name: "Level H Reading" }, { icon: "✍️", name: "Paragraph Writing" },
+            { icon: "📖", name: "Chapter Books" }, { icon: "🔍", name: "Inference" },
+            { icon: "🌱", name: "Plant Life Cycle" }, { icon: "🦋", name: "Animal Habitats" },
+            { icon: "🌦️", name: "Weather Tracking" }, { icon: "💧", name: "States of Matter" },
+            { icon: "🪨", name: "Rocks & Minerals" }, { icon: "🧲", name: "Force & Motion" },
+            { icon: "🏘️", name: "Community Helpers" }, { icon: "🗺️", name: "Map Skills" },
+            { icon: "🌍", name: "Continents" }, { icon: "⚖️", name: "Government" },
+            { icon: "📜", name: "History" }, { icon: "🎭", name: "Cultures" }
+        ];
+
+        function generateBingo() {
+            const grid = document.getElementById('bingoGrid');
+            grid.innerHTML = '';
+            const shuffled = [...bingoSkills].sort(() => Math.random() - 0.5);
+            let skillIndex = 0;
+            for (let i = 0; i < 25; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'bingo-cell';
+                cell.onclick = () => toggleBingoCell(cell);
+                if (i === 12) {
+                    cell.className += ' free';
+                    cell.innerHTML = '<div class="bingo-icon">🌟</div><div>FREE</div>';
+                } else {
+                    const skill = shuffled[skillIndex++];
+                    cell.innerHTML = `<div class="bingo-icon">${skill.icon}</div><div>${skill.name}</div>`;
+                }
+                grid.appendChild(cell);
+            }
+        }
+
+        function toggleCell(cell) {
+            cell.classList.toggle('completed');
+            updateStats();
+        }
+
+        function toggleBingoCell(cell) {
+            if (cell.classList.contains('free')) return;
+            cell.classList.toggle('completed');
+            checkBingo();
+        }
+
+        function checkBingo() {
+            const cells = document.querySelectorAll('.bingo-cell');
+            const grid = Array.from(cells);
+            for (let i = 0; i < 5; i++) {
+                const row = grid.slice(i * 5, (i + 1) * 5);
+                if (row.every(c => c.classList.contains('completed') || c.classList.contains('free'))) {
+                    setTimeout(() => alert('🎉 BINGO! You got a row!'), 100); return;
+                }
+            }
+            for (let i = 0; i < 5; i++) {
+                const col = [grid[i], grid[i+5], grid[i+10], grid[i+15], grid[i+20]];
+                if (col.every(c => c.classList.contains('completed') || c.classList.contains('free'))) {
+                    setTimeout(() => alert('🎉 BINGO! You got a column!'), 100); return;
+                }
+            }
+            const diag1 = [grid[0], grid[6], grid[12], grid[18], grid[24]];
+            const diag2 = [grid[4], grid[8], grid[12], grid[16], grid[20]];
+            if (diag1.every(c => c.classList.contains('completed') || c.classList.contains('free')) ||
+                diag2.every(c => c.classList.contains('completed') || c.classList.contains('free'))) {
+                setTimeout(() => alert('🎉 BINGO! You got a diagonal!'), 100);
+            }
+        }
+
+        function updateStats() {
+            const completed = document.querySelectorAll('.cell.completed').length;
+            const total = document.querySelectorAll('.cell').length;
+            const percent = Math.round((completed / total) * 100);
+            document.getElementById('completedSkills').textContent = completed;
+            document.getElementById('percentComplete').textContent = percent + '%';
+        }
+
+        function resetProgress() {
+            if (confirm('Reset all progress?')) {
+                document.querySelectorAll('.cell.completed, .bingo-cell.completed').forEach(c => c.classList.remove('completed'));
+                updateStats();
+            }
+        }
+
+        function toggleView() {
+            const heatmap = document.getElementById('heatmapView');
+            const bingo = document.getElementById('bingoView');
+            if (heatmap.style.display === 'none') {
+                heatmap.style.display = 'block';
+                bingo.style.display = 'none';
+            } else {
+                heatmap.style.display = 'none';
+                bingo.style.display = 'block';
+                generateBingo();
+            }
+        }
+
+        generateBingo();
+    </script>
+</body>
+</html>

@@ -1,12 +1,13 @@
 {
-  "version": "2.0",
-  "last_updated": "2026-02-19T08:26:00-08:00",
+  "version": "2.1",
+  "last_updated": "2026-03-10T18:19:00-07:00",
   "agents": {
     "dax": {
       "id": "dax",
       "name": "Dax",
       "role": "Personal Trainer",
       "emoji": "💪",
+      "cron_id": "2fe7c342-cc2a-4d10-9b63-c8fe5c2a18cc",
       "capabilities": [
         "workout_creation",
         "fitness_tracking",
@@ -17,7 +18,7 @@
       "schedule": {
         "cron": "30 4 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": "2026-02-20T04:30:00-08:00"
+        "next_run": "2026-03-11T04:30:00-07:00"
       },
       "priority": "high",
       "timeouts": {
@@ -32,20 +33,18 @@
       "status": "idle",
       "enabled": true,
       "health": {
-        "last_run": "2026-02-19T04:30:00-08:00",
+        "last_run": "2026-03-10T04:30:00-07:00",
         "last_status": "success",
-        "last_duration_seconds": 42,
         "success_rate_7d": 0.98,
         "success_rate_30d": 0.97,
-        "avg_runtime_seconds": 45,
-        "total_runs": 28,
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-15",
         "version": "2.0",
-        "model": "moonshot/kimi-k2.5"
+        "model": "moonshot/kimi-k2.5",
+        "prompt_version": "v2.0"
       }
     },
     "guru": {
@@ -53,23 +52,33 @@
       "name": "Guru",
       "role": "Spirituality Guide",
       "emoji": "🧘",
+      "cron_id": "691caba0-9472-4280-b907-7827cc6be05e",
       "capabilities": [
-        "meditation_guidance",
-        "stoic_reflection",
-        "wisdom_teaching",
+        "zen_koans",
+        "self_inquiry",
         "daily_contemplation",
-        "philosophy_integration"
+        "buddhist_wisdom",
+        "nondual_teaching",
+        "consciousness_inquiry"
       ],
+      "user_context": {
+        "practice_level": "advanced",
+        "daily_meditation": true,
+        "attention_presence": "mastered",
+        "emotional_awareness": "emotions recognized and released without reaction",
+        "focus_areas": ["koans", "self_inquiry", "emptiness", "nonduality", "consciousness"],
+        "avoid": ["basic_meditation_instructions", "mindfulness_basics", "attention_training"]
+      },
       "schedule": {
         "cron": "15 5 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": "2026-02-20T05:15:00-08:00"
+        "next_run": "2026-03-20T05:15:00-07:00"
       },
       "priority": "medium",
       "timeouts": {
-        "generation": 90,
+        "generation": 120,
         "delivery": 30,
-        "total": 120
+        "total": 150
       },
       "dependencies": [],
       "notifications": [],
@@ -78,20 +87,64 @@
       "status": "idle",
       "enabled": true,
       "health": {
-        "last_run": "2026-02-19T05:15:00-08:00",
+        "last_run": "2026-03-10T05:15:00-07:00",
         "last_status": "success",
-        "last_duration_seconds": 38,
         "success_rate_7d": 0.95,
         "success_rate_30d": 0.94,
-        "avg_runtime_seconds": 38,
-        "total_runs": 28,
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-15",
-        "version": "2.0",
-        "model": "moonshot/kimi-k2.5"
+        "version": "3.0",
+        "model": "moonshot/kimi-k2.5",
+        "prompt_version": "v3.0",
+        "autoresearch_status": "ready_to_deploy",
+        "focus": "zen_buddhist_koans",
+        "target_aps": 15
+      }
+    },
+    "morning_briefing": {
+      "id": "morning_briefing",
+      "name": "Morning Briefing",
+      "role": "News, Weather & SF Happenings",
+      "emoji": "📰",
+      "cron_id": "a03dc2cb-ecb2-48ca-bea7-f925420ef5ed",
+      "capabilities": [
+        "news_aggregation",
+        "weather_lookup",
+        "market_summary",
+        "sf_local_events"
+      ],
+      "schedule": {
+        "cron": "0 5 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-03-11T05:00:00-07:00",
+        "note": "Runs 15 min before Guru — no overlap in content"
+      },
+      "priority": "low",
+      "timeouts": {
+        "generation": 120,
+        "delivery": 30,
+        "total": 120
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": [],
+      "context_writes": [],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-03-10T05:00:00-07:00",
+        "last_status": "success",
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-24",
+        "version": "1.0",
+        "model": "moonshot/kimi-k2.5",
+        "notes": "Documented Mar 10 2026. Delivers SF weather, markets, tech, geopolitics, local events to Telegram."
       }
     },
     "sol": {
@@ -99,6 +152,8 @@
       "name": "Sol",
       "role": "Academic Tutor",
       "emoji": "📚",
+      "cron_id": "f774b22f-c5f1-4fd9-980f-8480165c83e9",
+      "agent_id": "sol",
       "capabilities": [
         "math_tutoring",
         "science_tutoring",
@@ -110,7 +165,7 @@
       "schedule": {
         "cron": "0 7 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": "2026-02-20T07:00:00-08:00"
+        "next_run": "2026-03-11T07:00:00-07:00"
       },
       "priority": "high",
       "timeouts": {
@@ -122,28 +177,112 @@
         {
           "agent": "guru",
           "condition": "completed",
-          "wait_time_max_seconds": 300
+          "wait_time_max_seconds": 300,
+          "note": "Enforced by 1h45m schedule gap only — no runtime enforcement"
         }
       ],
       "notifications": [],
       "context_reads": ["shared.context-cache.sol", "user_state.family.members.Evaan"],
-      "context_writes": ["shared.context-cache.sol"],
+      "context_writes": ["shared.context-cache.sol", "memory/evaan-learning-log.md"],
       "status": "idle",
       "enabled": true,
       "health": {
-        "last_run": "2026-03-05T07:00:00-08:00",
+        "last_run": "2026-03-10T07:00:00-07:00",
         "last_status": "success",
-        "last_duration_seconds": 95,
         "success_rate_7d": 0.95,
         "success_rate_30d": 0.93,
-        "avg_runtime_seconds": 95,
-        "total_runs": 29,
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-20",
         "version": "2.0",
+        "model": "moonshot/kimi-k2.5",
+        "prompt_version": "v3.0",
+        "autoresearch_status": "complete"
+      }
+    },
+    "system_debugger": {
+      "id": "system_debugger",
+      "name": "System Debugger",
+      "role": "System Health Monitor",
+      "emoji": "🔧",
+      "cron_id": "eb502bd5-1de7-4f99-8397-5b994e8ddfea",
+      "capabilities": [
+        "error_log_analysis",
+        "agent_failure_diagnosis",
+        "resource_monitoring",
+        "health_reporting"
+      ],
+      "schedule": {
+        "cron": "0 10 * * *",
+        "timezone": "America/Los_Angeles",
+        "next_run": "2026-03-11T10:00:00-07:00"
+      },
+      "priority": "high",
+      "timeouts": {
+        "generation": 180,
+        "delivery": 30,
+        "total": 180
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": ["memory/error-log.md"],
+      "context_writes": ["memory/error-log.md"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-03-10T10:00:00-07:00",
+        "last_status": "success",
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-19",
+        "version": "1.0",
+        "model": "moonshot/kimi-k2.5",
+        "notes": "Documented Mar 10 2026. Runs system_debugger.py, checks error-log.md, delivers top-3 issues to Telegram. Triggered on-demand by Failure Monitor for 3+ consecutive errors."
+      }
+    },
+    "balthazar": {
+      "id": "balthazar",
+      "name": "Balthazar",
+      "role": "Atelier Master",
+      "emoji": "🎨",
+      "cron_id": null,
+      "capabilities": [
+        "art_instruction",
+        "daily_painting_missions",
+        "creative_guidance",
+        "technique_teaching"
+      ],
+      "schedule": {
+        "cron": null,
+        "timezone": "America/Los_Angeles",
+        "next_run": null,
+        "note": "Agent removed Mar 25 2026 per user request"
+      },
+      "priority": "medium",
+      "timeouts": {
+        "generation": 150,
+        "delivery": 30,
+        "total": 200
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": [],
+      "context_writes": [],
+      "status": "disabled",
+      "enabled": false,
+      "health": {
+        "last_run": "2026-03-10T13:00:00-07:00",
+        "last_status": "success",
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-10",
+        "version": "1.0",
         "model": "moonshot/kimi-k2.5"
       }
     },
@@ -152,6 +291,8 @@
       "name": "Atlas",
       "role": "Philosophy Tutor",
       "emoji": "🏛️",
+      "cron_id": "d6d5b966-c8ea-494d-aaf8-bf4478c7e7de",
+      "agent_id": "atlas",
       "capabilities": [
         "history_teaching",
         "storytelling",
@@ -163,7 +304,7 @@
       "schedule": {
         "cron": "15 17 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": "2026-02-19T17:15:00-08:00"
+        "next_run": "2026-03-11T17:15:00-07:00"
       },
       "priority": "medium",
       "timeouts": {
@@ -178,20 +319,18 @@
       "status": "idle",
       "enabled": true,
       "health": {
-        "last_run": "2026-02-18T17:15:00-08:00",
+        "last_run": "2026-03-10T17:15:00-07:00",
         "last_status": "success",
-        "last_duration_seconds": 62,
         "success_rate_7d": 0.91,
         "success_rate_30d": 0.93,
-        "avg_runtime_seconds": 62,
-        "total_runs": 27,
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-15",
         "version": "2.0",
-        "model": "moonshot/kimi-k2.5"
+        "model": "moonshot/kimi-k2.5",
+        "prompt_version": "v3.0"
       }
     },
     "raju": {
@@ -199,6 +338,7 @@
       "name": "Raju",
       "role": "Head Chef",
       "emoji": "👨‍🍳",
+      "cron_id": "b0881705-a400-40c4-b73c-20c88d72b98c",
       "capabilities": [
         "meal_planning",
         "recipe_creation",
@@ -210,7 +350,7 @@
       "schedule": {
         "cron": "0 19 * * *",
         "timezone": "America/Los_Angeles",
-        "next_run": "2026-02-23T19:00:00-08:00"
+        "next_run": "2026-03-10T19:00:00-07:00"
       },
       "priority": "medium",
       "timeouts": {
@@ -225,20 +365,101 @@
       "status": "idle",
       "enabled": true,
       "health": {
-        "last_run": "2026-02-18T19:00:00-08:00",
+        "last_run": "2026-03-09T19:00:00-07:00",
         "last_status": "success",
-        "last_duration_seconds": 87,
         "success_rate_7d": 0.96,
         "success_rate_30d": 0.95,
-        "avg_runtime_seconds": 87,
-        "total_runs": 27,
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-15",
         "version": "2.0",
-        "model": "moonshot/kimi-k2.5"
+        "model": "moonshot/kimi-k2.5",
+        "prompt_version": "v2.0",
+        "prompt_updated": "2026-03-24"
+      }
+    },
+    "failure_monitor": {
+      "id": "failure_monitor",
+      "name": "Failure Monitor",
+      "role": "Agent Failure Watchdog",
+      "emoji": "🚨",
+      "cron_id": "f6215a3e-82ee-4d9b-95d9-57eef50929dd",
+      "capabilities": [
+        "consecutive_error_detection",
+        "agent_health_monitoring",
+        "system_debugger_trigger"
+      ],
+      "schedule": {
+        "kind": "every",
+        "interval": "30min",
+        "next_run": "rolling"
+      },
+      "priority": "critical",
+      "timeouts": {
+        "generation": 90,
+        "delivery": 30,
+        "total": 90
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": [],
+      "context_writes": [],
+      "status": "active",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-03-10T18:00:00-07:00",
+        "last_status": "success",
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-19",
+        "version": "1.0",
+        "model": "moonshot/kimi-k2.5",
+        "notes": "Runs failure_monitor.py every 30min. Triggers System Debugger if any agent hits 3+ consecutive errors. Replies NO_REPLY when all clear."
+      }
+    },
+    "context_compressor": {
+      "id": "context_compressor",
+      "name": "Context Compressor",
+      "role": "Context Cache Maintenance",
+      "emoji": "🗜️",
+      "cron_id": "7090f0ee-61de-479f-970a-228496f743fd",
+      "capabilities": [
+        "context_cache_archival",
+        "stale_entry_removal"
+      ],
+      "schedule": {
+        "cron": "0 3 * * 0",
+        "timezone": "America/Los_Angeles",
+        "description": "Every Sunday at 3 AM",
+        "next_run": "2026-03-15T03:00:00-07:00"
+      },
+      "priority": "low",
+      "timeouts": {
+        "generation": 60,
+        "delivery": 30,
+        "total": 60
+      },
+      "dependencies": [],
+      "notifications": [],
+      "context_reads": ["shared/context-cache.json"],
+      "context_writes": ["shared/context-cache.json", "shared/context-archive.json"],
+      "status": "idle",
+      "enabled": true,
+      "health": {
+        "last_run": "2026-03-09T03:00:00-07:00",
+        "last_status": "success",
+        "consecutive_errors": 0,
+        "issues": []
+      },
+      "metadata": {
+        "created": "2026-02-23",
+        "version": "1.0",
+        "model": "moonshot/kimi-k2.5",
+        "notes": "Documented Mar 10 2026. Archives context-cache entries older than 30 days to context-archive.json. Runs context-compressor.js."
       }
     },
     "calendar_monitor": {
@@ -246,6 +467,7 @@
       "name": "Calendar Monitor",
       "role": "Departure Alerts",
       "emoji": "📅",
+      "cron_id": null,
       "capabilities": [
         "calendar_parsing",
         "departure_alerts",
@@ -253,8 +475,7 @@
         "event_monitoring"
       ],
       "schedule": {
-        "interval": "15min",
-        "next_run": "2026-02-19T08:30:00-08:00"
+        "note": "NOT currently scheduled — departure alerts disabled Mar 4 2026 per user request"
       },
       "priority": "high",
       "timeouts": {
@@ -266,32 +487,28 @@
       "notifications": [],
       "context_reads": ["user_state.travel", "user_state.location"],
       "context_writes": ["user_state.travel"],
-      "status": "active",
-      "enabled": true,
+      "status": "disabled",
+      "enabled": false,
       "health": {
-        "last_run": "2026-02-19T08:15:00-08:00",
-        "last_status": "success",
-        "last_duration_seconds": 22,
-        "success_rate_7d": 0.99,
-        "success_rate_30d": 0.98,
-        "avg_runtime_seconds": 25,
-        "total_runs": 672,
+        "last_run": null,
+        "last_status": "disabled",
         "consecutive_errors": 0,
         "issues": []
       },
       "metadata": {
         "created": "2026-01-25",
         "version": "2.0",
-        "model": "moonshot/kimi-k2.5"
+        "model": "moonshot/kimi-k2.5",
+        "notes": "Disabled Mar 4 2026 — user found alerts noisy and timing was off. Can be re-enabled on request."
       }
     }
   },
   "system": {
-    "total_agents": 6,
-    "active_agents": 6,
-    "disabled_agents": ["raju"],
-    "healthy_agents": 6,
+    "total_agents": 10,
+    "active_agents": 9,
+    "disabled_agents": ["calendar_monitor", "balthazar"],
+    "healthy_agents": 9,
     "agents_with_issues": [],
-    "last_updated": "2026-03-03T06:16:00-08:00"
+    "last_updated": "2026-03-25T13:20:00-07:00"
   }
 }

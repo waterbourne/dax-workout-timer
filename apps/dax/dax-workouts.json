@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2026-03-23T04:30:00-07:00",
+  "workouts": [
+    {
+      "id": "dax_1742734200000",
+      "date": "Mon, Mar 23, 4:30 AM",
+      "title": "MONDAY METABOLIC AMRAP",
+      "focus": "As Many Rounds As Possible — 7 minutes to crush it! Bodyweight only, perfect for Natasha's Day",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Jumping Jacks", "duration": 30, "detail": "Light and bouncy, wake up the whole body", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Arm Circles", "duration": 30, "detail": "Big forward circles, then reverse — loosen the shoulders", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Bodyweight Squats", "duration": 30, "detail": "Slow and deep, feel the hips open", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Inchworms", "duration": 30, "detail": "Walk hands out to plank, walk back, stand tall", "type": "warmup", "phase": "WARMUP"},
+        {"name": "5 Push-Ups", "duration": 60, "detail": "AMRAP Round: Chest to floor, any variation works", "type": "main", "phase": "WORK"},
+        {"name": "10 Air Squats", "duration": 60, "detail": "AMRAP Round: Fast and deep, chest stays up", "type": "main", "phase": "WORK"},
+        {"name": "5 Burpees", "duration": 60, "detail": "AMRAP Round: Step back if needed, get that heart rate up", "type": "main", "phase": "WORK"},
+        {"name": "10 Reverse Lunges", "duration": 60, "detail": "AMRAP Round: Total reps, alternate legs, knee kisses floor", "type": "main", "phase": "WORK"},
+        {"name": "5 Push-Ups", "duration": 60, "detail": "Keep pushing! Quality over quantity", "type": "main", "phase": "WORK"},
+        {"name": "10 Air Squats", "duration": 60, "detail": "Stay strong, maintain your pace", "type": "main", "phase": "WORK"},
+        {"name": "5 Burpees", "duration": 60, "detail": "Final push — empty the tank!", "type": "main", "phase": "WORK"},
+        {"name": "Child's Pose to Upward Dog Flow", "duration": 60, "detail": "Deep breaths, stretch chest and hips — Monday morning win! Count your rounds and celebrate the effort", "type": "finisher", "phase": "FINISHER"}
+      ]
+    },
+    {
+      "id": "dax_1742647800000",
+      "date": "Sun, Mar 22, 4:30 AM",
+      "title": "SUNDAY TABATA IGNITION",
+      "focus": "Tabata intervals — 20 seconds work, 10 seconds rest. Quick, explosive, done in 10 minutes",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Jumping Jacks", "duration": 30, "detail": "Light and bouncy, wake up the whole body", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Arm Circles", "duration": 30, "detail": "Big forward circles, then reverse — loosen the shoulders", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Bodyweight Squats", "duration": 30, "detail": "Slow and deep, feel the hips open", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Inchworms", "duration": 30, "detail": "Walk hands out to plank, walk back, stand tall", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Air Squats", "duration": 20, "detail": "Tabata Round 1: Explosive up, control down — 20 sec work, 10 sec rest", "type": "main", "phase": "WORK"},
+        {"name": "Push-Ups", "duration": 20, "detail": "Tabata Round 2: Chest to floor, full range of motion", "type": "main", "phase": "WORK"},
+        {"name": "Mountain Climbers", "duration": 20, "detail": "Tabata Round 3: Fast feet, drive knees to chest", "type": "main", "phase": "WORK"},
+        {"name": "Glute Bridges", "duration": 20, "detail": "Tabata Round 4: Squeeze hard at the top, feel the glutes fire", "type": "main", "phase": "WORK"},
+        {"name": "Reverse Lunges", "duration": 20, "detail": "Tabata Round 5: Alternate legs, knee kisses the floor", "type": "main", "phase": "WORK"},
+        {"name": "Plank Hold", "duration": 20, "detail": "Tabata Round 6: Core tight, don't let hips sag", "type": "main", "phase": "WORK"},
+        {"name": "Burpees", "duration": 20, "detail": "Tabata Round 7: Last round — empty the tank!", "type": "main", "phase": "WORK"},
+        {"name": "Child's Pose to Upward Dog Flow", "duration": 60, "detail": "Deep breaths, stretch chest and hips — you showed up on a Sunday. That's the win!", "type": "finisher", "phase": "FINISHER"}
+      ]
+    },
+    {
+      "id": "dax_1742561400000",
+      "date": "Sat, Mar 21, 4:30 AM",
+      "title": "SATURDAY SIZZLE EMOM",
+      "focus": "Every Minute On the Minute — Explosive power moves to kick off the weekend strong",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Jumping Jacks", "duration": 30, "detail": "Light and bouncy, wake up the whole body", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Arm Circles", "duration": 30, "detail": "Big forward circles, then reverse — loosen the shoulders", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Bodyweight Squats", "duration": 30, "detail": "Slow and deep, feel the hips open", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Inchworms", "duration": 30, "detail": "Walk hands out to plank, walk back, stand tall", "type": "warmup", "phase": "WARMUP"},
+        {"name": "15 Jump Squats", "duration": 60, "detail": "EMOM Min 1: Explosive up, soft landing — power from the hips", "type": "main", "phase": "WORK"},
+        {"name": "10 Push-Ups", "duration": 60, "detail": "EMOM Min 2: Chest to floor, full range of motion", "type": "main", "phase": "WORK"},
+        {"name": "20 Mountain Climbers", "duration": 60, "detail": "EMOM Min 3: Fast feet, drive knees to chest", "type": "main", "phase": "WORK"},
+        {"name": "12 Reverse Lunges", "duration": 60, "detail": "EMOM Min 4: Total reps, alternate legs, knee kisses floor", "type": "main", "phase": "WORK"},
+        {"name": "15 Glute Bridges", "duration": 60, "detail": "EMOM Min 5: Squeeze hard at the top, 2-second hold", "type": "main", "phase": "WORK"},
+        {"name": "10 Pike Push-Ups", "duration": 60, "detail": "EMOM Min 6: Hips high, shoulders over hands — shoulder burner", "type": "main", "phase": "WORK"},
+        {"name": "30-Second Plank", "duration": 60, "detail": "EMOM Min 7: Core tight, don't let hips sag — finish strong!", "type": "main", "phase": "WORK"},
+        {"name": "Child's Pose to Upward Dog Flow", "duration": 60, "detail": "Deep breaths, stretch chest and hips — great work this week!", "type": "finisher", "phase": "FINISHER"}
+      ]
+    },
+    {
+      "id": "dax_1742475000000",
+      "date": "Fri, Mar 20, 4:30 AM",
+      "title": "FRIDAY FLOW CIRCUIT",
+      "focus": "Bodyweight continuous circuit — Smooth transitions, no equipment needed! Perfect for Natasha's Day.",
+      "source": "dax_cron",
+      "exercises": [
+        {"name": "Jumping Jacks", "duration": 30, "detail": "Light and bouncy, wake up the whole body", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Arm Circles", "duration": 30, "detail": "Big forward circles, then reverse — loosen the shoulders", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Bodyweight Squats", "duration": 30, "detail": "Slow and deep, feel the hips open", "type": "warmup", "phase": "WARMUP"},
+        {"name": "Inchworms", "duration": 30, "detail": "Walk hands out to plank, walk back, stand tall", "type": "warmup", "phase": "WARMUP"},
+        {"name": "10 Push-Ups", "duration": 60, "detail": "Circuit Move 1: Chest to floor, full range — transition smoothly", "type": "main", "phase": "WORK"},
+        {"name": "10 Reverse Lunges", "duration": 60, "detail": "Circuit Move 2: Total reps, alternate legs, knee kisses floor", "type": "main", "phase": "WORK"},
+        {"name": "15 Glute Bridges", "duration": 60, "detail": "Circuit Move 3: Squeeze at the top, feel the glutes fire", "type": "main", "phase": "WORK"},
+        {"name": "10 Plank to Down Dog", "duration": 60, "detail": "Circuit Move 4: From plank, push hips up and back, stretch", "type": "main", "phase": "WORK"},
+        {"name": "10 Push-Ups", "duration": 60, "detail": "Round 2: Keep the flow going, quality reps", "type": "main", "phase": "WORK"},
+        {"name": "10 Reverse Lunges", "duration": 60, "detail": "Round 2: Stay balanced, control the descent", "type": "main", "phase": "WORK"},
+        {"name": "15 Glute Bridges", "duration": 60, "detail": "Round 2: Finish strong on this round!", "type": "main", "phase": "WORK"},
+        {"name": "Child's Pose to Upward Dog Flow", "duration": 60, "detail": "Deep breaths, stretch chest and hips, recover well — you crushed it!", "type": "finisher", "phase": "FINISHER"}
+      ]
+    }
+  ]
+}
